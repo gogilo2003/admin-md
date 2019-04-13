@@ -1,0 +1,2 @@
+<a href="{{ route('admin-pages') }}" class="list-group-item{{ is_current_path('admin-pages') ? ' active' : ''}}"><i class="fa fa-files-o"></i> Pages</a>
+<a href="{{ route('admin-pages-add') }}" class="list-group-item{{ is_current_path('admin-pages-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> New Page</a>

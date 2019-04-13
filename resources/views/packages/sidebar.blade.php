@@ -1,0 +1,2 @@
+<a href="{{ route('admin-packages') }}" class="list-group-item{{ is_current_path('admin-packages') ? ' active' : ''}}"><i class="fa fa-files-o"></i> Packages</a>
+<a href="{{ route('admin-packages-add') }}" class="list-group-item{{ is_current_path('admin-packages-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> New Package</a>

@@ -1,0 +1,4 @@
+<a href="{{ route('admin-event_categories') }}" class="list-group-item{{ is_current_path('admin-event_categories') ? ' active' : ''}}"><i class="fa fa-folder-open-o"></i> Event Categories</a>
+<a href="{{ route('admin-event_categories-add') }}" class="list-group-item{{ is_current_path('admin-event_categories-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create event Category</a>
+<a href="{{ route('admin-events') }}" class="list-group-item{{ is_current_path('admin-events') ? ' active' : ''}}"><i class="fa fa-calendar"></i> Events</a>
+<a href="{{ route('admin-events-add') }}" class="list-group-item{{ is_current_path('admin-events-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create event</a>

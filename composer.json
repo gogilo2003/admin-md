@@ -1,0 +1,28 @@
+{
+    "name": "gogilo/admin",
+    "description": "Bootstrap CMS for Laravel",
+    "keywords": ["Bootstrap CMS for Laravel","cms","laravel-cms","content management system","bootstrap"],
+    "require": {
+        "laravel/framework": ">=5.2",
+        "intervention/image": ">=2.3",
+        "intervention/imagecache": ">=2.3",
+        "ext-imagick": "*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ogilo G. D. Ouma",
+            "email": "gogilo2003@hotmail.com"
+        }
+    ],
+    "autoload":{
+        "psr-4":{"Ogilo\\Admin\\": "src/"}
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ogilo\\Admin\\AdminServiceProvider"
+            ]
+        }
+    }
+}

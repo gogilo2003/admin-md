@@ -1,0 +1,41 @@
+{
+  "name": "laravel-cms",
+  "authors": [
+    "Ogilo G. D. Ouma <gogilo2003@hotmail.com>"
+  ],
+  "description": "Bootstrap Laravel Content Management System",
+  "main": "index.html",
+  "keywords": [
+    "laravel",
+    "cms",
+    "bootstrap"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-select": "1.13.1",
+    "datatables": "1.10.19",
+    "font-awesome": "^4.7.0",
+    "tinymce": "4.8.2",
+    "bootstrap": "^3.3.7",
+    "jquery": "3.3.1",
+    "remarkable-bootstrap-notify": "^3.1.3",
+    "bootstrap-file-input": "^1.0.0",
+    "bootstrap-hover-dropdown": "^2.2.1",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "moment": "2.22.2",
+    "bootstrap3-typeahead": "fc2d5dce4a",
+    "chart.js": "^2.7.2"
+  },
+  "resolutions": {
+    "jquery": "^3.2.1"
+  }
+}

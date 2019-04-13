@@ -1,0 +1,4 @@
+<a href="{{ route('admin-file_categories') }}" class="list-group-item{{ is_current_path('admin-file_categories') ? ' active' : ''}}"><i class="fa fa-folder-open-o"></i> File Categories</a>
+<a href="{{ route('admin-file_categories-add') }}" class="list-group-item{{ is_current_path('admin-file_categories-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create file Category</a>
+<a href="{{ route('admin-files') }}" class="list-group-item{{ is_current_path('admin-files') ? ' active' : ''}}"><i class="fa fa-file"></i> Files</a>
+<a href="{{ route('admin-files-add') }}" class="list-group-item{{ is_current_path('admin-files-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create file</a>

@@ -1,0 +1,4 @@
+<a href="{{ route('admin-project_categories') }}" class="list-group-item{{ is_current_path('admin-project_categories') ? ' active' : ''}}"><i class="fa fa-cogs"></i> Project Categories</a>
+<a href="{{ route('admin-project_categories-add') }}" class="list-group-item{{ is_current_path('admin-project_categories-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create project Category</a>
+<a href="{{ route('admin-projects') }}" class="list-group-item{{ is_current_path('admin-projects') ? ' active' : ''}}"><i class="fa fa-cog"></i> Projects</a>
+<a href="{{ route('admin-projects-add') }}" class="list-group-item{{ is_current_path('admin-projects-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create project</a>

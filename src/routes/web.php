@@ -1,0 +1,14 @@
+<?php
+Route::group(['middleware'=>'web','namespace'=>'Ogilo\Admin\Http\Controllers\Web'],function(){
+	Route::get('{page_name?}',['as'=>'home','uses'=>'PagesController@getPage']);
+	Route::get('article/{item_name}/{page?}',['as'=>'article','uses'=>'PagesController@getArticle']);
+	Route::get('sermon/{sermon_name}/{page_name?}',['as'=>'sermon','uses'=>'PagesController@getSermon']);
+	Route::get('file/{file_name}',['as'=>'file','uses'=>'PagesController@getFile']);
+	Route::get('file/download/{id}',['as'=>'file-download','uses'=>'PagesController@downlodFile']);
+	Route::get('profile/{id}/{page_name?}',['as'=>'profile','uses'=>'PagesController@getProfile']);
+    Route::get('package/{id}/{page_name?}',['as'=>'package','uses'=>'PagesController@getPackage']);
+	Route::get('event/{event_name}/{page_name?}',['as'=>'event','uses'=>'PagesController@getEvent']);
+	Route::post('event/guest/register',['as'=>'event-guest-register','uses'=>'PagesController@postEventGuest']);
+	Route::post('comment',['as'=>'post-comment','uses'=>'PagesController@postComment']);
+	Route::post('contact/post',['as'=>'post-contact','uses'=>'PagesController@postContact']);
+});

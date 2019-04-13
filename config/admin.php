@@ -1,0 +1,27 @@
+<?php return array (
+    'articles' => false,
+    'pictures' => false,
+    'videos' => false,
+    'files' => false,
+    'projects' => false,
+    'profiles' => false,
+    'sermons' => false,
+    'events' => false,
+    'packages' => false,
+    'products' => false,
+    'contact' => NULL,
+    'content_css' => NULL,
+    'menu' => 
+        array (
+            'admin-articles' => 'Articles',
+            'admin-pictures' => 'Pictures',
+            'admin-videos' => 'Videos',
+            'admin-files' => 'Files',
+            'admin-projects' => 'Projects',
+            'admin-profiles' => 'Profiles',
+            'admin-sermons' => 'Sermons',
+            'admin-events' => 'Events',
+            'admin-packages' => 'Packages',
+            'admin-products' => 'Products',
+        ),
+);

@@ -1,0 +1,3 @@
+<a href="{{ route('admin-dashboard') }}" class="list-group-item{{ is_current_path('admin-dashboard') ? ' active' : '' }}"><i class="fa fa-dashboard"></i> Dashboard</a>
+<a href="{{ route('admin-roles') }}" class="list-group-item{{ is_current_path('admin-roles') ? ' active' : '' }}"><i class="fa fa-users"></i> Roles</a>
+<a href="{{ route('admin-users') }}" class="list-group-item{{ is_current_path('admin-users') ? ' active' : '' }}"><i class="fa fa-users"></i> Users</a>

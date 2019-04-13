@@ -1,0 +1,4 @@
+<a href="{{ route('admin-video_categories') }}" class="list-group-item{{ is_current_path('admin-video_categories') ? ' active' : ''}}"><i class="fa fa-film"></i> Video Categories</a>
+<a href="{{ route('admin-video_categories-add') }}" class="list-group-item{{ is_current_path('admin-video_categories-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create Video Category</a>
+<a href="{{ route('admin-videos') }}" class="list-group-item{{ is_current_path('admin-videos') ? ' active' : ''}}"><i class="fa fa-film"></i> Videos</a>
+<a href="{{ route('admin-videos-add') }}" class="list-group-item{{ is_current_path('admin-videos-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create Video</a>

@@ -1,0 +1,191 @@
+@extends('admin::layout.main')
+
+@section('title')
+	Edit Profile
+@stop
+
+@section('page_title')
+	<i class="fa fa-pencil"></i> Edit Profile
+@stop
+
+@section('breadcrumbs')
+	@parent
+	<li>
+		<a href="{{ route('admin-profiles') }}"><i class="fa fa-address-card"></i> Profiles</a>
+	</li>
+	<li class="active"><span><i class="fa fa-pencil"></i> Edit Profile</span></li>
+@stop
+
+@section('sidebar')
+	@parent
+	@include('admin::profiles.sidebar')
+@stop
+
+@section('content')
+	<form method="post" action="{{route('admin-profiles-edit-post')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
+		<div class="row">
+			<div class="col-md-4 col-lg-4">
+				<div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
+					<label for="name">Name</label>
+					<input type="text" class="form-control" id="name" name="name" placeholder="Enter name"{!! ((old('name')) ? ' value="'.old('name').'"' : ' value="'.$profile->name.'"') !!}>
+					{!! $errors->has('name') ? '<span class="text-danger">'.$errors->first('name').'</span>' : '' !!}
+				</div>
+			</div>
+			<div class="col-md-4 col-lg-4">
+				<div class="form-group">
+					<label for="pages">Pages</label>
+					<select class="selectpicker" id="pages" name="pages[]" data-live-search="true" data-size="5" data-width="100%" data-tick-icon="fa fa-check-square-o" multiple>
+						@foreach(Ogilo\Admin\Models\Page::all() as $page)
+						<option value="{{ $page->id }}">{{ $page->title }}</option>
+						@endforeach
+					</select>
+
+				</div>
+			</div>
+			<div class="col-md-4 col-lg-4">
+				<div class="form-group{!! $errors->has('position') ? ' has-error':'' !!}">
+					<label for="position">Position</label>
+					<input type="text" class="form-control typeahead" id="position" name="position" placeholder="Enter position"{!! ((old('position')) ? ' value="'.old('position').'"' : ' value="'.$profile->position.'"') !!} autocomplete="off" data-provide="typeahead">
+					{!! $errors->has('position') ? '<span class="text-danger">'.$errors->first('position').'</span>' : '' !!}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-lg-4">
+				<div class="form-group{!! $errors->has('picture') ? ' has-error':'' !!}">
+					<label for="picture">Picture</label>
+					<input type="file" id="picture" name="picture" title="Select a picture here" data-filename-placement="inside" class="form-control">
+					{!! $errors->has('picture') ? '<span class="text-danger">'.$errors->first('picture').'</span>' : ''!!}
+				</div>
+			</div>
+			<div class="col-md-4 col-lg-4">
+				<div class="form-group{!! $errors->has('facebook') ? ' has-error':'' !!}">
+					<label for="facebook">Facebook</label>
+					<input type="text" class="form-control" id="facebook" name="facebook" placeholder="Enter facebook"{!! ((old('facebook')) ? ' value="'.old('facebook').'"' : ' value="'.$profile->facebook.'"') !!}>
+					{!! $errors->has('facebook') ? '<span class="text-danger">'.$errors->first('facebook').'</span>' : '' !!}
+				</div>
+			</div>
+			<div class="col-md-4 col-lg-4">
+				<div class="form-group{!! $errors->has('twitter') ? ' has-error':'' !!}">
+					<label for="twitter">Twitter</label>
+					<input type="text" class="form-control" id="twitter" name="twitter" placeholder="Enter twitter"{!! ((old('twitter')) ? ' value="'.old('twitter').'"' : ' value="'.$profile->twitter.'"') !!}>
+					{!! $errors->has('twitter') ? '<span class="text-danger">'.$errors->first('twitter').'</span>' : '' !!}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-lg-4">
+				<div class="form-group{!! $errors->has('youtube') ? ' has-error':'' !!}">
+					<label for="youtube">Youtube</label>
+					<input type="text" class="form-control" id="youtube" name="youtube" placeholder="Enter Youtube"{!! ((old('youtube')) ? ' value="'.old('youtube').'"' : ' value="'.$profile->youtube.'"') !!}>
+					{!! $errors->has('youtube') ? '<span class="text-danger">'.$errors->first('youtube').'</span>' : '' !!}
+				</div>
+			</div>
+			<div class="col-md-4 col-lg-4">
+				<div class="form-group{!! $errors->has('linkedin') ? ' has-error':'' !!}">
+					<label for="linkedin">Linkedin</label>
+					<input type="text" class="form-control" id="linkedin" name="linkedin" placeholder="Enter Linkedin"{!! ((old('linkedin')) ? ' value="'.old('linkedin').'"' : ' value="'.$profile->linkedin.'"') !!}>
+					{!! $errors->has('linkedin') ? '<span class="text-danger">'.$errors->first('linkedin').'</span>' : '' !!}
+				</div>
+			</div>
+			<div class="col-md-4 col-lg-4">
+				<div class="form-group{!! $errors->has('dribble') ? ' has-error':'' !!}">
+					<label for="dribble">Dribble</label>
+					<input type="text" class="form-control" id="dribble" name="dribble" placeholder="Enter dribble"{!! ((old('dribble')) ? ' value="'.old('dribble').'"' : ' value="'.$profile->dribble.'"') !!}>
+					{!! $errors->has('dribble') ? '<span class="text-danger">'.$errors->first('dribble').'</span>' : '' !!}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-lg-6">
+				<div class="form-group{!! $errors->has('phone') ? ' has-error':'' !!}">
+					<label for="phone">Phone No</label>
+					<input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone no"{!! ((old('phone')) ? ' value="'.old('phone').'"' : ' value="'.$profile->phone.'"') !!}>
+					{!! $errors->has('phone') ? '<span class="text-danger">'.$errors->first('phone').'</span>' : '' !!}
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-6">
+				<div class="form-group{!! $errors->has('email') ? ' has-error':'' !!}">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" id="email" name="email" placeholder="Enter email"{!! ((old('email')) ? ' value="'.old('email').'"' : ' value="'.$profile->email.'"') !!}>
+					{!! $errors->has('email') ? '<span class="text-danger">'.$errors->first('email').'</span>' : '' !!}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-lg-4">
+				<div class="form-group{!! $errors->has('box_no') ? ' has-error':'' !!}">
+					<label for="box_no">Box No</label>
+					<input type="text" class="form-control" id="box_no" name="box_no" placeholder="Enter box no"{!! ((old('box_no')) ? ' value="'.old('box_no').'"' : ' value="'.$profile->box_no.'"') !!}>
+					{!! $errors->has('box_no') ? '<span class="text-danger">'.$errors->first('box_no').'</span>' : '' !!}
+				</div>
+			</div>
+			<div class="col-md-4 col-lg-4">
+				<div class="form-group{!! $errors->has('post_code') ? ' has-error':'' !!}">
+					<label for="post_code">Post Code</label>
+					<input type="text" class="form-control" id="post_code" name="post_code" placeholder="Enter post code"{!! ((old('post_code')) ? ' value="'.old('post_code').'"' : ' value="'.$profile->post_code.'"') !!}>
+					{!! $errors->has('post_code') ? '<span class="text-danger">'.$errors->first('post_code').'</span>' : '' !!}
+				</div>
+			</div>
+			<div class="col-md-4 col-lg-4">
+				<div class="form-group{!! $errors->has('town') ? ' has-error':'' !!}">
+					<label for="town">Town</label>
+					<input type="text" class="form-control" id="town" name="town" placeholder="Enter town"{!! ((old('town')) ? ' value="'.old('town').'"' : ' value="'.$profile->town.'"') !!}>
+					{!! $errors->has('town') ? '<span class="text-danger">'.$errors->first('town').'</span>' : '' !!}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-lg-12">
+				<div class="form-group{!! $errors->has('address') ? ' has-error':'' !!}">
+					<label for="address">Physical Address</label>
+					<input type="text" class="form-control" id="address" name="address" placeholder="Enter physical address"{!! ((old('address')) ? ' value="'.old('address').'"' : ' value="'.$profile->address.'"') !!}>
+					{!! $errors->has('address') ? '<span class="text-danger">'.$errors->first('address').'</span>' : '' !!}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-lg-12">
+				<div class="form-group{!! $errors->has('details') ? ' has-error':'' !!}">
+					<label for="details">Details</label>
+					<textarea cols="5" class="form-control" id="details" name="details" placeholder="Enter details">{!! ((old('details')) ? old('details') : $profile->details) !!}</textarea>
+					{!! $errors->has('details') ? '<span class="text-danger">'.$errors->first('details').'</span>' : '' !!}
+				</div>
+			</div>
+		</div>
+
+		<input type="hidden" name="id" value="{{ $profile->id }}">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		<button type="submit" class="btn btn-primary"><span class="fa fa-save"></span>  Save</button>
+	</form>
+@stop
+
+@section('styles')
+	<style type="text/css">
+
+	</style>
+@stop
+@section('scripts_top')
+	<script type="text/javascript">
+
+	</script>
+@stop
+
+@section('scripts_bottom')
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(document).ready(function(){
+				$('.selectpicker').selectpicker('val', [{{ implode(',', $profile->pageIds()) }}]);
+			})
+			$('.typeahead').typeahead('destroy');
+			$.ajax({
+				url: '{{ route('admin-profiles-positions') }}',
+				complete: function(xhr){
+					// console.log(xhr);
+					$('.typeahead').typeahead({source: xhr.responseJSON});
+					console.log(xhr.responseJSON)
+				}
+			})
+		})
+	</script>
+@stop

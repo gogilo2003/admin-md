@@ -1,0 +1,2 @@
+<a href="{{ route('admin-menus') }}" class="list-group-item{{ is_current_path('admin-menus') ? ' active' : ''}}"><i class="fa fa-list-alt"></i> Menus</a>
+<a href="{{ route('admin-menus-add') }}" class="list-group-item{{ is_current_path('admin-menus-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> New Menu</a>

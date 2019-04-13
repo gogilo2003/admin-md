@@ -1,0 +1,4 @@
+<a href="{{ route('admin-article_categories') }}" class="list-group-item{{ is_current_path('admin-article_categories') ? ' active' : ''}}"><i class="fa fa-list-alt"></i> Article Categories</a>
+<a href="{{ route('admin-article_categories-add') }}" class="list-group-item{{ is_current_path('admin-article_categories-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create article Category</a>
+<a href="{{ route('admin-articles') }}" class="list-group-item{{ is_current_path('admin-articles') ? ' active' : ''}}"><i class="fa fa-files-o"></i> Articles</a>
+<a href="{{ route('admin-articles-add') }}" class="list-group-item{{ is_current_path('admin-articles-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create Article</a>

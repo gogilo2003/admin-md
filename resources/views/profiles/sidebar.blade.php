@@ -1,0 +1,2 @@
+<a href="{{ route('admin-profiles') }}" class="list-group-item{{ is_current_path('admin-profiles') ? ' active' : ''}}"><i class="fa fa-address-card"></i> Profiles</a>
+<a href="{{ route('admin-profiles-add') }}" class="list-group-item{{ is_current_path('admin-profiles-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create Profile</a>
