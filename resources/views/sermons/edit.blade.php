@@ -29,7 +29,7 @@
 				<div class="form-group">
 					<label for="pages">Pages</label>
 					<select class="selectpicker" id="pages" name="pages[]" data-live-search="true" data-size="5" data-width="100%" data-tick-icon="fa fa-check-square-o" multiple>
-						@foreach(Ogilo\Admin\Models\Page::all() as $page)
+						@foreach(Ogilo\AdminMd\Models\Page::all() as $page)
 						<option value="{{ $page->id }}">{{ $page->title }}</option>
 						@endforeach
 					</select>

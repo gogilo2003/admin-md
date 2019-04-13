@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\Admin\Models;
+namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Database\Eloquent\Model;
 /**
@@ -11,12 +11,12 @@ class VideoCategory extends Model
 	
 	public function videos()
 	{
-		return $this->hasMany('Ogilo\Admin\Models\Video');
+		return $this->hasMany('Ogilo\AdminMd\Models\Video');
 	}
 
     public function pages()
     {
-    	return $this->belongsToMany('Ogilo\Admin\Models\Page');
+    	return $this->belongsToMany('Ogilo\AdminMd\Models\Page');
     }
 
     public function pageIds()

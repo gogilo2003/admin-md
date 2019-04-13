@@ -1,13 +1,13 @@
 <?php
 
-namespace Ogilo\Admin\Http\Controllers;
+namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use Ogilo\Admin\Models\File as Fl;
-use Ogilo\Admin\Models\FileCategory;
-use Ogilo\Admin\Models\Page;
+use Ogilo\AdminMd\Models\File as Fl;
+use Ogilo\AdminMd\Models\FileCategory;
+use Ogilo\AdminMd\Models\Page;
 
 use File;
 use Validator;

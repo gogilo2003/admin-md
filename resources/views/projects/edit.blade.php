@@ -33,7 +33,7 @@
 					<label for="category">Category</label>
 					<select class="selectpicker" id="category" name="category" data-live-search="true" data-size="5">
 						<option></option>
-						@foreach(Ogilo\Admin\Models\ProjectCategory::all() as $category)
+						@foreach(Ogilo\AdminMd\Models\ProjectCategory::all() as $category)
 						<option value="{{ $category->id }}" {{ old('category') ? (old('category') === $category->id ? 'selected' : '' ) : ( $project->project_category_id === $category->id ? 'selected' : '' ) }}>{{ $category->name }}</option>
 						@endforeach
 					</select>

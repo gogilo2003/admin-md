@@ -32,7 +32,7 @@
 				<div class="form-group">
 					<label for="category">Category</label>
 					<select class="selectpicker" id="category" name="category" data-live-search="true" data-size="5">
-						@foreach(Ogilo\Admin\Models\ArticleCategory::all() as $category)
+						@foreach(Ogilo\AdminMd\Models\ArticleCategory::all() as $category)
 						<option value="{{ $category->id }}" {{ old('category') ? (old('category') === $category->id ? 'selected' : '' ) : ( $article->article_category_id === $category->id ? 'selected' : '' ) }}>{{ $category->name }}</option>
 						@endforeach
 					</select>

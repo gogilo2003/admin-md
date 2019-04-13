@@ -42,7 +42,7 @@
 				<div class="form-group">
 					<label for="link">Links</label>
 					<select class="form-control" id="link" name="link">
-						@foreach(Ogilo\Admin\Models\Link::all() as $link)
+						@foreach(Ogilo\AdminMd\Models\Link::all() as $link)
 						<option value="{{ $link->id }}">{{ $link->caption }}</option>
 						@endforeach
 					</select>

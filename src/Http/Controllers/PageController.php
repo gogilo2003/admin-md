@@ -1,11 +1,11 @@
 <?php
 
-namespace Ogilo\Admin\Http\Controllers;
+namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Ogilo\Admin\Models\Page;
-use Ogilo\Admin\Models\Link;
+use Ogilo\AdminMd\Models\Page;
+use Ogilo\AdminMd\Models\Link;
 
 use Validator;
 use File;

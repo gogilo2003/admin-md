@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\Admin\Models;
+namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Database\Eloquent\Model;
 /**

@@ -1,10 +1,10 @@
 <?php
 
-namespace Ogilo\Admin\Http\Middleware;
+namespace Ogilo\AdminMd\Http\Middleware;
 
 use Closure;
 
-use Ogilo\Admin\Models\Hit;
+use Ogilo\AdminMd\Models\Hit;
 
 class Hits
 {

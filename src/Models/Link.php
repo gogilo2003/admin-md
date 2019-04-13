@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\Admin\Models;
+namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,12 +13,12 @@ class Link extends Model
 
     public function menu()
     {
-    	return $this->belongsTo('Ogilo\Admin\Models\Menu');
+    	return $this->belongsTo('Ogilo\AdminMd\Models\Menu');
     }
     
     public function admins()
     {
-        return $this->belongsToMany('Ogilo\Admin\Models\Admin');
+        return $this->belongsToMany('Ogilo\AdminMd\Models\Admin');
     }
 
     public function isSelected($link_id)

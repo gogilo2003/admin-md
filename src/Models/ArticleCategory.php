@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\Admin\Models;
+namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Database\Eloquent\Model;
 /**
@@ -11,12 +11,12 @@ class ArticleCategory extends Model
 	
 	public function articles()
 	{
-		return $this->hasMany('Ogilo\Admin\Models\Article');
+		return $this->hasMany('Ogilo\AdminMd\Models\Article');
 	}
 
 	public function pages()
     {
-        return $this->belongsToMany('Ogilo\Admin\Models\Page');
+        return $this->belongsToMany('Ogilo\AdminMd\Models\Page');
     }
 
     public function pageIds()

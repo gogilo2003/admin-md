@@ -1,10 +1,10 @@
 <?php 
 
-namespace Ogilo\Admin\Http\Controllers;
+namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Ogilo\Admin\Models\FileCategory;
+use Ogilo\AdminMd\Models\FileCategory;
 
 use Validator;
 

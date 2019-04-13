@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\Admin\Models;
+namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Database\Eloquent\Model;
 /**
@@ -11,12 +11,12 @@ class Package extends Model
 	
 	public function pages()
 	{
-		return $this->belongsToMany('Ogilo\Admin\Models\Page');
+		return $this->belongsToMany('Ogilo\AdminMd\Models\Page');
 	}
 
 	public function pictures()
 	{
-		return $this->hasMany('Ogilo\Admin\Models\PackagePicture','package_id');
+		return $this->hasMany('Ogilo\AdminMd\Models\PackagePicture','package_id');
 	}
 	
 	public function pageIds()

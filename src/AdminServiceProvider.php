@@ -1,10 +1,10 @@
 <?php
 
-namespace Ogilo\Admin;
+namespace Ogilo\AdminMd;
 
 use Illuminate\Support\ServiceProvider;
-use Ogilo\Admin\Console\InstallCommand;
-use Ogilo\Admin\Console\UpdateCommand;
+use Ogilo\AdminMd\Console\InstallCommand;
+use Ogilo\AdminMd\Console\UpdateCommand;
 /**
 * 
 */
@@ -12,7 +12,7 @@ class AdminServiceProvider extends ServiceProvider
 {
 
 	protected $commands = [
-		'Ogilo\Admin\Console\InstallComand'
+		'Ogilo\AdminMd\Console\InstallComand'
 	];
 
 	function register()

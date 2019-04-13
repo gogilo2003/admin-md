@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\Admin\Models;
+namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Database\Eloquent\Model;
 /**
@@ -11,17 +11,17 @@ class Picture extends Model
 	
 	public function link()
 	{
-		return $this->morphOne('Ogilo\Admin\Models\Link','linkable');
+		return $this->morphOne('Ogilo\AdminMd\Models\Link','linkable');
 	}
 	
 	public function category()
 	{
-		return $this->belongsTo('Ogilo\Admin\Models\PictureCategory','picture_category_id','id');
+		return $this->belongsTo('Ogilo\AdminMd\Models\PictureCategory','picture_category_id','id');
 	}
 	
 	public function admins()
 	{
-		return $this->belongsToMany('Ogilo\Admin\Models\Admin');
+		return $this->belongsToMany('Ogilo\AdminMd\Models\Admin');
 	}
 
 }

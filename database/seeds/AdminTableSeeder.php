@@ -11,7 +11,7 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
-        Ogilo\Admin\Models\Admin::create([
+        Ogilo\AdminMd\Models\Admin::create([
         		'name' => 'Admin User',
         		'email' => 'admin@example.com',
         		'password' => bcrypt('Secrate'),

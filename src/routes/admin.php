@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'Ogilo\Admin\Http\Controllers'],function(){
+Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'Ogilo\AdminMd\Http\Controllers'],function(){
 
 	Route::group(['middleware'=>'guest'],function(){
 		Route::get('login',['as'=>'-login','uses'=>'AuthController@getLogin']);

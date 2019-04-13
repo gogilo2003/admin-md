@@ -1,5 +1,5 @@
 <?php
-Route::group(['middleware'=>'web','namespace'=>'Ogilo\Admin\Http\Controllers\Web'],function(){
+Route::group(['middleware'=>'web','namespace'=>'Ogilo\AdminMd\Http\Controllers\Web'],function(){
 	Route::get('{page_name?}',['as'=>'home','uses'=>'PagesController@getPage']);
 	Route::get('article/{item_name}/{page?}',['as'=>'article','uses'=>'PagesController@getArticle']);
 	Route::get('sermon/{sermon_name}/{page_name?}',['as'=>'sermon','uses'=>'PagesController@getSermon']);

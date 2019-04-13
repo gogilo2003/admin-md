@@ -1,9 +1,9 @@
 <?php
 
-namespace Ogilo\Admin\Console;
+namespace Ogilo\AdminMd\Console;
 
 use Illuminate\Console\Command;
-use Ogilo\Admin\Models\Hit;
+use Ogilo\AdminMd\Models\Hit;
 
 use Storage;
 

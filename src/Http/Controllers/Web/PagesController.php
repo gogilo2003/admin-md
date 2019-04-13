@@ -1,18 +1,18 @@
 <?php
 
-namespace Ogilo\Admin\Http\Controllers\Web;
+namespace Ogilo\AdminMd\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
-use Ogilo\Admin\Models\Page;
-use Ogilo\Admin\Models\Article;
-use Ogilo\Admin\Models\Sermon;
-use Ogilo\Admin\Models\Profile;
-use Ogilo\Admin\Models\Package;
-use Ogilo\Admin\Models\Event;
-use Ogilo\Admin\Models\Guest;
-use Ogilo\Admin\Models\Comment;
+use Ogilo\AdminMd\Models\Page;
+use Ogilo\AdminMd\Models\Article;
+use Ogilo\AdminMd\Models\Sermon;
+use Ogilo\AdminMd\Models\Profile;
+use Ogilo\AdminMd\Models\Package;
+use Ogilo\AdminMd\Models\Event;
+use Ogilo\AdminMd\Models\Guest;
+use Ogilo\AdminMd\Models\Comment;
 
 use Validator;
 

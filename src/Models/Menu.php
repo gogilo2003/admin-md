@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\Admin\Models;
+namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,16 +8,16 @@ class Menu extends Model
 {
     public function articles()
     {
-    	return $this->hasMany('Ogilo\Admin\Models\Article');
+    	return $this->hasMany('Ogilo\AdminMd\Models\Article');
     }
     public function links()
     {
-    	return $this->hasMany('Ogilo\Admin\Models\Link');
+    	return $this->hasMany('Ogilo\AdminMd\Models\Link');
     }
 	
 	public function admins()
 	{
-		return $this->belongsToMany('Ogilo\Admin\Models\Admin');
+		return $this->belongsToMany('Ogilo\AdminMd\Models\Admin');
 	}
 
     public function isSelected($menu_id)

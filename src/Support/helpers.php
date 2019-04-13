@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Str;
 
-use Ogilo\Admin\Models\Hit;
-use Ogilo\Admin\Models\Menu;
+use Ogilo\AdminMd\Models\Hit;
+use Ogilo\AdminMd\Models\Menu;
 
 function current_path_name()
 {

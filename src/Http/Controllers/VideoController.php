@@ -1,12 +1,12 @@
 <?php
 
-namespace Ogilo\Admin\Http\Controllers;
+namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Ogilo\Admin\Models\Video;
-use Ogilo\Admin\Models\VideoCategory;
-use Ogilo\Admin\Models\Page;
+use Ogilo\AdminMd\Models\Video;
+use Ogilo\AdminMd\Models\VideoCategory;
+use Ogilo\AdminMd\Models\Page;
 
 use File;
 use Validator;

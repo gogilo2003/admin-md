@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\Admin\Models;
+namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,7 +8,7 @@ class AdminRole extends Model
 {
     public function admins()
     {
-    	return $this->hasMany('Ogilo\Admin\Models\Admin');
+    	return $this->hasMany('Ogilo\AdminMd\Models\Admin');
     }
 
     public function hasRole($role_name)
@@ -18,6 +18,6 @@ class AdminRole extends Model
 
     public function activeAdmins()
     {
-    	return $this->hasMany('Ogilo\Admin\Models\Admin','admin_role_id','id')->where('active','=',1);
+    	return $this->hasMany('Ogilo\AdminMd\Models\Admin','admin_role_id','id')->where('active','=',1);
     }
 }

@@ -50,7 +50,7 @@
 		<div class="form-group">
 			<label for="menu">Menu</label>
 			<select class="form-control" id="menu" name="menu">
-				@foreach(Ogilo\Admin\Models\Menu::all() as $menu)
+				@foreach(Ogilo\AdminMd\Models\Menu::all() as $menu)
 				<option value="{{ $menu->id }}" {{ $link->isSelected($menu->id) ? 'selected' : '' }}>{{ $menu->caption }}</option>
 				@endforeach
 			</select>

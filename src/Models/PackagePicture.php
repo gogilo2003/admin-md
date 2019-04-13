@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\Admin\Models;
+namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Database\Eloquent\Model;
 /**
@@ -12,6 +12,6 @@ class PackagePicture extends Model
 
 	public function package()
 	{
-		return $this->belongsTo('Ogilo\Admin\Models\Package');
+		return $this->belongsTo('Ogilo\AdminMd\Models\Package');
 	}
 }

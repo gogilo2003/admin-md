@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\Admin\Models;
+namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -29,37 +29,37 @@ class Admin extends Authenticatable
 
     public function role()
     {
-        return $this->belongsTo('Ogilo\Admin\Models\AdminRole','admin_role_id','id');
+        return $this->belongsTo('Ogilo\AdminMd\Models\AdminRole','admin_role_id','id');
     }
 
     public function articles()
     {
-        return $this->hasMany('Ogilo\Admin\Models\Article');
+        return $this->hasMany('Ogilo\AdminMd\Models\Article');
     }
 
     public function pages()
     {
-        return $this->hasMany('Ogilo\Admin\Models\Page');
+        return $this->hasMany('Ogilo\AdminMd\Models\Page');
     }
 
     public function menus()
     {
-        return $this->hasMany('Ogilo\Admin\Models\Menu');
+        return $this->hasMany('Ogilo\AdminMd\Models\Menu');
     }
 
     public function pictures()
     {
-        return $this->hasMany('Ogilo\Admin\Models\Picture');
+        return $this->hasMany('Ogilo\AdminMd\Models\Picture');
     }
 
     public function files()
     {
-        return $this->hasMany('Ogilo\Admin\Models\File');
+        return $this->hasMany('Ogilo\AdminMd\Models\File');
     }
 
     public function videos()
     {
-        return $this->hasMany('Ogilo\Admin\Models\Video');
+        return $this->hasMany('Ogilo\AdminMd\Models\Video');
     }
 
     public function belongsToRole($role_id)

@@ -1,10 +1,10 @@
 <?php 
 
-namespace Ogilo\Admin\Http\Controllers;
+namespace Ogilo\AdminMd\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Ogilo\Admin\Models\Admin;
-use Ogilo\Admin\Models\Page;
+use Ogilo\AdminMd\Models\Admin;
+use Ogilo\AdminMd\Models\Page;
 use Illuminate\Http\Request;
 
 use Img;

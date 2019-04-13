@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\Admin\Models;
+namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Database\Eloquent\Model;
 /**
@@ -11,12 +11,12 @@ class EventCategory extends Model
 	
 	public function events()
 	{
-		return $this->hasMany('Ogilo\Admin\Models\Event');
+		return $this->hasMany('Ogilo\AdminMd\Models\Event');
 	}
 
 	public function pages()
     {
-        return $this->belongsToMany('Ogilo\Admin\Models\Page');
+        return $this->belongsToMany('Ogilo\AdminMd\Models\Page');
     }
 
     public function pageIds()

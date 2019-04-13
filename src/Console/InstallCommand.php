@@ -1,10 +1,10 @@
 <?php
 
-namespace Ogilo\Admin\Console;
+namespace Ogilo\AdminMd\Console;
 
 use Illuminate\Console\Command;
 
-use Ogilo\Admin\Support\AdminConfig;
+use Ogilo\AdminMd\Support\AdminConfig;
 
 class InstallCommand extends Command
 {

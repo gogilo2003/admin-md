@@ -53,7 +53,7 @@
 				</div>
 				<div class="modal-body">
 					<select name="pages[]" id="pages" data-live-search="true" multiple data-size="5" data-width="100%">
-					@foreach (\Ogilo\Admin\Models\Page::all() as $page)
+					@foreach (\Ogilo\AdminMd\Models\Page::all() as $page)
 						<option value="{{ $page->id }}">{{ $page->title }}</option>
 					@endforeach
 					</select>

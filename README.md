@@ -29,7 +29,7 @@ composer update
 ### Add service provider to the list of providers
 This step is optional for those using Laravel 5.5 and above, as the package is discoverable by laravel. But incase you disable discovarability for this package or if you are using a lower version of Laravel, you can always add this service provider to you list of service providers in the config/app.php file
 ```
-Ogilo\Admin\AdminServiceProvider::class,
+Ogilo\AdminMd\AdminServiceProvider::class,
 ```
 
 ### Handling guest access to the admin routes
@@ -79,7 +79,7 @@ To the list of your auth providers, add
 ```
 'admins' => [
     'driver' => 'eloquent',
-    'model' => Ogilo\Admin\Models\Admin::class,
+    'model' => Ogilo\AdminMd\Models\Admin::class,
 ],
 ```
 

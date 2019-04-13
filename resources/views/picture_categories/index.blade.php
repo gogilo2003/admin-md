@@ -61,7 +61,7 @@
 						</div>
 						<div class="modal-body">
 							<select name="pages[]" id="pages" class="selectpicker" data-tick-icon="fa fa-check-square" multiple data-width="100%" data-size="5"> 
-							@foreach (\Ogilo\Admin\Models\Page::all() as $key => $page)
+							@foreach (\Ogilo\AdminMd\Models\Page::all() as $key => $page)
 								<option value="{{ $page->id }}">{{ $page->title }}</option>
 							@endforeach
 							</select>

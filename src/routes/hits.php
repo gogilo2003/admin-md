@@ -1,5 +1,5 @@
 <?php
-Route::group(['as'=>'admin-hits','prefix'=>'admin/hits','namespace'=>'Ogilo\Admin\Http\Controllers'],function(){
+Route::group(['as'=>'admin-hits','prefix'=>'admin/hits','namespace'=>'Ogilo\AdminMd\Http\Controllers'],function(){
 	Route::post('',['as'=>'', 'uses'=>'HitsController@index']);
 	Route::post('browsers',['as'=>'-browsers', 'uses'=>'HitsController@browsers']);
 	Route::post('platforms',['as'=>'-platforms', 'uses'=>'HitsController@platforms']);

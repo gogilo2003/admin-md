@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\Admin\Http\Controllers;
+namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,8 +9,8 @@ use Validator;
 use Auth;
 use Hash;
 
-use Ogilo\Admin\Models\AdminRole;
-use Ogilo\Admin\Models\Admin;
+use Ogilo\AdminMd\Models\AdminRole;
+use Ogilo\AdminMd\Models\Admin;
 
 class AuthController extends Controller
 {

@@ -1,10 +1,10 @@
 <?php
-namespace Ogilo\Admin\Http\Controllers;
+namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Ogilo\Admin\Models\Package;
-use Ogilo\Admin\Models\PackagePicture;
+use Ogilo\AdminMd\Models\Package;
+use Ogilo\AdminMd\Models\PackagePicture;
 use Img;
 
 use Validator;

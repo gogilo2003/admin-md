@@ -55,7 +55,7 @@
 					<div class="form-group">
 						<label for="pages">Pages</label>
 						<select class="form-control" id="pages" name="pages[]" data-size="5" data-live-search="true" data-tick-icon="fa fa-check" multiple>
-							@foreach (\Ogilo\Admin\Models\Page::all() as $page)
+							@foreach (\Ogilo\AdminMd\Models\Page::all() as $page)
 								<option value="{{ $page->id }}">{{ $page->title }}</option>
 							@endforeach
 						</select>

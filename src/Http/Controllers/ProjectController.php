@@ -1,12 +1,12 @@
 <?php 
 
-namespace Ogilo\Admin\Http\Controllers;
+namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Ogilo\Admin\Models\Project;
-use Ogilo\Admin\Models\ProjectCategory;
-use Ogilo\Admin\Models\Page;
+use Ogilo\AdminMd\Models\Project;
+use Ogilo\AdminMd\Models\ProjectCategory;
+use Ogilo\AdminMd\Models\Page;
 
 use Validator;
 use Img;

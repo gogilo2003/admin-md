@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\Admin\Models;
+namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Database\Eloquent\Model;
 /**
@@ -11,7 +11,7 @@ class Profile extends Model
 	
 	public function pages()
     {
-        return $this->belongsToMany('Ogilo\Admin\Models\Page');
+        return $this->belongsToMany('Ogilo\AdminMd\Models\Page');
     }
 
     public function pageIds()

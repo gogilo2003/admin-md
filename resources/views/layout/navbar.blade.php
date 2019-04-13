@@ -20,7 +20,7 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menus <span class="fa fa-angle-double-down"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						@foreach (Ogilo\Admin\Models\Menu::all() as $key => $menu)
+						@foreach (Ogilo\AdminMd\Models\Menu::all() as $key => $menu)
 							<li><a href="{{ route('admin-menus-edit',$menu->id) }}"><i class="fa fa-circle-thin"></i> {{ $menu->caption }}</a></li>
 						@endforeach
 						<li class="divider"></li>
@@ -30,7 +30,7 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Links <span class="fa fa-angle-double-down"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						@foreach (Ogilo\Admin\Models\Link::all() as $key => $link)
+						@foreach (Ogilo\AdminMd\Models\Link::all() as $key => $link)
 							<li><a href="{{ route('admin-links-edit',$link->id) }}"><i class="fa fa-circle-thin"></i> {{ $link->caption }}</a></li>
 						@endforeach
 						<li class="divider"></li>
@@ -40,7 +40,7 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pages <span class="fa fa-angle-double-down"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						@foreach (Ogilo\Admin\Models\Page::all() as $key => $page)
+						@foreach (Ogilo\AdminMd\Models\Page::all() as $key => $page)
 							<li><a href="{{ route('admin-pages-edit',$page->id) }}"><i class="fa fa-circle-thin"></i> {{ $page->title }}</a></li>
 						@endforeach
 						<li class="divider"></li>

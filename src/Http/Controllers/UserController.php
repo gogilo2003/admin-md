@@ -1,11 +1,11 @@
 <?php 
 
-namespace Ogilo\Admin\Http\Controllers;
+namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Ogilo\Admin\Models\Admin;
-use Ogilo\Admin\Models\AdminRole;
+use Ogilo\AdminMd\Models\Admin;
+use Ogilo\AdminMd\Models\AdminRole;
 
 use Validator;
 use File;

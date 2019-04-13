@@ -16,12 +16,12 @@
         }
     ],
     "autoload":{
-        "psr-4":{"Ogilo\\Admin\\": "src/"}
+        "psr-4":{"Ogilo\\AdminMd\\": "src/"}
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Ogilo\\Admin\\AdminServiceProvider"
+                "Ogilo\\AdminMd\\AdminServiceProvider"
             ]
         }
     }

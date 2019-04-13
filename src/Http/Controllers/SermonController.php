@@ -1,10 +1,10 @@
 <?php 
 
-namespace Ogilo\Admin\Http\Controllers;
+namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Ogilo\Admin\Models\Sermon;
+use Ogilo\AdminMd\Models\Sermon;
 
 use Validator;
 use Img;
