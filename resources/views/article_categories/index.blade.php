@@ -39,39 +39,18 @@
 					<td>{{ $article_category->pages->count() }}</td>
 					<td>{{ $article_category->articles->count() }}</td>
 					<td>
-						<a href="{{ route('admin-article_categories-edit',$article_category->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>&nbsp;Edit</a>
-						<a data-pages="{{ json_encode($article_category->pageIds()) }}" data-id="{{ $article_category->id }}" class="btn btn-primary btn-xs" data-toggle="modal" href='#pagesModal'><i class="fa fa-file-o"></i>&nbsp;Pages</a>
+						<div class="btn-group">
+							<a href="{{ route('admin-article_categories-edit',$article_category->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+							<button data-pages="{{ json_encode($article_category->pageIds()) }}" data-id="{{ $article_category->id }}" class="btn btn-info btn-sm" data-toggle="modal" href='#pagesModal'><i class="fa fa-file-o"></i>&nbsp;Pages</button>
+						</div>
+						
 					</td>
 				</tr>
 			@endforeach
 		</tbody>
 	</table>
-	<div class="modal fade" id="pagesModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form method="post" action="{{route('admin-article_categories-pages')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Select Pages</h4>
-					</div>
-					<div class="modal-body">
-						<select id="pages" name="pages[]" multiple class="selectpicker" data-size="5" data-width="100%" data-tick-icon="fa fa-check-square">
-						@foreach (\Ogilo\AdminMd\Models\Page::all() as $key => $page)
-							<option value="{{ $page->id }}">{{ $page->title }}</option>
-						@endforeach
-						</select>
-						<input type="hidden" name="id" value="">
-						<input type="hidden" name="_token" value="{{csrf_token()}}">
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">&times;Close</button>
-						<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Save</button>
-					</div>
-				</form>
-					
-			</div>
-		</div>
-	</div>
+	@include('admin::article_categories.pages_modal')
+	
 @stop
 
 @section('styles')

@@ -13,34 +13,35 @@
 	<li class="active">Profile</li>
 @stop
 
-@section('toolbar')
-	
-@stop
-
 @section('content')
 
-	<div class="panel panel-primary tabpanel">
-		<div class="panel-heading">
-			<ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active">
-					<a href="#home" aria-controls="home" role="tab" data-toggle="tab">View Profile</a>
-				</li>
-				<li role="presentation">
-					<a href="#tab" aria-controls="tab" role="tab" data-toggle="tab">Edit Profile</a>
-				</li>
-			</ul>
-		</div>
-		<div class="panel-body">
-			<div class="tab-content">
-				<div role="tabpanel" class="tab-pane active" id="home">
-					<p>Name: {{ $user->name }}</p>
-					<p>Email: {{ $user->email }}</p>
+	<div class="row">
+		<div class="col-md-5">
+			<div class="card card-profile">
+				<div class="card-avatar">
+					<a href="#pablo">
+						<img class="img" src="{{ $user->photo ? url('public/images/users',$user->photo) : url('public','favicon.png') }}">
+					</a>
+				</div>
+				<div class="card-body">
+					<h6 class="card-category text-gray">Name: {{ $user->name }}</h6>
+					<h4 class="card-title">Email: {{ $user->email }}</h4>
 					<p>Role: {{ $user->role->name }}</p>
 					<p>Ststus: {{ $user->status ? 'Active' : 'Inactive' }}</p>
 					<p>Created: {{ date_create($user->created_at)->format('j M Y') }}</p>
 					<p>Last Update: {{ $user->updated_at }}</p>
+					<a href="https://www.facebook.com" class="btn btn-primary btn-round btn-fab"><i class="fa fa-facebook"></i></a>
+					<a href="https://www.twitter.com" class="btn btn-info btn-round btn-fab"><i class="fa fa-twitter"></i></a>
+					<a href="https://www.youtube.com" class="btn btn-danger btn-round btn-fab"><i class="fa fa-youtube"></i></a>
 				</div>
-				<div role="tabpanel" class="tab-pane" id="tab">
+			</div>
+		</div>
+		<div class="col-md-7">
+			<div class="card">
+				<div class="card-header card-primary">
+					<h4 class="card-title">Edit User Details</h4>
+				</div>
+				<div class="card-body">
 					<form method="post" action="{{route('admin-profile')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
 						<div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
 							<label for="name">Name</label>
@@ -49,7 +50,7 @@
 						</div>
 						<div class="form-group{!! $errors->has('email') ? ' has-error':'' !!}">
 							<label for="email">Email</label>
-							<input type="text" class="form-control" id="email" name="email" placeholder="Enter email"{!! ((old('email')) ? ' value="'.old('email').'"' : '') !!}>
+							<input readonly type="text" class="form-control" id="email" name="email" placeholder="Enter email"{!! ((old('email')) ? ' value="'.old('email').'"' : ' value="'.$user->email.'"') !!}>
 							{!! $errors->has('email') ? '<span class="text-danger">'.$errors->first('email').'</span>' : '' !!}
 						</div>
 

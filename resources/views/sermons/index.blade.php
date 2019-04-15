@@ -87,7 +87,7 @@
 					
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Cancel</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times-circle"></i> Cancel</button>
 					<button type="submit" class="btn btn-primary"><i class="fa fa-upload"></i> Upload</button>
 				</div>
 			</form>
@@ -113,7 +113,7 @@
 					
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Cancel</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times-circle"></i> Cancel</button>
 					<button type="submit" class="btn btn-primary"><i class="fa fa-upload"></i> Upload</button>
 				</div>
 			</form>
@@ -139,7 +139,7 @@
 					
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Cancel</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times-circle"></i> Cancel</button>
 					<button type="submit" class="btn btn-primary"><i class="fa fa-upload"></i> Upload</button>
 				</div>
 			</form>

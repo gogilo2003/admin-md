@@ -1,2 +1,2 @@
-<a href="{{ route('admin-links') }}" class="list-group-item{{ is_current_path('admin-links') ? ' active' : ''}}"><i class="fa fa-link"></i> Links</a>
-<a href="{{ route('admin-links-add') }}" class="list-group-item{{ is_current_path('admin-links-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> New Link</a>
+<li class="nav-item{{ is_current_path('admin-links') ? ' active' : ''}}"><a href="{{ route('admin-links') }}" class="nav-link"><i class="fa fa-link"></i> Links</a></li>
+<li class="nav-item{{ is_current_path('admin-links-add') ? ' active' : ''}}"><a href="{{ route('admin-links-add') }}" class="nav-link"><i class="fa fa-plus"></i> New Link</a></li>

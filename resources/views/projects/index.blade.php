@@ -45,8 +45,8 @@
 				<td>{{ $project->category ? $project->category->name : '&nbsp;' }}</td>
 				<td>
 					<div class="btn-group">
-						<a href="{{route('admin-projects-edit', $project->id)}}" class="btn btn-default btn-sm"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
-						<a href="javascript:" data-id="{{ $project->id }}" class="btn btn-default btn-sm publishProject"><span class="fa fa-arrow-{{ $project->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $project->published ? 'Un-Publish' : 'Publish' }}</a>
+						<a href="{{route('admin-projects-edit', $project->id)}}" class="btn btn-primary btn-sm"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
+						<a href="javascript:" data-id="{{ $project->id }}" class="btn btn-primary btn-sm publishProject"><span class="fa fa-arrow-{{ $project->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $project->published ? 'Un-Publish' : 'Publish' }}</a>
 						<a href="javascript:" data-id="{{ $project->id }}" class="btn btn-danger btn-sm deleteProject"><span class="fa fa-remove"></span>&nbsp;&nbsp; Delete</a>
 					</div>
 				</td>

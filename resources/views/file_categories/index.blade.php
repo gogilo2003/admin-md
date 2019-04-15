@@ -35,7 +35,7 @@
 					<hr>
 				@endif
 				<p>
-					<a href="{{route('admin-file_categories-edit',$category->id)}}" class="btn btn-default btn-sm"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
+					<a href="{{route('admin-file_categories-edit',$category->id)}}" class="btn btn-primary btn-sm"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
 					<a data-id="{{ $category->id }}" data-pages="{{ json_encode($category->pageIds() )  }}" class="btn btn-primary btn-sm" data-toggle="modal" href='#pagesModal'><i class="fa fa-file-o"></i> Pages</a>
 				</p>
 			</div>
@@ -60,7 +60,7 @@
 					</select>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
 					<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 				</div>
 			</div>

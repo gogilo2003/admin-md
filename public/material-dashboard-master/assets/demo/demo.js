@@ -2,7 +2,8 @@ demo = {
   initDocumentationCharts: function() {
     if ($('#dailySalesChart').length != 0 && $('#websiteViewsChart').length != 0) {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-
+      
+      
       dataDailySalesChart = {
         labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
         series: [
@@ -12,10 +13,10 @@ demo = {
 
       optionsDailySalesChart = {
         lineSmooth: Chartist.Interpolation.cardinal({
-          tension: 0
+          tension: 5
         }),
         low: 0,
-        high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        high: 100, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
         chartPadding: {
           top: 0,
           right: 0,
@@ -31,36 +32,35 @@ demo = {
   },
 
   initDashboardPageCharts: function() {
-
+    
     if ($('#dailySalesChart').length != 0 || $('#completedTasksChart').length != 0 || $('#websiteViewsChart').length != 0) {
       /* ----------==========     Daily Sales Chart initialization    ==========---------- */
+      let url = window.location + '/hits/browsers'
+      // console.log(url)
+      let type = "POST"
+      let dataDailySalesChart = {labels:[],series:[[]]}
 
-      dataDailySalesChart = {
-        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-        series: [
-          [12, 17, 7, 17, 23, 18, 38]
-        ]
-      };
+      $.ajax({type,url}).then((response)=>{
+        dataDailySalesChart = {
+          labels: response.labels,
+          series: response.data
+        }
 
-      optionsDailySalesChart = {
-        lineSmooth: Chartist.Interpolation.cardinal({
-          tension: 0
-        }),
-        low: 0,
-        high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-        chartPadding: {
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0
-        },
-      }
+        optionsDailySalesChart = {
+          donut: true,
+          donutWidth: 60,
+          donutSolid: true,
+          startAngle: 270,
+          showLabel: true,
+        }
 
-      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+        var dailySalesChart = new Chartist.Pie('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
-      md.startAnimationForLineChart(dailySalesChart);
+        md.startAnimationForLineChart(dailySalesChart);
 
-
+      },(error)=>{
+        console.log(error)
+      })
 
       /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 

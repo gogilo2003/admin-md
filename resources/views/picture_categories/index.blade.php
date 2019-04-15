@@ -69,7 +69,7 @@
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">&times;Close</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal">&times;Close</button>
 							<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Save</button>
 						</div>
 					</form>

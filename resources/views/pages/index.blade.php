@@ -43,7 +43,7 @@
 				<td>{{ $page->id }}</td>
 				<td>{{ $page->name }}</td>
 				<td>{{ $page->title }}</td>
-				<td><i class="fa {{ $page->link->icon }}"></i></td>
+				<td><i class="fa {{ $page->link ? $page->link->icon : '' }}"></i></td>
 				<td>{{ $page->link ? ($page->link->url ? $page->link->url : ''): '' }}</td>
 				<td>{{ $page->link ? ($page->link->name ? $page->link->name : '') : '' }}</td>
 				<td>

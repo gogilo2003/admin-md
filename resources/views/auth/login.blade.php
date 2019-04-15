@@ -18,18 +18,15 @@
 
 @section('content')
 	<div class="row">
-		<div class="col-sm-3 col-md-3 col-lg-3">
-			
-		</div>
-		<div class="col-sm-6 col-md-6 col-lg-6">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fa fa-sign-in"></i>&nbsp;Login</h3>
+		<div class="offset-md-3 col-sm-6 col-md-6 col-lg-6">
+			<div class="card">
+				<div class="card-header card-header-primary">
+					<h3 class="card-title"><i class="material-icons">screen_lock_portrait</i>&nbsp;Login</h3>
 				</div>
-				<div class="panel-body">
+				<div class="card-body">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center text-primary">
-							<i style="font-size: 9.5em" class="fa fa-sign-in"></i>
+							<i style="font-size: 9.5em" class="material-icons">screen_lock_portrait</i>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 							<form method="post" action="{{route('admin-login')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">

@@ -64,7 +64,7 @@
 				<div class="modal-footer">
 					<input type="hidden" name="id" value="">
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
-					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
 					<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
 				</div>
 			</form>

@@ -1,3 +1,18 @@
-<a href="{{ route('admin-dashboard') }}" class="list-group-item{{ is_current_path('admin-dashboard') ? ' active' : '' }}"><i class="fa fa-dashboard"></i> Dashboard</a>
-<a href="{{ route('admin-roles') }}" class="list-group-item{{ is_current_path('admin-roles') ? ' active' : '' }}"><i class="fa fa-users"></i> Roles</a>
-<a href="{{ route('admin-users') }}" class="list-group-item{{ is_current_path('admin-users') ? ' active' : '' }}"><i class="fa fa-users"></i> Users</a>
+<li class="nav-item{{ is_current_path('admin-dashboard') ? ' active' : '' }}">
+    <a href="{{ route('admin-dashboard') }}" class="nav-link">
+        <i class="material-icons">dashboard</i>
+        <p>Dashboard</p>
+    </a>
+</li>
+<li class="nav-item{{ is_current_path('admin-roles') ? ' active' : '' }}">
+    <a href="{{ route('admin-roles') }}" class="nav-link">
+        <i class="material-icons">verified_user</i>
+        <p>Roles</p>
+    </a>
+</li>
+<li class="nav-item{{ is_current_path('admin-users') ? ' active' : '' }}">
+    <a href="{{ route('admin-users') }}" class="nav-link">
+        <i class="material-icons">person_outline</i>
+        <p>Users</p>
+    </a>
+</li>

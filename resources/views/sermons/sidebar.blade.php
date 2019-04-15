@@ -1,2 +1,2 @@
-<a href="{{ route('admin-sermons') }}" class="list-group-item{{ is_current_path('admin-sermons') ? ' active' : ''}}"><i class="fa fa-cogs"></i> Sermons</a>
-<a href="{{ route('admin-sermons-add') }}" class="list-group-item{{ is_current_path('admin-sermons-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create Sermon</a>
+<li class="nav-item{{ is_current_path('admin-sermons') ? ' active' : ''}}"><a href="{{ route('admin-sermons') }}" class="nav-link"><i class="fa fa-cogs"></i> Sermons</a></li>
+<li class="nav-item{{ is_current_path('admin-sermons-add') ? ' active' : ''}}"><a href="{{ route('admin-sermons-add') }}" class="nav-link"><i class="fa fa-plus"></i> Create Sermon</a></li>

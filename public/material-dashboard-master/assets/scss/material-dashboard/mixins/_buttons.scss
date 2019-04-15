@@ -118,6 +118,9 @@
   &.btn-success {
     @include bmd-flat-button-variant($btn-success-bg);
   }
+  &.btn-blue {
+    @include bmd-flat-button-variant($btn-blue-bg);
+  }
   &.btn-warning {
     @include bmd-flat-button-variant($btn-warning-bg);
   }
@@ -154,6 +157,9 @@
   }
   &.btn-outline-success {
     @include bmd-flat-button-variant($btn-success-bg, $btn-success-bg, $btn-success-bg, $btn-success-bg);
+  }
+  &.btn-outline-blue {
+    @include bmd-flat-button-variant($btn-blue-bg, $btn-blue-bg, $btn-blue-bg, $btn-blue-bg);
   }
   &.btn-outline-warning {
     @include bmd-flat-button-variant($btn-warning-bg, $btn-warning-bg, $btn-warning-bg, $btn-warning-bg);
@@ -221,6 +227,9 @@
   }
   &.btn-success {
     @include bmd-raised-button-variant($btn-success-color, $btn-success-bg, $btn-success-border-color);
+  }
+  &.btn-blue {
+    @include bmd-raised-button-variant($btn-blue-color, $btn-blue-bg, $btn-blue-border-color);
   }
   &.btn-warning {
     @include bmd-raised-button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border-color);

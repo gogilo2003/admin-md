@@ -45,8 +45,8 @@
 				<td>{{ $article->category ? $article->category->name : '&nbsp;' }}</td>
 				<td>
 					<div class="btn-group">
-						<a href="{{route('admin-articles-edit', $article->id)}}" class="btn btn-default btn-sm"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
-						<a href="javascript:" data-id="{{ $article->id }}" class="btn btn-default btn-sm publishArticle"><span class="fa fa-arrow-{{ $article->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; Publish</a>
+						<a href="{{route('admin-articles-edit', $article->id)}}" class="btn btn-primary btn-sm"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
+						<a href="javascript:" data-id="{{ $article->id }}" class="btn btn-primary btn-sm publishArticle"><span class="fa fa-arrow-{{ $article->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; Publish</a>
 						<a href="javascript:" data-id="{{ $article->id }}" class="btn btn-danger btn-sm deleteArticle"><span class="fa fa-remove"></span>&nbsp;&nbsp; Delete</a>
 					</div>
 				</td>

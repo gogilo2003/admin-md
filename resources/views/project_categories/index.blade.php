@@ -35,7 +35,7 @@
 				</div>
 				<div class="panel-footer">
 					<a href="{{ route('admin-project_categories-edit',$category->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
-					<a data-id="{{ $category->id }}" data-pages="{{ implode(',', $category->pageIds()) }}" data-toggle="modal" href='#pagesModal' class="btn btn-primary btn-sm"><i class="fa fa-file-o"></i> Pages</a>
+					<button data-id="{{ $category->id }}" data-pages="{{ implode(',', $category->pageIds()) }}" data-toggle="modal" data-target='#pagesModal' class="btn btn-primary btn-sm"><i class="fa fa-file-o"></i> Pages</button>
 					<!-- <a data-id="{{ $category->id }}" href="javascript:void(0)" class="deleteProjectCategory btn btn-danger btn-sm"><i class="fa fa-times"></i> Delete</a> -->
 				</div>
 			</div>
@@ -43,7 +43,7 @@
 	@endforeach
 	</div>
 
-	<div class="modal fade" id="pagesModal">
+	<div class="modal fade" id="pagesModal" data-backdrop="static">
 		<div class="modal-dialog">
 			<form method="post" action="{{route('admin-project_categories-pages')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
 			<div class="modal-content">
@@ -60,7 +60,7 @@
 					
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
 					<button type="submit" class="btn btn-primary">Save</button>
 				</div>
 				<input type="hidden" name="id" value="">
@@ -110,8 +110,14 @@
 			var button = $(e.relatedTarget) // Button that triggered the modal
 		  	var id = button.data('id')
 			$('form input[name="id"]').val(id)
-			console.log(button.data('pages'))
-			var pages = button.data('pages').split(',');
+			let rcvdData = button.data('pages');
+			console.log(rcvdData)
+			let pages = null;
+			if(Array.isArray(rcvdData))
+				pages = rcvdData.split(',');
+			else
+				pages = rcvdData
+
 			// console.log(pages)
 			$('form select#pages').selectpicker('val', pages);
 			

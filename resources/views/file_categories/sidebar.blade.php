@@ -1,4 +1,4 @@
-<a href="{{ route('admin-file_categories') }}" class="list-group-item{{ is_current_path('admin-file_categories') ? ' active' : ''}}"><i class="fa fa-folder-open-o"></i> File Categories</a>
-<a href="{{ route('admin-file_categories-add') }}" class="list-group-item{{ is_current_path('admin-file_categories-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create file Category</a>
-<a href="{{ route('admin-files') }}" class="list-group-item{{ is_current_path('admin-files') ? ' active' : ''}}"><i class="fa fa-file"></i> Files</a>
-<a href="{{ route('admin-files-add') }}" class="list-group-item{{ is_current_path('admin-files-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create file</a>
+<li class="nav-item{{ is_current_path('admin-file_categories') ? ' active' : ''}}"><a href="{{ route('admin-file_categories') }}" class="nav-link"><i class="fa fa-folder-open-o"></i> File Categories</a></li>
+<li class="nav-item{{ is_current_path('admin-file_categories-add') ? ' active' : ''}}"><a href="{{ route('admin-file_categories-add') }}" class="nav-link"><i class="fa fa-plus"></i> Create file Category</a></li>
+<li class="nav-item{{ is_current_path('admin-files') ? ' active' : ''}}"><a href="{{ route('admin-files') }}" class="nav-link"><i class="fa fa-file"></i> Files</a></li>
+<li class="nav-item{{ is_current_path('admin-files-add') ? ' active' : ''}}"><a href="{{ route('admin-files-add') }}" class="nav-link"><i class="fa fa-plus"></i> Create file</a></li>

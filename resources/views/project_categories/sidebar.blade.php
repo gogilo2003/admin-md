@@ -1,4 +1,4 @@
-<a href="{{ route('admin-project_categories') }}" class="list-group-item{{ is_current_path('admin-project_categories') ? ' active' : ''}}"><i class="fa fa-cogs"></i> Project Categories</a>
-<a href="{{ route('admin-project_categories-add') }}" class="list-group-item{{ is_current_path('admin-project_categories-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create project Category</a>
-<a href="{{ route('admin-projects') }}" class="list-group-item{{ is_current_path('admin-projects') ? ' active' : ''}}"><i class="fa fa-cog"></i> Projects</a>
-<a href="{{ route('admin-projects-add') }}" class="list-group-item{{ is_current_path('admin-projects-add') ? ' active' : ''}}"><i class="fa fa-plus"></i> Create project</a>
+<li class="nav-item{{ is_current_path('admin-project_categories') ? ' active' : ''}}"><a href="{{ route('admin-project_categories') }}" class="nav-link"><i class="fa fa-cogs"></i> Project Categories</a></li>
+<li class="nav-item{{ is_current_path('admin-project_categories-add') ? ' active' : ''}}"><a href="{{ route('admin-project_categories-add') }}" class="nav-link"><i class="fa fa-plus"></i> Create project Category</a></li>
+<li class="nav-item{{ is_current_path('admin-projects') ? ' active' : ''}}"><a href="{{ route('admin-projects') }}" class="nav-link"><i class="fa fa-cog"></i> Projects</a></li>
+<li class="nav-item{{ is_current_path('admin-projects-add') ? ' active' : ''}}"><a href="{{ route('admin-projects-add') }}" class="nav-link"><i class="fa fa-plus"></i> Create project</a></li>
