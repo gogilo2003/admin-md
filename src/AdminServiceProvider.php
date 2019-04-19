@@ -115,7 +115,7 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__.'/../public/bower_components/datatables/media/images' => public_path('vendor/admin/images'),
 			__DIR__.'/../public/js' => public_path('vendor/admin/js'),
 			// __DIR__.'/../public/bower_components/bootstrap/dist/fonts' => public_path('vendor/admin/fonts'),
-			// __DIR__.'/../public/bower_components/font-awesome/fonts' => public_path('vendor/admin/fonts'),
+			__DIR__.'/../public/bower_components/font-awesome/fonts' => public_path('vendor/admin/fonts'),
 			// __DIR__.'/../public/bower_components/jquery/dist' => public_path('vendor/admin/js'),
 			// __DIR__.'/../public/bower_components/bootstrap/dist/js' => public_path('vendor/admin/js'),
 			__DIR__.'/../public/bower_components/bootstrap-select/dist/js' => public_path('vendor/admin/js'),
@@ -131,6 +131,8 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__.'/../public/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' => public_path('vendor/admin/css/bootstrap-datetimepicker.min.css'),
 			__DIR__.'/../public/bower_components/moment/min/moment.min.js' => public_path('vendor/admin/js/moment.min.js'),
 			__DIR__.'/../public/bower_components/bootstrap3-typeahead/bootstrap3-typeahead.min.js' => public_path('vendor/admin/js/bootstrap3-typeahead.min.js'),
+			__DIR__.'/../public/bower_components/font-awesome/css/font-awesome.min.css' => public_path('vendor/admin/css/font-awesome.min.css'),
+			__DIR__.'/../public/material-design-icons' => public_path('vendor/admin/material-design-icons'),
 			// __DIR__.'/../public/bower_components/chart.js/dist/Chart.min.js' => public_path('vendor/admin/js/Chart.min.js'),
 
 			__DIR__.'/../public/material-dashboard-master/node_modules/chart.js/dist/Chart.min.js'=>public_path('vendor/admin/material-dashboard-master/assets/js/plugins/Chart.min.js'),
