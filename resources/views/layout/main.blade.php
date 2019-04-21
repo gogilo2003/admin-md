@@ -23,8 +23,7 @@
     <link rel="stylesheet" href="/public/vendor/admin/material-design-icons/material-icons.css">
     <!-- CSS Files -->
     <!--<link rel="stylesheet" href="{{ url('public/vendor/admin/css/bootstrap-select.min.css') }}">-->
-    <link href="/public/vendor/admin/material-dashboard-master/assets/css/material-dashboard.css?v=2.1.1"
-        rel="stylesheet" />
+    <link href="/public/vendor/admin/material-dashboard-master/assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
 
     <!--<link rel="stylesheet" href="{{ url('public/vendor/admin/css/bootstrap-datetimepicker.min.css') }}">-->
     <!--<link rel="stylesheet" href="{{ url('public/vendor/admin/css/file-input.css') }}">-->
@@ -122,10 +121,8 @@ Tip 2: you can also add an image using data-image tag-->
     <!--   Core JS Files   -->
     <script src="/public/vendor/admin/material-dashboard-master/assets/js/core/jquery.min.js"></script>
     <script src="/public/vendor/admin/material-dashboard-master/assets/js/core/popper.min.js"></script>
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/core/bootstrap-material-design.min.js">
-    </script>
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/perfect-scrollbar.jquery.min.js">
-    </script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/core/bootstrap-material-design.min.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!-- Plugin for the momentJs  -->
     <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/moment.min.js"></script>
     <!--  Plugin for Sweet Alert -->
@@ -135,7 +132,7 @@ Tip 2: you can also add an image using data-image tag-->
     <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
     <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jquery.bootstrap-wizard.js"></script>
     <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-    <!--<script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-selectpicker.js"></script>-->
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-selectpicker.js"></script>
     <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
     <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
     <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
@@ -161,13 +158,12 @@ Tip 2: you can also add an image using data-image tag-->
     <!--  Notifications Plugin    -->
     <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/material-dashboard.js?v=2.1.1"
-        type="text/javascript"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
     <script type="text/javascript" src="{{ url('public/vendor/admin/js/main.js') }}"></script>
     <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/jquery.dataTables.min.js') }}"></script>-->
-    <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-notify.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-select.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap.file-input.js') }}"></script>
+    <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-notify.min.js') }}"></script>-->
+    <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-select.min.js') }}"></script>-->
+    <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap.file-input.js') }}"></script>-->
     <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-hover-dropdown.min.js') }}"></script>
     <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-datetimepicker.min.js') }}"></script>-->
     <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap3-typeahead.min.js') }}"></script>
