@@ -22,12 +22,12 @@
     <link rel="stylesheet" href="/public/vendor/admin/css/font-awesome.min.css">
     <link rel="stylesheet" href="/public/vendor/admin/material-design-icons/material-icons.css">
     <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ url('public/vendor/admin/css/bootstrap-select.min.css') }}">
+    <!--<link rel="stylesheet" href="{{ url('public/vendor/admin/css/bootstrap-select.min.css') }}">-->
     <link href="/public/vendor/admin/material-dashboard-master/assets/css/material-dashboard.css?v=2.1.1"
         rel="stylesheet" />
 
     <!--<link rel="stylesheet" href="{{ url('public/vendor/admin/css/bootstrap-datetimepicker.min.css') }}">-->
-    <link rel="stylesheet" href="{{ url('public/vendor/admin/css/file-input.css') }}">
+    <!--<link rel="stylesheet" href="{{ url('public/vendor/admin/css/file-input.css') }}">-->
     <link rel="stylesheet" href="{{ url('public/vendor/admin/iconmoon/linea-icon.css') }}">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <!--<link href="/public/vendor/admin/material-dashboard-master/assets/demo/demo.css" rel="stylesheet" />-->
