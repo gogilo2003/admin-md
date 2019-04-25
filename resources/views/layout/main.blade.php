@@ -212,19 +212,19 @@ Tip 2: you can also add an image using data-image tag-->
         // $('input[type=file]').bootstrapFileInput();
 
         @if(Session::has('global-info')) 
-        {!! "$.notify( { message: '".Session::get('global - info ')."',icon: 'fa fa-info-circle'}, {type: 'info'})" !!}
+        {!! "$.notify( { message: '".Session::get('global-info')."',icon: 'info_outline'}, {type: 'info'})" !!}
         @endif
 
         @if(Session::has('global-success')) 
-        {!! "$.notify( { message: '".Session::get('global - success ')."',icon: 'fa fa-check-circle'}, {type: 'success'})" !!}
+        {!! "$.notify( { message: '".Session::get('global-success')."',icon: 'check_circle'}, {type: 'success'})" !!}
         @endif
 
         @if(Session::has('global-warning')) 
-        {!! "$.notify( { message: '".Session::get('global - warning ')."',icon: 'fa fa-exclamation-circle'}, {type: 'warning'})" !!}
+        {!! "$.notify( { message: '".Session::get('global-warning')."',icon: 'error_outline'}, {type: 'warning'})" !!}
         @endif
 
         @if(Session::has('global-danger')) 
-        {!! "$.notify( { message: '".Session::get('global - danger ')."',icon: 'fa fa-ban'}, {type: 'danger'})" !!}
+        {!! "$.notify( { message: '".Session::get('global-danger')."',icon: 'not_interested'}, {type: 'danger'})" !!}
         @endif
 
         $(document).ready(function () {
@@ -261,22 +261,6 @@ Tip 2: you can also add an image using data-image tag-->
 
             $('.typeahead').typeahead()
 
-            //<!-- javascript for init -->
-            // $('.datetimepicker').datetimepicker({
-            //     icons: {
-            //         time: "fa fa-clock-o",
-            //         date: "fa fa-calendar",
-            //         up: "fa fa-chevron-up",
-            //         down: "fa fa-chevron-down",
-            //         previous: 'fa fa-chevron-left',
-            //         next: 'fa fa-chevron-right',
-            //         today: 'fa fa-screenshot',
-            //         clear: 'fa fa-trash',
-            //         close: 'fa fa-remove'
-            //     },
-            //     inline: false,
-            //     sideBySide: true
-            // });
         })
     </script>
 

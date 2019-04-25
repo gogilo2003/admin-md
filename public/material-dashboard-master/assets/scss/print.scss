@@ -17,7 +17,6 @@
  @import "material-dashboard/core-bootstrap";
 
  @import "custom/bmd-fileinput";
- 
 
  // Core Components
  @import "material-dashboard/buttons";
@@ -30,15 +29,7 @@
  @import "material-dashboard/alerts";
  @import "material-dashboard/headers";
  @import "material-dashboard/type";
- @import "material-dashboard/tabs";
- @import "material-dashboard/tooltip";
- @import "material-dashboard/popover";
- @import "material-dashboard/dropdown";
- @import "material-dashboard/togglebutton";
- @import "material-dashboard/ripples";
  @import "material-dashboard/footers";
- @import "material-dashboard/sidebar-and-main-panel";
- @import "material-dashboard/fixed-plugin";
  @import "material-dashboard/tables";
  @import "material-dashboard/misc";
  @import "material-dashboard/social-buttons";
@@ -49,9 +40,6 @@
 @import "material-dashboard/cards/card-plain";
 
  //plugin scss
- @import "material-dashboard/plugins/animate";
- @import "material-dashboard/plugins/chartist";
- @import "material-dashboard/plugins/perfect-scrollbar";
  @import "custom/datetimepicker/style.scss";
 
  @import "material-dashboard/responsive";

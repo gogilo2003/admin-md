@@ -66,14 +66,41 @@
 				@if(config('admin.menu'))
 				@foreach (config('admin.menu') as $route => $caption)
 				@if($caption)
+				
+					@if (is_array($caption))
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{{ $caption['caption'] }}
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						@foreach($caption['submenu'] as $key => $value)
+						<a class="dropdown-item" href="{{ route($key) }}">{{ $value }}</a>
+						@endforeach
+					</div>
+				</li>
+					@else
 				<li class="nav-item">
 					<a class="nav-link" href="{{ route($route) }}">
 						{{ $caption }}
 					</a>
 				</li>
+					@endif
 				@endif
 				@endforeach
 				@endif
+
+				<!--
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Dropdown link
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li>
+				-->
 			
 				<li class="nav-item dropdown">
 					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
