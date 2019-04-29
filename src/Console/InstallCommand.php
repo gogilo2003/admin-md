@@ -47,6 +47,6 @@ class InstallCommand extends Command
         
         $this->call('migrate');
         $this->call('vendor:publish', ['--tag'=>'public', '--force']);
-
+        clean_directories();
     }
 }

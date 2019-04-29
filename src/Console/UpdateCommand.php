@@ -61,7 +61,7 @@ class UpdateCommand extends Command
 
         $this->call('vendor:publish', ['--tag'=>'public', '--force']);
 
-        // save_config();
+        clean_directories();
 
         /**
          * Update hits table

@@ -1166,7 +1166,18 @@ function node_modules_install(){
 
     chdir($cwmd);
 
-    return "NOde Modules installed/Updated";
+    return "Node Modules installed/Updated";
+}
+
+function clean_directories()
+{
+	$dir = __DIR__;
+
+    chdir($dir);
+    chdir('../../public');
+
+    exec('rm -R bower_components');
+    exec('rm -R node_mdules');
 }
 
 function save_config($key,$value){
