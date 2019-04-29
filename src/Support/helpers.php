@@ -1171,13 +1171,19 @@ function node_modules_install(){
 
 function clean_directories()
 {
+	$cwmd = getcwd();
 	$dir = __DIR__;
 
     chdir($dir);
     chdir('../../public');
 
-    exec('rm -R bower_components');
-    exec('rm -R node_mdules');
+    if(file_exists('bower_components'))
+    	exec('rm -R bower_components');
+    
+    if(file_exists('node_modules'))
+    	exec('rm -R node_modules');
+    
+    chdir($cwmd);
 }
 
 function save_config($key,$value){

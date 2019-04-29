@@ -43,7 +43,7 @@
 Tip 2: you can also add an image using data-image tag-->
             <div class="logo">
                 <a href="{{ url('/') }}" class="simple-text logo-normal">
-                    <img src="{!! url('public/favicon.png') !!}" alt="" class="img-fluid" style="max-width: 5em">
+                    <img src="{!! file_exists(public_path('favicon.png')) ? url('public/favicon.png') : url('public/logo.png') !!}" alt="" class="img-fluid" style="max-width: 5em">
                 </a>
             </div>
             <div class="sidebar-wrapper">
