@@ -42,6 +42,10 @@ class UpdateCommand extends Command
     {
         $res = bower_install();
         $this->comment($res);
+
+        $res = node_modules_install();
+        $this->comment($res);
+        
         $this->call('migrate');
 
         $path = public_path('vendor/admin');

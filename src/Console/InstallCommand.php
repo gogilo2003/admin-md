@@ -41,6 +41,10 @@ class InstallCommand extends Command
     {
         $res = bower_install();
         $this->comment(var_export($res,TRUE));
+
+        $res = node_modules_install();
+        $this->comment(var_export($res,TRUE));
+        
         $this->call('migrate');
         $this->call('vendor:publish', ['--tag'=>'public', '--force']);
 

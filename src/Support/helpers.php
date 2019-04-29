@@ -1153,6 +1153,22 @@ function bower_install(){
     return "Bower components installed/Updated";
 }
 
+function node_modules_install(){
+	$cwmd = getcwd();
+    $dir = __DIR__;
+
+    chdir($dir);
+    chdir('../../public');
+
+    $outputs = [];
+    $cmd = 'npm install --save';
+    $res = exec($cmd,$outputs);
+
+    chdir($cwmd);
+
+    return "NOde Modules installed/Updated";
+}
+
 function save_config($key,$value){
 	config([$key => $value]);
 	$ar_key = explode('.', $key);
