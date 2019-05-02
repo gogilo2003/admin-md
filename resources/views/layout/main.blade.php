@@ -43,7 +43,7 @@
 Tip 2: you can also add an image using data-image tag-->
             <div class="logo">
                 <a href="{{ url('/') }}" class="simple-text logo-normal">
-                    <img src="{!! file_exists(public_path('favicon.png')) ? url('public/favicon.png') : url('public/logo.png') !!}" alt="" class="img-fluid" style="max-width: 5em">
+                    <img src="{!! file_exists(public_path('favicon.png')) ? url('public/favicon.png') : (file_exists(public_path('logo.png')) ? url('public/logo.png') : (file_exists(public_path('images/favicon.png') ? url('images/favicon.png') : (file_exists('images/logo.png') ? url('images/logo.png') : '')))) !!}" alt="" class="img-fluid" style="max-width: 5em">
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -86,7 +86,7 @@ Tip 2: you can also add an image using data-image tag-->
                                 </a>
                             </li>
                             <li>
-                                <a href="https://wa.me/254721755056" class="btn btn-fab btn-success btn-round" target="_NEW">
+                                <a href="https://wa.me/254735388704" class="btn btn-fab btn-success btn-round" target="_NEW">
                                     <i class="fa fa-whatsapp"></i>
                                 </a>
                             </li>

@@ -109,6 +109,7 @@ class AdminServiceProvider extends ServiceProvider
 		$this->publishes([
 
 			__DIR__.'/../public/css' => public_path('vendor/admin/css'),
+			__DIR__.'/../public/img' => public_path('vendor/admin/img'),
 			__DIR__.'/../public/iconmoon' => public_path('vendor/admin/iconmoon'),
 			__DIR__.'/../public/bower_components/bootstrap-select/dist/css' => public_path('vendor/admin/css'),
 			__DIR__.'/../public/bower_components/datatables/media/css' => public_path('vendor/admin/css'),

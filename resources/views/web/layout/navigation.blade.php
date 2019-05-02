@@ -15,8 +15,9 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				@foreach (Ogilo\AdminMd\Models\Menu::first()->links as $link)
-				<li class="text-center"><a href="{{ url($link->url) }}"><i class="fa {{ $link->icon }}"></i><br>{{ $link->caption }}</a></li>
+				<li class="text-center"><a href="{{ url($link->url) }}"><i class="{{ $link->icon }}"></i><br>{{ $link->caption }}</a></li>
 				@endforeach
+				@yield('menu')
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->

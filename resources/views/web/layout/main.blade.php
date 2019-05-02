@@ -13,6 +13,8 @@
 
 		<!-- Bootstrap -->
 		<link href="{{ url('public/vendor/admin/css/web.css') }}" rel="stylesheet">
+		<link rel="stylesheet" href="{{ url('public/vendor/admin/iconmoon/linea-icon.css') }}">
+		<link rel="stylesheet" href="/public/vendor/admin/material-design-icons/material-icons.css">
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
