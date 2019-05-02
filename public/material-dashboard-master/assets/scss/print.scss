@@ -1,46 +1,22 @@
-/*!
 
- =========================================================
- * Material Dashboard - v2.1.0
- =========================================================
-
- * Product Page: https://www.creative-tim.com/product/material-dashboard
- * Copyright 2018 Creative Tim (http://www.creative-tim.com)
-
- =========================================================
-
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
- */
  @import "material-dashboard/variables";
  @import "material-dashboard/mixins";
  @import "material-dashboard/core-bootstrap";
 
- @import "custom/bmd-fileinput";
- @import "custom/rotated-table-header";
+ @import "material-dashboard/bootstrap/scss/grid";
+ @import "custom/letter-head";
 
- // Core Components
- @import "material-dashboard/buttons";
- @import "material-dashboard/checkboxes";
- @import "material-dashboard/radios";
- @import "material-dashboard/forms";
- @import "material-dashboard/input-group";
- @import "material-dashboard/images";
- @import "material-dashboard/navbar";
- @import "material-dashboard/alerts";
- @import "material-dashboard/headers";
- @import "material-dashboard/type";
- @import "material-dashboard/footers";
- @import "material-dashboard/tables";
- @import "material-dashboard/misc";
- @import "material-dashboard/social-buttons";
+body{
+	background-color: transparent;
+	color: #000;
+}
+.table{
+	tbody{
+		tr{
+			td, th {
+				border-color: #000;
+			}
+		}
+	}
+}
 
-@import "material-dashboard/cards";
-@import "material-dashboard/cards/card-stats";
-@import "material-dashboard/cards/card-profile";
-@import "material-dashboard/cards/card-plain";
-
- //plugin scss
- @import "custom/datetimepicker/style.scss";
-
- @import "material-dashboard/responsive";

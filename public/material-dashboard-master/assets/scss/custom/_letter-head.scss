@@ -1,0 +1,39 @@
+.letter-head{
+	table{
+		width: 100%;
+		.left-logo, .right-logo{
+			width: 20%;
+		}
+
+		.btn-social{
+			height: 30px;
+			// border-style: solid;
+			// border-width: 1px;
+			padding-right: 8px;
+			// border-radius: 18px;
+			// line-height: 18px;
+			display: inline-block;
+			font-size: 0.7em;
+			i{
+				background-color: black;
+				border-radius: 18px;
+				height: 19.2px;
+				width: 19.2px;
+				color: #fff;
+				padding: 4px;
+			}
+		}
+
+		.btn-address{
+			font-size: 0.9em;
+			i{
+				background-color: black;
+				border-radius: 18px;
+				height: 24px;
+				width: 24px;
+				color: #fff;
+				padding: 4px;
+			}
+		}
+	}
+}
