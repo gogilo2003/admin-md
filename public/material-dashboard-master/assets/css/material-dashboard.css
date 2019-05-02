@@ -13311,6 +13311,9 @@ Copyright (c) 2015 Daniel Eden
   .sidebar .navbar-form {
     display: none !important; } }
 
+/* 
+ * fileinput
+ */
 .btn-file {
   position: relative;
   overflow: hidden;
@@ -13373,6 +13376,7 @@ Copyright (c) 2015 Daniel Eden
   overflow: hidden;
   vertical-align: middle; }
 
+/* File input Ends  */
 /*!
  * Bootstrap-select v1.13.1 (https://developer.snapappointments.com/bootstrap-select)
  *
@@ -14301,92 +14305,6 @@ select.selectpicker {
   line-height: 27px; }
 
 /* ==================== End of Datetimepicker ================ */
-/* Pagination Starts here */
-.pagination > .page-item > .page-link,
-.pagination > .page-item > span {
-  border: 0;
-  border-radius: 30px !important;
-  transition: all .3s;
-  padding: 0 11px;
-  margin: 0 3px;
-  min-width: 30px;
-  height: 30px;
-  line-height: 30px;
-  color: #999;
-  font-weight: 400;
-  font-size: 12px;
-  text-transform: uppercase;
-  background: transparent;
-  text-align: center; }
-
-.pagination > .page-item.active > a,
-.pagination > .page-item.active > span,
-.pagination > .page-item > .page-link:focus,
-.pagination > .page-item > .page-link:hover,
-.pagination > .page-item > span:focus,
-.pagination > .page-item > span:hover {
-  color: #999; }
-
-.pagination > .page-item.active > a,
-.pagination > .page-item.active > a:focus,
-.pagination > .page-item.active > a:hover,
-.pagination > .page-item.active > span,
-.pagination > .page-item.active > span:focus,
-.pagination > .page-item.active > span:hover {
-  background-color: #8bc34a;
-  border-color: #8bc34a;
-  color: #fff;
-  box-shadow: 0 4px 5px 0 rgba(156, 39, 176, 0.14), 0 1px 10px 0 rgba(156, 39, 176, 0.12), 0 2px 4px -1px rgba(156, 39, 176, 0.2); }
-
-.pagination.pagination-info > .page-item.active > a,
-.pagination.pagination-info > .page-item.active > a:focus,
-.pagination.pagination-info > .page-item.active > a:hover,
-.pagination.pagination-info > .page-item.active > span,
-.pagination.pagination-info > .page-item.active > span:focus,
-.pagination.pagination-info > .page-item.active > span:hover {
-  background-color: #00bcd4;
-  border-color: #00bcd4;
-  box-shadow: 0 4px 5px 0 rgba(0, 188, 212, 0.14), 0 1px 10px 0 rgba(0, 188, 212, 0.12), 0 2px 4px -1px rgba(0, 188, 212, 0.2); }
-
-.pagination.pagination-success > .page-item.active > a,
-.pagination.pagination-success > .page-item.active > a:focus,
-.pagination.pagination-success > .page-item.active > a:hover,
-.pagination.pagination-success > .page-item.active > span,
-.pagination.pagination-success > .page-item.active > span:focus,
-.pagination.pagination-success > .page-item.active > span:hover {
-  background-color: #4caf50;
-  border-color: #4caf50;
-  box-shadow: 0 4px 5px 0 rgba(76, 175, 80, 0.14), 0 1px 10px 0 rgba(76, 175, 80, 0.12), 0 2px 4px -1px rgba(76, 175, 80, 0.2); }
-
-.pagination.pagination-warning > .page-item.active > a,
-.pagination.pagination-warning > .page-item.active > a:focus,
-.pagination.pagination-warning > .page-item.active > a:hover,
-.pagination.pagination-warning > .page-item.active > span,
-.pagination.pagination-warning > .page-item.active > span:focus,
-.pagination.pagination-warning > .page-item.active > span:hover {
-  background-color: #ff9800;
-  border-color: #ff9800;
-  box-shadow: 0 4px 5px 0 rgba(255, 152, 0, 0.14), 0 1px 10px 0 rgba(255, 152, 0, 0.12), 0 2px 4px -1px rgba(255, 152, 0, 0.2); }
-
-.pagination.pagination-danger > .page-item.active > a,
-.pagination.pagination-danger > .page-item.active > a:focus,
-.pagination.pagination-danger > .page-item.active > a:hover,
-.pagination.pagination-danger > .page-item.active > span,
-.pagination.pagination-danger > .page-item.active > span:focus,
-.pagination.pagination-danger > .page-item.active > span:hover {
-  background-color: #f44336;
-  border-color: #f44336;
-  box-shadow: 0 4px 5px 0 rgba(244, 67, 54, 0.14), 0 1px 10px 0 rgba(244, 67, 54, 0.12), 0 2px 4px -1px rgba(244, 67, 54, 0.2); }
-
-.material-datatables .table .disabled-sorting:after,
-.material-datatables .table .disabled-sorting:before {
-  display: none; }
-
-.material-datatables .dataTables_paginate .pagination .paginate_button .page-link {
-  padding: 0 5px;
-  margin: 0; }
-
-/* End of Pagination */
 /* DataTable */
 .dataTable > tbody > tr > td,
 .dataTable > tbody > tr > th,
@@ -14592,5 +14510,97 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:first
 
 div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-child {
   padding-right: 0; }
+
+/* Pagination Starts here */
+.pagination > .page-item > .page-link,
+.pagination > .page-item > span {
+  border: 0;
+  border-radius: 30px !important;
+  transition: all .3s;
+  padding: 0 11px;
+  margin: 0 3px;
+  min-width: 30px;
+  height: 30px;
+  line-height: 30px;
+  color: #999;
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  background: transparent;
+  text-align: center; }
+
+.pagination > .page-item.active > a,
+.pagination > .page-item.active > span,
+.pagination > .page-item > .page-link:focus,
+.pagination > .page-item > .page-link:hover,
+.pagination > .page-item > span:focus,
+.pagination > .page-item > span:hover {
+  color: #999; }
+
+.pagination > .page-item.active > a,
+.pagination > .page-item.active > a:focus,
+.pagination > .page-item.active > a:hover,
+.pagination > .page-item.active > span,
+.pagination > .page-item.active > span:focus,
+.pagination > .page-item.active > span:hover {
+  background-color: #8bc34a;
+  border-color: #8bc34a;
+  color: #fff;
+  box-shadow: 0 4px 5px 0 rgba(156, 39, 176, 0.14), 0 1px 10px 0 rgba(156, 39, 176, 0.12), 0 2px 4px -1px rgba(156, 39, 176, 0.2); }
+
+.pagination.pagination-info > .page-item.active > a,
+.pagination.pagination-info > .page-item.active > a:focus,
+.pagination.pagination-info > .page-item.active > a:hover,
+.pagination.pagination-info > .page-item.active > span,
+.pagination.pagination-info > .page-item.active > span:focus,
+.pagination.pagination-info > .page-item.active > span:hover {
+  background-color: #00bcd4;
+  border-color: #00bcd4;
+  box-shadow: 0 4px 5px 0 rgba(0, 188, 212, 0.14), 0 1px 10px 0 rgba(0, 188, 212, 0.12), 0 2px 4px -1px rgba(0, 188, 212, 0.2); }
+
+.pagination.pagination-success > .page-item.active > a,
+.pagination.pagination-success > .page-item.active > a:focus,
+.pagination.pagination-success > .page-item.active > a:hover,
+.pagination.pagination-success > .page-item.active > span,
+.pagination.pagination-success > .page-item.active > span:focus,
+.pagination.pagination-success > .page-item.active > span:hover {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  box-shadow: 0 4px 5px 0 rgba(76, 175, 80, 0.14), 0 1px 10px 0 rgba(76, 175, 80, 0.12), 0 2px 4px -1px rgba(76, 175, 80, 0.2); }
+
+.pagination.pagination-warning > .page-item.active > a,
+.pagination.pagination-warning > .page-item.active > a:focus,
+.pagination.pagination-warning > .page-item.active > a:hover,
+.pagination.pagination-warning > .page-item.active > span,
+.pagination.pagination-warning > .page-item.active > span:focus,
+.pagination.pagination-warning > .page-item.active > span:hover {
+  background-color: #ff9800;
+  border-color: #ff9800;
+  box-shadow: 0 4px 5px 0 rgba(255, 152, 0, 0.14), 0 1px 10px 0 rgba(255, 152, 0, 0.12), 0 2px 4px -1px rgba(255, 152, 0, 0.2); }
+
+.pagination.pagination-danger > .page-item.active > a,
+.pagination.pagination-danger > .page-item.active > a:focus,
+.pagination.pagination-danger > .page-item.active > a:hover,
+.pagination.pagination-danger > .page-item.active > span,
+.pagination.pagination-danger > .page-item.active > span:focus,
+.pagination.pagination-danger > .page-item.active > span:hover {
+  background-color: #f44336;
+  border-color: #f44336;
+  box-shadow: 0 4px 5px 0 rgba(244, 67, 54, 0.14), 0 1px 10px 0 rgba(244, 67, 54, 0.12), 0 2px 4px -1px rgba(244, 67, 54, 0.2); }
+
+.material-datatables .table .disabled-sorting:after,
+.material-datatables .table .disabled-sorting:before {
+  display: none; }
+
+.material-datatables .dataTables_paginate .pagination .paginate_button .page-link {
+  padding: 0 5px;
+  margin: 0; }
+
+/* End of Pagination */
+.modal-content {
+  background: transparent; }
+  .modal-content .card {
+    margin-top: 0;
+    margin-bottom: 0; }
 
 /*# sourceMappingURL=material-dashboard.css.map */
