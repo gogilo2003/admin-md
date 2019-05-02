@@ -135,11 +135,13 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__.'/../public/bower_components/font-awesome/css/font-awesome.min.css' => public_path('vendor/admin/css/font-awesome.min.css'),
 			__DIR__.'/../public/material-design-icons' => public_path('vendor/admin/material-design-icons'),
 			// __DIR__.'/../public/bower_components/chart.js/dist/Chart.min.js' => public_path('vendor/admin/js/Chart.min.js'),
-
+			],'public');
+		$this->publishes([
 			__DIR__.'/../public/material-dashboard-master/node_modules/chart.js/dist/Chart.min.js'=>public_path('vendor/admin/material-dashboard-master/assets/js/plugins/Chart.min.js'),
 			__DIR__.'/../public/material-dashboard-master/node_modules/chart.js/dist/Chart.min.css'=>public_path('vendor/admin/material-dashboard-master/assets/css/Chart.min.css'),
-			__DIR__.'/../public/material-dashboard-master/assets'=>public_path('vendor/admin/material-dashboard-master/assets'),
-		],'public');
+			__DIR__.'/../public/material-dashboard-master/assets/css'=>public_path('vendor/admin/material-dashboard-master/assets/css'),
+			__DIR__.'/../public/material-dashboard-master/assets/js'=>public_path('vendor/admin/material-dashboard-master/assets/js'),
+		],'md-public');
 		$this->publishes([__DIR__.'/../config/admin.php'=>config_path('admin.php')],'config');
 
 	}

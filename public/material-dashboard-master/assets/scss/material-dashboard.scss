@@ -15,9 +15,7 @@
  @import "material-dashboard/variables";
  @import "material-dashboard/mixins";
  @import "material-dashboard/core-bootstrap";
-
- @import "custom/bmd-fileinput";
- @import "custom/rotated-table-header";
+ // @import "custom/rotated-table-header";
  
 
  // Core Components
@@ -53,6 +51,9 @@
  @import "material-dashboard/plugins/animate";
  @import "material-dashboard/plugins/chartist";
  @import "material-dashboard/plugins/perfect-scrollbar";
- @import "custom/datetimepicker/style.scss";
+ // @import "custom/datetimepicker/style.scss";
 
  @import "material-dashboard/responsive";
+
+
+ @import "custom/bmd-fileinput";
