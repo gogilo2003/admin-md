@@ -1,22 +1,42 @@
+@import url('http://fonts.googleapis.com/css?family=Roboto');
+@import "material-dashboard/variables";
+// @import "material-dashboard/mixins";
+// @import "material-dashboard/bootstrap/scss/mixins";
 
- @import "material-dashboard/variables";
- @import "material-dashboard/mixins";
- @import "material-dashboard/core-bootstrap";
-
- @import "material-dashboard/bootstrap/scss/grid";
- @import "custom/letter-head";
-
-body{
-	background-color: transparent;
-	color: #000;
-}
-.table{
-	tbody{
-		tr{
-			td, th {
-				border-color: #000;
-			}
-		}
-	}
-}
+@import "material-dashboard/bootstrap/scss/functions";
+// @import "material-dashboard/bootstrap/scss/variables";
+@import "material-dashboard/bootstrap/scss/mixins";
+@import "material-dashboard/bootstrap/scss/root";
+@import "material-dashboard/bootstrap/scss/reboot";
+@import "material-dashboard/bootstrap/scss/type";
+@import "material-dashboard/bootstrap/scss/images";
+@import "material-dashboard/bootstrap/scss/code";
+@import "material-dashboard/bootstrap/scss/grid";
+@import "material-dashboard/bootstrap/scss/tables";
+@import "material-dashboard/bootstrap/scss/forms";
+@import "material-dashboard/bootstrap/scss/buttons";
+@import "material-dashboard/bootstrap/scss/transitions";
+@import "material-dashboard/bootstrap/scss/dropdown";
+@import "material-dashboard/bootstrap/scss/button-group";
+@import "material-dashboard/bootstrap/scss/input-group";
+@import "material-dashboard/bootstrap/scss/custom-forms";
+@import "material-dashboard/bootstrap/scss/nav";
+@import "material-dashboard/bootstrap/scss/navbar";
+@import "material-dashboard/bootstrap/scss/card";
+@import "material-dashboard/bootstrap/scss/breadcrumb";
+@import "material-dashboard/bootstrap/scss/pagination";
+@import "material-dashboard/bootstrap/scss/badge";
+@import "material-dashboard/bootstrap/scss/jumbotron";
+@import "material-dashboard/bootstrap/scss/alert";
+@import "material-dashboard/bootstrap/scss/progress";
+@import "material-dashboard/bootstrap/scss/media";
+@import "material-dashboard/bootstrap/scss/list-group";
+@import "material-dashboard/bootstrap/scss/close";
+@import "material-dashboard/bootstrap/scss/modal";
+@import "material-dashboard/bootstrap/scss/tooltip";
+@import "material-dashboard/bootstrap/scss/popover";
+@import "material-dashboard/bootstrap/scss/carousel";
+@import "material-dashboard/bootstrap/scss/utilities";
+@import "material-dashboard/bootstrap/scss/print";
+@import "custom/letter-head";
 
