@@ -104,7 +104,7 @@ Route::group(['middleware'=>'auth:admin','prefix'=>'admin','as'=>'admin'],functi
 this will create a route named admin-example with uri /admin/example
 #### Menu
 Add your Item to the admin menu/nav by adding it to the admin.menu config. This you should do in the boot method of the application's/package's service provider class.
-##### Example
+###### Example
 ```
 class AppServiceProvider{
     ...
@@ -114,6 +114,51 @@ class AppServiceProvider{
     ...
 }
 ```
+##### Sub Menus
+You can also create a dropdown menu(s) using the above simple configurations. Use your config name as the key while the submenu(s) and items will take place of the caption as an array of submenus.
+###### Example
+```
+function boot(){
+        config(['admin.menu.admin-example'=>[
+            [
+                'caption'=>'Menu One',
+                'submenu'=>[
+                    'menu-one-route-name-one'=>'Caption One',
+                    'menu-one-route-name-two'=>'Caption Two',
+                    'menu-one-route-name-three'=>'Caption Three',
+                    'menu-one-route-name-four'=>'Caption Four',
+                ]
+            ],[
+                'caption'=>'Menu Two',
+                'submenu'=>[
+                    'menu-two-route-name-one'=>'Menu 2 Caption One',
+                    'menu-two-route-name-two'=>'Menu 2 Caption Two',
+                    'menu-two-route-name-three'=>'Menu 2 Caption Three',
+                    'menu-two-route-name-four'=>'Menu 2 Caption Four',
+                    'menu-two-route-name-five'=>'Menu 2 Caption Five',
+                ]
+            ]
+        ]]);
+    }
+```
+If you only have one sub-menu, you can just pass the array to the root key as shown below
+```
+function boot(){
+config(['admin.menu.admin-example'=>
+        [
+            'caption'=>'Menu One',
+            'submenu'=>[
+                'menu-one-route-name-one'=>'Caption One',
+                'menu-one-route-name-two'=>'Caption Two',
+                'menu-one-route-name-three'=>'Caption Three',
+                'menu-one-route-name-four'=>'Caption Four',
+            ]
+        ]
+    ]);
+}
+```
+**NOTE:** Each submenu must have a caption and submenu keys. The caption will be the caption of the menu while submenu cantains route caption key value pairs for all the items in the submenu.
+
 #### Views
 Your views should:
 1. extend the admin::layout.main.
