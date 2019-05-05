@@ -64,29 +64,45 @@
 					</div>
 				</li>
 				@if(config('admin.menu'))
-				@foreach (config('admin.menu') as $route => $caption)
-				@if($caption)
-				
-					@if (is_array($caption))
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						{{ $caption['caption'] }}
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						@foreach($caption['submenu'] as $key => $value)
-						<a class="dropdown-item" href="{{ route($key) }}">{{ $value }}</a>
-						@endforeach
-					</div>
-				</li>
-					@else
-				<li class="nav-item">
-					<a class="nav-link" href="{{ route($route) }}">
-						{{ $caption }}
-					</a>
-				</li>
-					@endif
-				@endif
-				@endforeach
+					@foreach (config('admin.menu') as $key => $menu)
+						@if($menu)
+						
+							@if (is_array($menu))
+								@if (isset($menu['caption']))
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											{{ $menu['caption'] }}
+										</a>
+										<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+											@foreach($menu['submenu'] as $key => $value)
+											<a class="dropdown-item" href="{{ route($key) }}">{{ $value }}</a>
+											@endforeach
+										</div>
+									</li>
+								@else
+									@foreach ($menu as $item)
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												{{ $item['caption'] }}
+											</a>
+											<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+												@foreach($item['submenu'] as $key => $value)
+												<a class="dropdown-item" href="{{ route($key) }}">{{ $value }}</a>
+												@endforeach
+											</div>
+										</li>
+									@endforeach
+								@endif
+								
+							@else
+								<li class="nav-item">
+									<a class="nav-link" href="{{ route($key) }}">
+										{{ $menu }}
+									</a>
+								</li>
+							@endif
+						@endif
+					@endforeach
 				@endif
 
 				<!--

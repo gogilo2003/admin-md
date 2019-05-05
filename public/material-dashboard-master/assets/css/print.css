@@ -1,4 +1,3 @@
-@import url("http://fonts.googleapis.com/css?family=Roboto");
 /*     brand Colors              */
 :root {
   --blue: #2196f3;
@@ -6141,9 +6140,6 @@ body {
 .table-no-border tr td, .table-no-border tr th {
   border-width: 0;
   border-color: transparent; }
-
-.table tr td, .table tr th {
-  padding: 3px 5px; }
 
 .table-round {
   border-radius: 8px;
