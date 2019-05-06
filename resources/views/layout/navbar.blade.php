@@ -80,17 +80,25 @@
 										</div>
 									</li>
 								@else
-									@foreach ($menu as $item)
-										<li class="nav-item dropdown">
-											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												{{ $item['caption'] }}
-											</a>
-											<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-												@foreach($item['submenu'] as $key => $value)
-												<a class="dropdown-item" href="{{ route($key) }}">{{ $value }}</a>
-												@endforeach
-											</div>
-										</li>
+									@foreach ($menu as $key=>$item)
+										@if (isset($item['caption']))
+											<li class="nav-item dropdown">
+												<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													{{ $item['caption'] }}
+												</a>
+												<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+													@foreach($item['submenu'] as $key => $value)
+													<a class="dropdown-item" href="{{ route($key) }}">{{ $value }}</a>
+													@endforeach
+												</div>
+											</li>
+										@else
+											<li class="nav-item">
+												<a class="nav-link" href="{{ route($key) }}">
+													{{ $item }}
+												</a>
+											</li>
+										@endif
 									@endforeach
 								@endif
 								
