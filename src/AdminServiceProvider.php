@@ -140,8 +140,8 @@ class AdminServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__.'/../public/material-dashboard-master/node_modules/chart.js/dist/Chart.min.js'=>public_path('vendor/admin/material-dashboard-master/assets/js/plugins/Chart.min.js'),
 			__DIR__.'/../public/material-dashboard-master/node_modules/chart.js/dist/Chart.min.css'=>public_path('vendor/admin/material-dashboard-master/assets/css/Chart.min.css'),
-		]);
-		
+		],'chartjs');
+
 		$this->publishes([
 			__DIR__.'/../public/material-dashboard-master/assets/css'=>public_path('vendor/admin/material-dashboard-master/assets/css'),
 			__DIR__.'/../public/material-dashboard-master/assets/js'=>public_path('vendor/admin/material-dashboard-master/assets/js'),
