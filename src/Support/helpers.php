@@ -1158,7 +1158,7 @@ function node_modules_install(){
     $dir = __DIR__;
 
     chdir($dir);
-    chdir('../../public');
+    chdir('../../public/material-dashboard-master');
 
     $outputs = [];
     $cmd = 'npm install --save';
