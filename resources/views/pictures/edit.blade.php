@@ -26,14 +26,23 @@
 
 @section('content')
 	<a href="{{route('admin-pictures-add')}}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp; Add Picture</a>
+	<a href="{{route('admin-pictures')}}" class="btn btn-primary btn-sm"><i class="fa fa-list"></i>&nbsp;&nbsp; Pictures</a>
 	<hr>
 	<form method="post" action="{{route('admin-pictures-edit-post')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-sm-6 col-md-4 col-lg-4">
 				<div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
 					<label for="name">Picture</label>
-					<img src="{{ url('public/images/pictures/'.$picture->name) }}" class="img-responsive img-fluid" alt="{{ $picture->title }}">
-					<input data-filename-placement="inside" title="Select a picture to upload" type="file" id="name" name="name" class="btn-primary btn btn-block">
+					<img id="image_preview" src="{{ url('public/images/pictures/'.$picture->name) }}" class="img-responsive img-fluid" alt="{{ $picture->title }}">
+					<input 
+						data-filename-placement="inside" 
+						title="Select a picture to upload" 
+						type="file" 
+						id="name" 
+						name="name" 
+						class="form-control"
+						onchange="document.getElementById('image_preview').src = window.URL.createObjectURL(this.files[0])"
+						>
 					{!! $errors->has('name') ? '<span class="text-danger">'.$errors->first('name').'</span>' : ''!!}
 				</div>
 			</div>
@@ -84,7 +93,9 @@
 
 @section('styles')
 	<style type="text/css">
-		
+		#image_preview{
+			cursor: pointer;
+		}
 	</style>
 @stop
 @section('scripts_top')
@@ -95,6 +106,10 @@
 
 @section('scripts_bottom')
 	<script type="text/javascript">
-		
+		$(document).ready(function(){
+			$('#image_preview').click(function(){
+				$('input[type="file"]#name').click()
+			})
+		})
 	</script>
 @stop

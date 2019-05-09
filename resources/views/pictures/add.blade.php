@@ -25,12 +25,14 @@
 @stop
 
 @section('content')
+	<a href="{{route('admin-pictures')}}" class="btn btn-primary btn-sm"><i class="fa fa-list"></i>&nbsp;&nbsp; Pictures</a>
+	<hr>
 	<form method="post" action="{{route('admin-pictures-add')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-sm-6 col-md-4 col-lg-4">
 				<div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
 					<label for="name">Picture</label>
-					<img id="image_preview" src="" class="img-responsive img-fluid" alt="Preview">
+					<img id="image_preview" src="{{ url('public/vendor/admin/img/placeholder.png') }}" class="img-responsive img-fluid" alt="Preview">
 					<input 
 						data-filename-placement="inside" 
 						title="Select a picture to upload" 
@@ -90,7 +92,9 @@
 
 @section('styles')
 	<style type="text/css">
-		
+		#image_preview{
+			cursor: pointer;
+		}
 	</style>
 @stop
 @section('scripts_top')
@@ -101,6 +105,10 @@
 
 @section('scripts_bottom')
 	<script type="text/javascript">
-		
+		$(document).ready(function(){
+			$('#image_preview').click(function(){
+				$('input[type="file"]#name').click()
+			})
+		})
 	</script>
 @stop
