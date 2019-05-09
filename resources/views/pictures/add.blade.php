@@ -30,7 +30,7 @@
 			<div class="col-sm-6 col-md-4 col-lg-4">
 				<div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
 					<label for="name">Picture</label>
-					<img id="image_preview" src="" class="img-responsive" alt="Preview">
+					<img id="image_preview" src="" class="img-responsive img-fluid" alt="Preview">
 					<input 
 						data-filename-placement="inside" 
 						title="Select a picture to upload" 

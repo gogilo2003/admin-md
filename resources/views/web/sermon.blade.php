@@ -19,16 +19,16 @@
 			<div class="col-md-4">
 				@if($sermon->audio)
 					<h3>Listen to the recorded sermon</h3>
-					<audio src="{{ url('public/audio/sermons/'.$sermon->audio) }}" class="img-responsive" controls="true"></audio>
+					<audio src="{{ url('public/audio/sermons/'.$sermon->audio) }}" class="img-responsive img-fluid" controls="true"></audio>
 				@endif
 				@if($sermon->video)
 					<h3>Watch the sermon here</h3>
-					<video src="{{ url('public/video/sermons/'.$sermon->video) }}" class="img-responsive" controls="true"></video>
+					<video src="{{ url('public/video/sermons/'.$sermon->video) }}" class="img-responsive img-fluid" controls="true"></video>
 				@endif
 			</div>
 			<div class="col-md-8">
 				<div class="thumbnail">
-					<img src="{{ url('public/images/sermons/'.$sermon->picture) }}" class="img-responsive" alt="{{ $sermon->title }}">
+					<img src="{{ url('public/images/sermons/'.$sermon->picture) }}" class="img-responsive img-fluid" alt="{{ $sermon->title }}">
 				</div>
 			</div>
 			<div class="col-md-12">

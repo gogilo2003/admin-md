@@ -70,7 +70,7 @@
 		@foreach ($page->profiles as $profile)
 			<div class="col-md-4">
 				<div class="thumbnail">
-					<img src="{{ url('public/images/profiles/'.$profile->picture) }}" class="img-responsive" alt="{{ $profile->name }}">
+					<img src="{{ url('public/images/profiles/'.$profile->picture) }}" class="img-responsive img-fluid" alt="{{ $profile->name }}">
 					<h3>{{ $profile->name }} <small>{{ $profile->position }}</small></h3>
 					<p class="text-justify">{{ str_words($profile->details) }}</p>
 					<p><a href="{{ route('profile',[$profile->id,$page->name]) }}">Read More...</a></p>
@@ -87,7 +87,7 @@
 		@foreach ($page->sermons as $sermon)
 			<div class="col-md-4">
 				<div class="thumbnail">
-					<img src="{{ url('public/images/sermons/'.$sermon->picture) }}" class="img-responsive" alt="{{ $sermon->name }}">
+					<img src="{{ url('public/images/sermons/'.$sermon->picture) }}" class="img-responsive img-fluid" alt="{{ $sermon->name }}">
 					<h3>{{ $sermon->title }} <small>By {{ $sermon->sermon_by }}</small></h3>
 					<p class="text-justify">{{ str_words($sermon->content) }}</p>
 					<p><a href="{{ route('sermon',[$sermon->name,$page->name]) }}">Read More...</a></p>
@@ -104,7 +104,7 @@
 		@foreach ($page->events as $event)
 			<div class="col-md-4">
 				<div class="thumbnail">
-					<img src="{{ url('public/images/events/'.$event->picture) }}" class="img-responsive" alt="{{ $event->title }}">
+					<img src="{{ url('public/images/events/'.$event->picture) }}" class="img-responsive img-fluid" alt="{{ $event->title }}">
 					<h3>{{ $event->title }} <small>By {{ $event->leader }}</small></h3>
 					<p class="text-justify">{{ str_words($event->content) }}</p>
 					<p><a href="{{ route('event',[$event->name,$page->name]) }}">Read More...</a></p>
@@ -120,7 +120,7 @@
 			<h3 class="page-header">Recent Pictures</h3>
 			@foreach ($pictures->pictures as $key => $picture)
 				<div class="col-md-4 col-lg-4">
-					<img src="{{ url('public/images/pictures/'.$picture->name) }}" class="img-responsive" alt="{{ $picture->alt }}">
+					<img src="{{ url('public/images/pictures/'.$picture->name) }}" class="img-responsive img-fluid" alt="{{ $picture->alt }}">
 				</div>
 			@endforeach
 		@endif

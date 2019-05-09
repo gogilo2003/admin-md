@@ -8,7 +8,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{{ url('/') }}" style="height: 100%"><img src="{{ url('public/logo.png') }}" alt="" class="img-responsive" style="height: 100%"></a>
+			<a class="navbar-brand" href="{{ url('/') }}" style="height: 100%"><img src="{{ url('public/logo.png') }}" alt="" class="img-responsive img-fluid" style="height: 100%"></a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->

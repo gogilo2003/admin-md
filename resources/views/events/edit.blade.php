@@ -31,7 +31,7 @@
 			<div class="col-sm-6 col-md-3 col-lg-3">
 				<div class="form-group{!! $errors->has('picture') ? ' has-error':'' !!}">
 					<label for="picture">Picture</label>
-					<img src="{{ url('public/images/events/'.$event->picture) }}" class="img-responsive" alt="">
+					<img src="{{ url('public/images/events/'.$event->picture) }}" class="img-responsive img-fluid" alt="">
 					<input type="file" id="picture" name="picture" class="form-control">
 					{!! $errors->has('picture') ? '<span class="text-danger">'.$errors->first('picture').'</span>' : ''!!}
 					<p class="help-block text-center">Select picture here</p>

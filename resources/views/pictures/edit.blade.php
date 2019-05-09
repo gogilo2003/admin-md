@@ -32,7 +32,7 @@
 			<div class="col-sm-6 col-md-4 col-lg-4">
 				<div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
 					<label for="name">Picture</label>
-					<img src="{{ url('public/images/pictures/'.$picture->name) }}" class="img-responsive" alt="{{ $picture->title }}">
+					<img src="{{ url('public/images/pictures/'.$picture->name) }}" class="img-responsive img-fluid" alt="{{ $picture->title }}">
 					<input data-filename-placement="inside" title="Select a picture to upload" type="file" id="name" name="name" class="btn-primary btn btn-block">
 					{!! $errors->has('name') ? '<span class="text-danger">'.$errors->first('name').'</span>' : ''!!}
 				</div>

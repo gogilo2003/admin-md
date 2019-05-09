@@ -21,7 +21,7 @@ class PictureController extends Controller
 	
 	public function getPictures()
 	{
-		$pictures = Picture::with('category')->orderBy('id','DESC')->paginate(2);
+		$pictures = Picture::with('category')->orderBy('id','DESC')->get();//->paginate(2);
 		return view('admin::pictures.index',compact('pictures'));
 	}
 

@@ -22,7 +22,7 @@
 	<div class="row">
 		@foreach ($profiles as $key => $profile)
 			<div class="col-md-4 col-lg-4 text-center">
-				<img src="{{ url('public/images/profiles/'.$profile->picture) }}" alt="{{ $profile->name }}" class="img-responsive">
+				<img src="{{ url('public/images/profiles/'.$profile->picture) }}" alt="{{ $profile->name }}" class="img-responsive img-fluid">
 				<hr>
 				<h4 class="text-uppercase">{{ $profile->name }}<br><small>{{ $profile->position }}</small></h4>
 				<hr>
