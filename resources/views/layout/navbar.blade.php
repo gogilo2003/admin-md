@@ -15,54 +15,61 @@
 			<ul class="navbar-nav">
 				<!-- <li class="active"><a href="{{ url('admin') }}"><i class="fa fa-dashboard"></i>&nbsp;Dashboard <span class="sr-only">(current)</span></a></li> -->
 				{{-- <li><a href="{{ route('admin-pages') }}"><i class="fa fa-file-o"></i>&nbsp;Pages</a></li> --}}
-				<li class="nav-item dropdown">
-					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-						Menus
-					</a>
-					<div class="dropdown-menu" role="menu">
-						@foreach (Ogilo\AdminMd\Models\Menu::all() as $key => $menu)
-						<a class="dropdown-item" href="{{ route('admin-menus-edit',$menu->id) }}">
-							<i class="fa fa-circle-thin"></i>&nbsp;
-							{{ $menu->caption }}
+				@if (config('admin.menus'))
+					<li class="nav-item dropdown">
+						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							Menus
 						</a>
-						@endforeach
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="{{ route('admin-menus-add') }}"><i class="fa fa-plus-circle"></i>&nbsp;Create a New
-								menu</a>
-					</div>
-				</li>
-				<li class="nav-item dropdown">
-					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Links</a>
-					<div class="dropdown-menu" role="menu">
-						@foreach (Ogilo\AdminMd\Models\Link::all() as $key => $link)
-						<a class="dropdown-item" href="{{ route('admin-links-edit',$link->id) }}">
-							<i class="fa fa-circle-thin"></i>&nbsp;
-							{{ $link->caption }}
-						</a>
-						@endforeach
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="{{ route('admin-links-add') }}">
-							<i class="fa fa-plus-circle"></i>&nbsp;
-							Create a New Link
-						</a>
-					</div>
-				</li>
-				<li class="nav-item dropdown">
-					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pages</a>
-					<div class="dropdown-menu" role="menu">
-						@foreach (Ogilo\AdminMd\Models\Page::all() as $key => $page)
-						<a class="dropdown-item" href="{{ route('admin-pages-edit',$page->id) }}">
-							<i class="fa fa-circle-thin"></i>&nbsp;
-							{{ $page->title }}
-						</a>
-						@endforeach
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="{{ route('admin-pages-add') }}">
-							<i class="fa fa-plus-circle"></i>&nbsp; 
-							Create a New Page
-						</a>
-					</div>
-				</li>
+						<div class="dropdown-menu" role="menu">
+							@foreach (Ogilo\AdminMd\Models\Menu::all() as $key => $menu)
+							<a class="dropdown-item" href="{{ route('admin-menus-edit',$menu->id) }}">
+								<i class="fa fa-circle-thin"></i>&nbsp;
+								{{ $menu->caption }}
+							</a>
+							@endforeach
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="{{ route('admin-menus-add') }}"><i class="fa fa-plus-circle"></i>&nbsp;Create a New
+									menu</a>
+						</div>
+					</li>
+				@endif
+				@if (config('admin.links'))
+					<li class="nav-item dropdown">
+						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Links</a>
+						<div class="dropdown-menu" role="menu">
+							@foreach (Ogilo\AdminMd\Models\Link::all() as $key => $link)
+							<a class="dropdown-item" href="{{ route('admin-links-edit',$link->id) }}">
+								<i class="fa fa-circle-thin"></i>&nbsp;
+								{{ $link->caption }}
+							</a>
+							@endforeach
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="{{ route('admin-links-add') }}">
+								<i class="fa fa-plus-circle"></i>&nbsp;
+								Create a New Link
+							</a>
+						</div>
+					</li>
+				@endif
+				@if (config('admin.pages'))
+					<li class="nav-item dropdown">
+						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pages</a>
+						<div class="dropdown-menu" role="menu">
+							@foreach (Ogilo\AdminMd\Models\Page::all() as $key => $page)
+							<a class="dropdown-item" href="{{ route('admin-pages-edit',$page->id) }}">
+								<i class="fa fa-circle-thin"></i>&nbsp;
+								{{ $page->title }}
+							</a>
+							@endforeach
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="{{ route('admin-pages-add') }}">
+								<i class="fa fa-plus-circle"></i>&nbsp; 
+								Create a New Page
+							</a>
+						</div>
+					</li>
+				@endif
+				
 				@if(config('admin.menu'))
 					@foreach (config('admin.menu') as $key => $menu)
 						@if($menu)

@@ -1,4 +1,7 @@
 <?php return array (
+    'menus' => false,
+    'links' => false,
+    'pages' => false,
     'articles' => false,
     'pictures' => false,
     'videos' => false,
