@@ -82,55 +82,55 @@
 
 @section('scripts_bottom')
 	<script type="text/javascript">
+		var deletePicture = function (pID){
+			if(confirm("Do you want to delete the selected picture?")){
+				alert("Picture Deleted")
+				$.ajax({
+					url: '{{ route('admin-pictures-delete') }}',
+					type: 'post',
+					data: { id: pID, _token: '{{ csrf_token() }}' },
+					complete: function(xhr){
+						$.notify(
+                            {
+                                message:xhr.responseJSON.message,
+                                icon: 'fa fa-check-circle'
+                            },
+                            {
+                                type:'success'
+                            }
+                        );
+					}
+				})
+			}else{
+				alert("picture not deleted")
+			}
+		}
+
+		var publishPicture = function (pID){
+			if(confirm("Do you want to publish the selected picture?")){
+				$.ajax({
+					url: '{{ route('admin-pictures-publish') }}',
+					type: 'post',
+					data: { id: pID, _token: '{{ csrf_token() }}' },
+					complete: function(xhr){
+						// console.log(xhr)
+						$.notify(
+                            {
+                                message:xhr.responseJSON.message,
+                                icon: 'fa fa-check-circle'
+                            },
+                            {
+                                type:'success'
+                            }
+                        );
+					}
+				})
+			}else{
+				alert("picture not deleted")
+			}
+		}
+		
 		$(document).ready(function(){
-			var deletePicture = function (pID){
-				if(confirm("Do you want to delete the selected picture?")){
-					alert("Picture Deleted")
-					$.ajax({
-						url: '{{ route('admin-pictures-delete') }}',
-						type: 'post',
-						data: { id: pID, _token: '{{ csrf_token() }}' },
-						complete: function(xhr){
-							$.notify(
-	                            {
-	                                message:xhr.responseJSON.message,
-	                                icon: 'fa fa-check-circle'
-	                            },
-	                            {
-	                                type:'success'
-	                            }
-	                        );
-						}
-					})
-				}else{
-					alert("picture not deleted")
-				}
-			}
-
-			var publishPicture = function (pID){
-				if(confirm("Do you want to publish the selected picture?")){
-					$.ajax({
-						url: '{{ route('admin-pictures-publish') }}',
-						type: 'post',
-						data: { id: pID, _token: '{{ csrf_token() }}' },
-						complete: function(xhr){
-							// console.log(xhr)
-							$.notify(
-	                            {
-	                                message:xhr.responseJSON.message,
-	                                icon: 'fa fa-check-circle'
-	                            },
-	                            {
-	                                type:'success'
-	                            }
-	                        );
-						}
-					})
-				}else{
-					alert("picture not deleted")
-				}
-			}
-
 			$('#picturesTable').dataTable();
 		})
 	</script>
