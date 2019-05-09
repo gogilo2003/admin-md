@@ -74,6 +74,12 @@ class AdminServiceProvider extends ServiceProvider
 			config(['admin.menu.admin-events'=>null]);
 		}
 
+		if(config('admin.products')){
+			config(['admin.menu.admin-products'=>'Products']);
+		}else{
+			config(['admin.menu.admin-products'=>null]);
+		}
+
 		if(config('admin.packages')){
 			config(['admin.menu.admin-packages'=>'Packages']);
 		}else{
