@@ -84,7 +84,7 @@
 	<script type="text/javascript">
 		var deletePicture = function (pID){
 			if(confirm("Do you want to delete the selected picture?")){
-				alert("Picture Deleted")
+				
 				$.ajax({
 					url: '{{ route('admin-pictures-delete') }}',
 					type: 'post',
@@ -99,10 +99,13 @@
                                 type:'success'
                             }
                         );
+                        window.setTimeout(function() {
+                        	window.location = '{{ route('admin-pictures') }}'
+                        }, 10);
 					}
 				})
 			}else{
-				alert("picture not deleted")
+				alert("picture delete request was canceled by user")
 			}
 		}
 
@@ -123,13 +126,16 @@
                                 type:'success'
                             }
                         );
+                        window.setTimeout(function() {
+                        	window.location = '{{ route('admin-pictures') }}'
+                        }, 10);
 					}
 				})
 			}else{
-				alert("picture not deleted")
+				alert("picture publish request was canceled by user")
 			}
 		}
-		
+
 		$(document).ready(function(){
 			$('#picturesTable').dataTable();
 		})
