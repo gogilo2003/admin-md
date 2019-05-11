@@ -81,7 +81,7 @@ class PagesController extends Controller
 
 		$page = $page_name ? Page::with('link')->where('name','=',$page_name)->first() : $article->category->pages->first();
 
-		// dd($page);
+		dd($page->link);
 
 		return view($template,compact('article','page'));
 	}
