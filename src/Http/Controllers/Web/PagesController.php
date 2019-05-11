@@ -217,7 +217,7 @@ class PagesController extends Controller
 
 	public function postContact(Request $request)
 	{
-		dd($request->all());
+		// dd($request->all());
 		$name=$cust_name=null;
 		$email=null;
 		$email_to_send_to=null;
@@ -242,6 +242,8 @@ class PagesController extends Controller
 		$headers.= 'From: '.$name.'<'.$email.'> ' . "\r\n" .'Reply-To: '.$email.' ' . "\r\n" .'X-Mailer: PHP/' . phpversion();
 
 		$ret = @mail($email_to_send_to,$email_subject,$body,$headers);
+
+		dd($ret);
 
 		if(!$ret){
 			return response(['success'=>false,'message'=>'Email Could not be sent due to a server problem. Please check back later'])->header('Content-Type','application/json');
