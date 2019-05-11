@@ -217,6 +217,7 @@ class PagesController extends Controller
 
 	public function postContact(Request $request)
 	{
+		dd($request->all());
 		$name=$cust_name=null;
 		$email=null;
 		$email_to_send_to=null;
