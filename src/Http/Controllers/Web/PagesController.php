@@ -79,7 +79,7 @@ class PagesController extends Controller
 
 		$template = file_exists(resource_path('views/web/article.blade.php')) ? 'web.article' :'admin::web.article';
 
-		$page = $page_name ? $article->category->pages->where('name','=',$page_name)->first() : $article->category->pages->first();
+		$page = $page_name ? Page::with('link')->where('name','=',$page_name)->first() : $article->category->pages->first();
 
 		// dd($page);
 
