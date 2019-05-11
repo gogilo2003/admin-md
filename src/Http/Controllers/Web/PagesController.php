@@ -15,6 +15,7 @@ use Ogilo\AdminMd\Models\Guest;
 use Ogilo\AdminMd\Models\Comment;
 
 use Validator;
+use Mail;
 
 /**
 *
@@ -235,6 +236,8 @@ class PagesController extends Controller
 			$cphn=$request->input('phone');
 			$email_subject = "Website Contact - " .$request->input('subject');
 			$body='Contact Name :'.$name.'<br>'.'Contact Email:'.$email.'<br>'.'Contact Phone:'.$cphn.'<br>'.'Comment:'.$comment;
+		}else{
+			return response(['success'=>false,'message'=>'form not valid!'])->header('Content-Type','application/json');
 		}
 
 		$headers= 'MIME-Version: 1.0' . "\r\n";
@@ -243,7 +246,7 @@ class PagesController extends Controller
 
 		$ret = mail($email_to_send_to,$email_subject,$body,$headers);
 
-		dd($ret);
+		// dd($ret);
 
 		if(!$ret){
 			return response(['success'=>false,'message'=>'Email Could not be sent due to a server problem. Please check back later'])->header('Content-Type','application/json');
