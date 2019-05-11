@@ -17,6 +17,8 @@ use Ogilo\AdminMd\Models\Comment;
 use Validator;
 use Mail;
 
+use Ogilo\AdminMd\Mail\WebFeedback;
+
 /**
 *
 */
@@ -118,7 +120,7 @@ class PagesController extends Controller
 
 		return view($template,compact('profile','template','page'));
 	}
-    
+
     public function getPackage($package_name,$page_name=null)
 	{
 
@@ -218,33 +220,10 @@ class PagesController extends Controller
 
 	public function postContact(Request $request)
 	{
-		// dd($request->all());
-		$name=$cust_name=null;
-		$email=null;
-		$email_to_send_to=null;
-		$comment=null;
-		$cphn=null;
-		$email_subject = null;
-		$body=null;
 
-		if($request->input('formid')=='contact')
-		{
-			$name=$cust_name=$request->input('name');
-			$email=$request->input('email');
-			$email_to_send_to=config('admin.contact');
-			$comment=$request->input('comments');
-			$cphn=$request->input('phone');
-			$email_subject = "Website Contact - " .$request->input('subject');
-			$body='Contact Name :'.$name.'<br>'.'Contact Email:'.$email.'<br>'.'Contact Phone:'.$cphn.'<br>'.'Comment:'.$comment;
-		}else{
-			return response(['success'=>false,'message'=>'form not valid!'])->header('Content-Type','application/json');
-		}
-
-		$headers= 'MIME-Version: 1.0' . "\r\n";
-		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-		$headers.= 'From: '.$name.'<'.$email.'> ' . "\r\n" .'Reply-To: '.$email.' ' . "\r\n" .'X-Mailer: PHP/' . phpversion();
-
-		$ret = mail($email_to_send_to,$email_subject,$body,$headers);
+        $data = $request->except('_token');
+        // return (new WebFeedback($data))->render();
+		$ret = Mail::to(config('admin.contact'))->send(new WebFeedback($data));
 
 		// dd($ret);
 

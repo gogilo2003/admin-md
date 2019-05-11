@@ -10,5 +10,5 @@ Route::group(['middleware'=>'web','namespace'=>'Ogilo\AdminMd\Http\Controllers\W
 	Route::get('event/{event_name}/{page_name?}',['as'=>'event','uses'=>'PagesController@getEvent']);
 	Route::post('event/guest/register',['as'=>'event-guest-register','uses'=>'PagesController@postEventGuest']);
 	Route::post('comment',['as'=>'post-comment','uses'=>'PagesController@postComment']);
-	Route::post('contact/post',['as'=>'post-contact','uses'=>'PagesController@postContact']);
+	Route::any('contact/post',['as'=>'post-contact','uses'=>'PagesController@postContact']);
 });
