@@ -18,7 +18,7 @@
     "autoload":{
         "psr-4":{"Ogilo\\AdminMd\\": "src/"},
         "files":[
-            "src/SUpport/helpers.php"
+            "src/Support/helpers.php"
         ]
     },
     "extra": {
