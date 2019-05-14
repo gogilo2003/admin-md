@@ -16,7 +16,10 @@
         }
     ],
     "autoload":{
-        "psr-4":{"Ogilo\\AdminMd\\": "src/"}
+        "psr-4":{"Ogilo\\AdminMd\\": "src/"},
+        "files":[
+            "src/SUpport/helpers.php"
+        ]
     },
     "extra": {
         "laravel": {

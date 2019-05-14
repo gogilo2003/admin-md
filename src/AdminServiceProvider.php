@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Ogilo\AdminMd\Console\InstallCommand;
 use Ogilo\AdminMd\Console\UpdateCommand;
 /**
-* 
+*
 */
 class AdminServiceProvider extends ServiceProvider
 {
@@ -20,7 +20,12 @@ class AdminServiceProvider extends ServiceProvider
 		// print(config('app.name').' in register()');
 		$this->app->bind('admin',function($app){
 			return new Admin;
-		});
+        });
+
+        $file = __DIR__.'Support/helpers.php';
+        if (file_exists($file)) {
+            require_once($file);
+        }
 	}
 
 	public function boot()
