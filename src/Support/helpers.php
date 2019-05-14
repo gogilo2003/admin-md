@@ -1179,10 +1179,10 @@ function clean_directories()
 
     if(file_exists('bower_components'))
     	exec('rm -R bower_components');
-    
+
     if(file_exists('node_modules'))
     	exec('rm -R node_modules');
-    
+
     chdir($cwmd);
 }
 
@@ -1270,7 +1270,7 @@ function deleteDirectory($dir) {
     return rmdir($dir);
 }
 
-function getOS($user_agent) { 
+function getOS($user_agent) {
 
     $os_platform  = "Unknown OS Platform";
 
@@ -1342,7 +1342,7 @@ function make_html_list($data,$type='ol'){
 }
 
 // Ordinal function to add st, nd, rd etc to numbers
- 
+
 if (! function_exists('str_ordinal')) {
     /**
      * Append an ordinal indicator to a numeric value.
@@ -1354,14 +1354,36 @@ if (! function_exists('str_ordinal')) {
     function str_ordinal($value, $superscript = false)
     {
         $number = abs($value);
- 
+
         $indicators = ['th','st','nd','rd','th','th','th','th','th','th'];
- 
+
         $suffix = $superscript ? '<sup>' . $indicators[$number % 10] . '</sup>' : $indicators[$number % 10];
         if ($number % 100 >= 11 && $number % 100 <= 13) {
             $suffix = $superscript ? '<sup>th</sup>' : 'th';
         }
- 
+
         return number_format($number) . $suffix;
+    }
+}
+
+if(! function_exists('clean_isdn')){
+    function clean_isdn($phone_number){
+
+        $isdn = ltrim($phone_number,0);
+
+        if(strlen($isdn) === 9){
+            $isdn = '+254'.$isdn;
+        }elseif(strlen($isdn)===12){
+            $isdn = '+'.$isdn;
+        }
+
+        return $isdn;
+    }
+}
+
+if(! function_exists('str_studle')){
+    function str_studle($string){
+        $str = str_slug($string);
+        return str_replace('-', '_', $str);
     }
 }
