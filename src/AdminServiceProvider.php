@@ -22,7 +22,7 @@ class AdminServiceProvider extends ServiceProvider
 			return new Admin;
         });
 
-        $file = __DIR__.'Support/helpers.php';
+        $file = __DIR__.'/Support/helpers.php';
         if (file_exists($file)) {
             require_once($file);
         }
