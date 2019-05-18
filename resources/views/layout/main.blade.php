@@ -228,7 +228,11 @@ Tip 2: you can also add an image using data-image tag-->
         @endif
 
         $(document).ready(function () {
-            $('select').selectpicker();
+            $('.selectpicker').selectpicker({
+                "style": "btn btn-link",
+                "liveSearch": true,
+                "size": 5
+            });
             $('.navbar .dropdown-toggle').dropdownHover();
 
             let icons = {
@@ -260,6 +264,8 @@ Tip 2: you can also add an image using data-image tag-->
             });
 
             $('.typeahead').typeahead()
+
+            $('.datatable').dataTable();
 
         })
     </script>

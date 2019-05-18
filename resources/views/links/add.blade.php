@@ -66,6 +66,7 @@
 		
 	</style>
 @stop
+
 @section('scripts_top')
 	<script type="text/javascript">
 		
