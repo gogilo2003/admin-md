@@ -33,7 +33,11 @@
 			<div class="col-sm-6 col-md-4 col-lg-4">
 				<div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
 					<label for="name">Picture</label>
-					<img id="image_preview" src="{{ url('public/images/pictures/'.$picture->name) }}" class="img-responsive img-fluid" alt="{{ $picture->title }}">
+					<div>
+						<img id="image_preview" src="{{ url('public/images/pictures/'.$picture->name) }}" class="img-responsive img-fluid" alt="{{ $picture->title }}">
+					</div>
+
+					<a href="JavaScript:" id="load_image" class="btn btn-block btn-round btn-primary"><i class="material-icons">search</i> Browse</a>
 					<input 
 						data-filename-placement="inside" 
 						title="Select a picture to upload" 
@@ -83,7 +87,7 @@
 
 			</div>
 		</div>
-				
+		<input type="hidden" name="cropdetails" id="cropdetails">
 		<input type="hidden" name="id" value="{{$picture->id}}">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<button type="submit" class="btn btn-primary"><span class="fa fa-save"></span>  Save</button>
@@ -107,8 +111,24 @@
 @section('scripts_bottom')
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('#image_preview').click(function(){
+			var cropper = $('#image_preview').cropper({
+				aspectRatio: 1/1
+			})
+
+			$('#load_image').click(function(){
 				$('input[type="file"]#name').click()
+			})
+
+			$('input[type="file"]#name').change(function(){
+				let src = window.URL.createObjectURL($(this).prop('files')[0])
+				// document.querySelector('.cropper-canvas img').src = src
+				$('#image_preview').cropper('replace',src)
+			})
+
+			$('#image_preview').on('cropend',function(){
+				let data = $('#image_preview').cropper('getData')
+				// console.log(data.height)
+				$('input#cropdetails').val(JSON.stringify(data))
 			})
 		})
 	</script>

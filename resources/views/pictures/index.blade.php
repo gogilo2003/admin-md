@@ -39,7 +39,7 @@
 		@foreach ($pictures as $key => $picture)
 			<tr>
 				<td>{{ $loop->iteration }}</td>
-				<td>
+				<td width="128">
 					<img src="{{ url('public/images/pictures/thumbnails/'.$picture->name) }}" class="img-responsive img-fluid" alt="{{ $picture->alt }}">
 				</td>
 				<td>

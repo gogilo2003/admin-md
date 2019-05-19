@@ -12,6 +12,7 @@
     'events' => false,
     'packages' => false,
     'products' => false,
+    'branches' => false,
     'contact' => NULL,
     'content_css' => NULL,
     'menu' => 

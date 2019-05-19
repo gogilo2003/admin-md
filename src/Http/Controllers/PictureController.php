@@ -63,7 +63,7 @@ class PictureController extends Controller
 		$cat = PictureCategory::find($request->input('picture_category'));
 
 		$image = Image::make($request->file('name')->getRealPath());
-		$image->fit($cat->max_width,$cat->max_height);
+		// $image->fit($cat->max_width,$cat->max_height);
 		$image->save($dir.'/'.$filename);
 		$image->destroy();
 
@@ -71,18 +71,18 @@ class PictureController extends Controller
 			File::makeDirectory($dir.'/thumbnails',0755,TRUE);
 		}
 
+		$dim = json_decode($request->input('cropdetails'));
 		$thumbnail = Image::make($request->file('name')->getRealPath());
-		$thumbnail->fit(128,128);
+		$thumbnail->crop((int)$dim->width, (int)$dim->height, (int)$dim->x, (int)$dim->y);
 		$thumbnail->save($dir.'/thumbnails/'.$filename);
 		$thumbnail->destroy();
 
-		$picture->name 					= $filename;
-		$picture->alt 					= $request->input('alt');
-		$picture->caption 				= $request->input('caption');
-		$picture->title 				= $request->input('title');
-		$picture->url 				= $request->input('url');
+		$picture->name		= $filename;
+		$picture->alt		= $request->input('alt');
+		$picture->caption	= $request->input('caption');
+		$picture->title		= $request->input('title');
+		$picture->url		= $request->input('url');
 		// $picture->picture_category_id 	= $request->input('picture_category');
-
 
 		$cat->pictures()->save($picture);
 
@@ -129,7 +129,7 @@ class PictureController extends Controller
 			}
 
 			$cat = PictureCategory::find($request->picture_category);
-			$image->fit($cat->max_width,$cat->max_height);
+			// $image->fit($cat->max_width,$cat->max_height);
 			$image->save($dir.'/'.$filename);
 			$image->destroy();
 
@@ -137,8 +137,9 @@ class PictureController extends Controller
 				File::makeDirectory($dir.'/thumbnails',0755,TRUE);
 			}
 
+			$dim = json_decode($request->input('cropdetails'));
 			$thumbnail = Image::make($request->file('name')->getRealPath());
-			$thumbnail->fit(128,128);
+			$thumbnail->crop((int)$dim->width, (int)$dim->height, (int)$dim->x, (int)$dim->y);
 			$thumbnail->save($dir.'/thumbnails/'.$filename);
 			$thumbnail->destroy();
 

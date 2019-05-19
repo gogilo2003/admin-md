@@ -1158,11 +1158,19 @@ function node_modules_install(){
     $dir = __DIR__;
 
     chdir($dir);
-    chdir('../../public/material-dashboard-master');
+    chdir('../../public');
 
-    $outputs = [];
+    $outputs = [
+    		'md'=>null,
+    		'public'=>null
+    	];
     $cmd = 'npm install --save';
-    $res = exec($cmd,$outputs);
+    $res = exec($cmd,$outputs['public']);
+
+    chdir('material-dashboard-master');
+
+    $cmd = 'npm install --save';
+    $res = exec($cmd,$outputs['md']);
 
     chdir($cwmd);
 
@@ -1182,6 +1190,9 @@ function clean_directories()
 
     if(file_exists('node_modules'))
     	exec('rm -R node_modules');
+
+    if(file_exists('material-dashboard-master/node_modules'))
+    	exec('rm -R material-dashboard-master/node_modules');
 
     chdir($cwmd);
 }

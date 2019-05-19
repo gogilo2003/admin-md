@@ -28,6 +28,7 @@
     <!--<link rel="stylesheet" href="{{ url('public/vendor/admin/css/bootstrap-datetimepicker.min.css') }}">-->
     <!--<link rel="stylesheet" href="{{ url('public/vendor/admin/css/file-input.css') }}">-->
     <link rel="stylesheet" href="{{ url('public/vendor/admin/iconmoon/linea-icon.css') }}">
+    <link rel="stylesheet" href="{{ url('public/vendor/admin/cropper/cropper.min.css') }}">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <!--<link href="/public/vendor/admin/material-dashboard-master/assets/demo/demo.css" rel="stylesheet" />-->
     <script type="text/javascript" src="{{ url('public/vendor/admin/js/moment.min.js') }}"></script>
@@ -168,6 +169,7 @@ Tip 2: you can also add an image using data-image tag-->
     <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-datetimepicker.min.js') }}"></script>-->
     <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap3-typeahead.min.js') }}"></script>
     <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/file-input.js') }}"></script>-->
+    <script type="text/javascript" src="{{ url('public/vendor/admin/cropper/cropper.min.js') }}"></script>
     <script type="text/javascript">
         tinymce.init({
             plugins: 'code link image lists table paste preview print anchor fullscreen',

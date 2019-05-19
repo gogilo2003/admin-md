@@ -62,6 +62,7 @@ class UpdateCommand extends Command
         $this->call('vendor:publish', ['--tag'=>'public', '--force']);
         $this->call('vendor:publish', ['--tag'=>'md-public', '--force']);
         $this->call('vendor:publish', ['--tag'=>'chartjs', '--force']);
+        $this->call('vendor:publish', ['--tag'=>'cropper', '--force']);
 
         clean_directories();
 
