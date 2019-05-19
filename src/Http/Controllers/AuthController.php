@@ -37,19 +37,19 @@ class AuthController extends Controller
     	$admin = [
     			'email' => $request->input('email'),
     			'password' => $request->input('password'),
+                'active' => 1
     		];
 
-        // dd(admin_roles());
     	if (Admin::all()->count()==0) {
     		$role = new AdminRole;
     		$role->name = 'Admin';
     		$role->details = admin_roles();
     		$role->save();
-// dd('Role Saved');
     		$new_admin = new Admin();
     		$new_admin->name 		= "System Admin";
     		$new_admin->email 		= $request->input('email');
     		$new_admin->password 	= bcrypt($request->input('password'));
+            $new_admin->active      = 1;
     		$role->admins()->save($new_admin);
     	}
 
