@@ -49,7 +49,7 @@ class PictureController extends Controller
 						->with('global-warning','Some fields failed validation. Please check and try again');
 		}
 
-		Image::configure(array('driver' => 'imagick'));
+		// Image::configure(array('driver' => 'imagick'));
 
 		$picture = new Picture;
 
@@ -117,7 +117,7 @@ class PictureController extends Controller
 		}
 		$picture = Picture::find($request->input('id'));
 		if($request->hasFile('name')){
-			Image::configure(array('driver' => 'imagick'));
+			// Image::configure(array('driver' => 'imagick'));
 
 			$image 		= Image::make($request->file('name')->getRealPath());
 
