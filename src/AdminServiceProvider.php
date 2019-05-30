@@ -157,7 +157,7 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__.'/../public/material-dashboard-master/assets/img'=>public_path('vendor/admin/material-dashboard-master/assets/img'),
 			__DIR__.'/../public/material-dashboard-master/assets/css'=>public_path('vendor/admin/material-dashboard-master/assets/css'),
 			__DIR__.'/../public/material-dashboard-master/assets/js'=>public_path('vendor/admin/material-dashboard-master/assets/js'),
-		]);
+        ],'md-public');
 		$this->publishes([
 			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.js'=>public_path('vendor/admin/cropper/cropper.min.js'),
 			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.css'=>public_path('vendor/admin/cropper/cropper.min.css'),
