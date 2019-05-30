@@ -18,7 +18,7 @@
     @yield('meta-twitter')
     <title>@yield('title')</title>
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <!--<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />-->
     <link rel="stylesheet" href="/public/vendor/admin/css/font-awesome.min.css">
     <link rel="stylesheet" href="/public/vendor/admin/material-design-icons/material-icons.css">
     <!-- CSS Files -->
@@ -74,7 +74,7 @@ Tip 2: you can also add an image using data-image tag-->
                             </div>
                         </div>
                     @endif
-                    
+
                 </div>
             </div>
             <footer class="footer">
@@ -149,7 +149,7 @@ Tip 2: you can also add an image using data-image tag-->
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/nouislider.min.js"></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>-->
     <!-- Library for adding dinamically elements -->
     <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/arrive.min.js"></script>
     <!--  Google Maps Plugin    -->
@@ -213,19 +213,19 @@ Tip 2: you can also add an image using data-image tag-->
 
         // $('input[type=file]').bootstrapFileInput();
 
-        @if(Session::has('global-info')) 
+        @if(Session::has('global-info'))
         {!! "$.notify( { message: '".Session::get('global-info')."',icon: 'info_outline'}, {type: 'info'})" !!}
         @endif
 
-        @if(Session::has('global-success')) 
+        @if(Session::has('global-success'))
         {!! "$.notify( { message: '".Session::get('global-success')."',icon: 'check_circle'}, {type: 'success'})" !!}
         @endif
 
-        @if(Session::has('global-warning')) 
+        @if(Session::has('global-warning'))
         {!! "$.notify( { message: '".Session::get('global-warning')."',icon: 'error_outline'}, {type: 'warning'})" !!}
         @endif
 
-        @if(Session::has('global-danger')) 
+        @if(Session::has('global-danger'))
         {!! "$.notify( { message: '".Session::get('global-danger')."',icon: 'not_interested'}, {type: 'danger'})" !!}
         @endif
 

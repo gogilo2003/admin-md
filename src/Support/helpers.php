@@ -1398,3 +1398,24 @@ if(! function_exists('str_studle')){
         return str_replace('-', '_', $str);
     }
 }
+
+if (! function_exists('week')) {
+    function week($from=null, $when=null){
+        $date = null;
+        $start = null;
+
+        if ($from) {
+            $start = date_create($from);
+        } else {
+            $start = date_create(date('Y').'-01-01');
+        }
+
+        if ($when) {
+            $date = date_create($when);
+        } else {
+            $date = date_create();
+        }
+
+        return ((int)$date->format('W') - (int) $start->format('W')) + 1;
+    }
+}
