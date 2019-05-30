@@ -13,7 +13,7 @@ class AlterPictureCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('pricture_categories', function (Blueprint $table) {
+        Schema::table('picture_categories', function (Blueprint $table) {
             $table->integer('max_width')->default(null)->nullable()->change();
             $table->integer('max_height')->default(null)->nullable()->change();
             $table->integer('min_width')->default(null)->nullable()->change();
