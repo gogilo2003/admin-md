@@ -19,7 +19,7 @@ class Hits
     {
 
         // dd($request);
-        if (!is_admin_path()) {
+        if (!is_admin_path() && $request->ip()) {
             $hit = new Hit;
 
             $hit->ip = $request->ip();
@@ -36,7 +36,7 @@ class Hits
 
             $hit->save();
         }
-        
+
         return $next($request);
     }
 
