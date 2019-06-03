@@ -13,10 +13,11 @@ class AdminServiceProvider extends ServiceProvider
 
 	protected $commands = [
 		'Ogilo\AdminMd\Console\InstallComand'
-	];
+    ];
 
 	function register()
 	{
+
 		// print(config('app.name').' in register()');
 		$this->app->bind('admin',function($app){
 			return new Admin;

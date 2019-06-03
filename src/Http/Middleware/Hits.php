@@ -19,7 +19,7 @@ class Hits
     {
 
         // dd($request);
-        if (!is_admin_path() && $request->ip()) {
+        if (!str_starts_with($request->path(),'admin') && $request->ip()) {
             $hit = new Hit;
 
             $hit->ip = $request->ip();

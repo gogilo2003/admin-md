@@ -17,7 +17,7 @@
 @stop
 
 @section('toolbar')
-	
+
 @stop
 
 @section('content')
@@ -29,19 +29,28 @@
 		</div>
 
 		<div class="form-group{!! $errors->has('roles') ? ' has-error':'' !!}">
-			<label for="roles">Roles</label>
+            <label for="roles">Roles</label>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+			    <div class="form-group{!! $errors->has('roles') ? ' has-error':'' !!}">
+					<label for="roles">Roles</label>
+					<a id="checkall" href="javascript:">Check All</a>
+
+					{!! $errors->has('roles') ? '<span class="text-danger">'.$errors->first('roles').'</span>' : '' !!}
+                </div>
+			</div>
 			<div class="row">
 			@foreach (admin_roles(false,false) as $value => $caption)
-
-				<div class="col-md-3 col-lg-3">
-					<div class="checkbox">
-						<label>
-							<input type="checkbox" value="{{ $value }}" name="roles[]" {{ $role->hasRole($value) ? 'checked' : '' }}>
-							{{ $caption }}
-						</label>
-					</div>
-				</div>
-					
+            <div class="col-sm-12 col-md-4 col-lg-3">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input rolesCheckBox" type="checkbox" value="{{ $value }}" name="roles[]" {{ $role->hasRole($value) ? 'checked' : '' }}>
+                        {{ $caption }}
+                        <span class="form-check-sign">
+                            <span class="check"></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
 			@endforeach
 			</div>
 			{!! $errors->has('roles') ? '<span class="text-danger">'.$errors->first('roles').'</span>' : '' !!}
@@ -54,17 +63,31 @@
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
 @section('scripts_bottom')
 	<script type="text/javascript">
-		
+		var varChecked = false;
+		jQuery(document).ready(function($) {
+			$('#checkall').click(
+					function(){
+						// alert('Check All Clicked - '+varChecked);
+						if(varChecked){
+							$('.rolesCheckBox').attr('checked',null);
+							varChecked = false;
+						}else{
+							$('.rolesCheckBox').attr('checked','checked');
+							varChecked = true;
+						}
+					}
+				);
+		});
 	</script>
 @stop

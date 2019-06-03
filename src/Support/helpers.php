@@ -26,35 +26,52 @@ function is_path($path)
 
 function admin_roles($as_string=true,$sort=false)
 {
-	$roles = '';
 
-	foreach(\Route::getRoutes()->getRoutes() as $route){
-		if(Str::startsWith($route->getName(),'admin')){
-			$roles .= ','.$route->getName();
-		}
-	}
-
-	$raw_roles = explode(',', ltrim($roles,','));
-
-	if ($sort) {
-		asort($raw_roles);
-		$raw_roles = array_values($raw_roles);
-	}
+    $routes = \Route::getRoutes()->getRoutes();
 
 	if ($as_string) {
+        $roles = '';
+
+        foreach($routes as $route){
+            if(Str::startsWith($route->getName(),'admin')){
+                $roles .= ','.$route->getName();
+            }
+        }
+
+        $roles = ltrim($roles,',');
+
+        $raw_roles = explode(',', $roles);
+
+        if ($sort) {
+            asort($raw_roles);
+            $raw_roles = array_values($raw_roles);
+        }
+
 		$string_roles = implode(',', $raw_roles);
 		return $string_roles;
 	}else{
-		$array_roles = array();
-		array_walk($raw_roles, function($value,$key) use (&$array_roles){
+        // dd($raw_roles);
+        $array_roles = array();
+        foreach($routes as $route){
+            if(Str::startsWith($route->getName(),'admin')){
+                $roles[$route->getName()] = $route;
+            }
+        }
+
+        if($sort){
+            asort($roles);
+        }
+
+		foreach($roles as $key => $route){
 			// global $array_values;
-			if ($value !== null) {
-				$array_roles[$value] = str_replace(url('/').'/','',route($value));
+			if ($route->getName() !== null) {
+				$array_roles[$key] = str_replace(url('/').'/','',$route->uri());
 			}
 			// $array_roles[$value] = route($value);
-		});
+		}
 
-		// $array_roles = array_fill_keys($raw_roles,array_values($raw_roles));
+        // $array_roles = array_fill_keys($raw_roles,array_values($raw_roles));
+        // dd($array_roles);
 		return $array_roles;
 	}
 
@@ -1417,5 +1434,11 @@ if (! function_exists('week')) {
         }
 
         return ((int)$date->format('W') - (int) $start->format('W')) + 1;
+    }
+}
+
+if(! function_exists('str_starts_with')){
+    function str_starts_with($string,$needle){
+        return Str::startsWith($string,$needle);
     }
 }
