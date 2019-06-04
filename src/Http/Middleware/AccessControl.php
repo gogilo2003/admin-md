@@ -34,16 +34,20 @@ class AccessControl
 
     private function authorize($request){
         $user = $request->user();
-        $roles = explode(',',$user->role->details);
-        $name = $request->route()->getName();
-        // return $name;
-        $f = array_search($name,$roles);
-        // return $f;
-        if($f===false){
-            return false;
-        }else{
-            return true;
+
+        if($user){
+            $roles = explode(',',$user->role->details);
+            $name = $request->route()->getName();
+            // return $name;
+            $f = array_search($name,$roles);
+            // return $f;
+            if($f===false){
+                return false;
+            }else{
+                return true;
+            }
         }
+        return true;
     }
 
 }
