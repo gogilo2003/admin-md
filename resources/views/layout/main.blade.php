@@ -6,9 +6,16 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{!! url('public/favicon.png') !!}">
     <link rel="icon" type="image/png" href="{!! url('public/favicon.png') !!}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script type="text/javascript">
+        window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+            'baseUrl' => url('/'),
+            'routes' => collect(\Route::getRoutes())->mapWithKeys(function ($route) { return [$route->getName() => $route->uri()]; })
+        ]) !!};
+    </script>
     <title>@yield('title')</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-        name='viewport' />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     @section('meta')
     <meta name="author" content="Georsamarts ICT Solutions">
     <meta name="description" content="Sites Description">
@@ -16,7 +23,9 @@
     @show
     @yield('meta-fb')
     @yield('meta-twitter')
-    <title>@yield('title')</title>
+
+    @stack('head_scripts')
+
     <!--     Fonts and icons     -->
     <!--<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />-->
     <link rel="stylesheet" href="/public/vendor/admin/css/font-awesome.min.css">
@@ -38,7 +47,7 @@
 </head>
 
 <body class="">
-    <div class="wrapper ">
+    <div class="wrapper " id="app">
         <div class="sidebar" data-color="purple" data-background-color="green" data-image="/public/vendor/admin/material-dashboard-master/assets/img/sidebar-1.jpg">
             <!-- Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 Tip 2: you can also add an image using data-image tag-->
@@ -110,9 +119,7 @@ Tip 2: you can also add an image using data-image tag-->
                     </nav>
                     <div class="copyright float-right">
                         &copy;
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script>, Themed by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
+                        {{ date('Y') }}, Themed by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
                     </div>
                 </div>
             </footer>
@@ -120,158 +127,82 @@ Tip 2: you can also add an image using data-image tag-->
     </div>
 
     <!--   Core JS Files   -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/core/jquery.min.js"></script>
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/core/popper.min.js"></script>
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/core/bootstrap-material-design.min.js"></script>
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/core/jquery.min.js" defer></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/core/popper.min.js" defer></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/core/bootstrap-material-design.min.js" defer></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/perfect-scrollbar.jquery.min.js" defer></script>
     <!-- Plugin for the momentJs  -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/moment.min.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/moment.min.js" defer></script>
     <!--  Plugin for Sweet Alert -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/sweetalert2.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/sweetalert2.js" defer></script>
     <!-- Forms Validations Plugin -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jquery.validate.min.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jquery.validate.min.js" defer></script>
     <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jquery.bootstrap-wizard.js" defer></script>
     <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-selectpicker.js" defer></script>
     <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-datetimepicker.min.js" defer></script>
     <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jquery.dataTables.min.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jquery.dataTables.min.js" defer></script>
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-tagsinput.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-tagsinput.js" defer></script>
     <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jasny-bootstrap.min.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jasny-bootstrap.min.js" defer></script>
     <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/fullcalendar.min.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/fullcalendar.min.js" defer></script>
     <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jquery-jvectormap.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jquery-jvectormap.js" defer></script>
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/nouislider.min.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/nouislider.min.js" defer></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js" defer></script>-->
     <!-- Library for adding dinamically elements -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/arrive.min.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/arrive.min.js" defer></script>
     <!--  Google Maps Plugin    -->
-    <!--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>-->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE" defer></script>-->
     <!-- Chartist JS -->
-    <!--<script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/chartist.min.js"></script>-->
+    <!--<script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/chartist.min.js" defer></script>-->
     <!--  Notifications Plugin    -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-notify.js"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-notify.js" defer></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
-    <script type="text/javascript" src="{{ url('public/vendor/admin/js/main.js') }}"></script>
+    <script src="/public/vendor/admin/material-dashboard-master/assets/js/material-dashboard.js?v=2.1.1" type="text/javascript" defer></script>
     <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/jquery.dataTables.min.js') }}"></script>-->
     <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-notify.min.js') }}"></script>-->
     <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-select.min.js') }}"></script>-->
     <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap.file-input.js') }}"></script>-->
-    <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-hover-dropdown.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-hover-dropdown.min.js') }}" defer></script>
     <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-datetimepicker.min.js') }}"></script>-->
-    <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap3-typeahead.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap3-typeahead.min.js') }}" defer></script>
     <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/file-input.js') }}"></script>-->
-    <script type="text/javascript" src="{{ url('public/vendor/admin/cropper/cropper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url('public/vendor/admin/cropper/cropper.min.js') }}" defer></script>
     <script type="text/javascript">
-        tinymce.init({
-            plugins: 'code link image lists table paste preview print anchor fullscreen',
-            selector: ".tinymce",
-            toolbar: 'styleselect | bold italic underline strikethrough removeformat | alignleft aligncenter alignright alignjustify lists | cut copy paste | bullist numlist | outdent indent blockquote | subscript superscript | undo redo | link unlink image table| code print preview fullscreen',
-            menubar: false,
-            allow_conditional_comments: false,
-            content_css: '{{ config('admin.content_css') }}',
-            images_upload_handler: function (blobInfo, success, failure) {
-                var xhr, formData;
-
-                xhr = new XMLHttpRequest();
-                xhr.withCredentials = false;
-                xhr.open('POST', '{{ route('admin-images_upload_url') }}');
-
-                xhr.onload = function () {
-                    var json;
-
-                    if (xhr.status != 200) {
-                        failure('HTTP Error: ' + xhr.status);
-                        return;
-                    }
-
-                    json = JSON.parse(xhr.responseText);
-
-                    if (!json || typeof json.location != 'string') {
-                        failure('Invalid JSON: ' + xhr.responseText);
-                        return;
-                    }
-
-                    success(json.location);
-                };
-
-                formData = new FormData();
-                formData.append('file', blobInfo.blob(), blobInfo.filename());
-                formData.append('_token', '{{ csrf_token() }}');
-
-                xhr.send(formData);
-            }
-        });
-
-        // $('input[type=file]').bootstrapFileInput();
-
-        @if(Session::has('global-info'))
-        {!! "$.notify( { message: '".Session::get('global-info')."',icon: 'info_outline'}, {type: 'info'})" !!}
-        @endif
-
-        @if(Session::has('global-success'))
-        {!! "$.notify( { message: '".Session::get('global-success')."',icon: 'check_circle'}, {type: 'success'})" !!}
-        @endif
-
-        @if(Session::has('global-warning'))
-        {!! "$.notify( { message: '".Session::get('global-warning')."',icon: 'error_outline'}, {type: 'warning'})" !!}
-        @endif
-
-        @if(Session::has('global-danger'))
-        {!! "$.notify( { message: '".Session::get('global-danger')."',icon: 'not_interested'}, {type: 'danger'})" !!}
-        @endif
-
-        $(document).ready(function () {
-            $('.selectpicker').selectpicker({
-                "style": "btn btn-link",
-                "liveSearch": true,
-                "size": 5
-            });
-            $('.navbar .dropdown-toggle').dropdownHover();
-
-            let icons = {
-                    time: "fa fa-clock-o",
-                    date: "fa fa-calendar",
-                    up: "fa fa-chevron-up",
-                    down: "fa fa-chevron-down",
-                    previous: 'fa fa-chevron-left',
-                    next: 'fa fa-chevron-right',
-                    today: 'fa fa-screenshot',
-                    clear: 'fa fa-trash',
-                    close: 'fa fa-remove'
-                }
-
-            $('.datetimepicker').datetimepicker({
-                format: 'YYYY-MM-DD HH:mm:ss',
-                sideBySide: true,
-                icons
-            });
-            $('.timepicker').datetimepicker({
-                locale: 'en',
-                format: 'LT',
-                icons
-            });
-
-            $(".datepicker").datetimepicker({
-                format: 'YYYY-MM-DD',
-                icons
-            });
-
-            $('.typeahead').typeahead()
-
-            $('.datatable').dataTable();
-
-        })
+    var images_upload_url = '{{ route('admin-images_upload_url') }}'
+    var contentCSS = '{{ config('admin.content_css') }}'
     </script>
+    <script type="text/javascript" src="{{ url('public/vendor/admin/js/main.js') }}" defer></script>
 
+    <script type="text/javascript">
+
+    @if(Session::has('global-info'))
+    {!!"$.notify( { message: '".Session::get('global-info')."',icon: 'info_outline'}, {type: 'info'})"!!}
+    @endif
+
+    @if(Session::has('global-success'))
+    {!!"$.notify( { message: '".Session::get('global-success')."',icon: 'check_circle'}, {type: 'success'})"!!}
+    @endif
+
+    @if(Session::has('global-warning'))
+    {!!"$.notify( { message: '".Session::get('global-warning')."',icon: 'error_outline'}, {type: 'warning'})"!!}
+    @endif
+
+    @if(Session::has('global-danger'))
+    {!!"$.notify( { message: '".Session::get('global-danger')."',icon: 'not_interested'}, {type: 'danger'})"!!}
+    @endif
+
+    </script>
+    <script type="text/javascript" src="{{ url('public/vendor/admin/js/admin.js') }}" defer></script>
+    @stack('body_scripts')
     @yield('scripts_bottom')
 </body>
 

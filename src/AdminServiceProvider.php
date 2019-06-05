@@ -122,11 +122,13 @@ class AdminServiceProvider extends ServiceProvider
 
 			__DIR__.'/../public/css' => public_path('vendor/admin/css'),
 			__DIR__.'/../public/img' => public_path('vendor/admin/img'),
-			__DIR__.'/../public/iconmoon' => public_path('vendor/admin/iconmoon'),
+            __DIR__.'/../public/js' => public_path('vendor/admin/js'),
+        ],'admin-assets');
+
+        $this->publishes([
 			__DIR__.'/../public/bower_components/bootstrap-select/dist/css' => public_path('vendor/admin/css'),
 			__DIR__.'/../public/bower_components/datatables/media/css' => public_path('vendor/admin/css'),
 			__DIR__.'/../public/bower_components/datatables/media/images' => public_path('vendor/admin/images'),
-			__DIR__.'/../public/js' => public_path('vendor/admin/js'),
 			// __DIR__.'/../public/bower_components/bootstrap/dist/fonts' => public_path('vendor/admin/fonts'),
 			__DIR__.'/../public/bower_components/font-awesome/fonts' => public_path('vendor/admin/fonts'),
 			// __DIR__.'/../public/bower_components/jquery/dist' => public_path('vendor/admin/js'),
@@ -144,10 +146,14 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__.'/../public/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' => public_path('vendor/admin/css/bootstrap-datetimepicker.min.css'),
 			__DIR__.'/../public/bower_components/moment/min/moment.min.js' => public_path('vendor/admin/js/moment.min.js'),
 			__DIR__.'/../public/bower_components/bootstrap3-typeahead/bootstrap3-typeahead.min.js' => public_path('vendor/admin/js/bootstrap3-typeahead.min.js'),
-			__DIR__.'/../public/bower_components/font-awesome/css/font-awesome.min.css' => public_path('vendor/admin/css/font-awesome.min.css'),
+            __DIR__.'/../public/bower_components/font-awesome/css/font-awesome.min.css' => public_path('vendor/admin/css/font-awesome.min.css'),
+        ],'bower_components');
+
+        $this->publishes([
 			__DIR__.'/../public/material-design-icons' => public_path('vendor/admin/material-design-icons'),
+			__DIR__.'/../public/iconmoon' => public_path('vendor/admin/iconmoon'),
 			// __DIR__.'/../public/bower_components/chart.js/dist/Chart.min.js' => public_path('vendor/admin/js/Chart.min.js'),
-			],'public');
+        ],'admin-icons');
 
 		$this->publishes([
 			__DIR__.'/../public/material-dashboard-master/node_modules/chart.js/dist/Chart.min.js'=>public_path('vendor/admin/material-dashboard-master/assets/js/plugins/Chart.min.js'),
@@ -159,12 +165,18 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__.'/../public/material-dashboard-master/assets/css'=>public_path('vendor/admin/material-dashboard-master/assets/css'),
 			__DIR__.'/../public/material-dashboard-master/assets/js'=>public_path('vendor/admin/material-dashboard-master/assets/js'),
         ],'md-public');
+
 		$this->publishes([
 			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.js'=>public_path('vendor/admin/cropper/cropper.min.js'),
 			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.css'=>public_path('vendor/admin/cropper/cropper.min.css'),
 		],'cropper');
 
-		$this->publishes([__DIR__.'/../config/admin.php'=>config_path('admin.php')],'config');
+        $this->publishes([__DIR__.'/../config/admin.php'=>config_path('admin.php')],'config');
+
+        $this->publishes([
+            __DIR__.'/../resources/assets/js'=>resource_path('assets/vendor/admin/js'),
+            __DIR__.'/../resources/assets/scss'=>resource_path('assets/vendor/admin/scss')
+        ],'vue-resources');
 
 	}
 }
