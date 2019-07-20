@@ -14603,4 +14603,9 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
     margin-top: 0;
     margin-bottom: 0; }
 
+table.dataTable tbody > tr.selected,
+table.dataTable tbody > tr > .selected {
+  color: #fff;
+  background-color: #8bc34a; }
+
 /*# sourceMappingURL=material-dashboard.css.map */

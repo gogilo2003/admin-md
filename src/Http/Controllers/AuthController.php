@@ -56,14 +56,14 @@ class AuthController extends Controller
     	if (Auth::guard('admin')->attempt($admin)) {
     		return redirect()
 	    			->intended('admin')
-	    			->with('global-success','Authentication Succesful');	
+	    			->with('global-success','Authentication Succesful');
     	}
 
 
     	return redirect()
     			->back()
-    			->with('global-danger','Authentication Failed!');	
-    	
+    			->with('global-danger','Authentication Failed!');
+
 
     }
 
@@ -95,7 +95,7 @@ class AuthController extends Controller
                     ->with('global-warning','Some Fields failed validation. Please check and try again');
         }
 
-        $$user = Admin::find($id);
+        $user = Admin::find($id);
 
         $user->name = $request->input('name');
         $user->email = $request->input('email');
