@@ -51,29 +51,31 @@
 		</tbody>
 	</table>
 
-	<div class="modal fade" id="pagesModal">
+	<div class="modal fade" id="pagesModal" data-backdrop="static">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<form method="post" action="{{route('admin-picture_categories-pages')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title">Select Pages</h4>
-						</div>
-						<div class="modal-body">
-							<select name="pages[]" id="pages" class="selectpicker" data-tick-icon="fa fa-check-square" multiple data-width="100%" data-size="5"> 
-							@foreach (\Ogilo\AdminMd\Models\Page::all() as $key => $page)
-								<option value="{{ $page->id }}">{{ $page->title }}</option>
-							@endforeach
-							</select>
-							<input type="hidden" name="id" value="">
-							<input type="hidden" name="_token" value="{{csrf_token()}}">
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-primary" data-dismiss="modal">&times;Close</button>
-							<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Save</button>
+						<div class="card">
+							<div class="card-header card-header-primary">
+								<button type="button" class="close btn btn-fab btn-danger btn-round btn-sm" data-dismiss="modal" aria-hidden="true" style><span class="material-icons">close</span></button>
+								<h4 class="card-title">Select Pages</h4>
+							</div>
+							<div class="card-body">
+								<select name="pages[]" id="pages" class="selectpicker" data-tick-icon="fa fa-check-square" multiple data-width="100%" data-size="5" data-style="btn btn-link">
+								@foreach (\Ogilo\AdminMd\Models\Page::all() as $key => $page)
+									<option value="{{ $page->id }}">{{ $page->title }}</option>
+								@endforeach
+								</select>
+								<input type="hidden" name="id" value="">
+								<input type="hidden" name="_token" value="{{csrf_token()}}">
+							</div>
+							<div class="card-footer">
+								<button type="button" class="btn btn-danger btn-round" data-dismiss="modal"><span class="material-icons">close</span> Close</button>
+								<button type="submit" class="btn btn-primary btn-round"><i class="material-icons">save</i>&nbsp;Save</button>
+							</div>
 						</div>
 					</form>
-						
+
 				</div>
 			</div>
 		</div>
@@ -81,12 +83,12 @@
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @endsection
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @endsection
 

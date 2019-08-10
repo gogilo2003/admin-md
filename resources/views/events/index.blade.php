@@ -22,7 +22,7 @@
 @stop
 
 @section('content')
-	<a href="{{route('admin-events-add')}}" class="btn btn-primary btn-sm"><span class="fa fa-plus"></span>&nbsp;&nbsp; Add Event</a>
+	<a href="{{route('admin-events-add')}}" class="btn btn-info btn-round"><span class="fa fa-plus"></span>&nbsp;&nbsp; Add Event</a>
 	<hr>
 	<div class="row">
 		@foreach ($events as $event)
@@ -34,9 +34,9 @@
 					{{ $event->category->name }}
 					<hr>
 					<div class="btn-group">
-						<a href="{{route('admin-events-edit',$event->id)}}" class="btn btn-primary btn-sm"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
-						<a data-id="{{ $event->id }}" href="javascript:void(0)" class="publishButton btn btn-primary btn-sm"><span class="fa fa-arrow-{{ $event->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $event->published ? 'Un-Publish' : 'Publish' }}</a>
-						<a data-id="{{ $event->id }}" href="javascript:void(0)" class="deleteButton btn btn-danger btn-sm"><span class="fa fa-times"></span>&nbsp;&nbsp; Delete</a>
+						<a href="{{route('admin-events-edit',$event->id)}}" class="btn btn-primary btn-sm btn-round"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
+						<a data-id="{{ $event->id }}" href="javascript:void(0)" class="publishButton btn btn-primary btn-sm btn-round"><span class="fa fa-arrow-{{ $event->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $event->published ? 'Un-Publish' : 'Publish' }}</a>
+						<a data-id="{{ $event->id }}" href="javascript:void(0)" class="deleteButton btn btn-danger btn-sm btn-round"><span class="fa fa-times"></span>&nbsp;&nbsp; Delete</a>
 					</div>
 				</div>
 			</div>
@@ -46,12 +46,12 @@
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
@@ -104,6 +104,6 @@
 				})
 			})
 		});
-		
+
 	</script>
 @stop

@@ -20,7 +20,7 @@
 
 @section('content')
 
-	<a href="{{ route('admin-packages-add') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add Package</a>
+	<a href="{{ route('admin-packages-add') }}" class="btn btn-info btn-round"><i class="fa fa-plus"></i> Add Package</a>
 	<hr>
 	<table class="table table-striped">
 		<thead>
@@ -37,10 +37,10 @@
 				<td>{{ $package->title }}</td>
 				<td>
 					<div class="btn-group">
-						<a href="{{ route('admin-packages-pictures',$package->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-image"></i>  Pictures&nbsp;&nbsp;<span class="badge">{{ $package->pictures->count() }}</span></a>
-						<a href="{{ route('admin-packages-edit',$package->id) }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</a>
-						<a href="javascript:publishPackage({{ $package->id }})" class="btn btn-warning btn-sm"><span class="fa fa-arrow-{{ $package->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $package->published ? ' Unpublish' : 'Publish' }}</a>
-						<a data-id="{{ $package->id }}" data-pages="{{ implode(',', $package->pageIds()) }}" data-toggle="modal" href='#pagesModal' class="btn btn-primary btn-sm"><i class="fa fa-file-o"></i> Pages&nbsp;&nbsp;<span class="badge">{{ $package->pages->count() }}</span></a>
+						<a href="{{ route('admin-packages-pictures',$package->id) }}" class="btn btn-sm btn-primary btn-round"><i class="fa fa-image"></i>  Pictures&nbsp;&nbsp;<span class="badge">{{ $package->pictures->count() }}</span></a>
+						<a href="{{ route('admin-packages-edit',$package->id) }}" class="btn btn-sm btn-success btn-round"><i class="fa fa-edit"></i> Edit</a>
+						<a href="javascript:publishPackage({{ $package->id }})" class="btn btn-warning btn-sm btn-round"><span class="fa fa-arrow-{{ $package->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $package->published ? ' Unpublish' : 'Publish' }}</a>
+						<a data-id="{{ $package->id }}" data-pages="{{ implode(',', $package->pageIds()) }}" data-toggle="modal" href='#pagesModal' class="btn btn-primary btn-sm btn-round"><i class="fa fa-file-o"></i> Pages&nbsp;&nbsp;<span class="badge">{{ $package->pages->count() }}</span></a>
 					</div>
 				</td>
 			</tr>
@@ -48,29 +48,30 @@
 		</tbody>
 	</table>
 
-	<div class="modal fade" id="pagesModal">
+	<div class="modal fade" id="pagesModal" data-backdrop="static">
 		<div class="modal-dialog">
 			<form method="post" action="{{route('admin-packages-pages')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Pages</h4>
-				</div>
-				<div class="modal-body">
-					<select name="pages[]" id="pages" data-live-search="true" multiple data-size="5" data-width="100%">
-					@foreach (\Ogilo\AdminMd\Models\Page::all() as $page)
-						<option value="{{ $page->id }}">{{ $page->title }}</option>
-					@endforeach
-					</select>
-
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-					<button type="submit" class="btn btn-primary">Save</button>
-				</div>
-				<input type="hidden" name="id" value="">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			</div>
+                <div class="modal-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="card-title">Pages</h4>
+                        </div>
+                        <div class="card-body">
+                            <select name="pages[]" id="pages" data-live-search="true" multiple data-size="5" data-width="100%" data-style="btn btn-outline-primary btn-round">
+                            @foreach (\Ogilo\AdminMd\Models\Page::all() as $page)
+                                <option value="{{ $page->id }}">{{ $page->title }}</option>
+                            @endforeach
+                            </select>
+                            <input type="hidden" name="id" value="">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-danger btn-round" data-dismiss="modal"><span class="material-icons">cancel</span> Cancel</button>
+                            <button type="submit" class="btn btn-primary btn-round"><span class="material-icons">save</span> Save</button>
+                        </div>
+                    </div>
+                </div>
 			</form>
 		</div>
 	</div>

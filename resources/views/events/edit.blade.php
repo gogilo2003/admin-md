@@ -28,16 +28,28 @@
 
 	<form method="post" action="{{route('admin-events-edit-post')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
 		<div class="row">
-			<div class="col-sm-6 col-md-3 col-lg-3">
+			<div class="col-sm-6 col-md-4 col-lg-3">
 				<div class="form-group{!! $errors->has('picture') ? ' has-error':'' !!}">
-					<label for="picture">Picture</label>
-					<img src="{{ url('public/images/events/'.$event->picture) }}" class="img-responsive img-fluid" alt="">
 					<input type="file" id="picture" name="picture" class="form-control">
+                </div>
+                <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail img-raised">
+                        <img src="{{ asset($event->picture ? asset('public/images/events/'.$event->picture) : 'public/vendor/admin/img/placeholder.png') }}" alt="...">
+                    </div>
+                    <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
 					{!! $errors->has('picture') ? '<span class="text-danger">'.$errors->first('picture').'</span>' : ''!!}
-					<p class="help-block text-center">Select picture here</p>
-				</div>
+					<p class="help-block">Select picture here</p>
+                    <div>
+                        <span class="btn btn-raised btn-round btn-default btn-file">
+                            <span class="fileinput-new">Select image</span>
+                            <span class="fileinput-exists">Change</span>
+                            <input type="file" name="picture" accept="image/*" />
+                        </span>
+                        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                    </div>
+                </div>
 			</div>
-			<div class="col-md-9">
+			<div class="col-sm-6 col-md-8 col-lg-9">
 				<div class="row">
 					<div class="col-md-12 col-lg-12">
 						<div class="form-group{!! $errors->has('title') ? ' has-error':'' !!}">
@@ -49,7 +61,7 @@
 					<div class="col-md-6 col-lg-6">
 						<div class="form-group">
 							<label for="event_category">Event Category</label>
-							<select class="form-control" id="event_category" name="event_category" data-live-search="true">
+							<select class="form-control selectpicker" id="event_category" name="event_category" data-live-search="true" data-style="btn btn-link">
 								@foreach ($event_categories as $event_category)
 									<option value="{{ $event_category->id }}"{{ $event_category->id == $event->event_category_id ? 'selected' : '' }}>{{ $event_category->name }}</option>
 								@endforeach
@@ -92,22 +104,22 @@
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<div class="text-right"><button type="submit" class="btn btn-primary"><span class="fa fa-save"></span>  Save</button></div>
 	</form>
-	
+
 @stop
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
 @section('scripts_bottom')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop

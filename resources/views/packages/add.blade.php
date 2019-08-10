@@ -20,7 +20,7 @@
 @stop
 
 @section('content')
-	
+
 	<form method="post" action="{{route('admin-packages-add')}}" page="form" accept-charset="UTF-8" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-md-12 col-lg-12">
@@ -66,28 +66,28 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" class="btn btn-primary btn-round"><i class="fa fa-save"></i> Save</button>
 			</div>
 		</div>
 		{{ csrf_field() }}
 
 	</form>
-	
+
 @stop
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
 @section('scripts_bottom')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop

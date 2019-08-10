@@ -16,7 +16,7 @@
 @section('sidebar')
 	@parent
 	@include('admin::video_categories.sidebar')
-	
+
 @stop
 
 @section('content')
@@ -43,30 +43,32 @@
 			</div>
 		</div>
 	@endforeach
-	
-	<div class="modal fade" id="pagesModal">
+
+	<div class="modal fade" id="pagesModal" data-backdrop="static">
 		<div class="modal-dialog">
 			<form class="modal-content" method="post" action="{{route('admin-video_categories-pages')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Select Pages</h4>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<label for="pages">Pages</label>
-						<select class="form-control" id="pages" name="pages[]" data-size="5" data-live-search="true" data-tick-icon="fa fa-check" multiple>
-							@foreach (\Ogilo\AdminMd\Models\Page::all() as $page)
-								<option value="{{ $page->id }}">{{ $page->title }}</option>
-							@endforeach
-						</select>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<input type="hidden" name="id" value="">
-					<input type="hidden" name="_token" value="{{csrf_token()}}">
-					<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
-					<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-				</div>
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <button type="button" class="close btn btn-fab btn-danger btn-round btn-sm" data-dismiss="modal" aria-hidden="true"><span class="material-icons">close</span></button>
+                        <h4 class="card-title">Select Pages</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="pages">Pages</label>
+                            <select class="form-control" id="pages" name="pages[]" data-size="5" data-live-search="true" data-tick-icon="fa fa-check" multiple data-style="btn btn-link">
+                                @foreach (\Ogilo\AdminMd\Models\Page::all() as $page)
+                                    <option value="{{ $page->id }}">{{ $page->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="hidden" name="id" value="">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <button type="button" class="btn btn-danger btn-round" data-dismiss="modal"><span class="material-icons">cancel</span> Cancel</button>
+                        <button type="submit" class="btn btn-primary btn-round"><span class="material-icons">save</span> Save</button>
+                    </div>
+                </div>
 			</form>
 		</div>
 	</div>
@@ -74,12 +76,12 @@
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
@@ -116,7 +118,7 @@
 			var pages = button.data('pages').split(',');
 			// console.log(pages)
 			$('form select#pages').selectpicker('val', pages);
-			
+
 		})
 	</script>
 @stop

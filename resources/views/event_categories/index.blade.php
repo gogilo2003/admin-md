@@ -19,7 +19,7 @@
 @stop
 
 @section('content')
-	<a href="{{ route('admin-event_categories-add') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Event Category</a>
+	<a href="{{ route('admin-event_categories-add') }}" class="btn btn-info btn-round"><i class="fa fa-plus"></i> Add Event Category</a>
 	<hr>
 	<div class="row">
 	@foreach ($event_categories as $category)
@@ -35,47 +35,51 @@
 					<hr>
 				@endif
 				<p>
-					<a href="{{route('admin-event_categories-edit',$category->id)}}" class="btn btn-primary btn-sm"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
-					<a data-id="{{ $category->id }}" data-pages="{{ json_encode($category->pageIds() )  }}" class="btn btn-primary btn-sm" data-toggle="modal" href='#pagesModal'><i class="fa fa-files-o"></i> Pages</a>
+					<a href="{{route('admin-event_categories-edit',$category->id)}}" class="btn btn-primary btn-round"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
+					<a data-id="{{ $category->id }}" data-pages="{{ json_encode($category->pageIds() )  }}" class="btn btn-info btn-round" data-toggle="modal" href='#pagesModal'><i class="fa fa-files-o"></i> Pages</a>
 				</p>
 			</div>
 		</div>
 	@endforeach
 	</div>
-	
-	<div class="modal fade" id="pagesModal">
-		<form class="modal-dialog" method="post" action="{{route('admin-event_categories-pages')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
-			<input type="hidden" name="id" value="">
-			<input type="hidden" name="_token" value="{{csrf_token()}}">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Select Pages</h4>
-				</div>
-				<div class="modal-body">
-					<select name="pages[]" id="pages" data-live-search="true" data-size="5" data-tick-icon="fa fa-check-square" multiple data-width="100%">
-						@foreach (Ogilo\AdminMd\Models\Page::all() as $page)
-							<option value="{{ $page->id }}">{{ $page->title }}</option>
-						@endforeach
-					</select>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
-					<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-				</div>
-			</div>
-		</form>
+
+	<div class="modal fade" id="pagesModal" data-backdrop="static">
+        <div  class="modal-dialog">
+            <form method="post" action="{{route('admin-event_categories-pages')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <div class="modal-content">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <button type="button" class="close btn btn-danger btn-sm btn-fab btn-round" data-dismiss="modal" aria-hidden="true"><span class="material-icons">close</span></button>
+                            <h4 class="card-title">Select Pages</h4>
+                        </div>
+                        <div class="card-body">
+                            <select name="pages[]" id="pages" data-live-search="true" data-size="5" data-tick-icon="fa fa-check-square" multiple data-width="100%" data-style="btn btn-outline-primary btn-round">
+                                @foreach (Ogilo\AdminMd\Models\Page::all() as $page)
+                                    <option value="{{ $page->id }}">{{ $page->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-danger btn-round" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+                            <button type="submit" class="btn btn-primary btn-round"><i class="fa fa-save"></i> Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
 	</div>
 @stop
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
@@ -112,7 +116,7 @@
 			var pages = button.data('pages');
 			// console.log(pages)
 			$('form select#pages').selectpicker('val', pages);
-			
+
 		})
 	</script>
 @stop

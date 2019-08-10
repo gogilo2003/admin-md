@@ -27,9 +27,9 @@
 				<h4 class="text-uppercase">{{ $profile->name }}<br><small>{{ $profile->position }}</small></h4>
 				<hr>
 				<div class="btn-group">
-					<a href="{{route('admin-profiles-edit',$profile->id)}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i>&nbsp;&nbsp; Edit</a>
-					<a data-id="{{ $profile->id }}" href="javascript:void(0)" class="publishButton btn btn-warning btn-sm"><i class="fa fa-arrow-{{ $profile->published ? 'down' : 'up' }}"></i>&nbsp;{{ $profile->published ? "Un-piblish" : "Publish" }}</a>
-					<a data-id="{{ $profile->id }}" href="javascript:void(0)" class="deleteButton btn btn-danger btn-sm"><i class="fa fa-times"></i>&nbsp;&nbsp; Delete</a>
+					<a href="{{route('admin-profiles-edit',$profile->id)}}" class="btn btn-success btn-sm btn-round"><i class="fa fa-edit"></i>&nbsp;&nbsp; Edit</a>
+					<a data-id="{{ $profile->id }}" href="javascript:void(0)" class="publishButton btn btn-warning btn-sm btn-round"><i class="fa fa-arrow-{{ $profile->published ? 'down' : 'up' }}"></i>&nbsp;{{ $profile->published ? "Un-piblish" : "Publish" }}</a>
+					<a data-id="{{ $profile->id }}" href="javascript:void(0)" class="deleteButton btn btn-danger btn-sm btn-round"><i class="fa fa-times"></i>&nbsp;&nbsp; Delete</a>
 				</div>
 				<hr>
 			</div>
@@ -43,12 +43,12 @@
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 

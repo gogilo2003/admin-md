@@ -174,7 +174,7 @@ Tip 2: you can also add an image using data-image tag-->
     <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-hover-dropdown.min.js') }}"></script>
     <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-datetimepicker.min.js') }}"></script>-->
     <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap3-typeahead.min.js') }}"></script>
-    <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/file-input.js') }}"></script>-->
+    <script type="text/javascript" src="{{ url('public/vendor/admin/js/file-input.js') }}"></script>
     <script type="text/javascript" src="{{ url('public/vendor/admin/cropper/cropper.min.js') }}"></script>
     <script type="text/javascript" src="{{ url('public/vendor/admin/js/main.js') }}"></script>
     <script type="text/javascript" src="{{ url('public/vendor/admin/js/admin.js') }}"></script>

@@ -34,9 +34,9 @@
 					@endif
 				</div>
 				<div class="panel-footer">
-					<a href="{{ route('admin-project_categories-edit',$category->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
-					<button data-id="{{ $category->id }}" data-pages="{{ implode(',', $category->pageIds()) }}" data-toggle="modal" data-target='#pagesModal' class="btn btn-primary btn-sm"><i class="fa fa-file-o"></i> Pages</button>
-					<!-- <a data-id="{{ $category->id }}" href="javascript:void(0)" class="deleteProjectCategory btn btn-danger btn-sm"><i class="fa fa-times"></i> Delete</a> -->
+					<a href="{{ route('admin-project_categories-edit',$category->id) }}" class="btn btn-primary btn-round"><span class="material-icons">edit</span> Edit</a>
+					<button data-id="{{ $category->id }}" data-pages="{{ implode(',', $category->pageIds()) }}" data-toggle="modal" data-target='#pagesModal' class="btn btn-info btn-round"><span class="material-icons">assignment</span> Pages</button>
+					<!-- <a data-id="{{ $category->id }}" href="javascript:void(0)" class="deleteProjectCategory btn btn-danger btn-sm"><span class="material-icons"></span> Delete</a> -->
 				</div>
 			</div>
 		</div>
@@ -44,27 +44,29 @@
 	</div>
 
 	<div class="modal fade" id="pagesModal" data-backdrop="static">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-dialog-center">
 			<form method="post" action="{{route('admin-project_categories-pages')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Pages</h4>
-				</div>
-				<div class="modal-body">
-					<select name="pages[]" id="pages" data-live-search="true" multiple data-size="5" data-width="100%">
-					@foreach (\Ogilo\AdminMd\Models\Page::all() as $page)
-						<option value="{{ $page->id }}">{{ $page->title }}</option>
-					@endforeach
-					</select>
-					
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-					<button type="submit" class="btn btn-primary">Save</button>
-				</div>
-				<input type="hidden" name="id" value="">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="modal-content">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <button type="button" class="close btn btn-danger btn-fab btn-sm btn-round" data-dismiss="modal" aria-hidden="true"><span class="material-icons">close</span></button>
+                            <h4 class="card-title text-uppercase">Pages</h4>
+                        </div>
+                        <div class="card-body">
+                            <select name="pages[]" id="pages" data-live-search="true" multiple data-size="5" data-width="100%" data-style="btn btn-round btn-outline-primary">
+                            @foreach (\Ogilo\AdminMd\Models\Page::all() as $page)
+                                <option value="{{ $page->id }}">{{ $page->title }}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-danger btn-round" data-dismiss="modal"><span class="material-icons">close</span> Cancel</button>
+                            <button type="submit" class="btn btn-primary btn-round"><span class="material-icons">save</span> Save</button>
+                        </div>
+                        <input type="hidden" name="id" value="">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    </div>
+                </div>
 			</form>
 		</div>
 	</div>
@@ -72,12 +74,12 @@
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
@@ -120,7 +122,7 @@
 
 			// console.log(pages)
 			$('form select#pages').selectpicker('val', pages);
-			
+
 		})
 	</script>
 @stop

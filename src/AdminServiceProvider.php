@@ -178,5 +178,9 @@ class AdminServiceProvider extends ServiceProvider
             __DIR__.'/../resources/assets/scss'=>resource_path('assets/vendor/admin/scss')
         ],'vue-resources');
 
+        $this->publishes([
+            __DIR__.'/../resources/views'=>resource_path('views/vendor/admin'),
+        ],'admin-views');
+
 	}
 }
