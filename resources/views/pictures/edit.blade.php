@@ -30,6 +30,11 @@
 	<hr>
 	<form method="post" action="{{route('admin-pictures-edit-post')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
 		<div class="row">
+            <div class="col-md-12">
+                <div class="form-group{!! $errors->has('id') ? ' has-error':'' !!}">
+                    {!! $errors->has('id') ? '<span class="text-danger">'.$errors->first('id').'</span>' : '' !!}
+                </div>
+            </div>
 			<div class="col-sm-12 col-md-8 col-lg-8">
                 <div class="row">
                     <div class="col-md-4">
@@ -72,25 +77,25 @@
 
 				<div class="form-group{!! $errors->has('title') ? ' has-error':'' !!}">
 					<label for="title">Title</label>
-					<input type="text" class="form-control" id="title" name="title" {!! ((old('title')) ? ' value="'.old('title').'"' : '') !!}>
+					<input type="text" class="form-control" id="title" name="title" {!! ((old('title')) ? ' value="'.old('title').'"' : ' value="'.$picture->title.'"') !!}>
 					{!! $errors->has('title') ? '<span class="text-danger">'.$errors->first('title').'</span>' : '' !!}
 				</div>
 
 				<div class="form-group{!! $errors->has('alt') ? ' has-error':'' !!}">
 					<label for="alt">Alt Text</label>
-					<input type="text" class="form-control" id="alt" name="alt" {!! ((old('alt')) ? ' value="'.old('alt').'"' : '') !!}>
+					<input type="text" class="form-control" id="alt" name="alt" {!! ((old('alt')) ? ' value="'.old('alt').'"' : ' value="'.$picture->alt.'"') !!}>
 					{!! $errors->has('alt') ? '<span class="text-danger">'.$errors->first('alt').'</span>' : '' !!}
 				</div>
 
 				<div class="form-group{!! $errors->has('caption') ? ' has-error':'' !!}">
 					<label for="caption">Caption</label>
-					<input type="text" class="form-control" id="caption" name="caption" {!! ((old('caption')) ? ' value="'.old('caption').'"' : '') !!}>
+					<input type="text" class="form-control" id="caption" name="caption" {!! ((old('caption')) ? ' value="'.old('caption').'"' : ' value="'.$picture->caption.'"') !!}>
 					{!! $errors->has('caption') ? '<span class="text-danger">'.$errors->first('caption').'</span>' : '' !!}
 				</div>
 
 				<div class="form-group{!! $errors->has('url') ? ' has-error':'' !!}">
 					<label for="url">Url</label>
-					<input type="text" class="form-control" id="url" name="url"{!! ((old('url')) ? ' value="'.old('url').'"' : '') !!}>
+					<input type="text" class="form-control" id="url" name="url"{!! ((old('url')) ? ' value="'.old('url').'"' : ' value="'.$picture->url.'"') !!}>
 					{!! $errors->has('url') ? '<span class="text-danger">'.$errors->first('url').'</span>' : '' !!}
 				</div>
 
@@ -107,7 +112,8 @@
 		</div>
 		<input type="hidden" name="thumbnail_cropdetails" id="thumbnail_cropdetails" value="">
 		<input type="hidden" name="image_cropdetails" id="image_cropdetails" value="">
-		<input type="hidden" name="_token" value="{{csrf_token()}}">
+		<input type="hidden" name="id" value="{{ $picture->id }}">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<button type="submit" class="btn btn-primary btn-round"><span class="fa fa-save"></span>  Save</button>
 	</form>
 	<br>
@@ -116,7 +122,7 @@
 @section('styles')
 	<style type="text/css">
 		.image_preview{
-			cursor: pointer;
+			/* cursor: pointer; */
             width: 100%;
 		}
 	</style>
@@ -130,13 +136,10 @@
 @section('scripts_bottom')
 	<script type="text/javascript">
 		$(document).ready(function(){
+            $('select#picture_category').selectpicker('val',{{ old('picture_category') ? old('picture_category') : $picture->picture_category_id }})
 			let thumbnail = $('#thumbnail_preview').cropper({
-                aspectRatio: 2/2,
-                cropBoxResizable:false,
-                data: {
-                    height: 128,
-                    width: 128
-                }
+                aspectRatio: 1/1,
+                scalable: true
             })
 
 			var image = $('#image_preview').cropper({
@@ -150,6 +153,7 @@
 
                 image.cropper('setAspectRatio',width/height)
                 image.cropper('setData',{width,height})
+                // image.cropper('zoomTo',1)
             })
 
             $('#picture_category').change()

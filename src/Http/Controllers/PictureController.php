@@ -109,7 +109,8 @@ class PictureController extends Controller
 		$validator = Validator::make($request->all(),[
 				'name' 				=> 'image',
 				'picture_category' 	=> 'required',
-				'url'				=> 'nullable|url'
+                'url'				=> 'nullable|url',
+                'id'                => 'required|exists:pictures'
 			]);
 
 		if($validator->fails()){
