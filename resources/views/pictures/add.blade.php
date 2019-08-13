@@ -29,27 +29,45 @@
 	<hr>
 	<form method="post" action="{{route('admin-pictures-add')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
 		<div class="row">
-			<div class="col-sm-12 col-md-6 col-lg-6">
-				<div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
-					<label for="name">Picture</label>
-					<div>
-						<img id="image_preview" src="{{ url('public/vendor/admin/img/placeholder.png') }}" class="img-responsive img-fluid" alt="Preview">
-					</div>
+			<div class="col-sm-12 col-md-8 col-lg-8">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
+                            <label for="name">Thumbnail</label>
+                            <div>
+                                <img id="thumbnail_preview" class="image_preview" src="{{ url('public/vendor/admin/img/placeholder.png') }}" class="img-responsive img-fluid" alt="Preview">
+                            </div>
 
-					<a href="JavaScript:" id="load_image" class="btn btn-block btn-round btn-primary"><i class="material-icons">search</i> Browse</a>
+                            <input
+                                data-filename-placement="inside"
+                                title="Select a picture to upload"
+                                type="file"
+                                id="name"
+                                name="name"
+                                class="form-control"
+                                >
+                        </div>
 
-					<input 
-						data-filename-placement="inside" 
-						title="Select a picture to upload" 
-						type="file" 
-						id="name" 
-						name="name" 
-						class="form-control"
-						>
-					{!! $errors->has('name') ? '<span class="text-danger">'.$errors->first('name').'</span>' : ''!!}
-				</div>
+                        <a href="JavaScript:" id="load_image" class="btn btn-round btn-primary btn-block"><i class="material-icons">search</i> Browse</a>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
+                            <label for="name">Thumbnail</label>
+                            <div>
+                                <img id="image_preview" class="image_preview" src="{{ url('public/vendor/admin/img/placeholder.png') }}" class="img-responsive img-fluid" alt="Preview">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        {!! $errors->has('name') ? '<span class="text-danger">'.$errors->first('name').'</span>' : ''!!}
+                    </div>
+                </div>
+
+
 			</div>
-			<div class="col-sm-12 col-md-6 col-lg-6">
+			<div class="col-sm-12 col-md-4 col-lg-4">
 
 				<div class="form-group{!! $errors->has('title') ? ' has-error':'' !!}">
 					<label for="title">Title</label>
@@ -79,39 +97,61 @@
 					<label for="picture_category">Picture Category</label>
 					<select data-style="btn btn-link" {{ ($categories->count() > 5) ? 'data-live-search="true" data-size="5"' : '' }} class="selectpicker form-control" id="picture_category" name="picture_category">
 						@foreach ($categories as $category)
-							<option value="{{ $category->id }}">{{ $category->title }}</option>
+							<option data-width="{{ $category->max_width}}" data-height="{{ $category->max_height }} }" value="{{ $category->id }}">{{ $category->title }}</option>
 						@endforeach
 					</select>
 				</div>
 
 			</div>
 		</div>
-		<input type="hidden" name="cropdetails" id="cropdetails" value="">
+		<input type="hidden" name="thumbnail_cropdetails" id="thumbnail_cropdetails" value="">
+		<input type="hidden" name="image_cropdetails" id="image_cropdetails" value="">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
-		<button type="submit" class="btn btn-primary"><span class="fa fa-save"></span>  Save</button>
+		<button type="submit" class="btn btn-primary btn-round"><span class="fa fa-save"></span>  Save</button>
 	</form>
-	
+
 @stop
 
 @section('styles')
 	<style type="text/css">
-		#image_preview{
+		.image_preview{
 			cursor: pointer;
+            width: 100%
 		}
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
 @section('scripts_bottom')
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var cropper = $('#image_preview').cropper({
-				aspectRatio: 1/1
-			})
+			let thumbnail = $('#thumbnail_preview').cropper({
+                aspectRatio: 2/2,
+                cropBoxResizable:false,
+                data: {
+                    height: 128,
+                    width: 128
+                }
+            })
+
+			var image = $('#image_preview').cropper({
+                aspectRatio: 4/3,
+                scalable:false,
+            })
+
+            $('#picture_category').change(function(event){
+                let width = parseInt($('#picture_category option:selected').data('width'))
+                let height = parseInt($('#picture_category option:selected').data('height'))
+
+                image.cropper('setAspectRatio',width/height)
+                image.cropper('setData',{width,height})
+            })
+
+            $('#picture_category').change()
 
 			$('#load_image').click(function(){
 				$('input[type="file"]#name').click()
@@ -119,14 +159,15 @@
 
 			$('input[type="file"]#name').change(function(){
 				let src = window.URL.createObjectURL($(this).prop('files')[0])
-				// document.querySelector('.cropper-canvas img').src = src
-				$('#image_preview').cropper('replace',src)
+				$('.image_preview').cropper('replace',src)
 			})
 
 			$('#image_preview').on('cropend',function(){
-				let data = $('#image_preview').cropper('getData')
-				// console.log(data.height)
-				$('input#cropdetails').val(JSON.stringify(data))
+				let data = $('#thumbnail_preview').cropper('getData')
+                $('input#thumbnail_cropdetails').val(JSON.stringify(data))
+
+				data = $('#image_preview').cropper('getData')
+				$('input#image_cropdetails').val(JSON.stringify(data))
 			})
 		})
 	</script>

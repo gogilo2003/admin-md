@@ -57,7 +57,7 @@
 				</td>
 			</tr>
 		@endforeach
-		{{-- 
+		{{--
 		<div class="row">
 			<div class="col-md-12 col-lg-12 text-center">{{ $pictures->links() }}</div>
 		</div>
@@ -66,17 +66,17 @@
 	@else
 	<p>No Pictures</p>
 	@endif
-		
+
 @stop
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
@@ -84,7 +84,7 @@
 	<script type="text/javascript">
 		var deletePicture = function (pID){
 			if(confirm("Do you want to delete the selected picture?")){
-				
+
 				$.ajax({
 					url: '{{ route('admin-pictures-delete') }}',
 					type: 'post',
@@ -92,8 +92,7 @@
 					complete: function(xhr){
 						$.notify(
                             {
-                                message:xhr.responseJSON.message,
-                                icon: 'fa fa-check-circle'
+                                message:xhr.responseJSON.message
                             },
                             {
                                 type:'success'
@@ -119,8 +118,7 @@
 						// console.log(xhr)
 						$.notify(
                             {
-                                message:xhr.responseJSON.message,
-                                icon: 'fa fa-check-circle'
+                                message:xhr.responseJSON.message
                             },
                             {
                                 type:'success'

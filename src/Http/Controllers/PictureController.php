@@ -14,11 +14,11 @@ use Ogilo\AdminMd\Models\Picture;
 use Intervention\Image\ImageManagerStatic as Image;
 
 /**
-* 
+*
 */
 class PictureController extends Controller
 {
-	
+
 	public function getPictures()
 	{
 		$pictures = Picture::with('category')->orderBy('id','DESC')->get();//->paginate(2);
@@ -35,6 +35,7 @@ class PictureController extends Controller
 
 	public function postAdd(Request $request)
 	{
+        // dd($request->all());
 		$validator = Validator::make($request->all(),[
 				'name' 				=> 'required|image',
 				'picture_category' 	=> 'required',
@@ -63,7 +64,10 @@ class PictureController extends Controller
 		$cat = PictureCategory::find($request->input('picture_category'));
 
 		$image = Image::make($request->file('name')->getRealPath());
-		// $image->fit($cat->max_width,$cat->max_height);
+        // $image->fit($cat->max_width,$cat->max_height);
+        $img = json_decode($request->input('image_cropdetails'));
+        $image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
+
 		$image->save($dir.'/'.$filename);
 		$image->destroy();
 
@@ -71,9 +75,9 @@ class PictureController extends Controller
 			File::makeDirectory($dir.'/thumbnails',0755,TRUE);
 		}
 
-		$dim = json_decode($request->input('cropdetails'));
+		$thumb = json_decode($request->input('thumbnail_cropdetails'));
 		$thumbnail = Image::make($request->file('name')->getRealPath());
-		$thumbnail->crop((int)$dim->width, (int)$dim->height, (int)$dim->x, (int)$dim->y);
+		$thumbnail->crop((int)$thumb->width, (int)$thumb->height, (int)$thumb->x, (int)$thumb->y);
 		$thumbnail->save($dir.'/thumbnails/'.$filename);
 		$thumbnail->destroy();
 
@@ -129,7 +133,10 @@ class PictureController extends Controller
 			}
 
 			$cat = PictureCategory::find($request->picture_category);
-			// $image->fit($cat->max_width,$cat->max_height);
+            // $image->fit($cat->max_width,$cat->max_height);
+
+            $img = json_decode($request->input('image_cropdetails'));
+            $image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
 			$image->save($dir.'/'.$filename);
 			$image->destroy();
 
@@ -137,9 +144,9 @@ class PictureController extends Controller
 				File::makeDirectory($dir.'/thumbnails',0755,TRUE);
 			}
 
-			$dim = json_decode($request->input('cropdetails'));
+			$thumb = json_decode($request->input('thumbnail_cropdetails'));
 			$thumbnail = Image::make($request->file('name')->getRealPath());
-			$thumbnail->crop((int)$dim->width, (int)$dim->height, (int)$dim->x, (int)$dim->y);
+			$thumbnail->crop((int)$thumb->width, (int)$thumb->height, (int)$thumb->x, (int)$thumb->y);
 			$thumbnail->save($dir.'/thumbnails/'.$filename);
 			$thumbnail->destroy();
 
@@ -182,5 +189,5 @@ class PictureController extends Controller
 
 		return response(["message"=>$picture->published ? "Picture published successfuly" : "Picture un-published successfuly"])->header('Content-Type','application/json');
 	}
-	
+
 }
