@@ -45,24 +45,28 @@ class UpdateCommand extends Command
 
         $res = node_modules_install();
         $this->comment($res);
-        
+
         $this->call('migrate');
 
         $path = public_path('vendor/admin');
-        
+
         if (file_exists($path)) {
             try {
                 deleteDirectory($path);
             } catch (Exception $e) {
                 Command::error($e->getMessage());
             }
-            
+
         }
 
+        $this->call('vendor:publish', ['--tag'=>'bower_components', '--force']);
         $this->call('vendor:publish', ['--tag'=>'public', '--force']);
         $this->call('vendor:publish', ['--tag'=>'md-public', '--force']);
         $this->call('vendor:publish', ['--tag'=>'chartjs', '--force']);
         $this->call('vendor:publish', ['--tag'=>'cropper', '--force']);
+        $this->call('vendor:publish', ['--tag'=>'admin-icons', '--force']);
+        $this->call('vendor:publish', ['--tag'=>'admin-assets', '--force']);
+        $this->call('vendor:publish', ['--tag'=>'vue-resources', '--force']);
 
         clean_directories();
 
