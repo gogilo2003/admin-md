@@ -1167,7 +1167,7 @@ function bower_install(){
 
     chdir($cwmd);
 
-    return "Bower components installed/Updated";
+    return "Bower components installed/Updated\n\n".explode('\n',$res);
 }
 
 function node_modules_install(){
