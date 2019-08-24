@@ -103,6 +103,19 @@ function str_words($string, $words=15)
 	$string = strip_tags($string);
 	return Str::words($string,$words);
 }
+/**
+ * Truncate string at whites spaces limiting with characters
+ * @param: $string
+ * The string you intend to truncate
+ * @param: $characters
+ * The number of characters you intend to limit the truncated string to.
+ */
+function str_words_alt($string, $characters=100)
+{
+    $words = count(explode(' ',substr($string,0,$characters)));
+	$string = strip_tags($string);
+	return Str::words($string,$words);
+}
 
 function get_menus()
 {
