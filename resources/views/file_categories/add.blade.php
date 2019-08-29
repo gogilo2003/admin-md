@@ -53,25 +53,25 @@
 				</div>
 			</div>
 		</div>
-				
+
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
-		<button type="submit" class="btn btn-primary"><span class="fa fa-save"></span>  Save</button>
+		<button type="submit" class="btn btn-primary btn-round"><span class="fa fa-save"></span>  Save</button>
 	</form>
 @stop
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
 @section('scripts_bottom')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
