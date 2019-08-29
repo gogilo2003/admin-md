@@ -9,7 +9,7 @@
 @stop
 
 @section('content')
-	
+	<img class="img-fluid w-100" src="{{ asset('public/images/articles/'.$article->picture) }}" alt="">
 @stop
 
 @section('sidebar_right')
@@ -18,7 +18,7 @@
 
 @section('styles')
 	<style>
-		
+
 	</style>
 @stop
 

@@ -31,6 +31,7 @@
 			<tr>
 				<th></th>
 				<th>Picture</th>
+				<th>Category</th>
 				<th>Title</th>
 				<th>Caption</th>
 				<th></th>
@@ -41,6 +42,9 @@
 				<td>{{ $loop->iteration }}</td>
 				<td width="128">
 					<img src="{{ url('public/images/pictures/thumbnails/'.$picture->name) }}" class="img-responsive img-fluid" alt="{{ $picture->alt }}">
+				</td>
+				<td>
+					{{ $picture->category->title }}
 				</td>
 				<td>
 					{{ $picture->title }}

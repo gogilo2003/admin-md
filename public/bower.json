@@ -25,7 +25,6 @@
     "datatables": "1.10.19",
     "font-awesome": "^4.7.0",
     "tinymce": "4.8.2",
-    "bootstrap": "^3.3.7",
     "jquery": "3.3.1",
     "remarkable-bootstrap-notify": "^3.1.3",
     "bootstrap-file-input": "^1.0.0",
@@ -36,6 +35,7 @@
     "chart.js": "^2.7.2"
   },
   "resolutions": {
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "bootstrap": "^4.3.1"
   }
 }

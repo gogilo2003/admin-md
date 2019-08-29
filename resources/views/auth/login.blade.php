@@ -39,7 +39,7 @@
 									{!! $errors->has('password') ? '<span class="text-danger">'.$errors->first('password').'</span>' : '' !!}
 								</div>
 								<input type="hidden" name="_token" value="{{csrf_token()}}">
-								<button type="submit" class="btn btn-primary btn-block"><span class="fa fa-sign-in"></span>  Login</button>
+								<button type="submit" class="btn btn-primary btn-round"><span class="fa fa-sign-in"></span>  Login</button>
 							</form>
 						</div>
 					</div>
@@ -51,18 +51,18 @@
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
 @section('scripts_bottom')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop

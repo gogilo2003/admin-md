@@ -34,8 +34,7 @@ class ArticleController extends Controller
 
 	public function postAdd(Request $request)
 	{
-		// $articles = $request->all();//implode(',', $request->input('articles'));
-		// dd($articles);
+		// dd($request->all());
 		$validator = Validator::make($request->all(),[
 				'title'		=> 'required|unique:articles,title,null,id,article_category_id,'.$request->input('category'),
 				'content'	=> 'required',
@@ -56,12 +55,15 @@ class ArticleController extends Controller
 		if ($request->hasFile('picture')) {
 			$picture = $request->file('picture');
 
-			$image = Img::make($picture->getRealPath());
-
 			$dir = public_path('images/articles/');
 			if (!file_exists($dir)) {
 				mkdir($dir,0755,true);
 			}
+
+            $image = Img::make($picture->getRealPath());
+
+            $cropdetails = json_decode($request->input('image_cropdetails'));
+            $image->crop((int)$cropdetails->width, (int)$cropdetails->height, (int)$cropdetails->x, (int)$cropdetails->y);
 
 			$filename = time().'.jpg';
 			$image->save($dir.$filename);
