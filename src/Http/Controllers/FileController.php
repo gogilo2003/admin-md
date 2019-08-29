@@ -18,7 +18,7 @@ class FileController extends Controller
     {
         $this->middleware('auth:admin');
     }
-    
+
     public function getFiles()
     {
     	$files = Fl::all();
@@ -39,7 +39,7 @@ class FileController extends Controller
     	// dd($cat->mimes);
 
     	$validator = Validator::make($request->all(),[
-    			'name'			=>'required|file|mimes:'.$cat->mimes.'|max:'.$cat->maxSizeKilobytes(),
+    			'file'			=>'required|file|mimes:'.$cat->mimes.'|max:'.$cat->maxSizeKilobytes(),
     			'title'			=>'required',
     			'file_category' =>'required|integer',
     		]);
@@ -53,7 +53,7 @@ class FileController extends Controller
     	}
 
     	$fl = new Fl;
-    	$file = $request->file('name');
+    	$file = $request->file('file');
 
     	$dir = public_path('files');
 
@@ -70,7 +70,7 @@ class FileController extends Controller
     	$fl->description = $request->input('description');
 
     	$cat->files()->save($fl);
-    	
+
     	return redirect()
     			->route('admin-files')
     			->with('global-success','File added');
@@ -90,7 +90,7 @@ class FileController extends Controller
     	// dd($cat->mimes);
 
     	$validator = Validator::make($request->all(),[
-    			'name'			=>'file|mimes:'.$cat->mimes.'|max:'.$cat->maxSizeKilobytes(),
+    			'file'			=>'file|mimes:'.$cat->mimes.'|max:'.$cat->maxSizeKilobytes(),
     			'title'			=>'required',
     			'file_category' =>'required|integer',
     		]);
@@ -104,9 +104,9 @@ class FileController extends Controller
     	}
 
     	$fl = Fl::find($request->input('id'));
-        
-    	if ($request->hasFile('name')) {
-            $file = $request->file('name');
+
+    	if ($request->hasFile('file')) {
+            $file = $request->file('file');
 
             $dir = public_path('files');
 
@@ -124,7 +124,7 @@ class FileController extends Controller
 
             $fl->name = $filename;
         }
-        
+
     	$fl->title = $request->input('title');
     	$fl->description = $request->input('description');
 

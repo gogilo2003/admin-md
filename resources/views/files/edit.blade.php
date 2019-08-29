@@ -29,12 +29,18 @@
 	<form method="post" action="{{route('admin-files-edit-post')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-sm-6 col-md-3 col-lg-3">
-				<div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
-					<label for="name">File</label>
-					<input type="file" id="name" name="name" class="form-control">
-					{!! $errors->has('name') ? '<span class="text-danger">'.$errors->first('name').'</span>' : ''!!}
-					<p class="help-block">select file here</p>
-				</div>
+                <div class="form-group form-file-upload form-file-multiple{!! $errors->has('file') ? ' has-error':'' !!}">
+                    <input type="file" class="inputFileHidden" name="file">
+                    <div class="input-group">
+                        <input type="text" class="form-control inputFileVisible" placeholder="Select a file">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-fab btn-round btn-outline-primary">
+                                <i class="material-icons">attach_file</i>
+                            </button>
+                        </span>
+                    </div>
+					{!! $errors->has('file') ? '<span class="text-danger">'.$errors->first('file').'</span>' : ''!!}
+                </div>
 			</div>
 			<div class="col-md-9">
 				<div class="row">
@@ -48,9 +54,9 @@
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
 							<label for="file_category">File Category</label>
-							<select class="form-control" id="file_category" name="file_category" data-live-search="true">
+							<select class="form-control" id="file_category" name="file_category" data-live-search="true" data-style="btn btn-link">
 								@foreach ($file_categories as $file_category)
-									<option value="{{ $file_category->id }}"{{ $file_category->id == $file->file_category_id ? 'selected' : '' }}>{{ $file_category->title }}</option>
+									<option value="{{ $file_category->id }}">{{ $file_category->title }}</option>
 								@endforeach
 							</select>
 						</div>
@@ -70,22 +76,24 @@
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<div class="text-right"><button type="submit" class="btn btn-primary"><span class="fa fa-save"></span>  Save</button></div>
 	</form>
-	
+
 @stop
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
 @section('scripts_bottom')
 	<script type="text/javascript">
-		
+        $(document).ready(function(){
+            $('select#file_category').selectpicker('val',{{ old('file_category') ? old('file_category') : $file->file_category_id }});
+        })
 	</script>
 @stop
