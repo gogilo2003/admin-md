@@ -27,6 +27,8 @@
 
     @include('admin::web.inc.gallery')
 
+    @include('admin::web.inc.file')
+
 @stop
 
 @section('sidebar_right')

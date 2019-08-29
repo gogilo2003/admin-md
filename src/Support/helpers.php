@@ -1135,9 +1135,10 @@ function get_icons(){
 	);
 }
 
-function get_file_icon($filename){
-	$type = get_file_type(get_file_extension($filename));
-	$icon = 'fa fa-file-'.$type.'-o';
+function get_file_icon($filename,$icon_type=false){
+    $type = get_file_type(get_file_extension($filename));
+    $icon = $type ? 'fa-file-'.$type.'-o' : 'fa-file';
+	$icon = $icon_type ? get_fa_code($icon) : ($icon.='fa ');
 
 	return $icon;
 }
@@ -1162,9 +1163,42 @@ function get_file_type($extension){
 		"tgz" => "zip",
 		"deb" => "zip",
 	];
-	$t = array_values($types);
-	$type = $t[array_search($extension, array_keys($types))];
+    $t = array_values($types);
+    $index = array_search($extension, array_keys($types));
+	$type = $index ? $t[$index] : '';
 	return $type;
+}
+
+if (!function_exists('get_fa_code')) {
+    function get_fa_code($name){
+        $codes = [
+            'fa-file'=>'&#xf15b;',
+            'fa-file-archive-o'=>'&#xf1c6;',
+            'fa-file-audio-o'=>'&#xf1c7;',
+            'fa-file-code-o'=>'&#xf1c9;',
+            'fa-file-excel-o'=>'&#xf1c3;',
+            'fa-file-image-o'=>'&#xf1c5;',
+            'fa-file-movie-o (alias)'=>'&#xf1c8;',
+            'fa-file-o'=>'&#xf016;',
+            'fa-file-pdf-o'=>'&#xf1c1;',
+            'fa-file-photo-o (alias)'=>'&#xf1c5;',
+            'fa-file-picture-o (alias)'=>'&#xf1c5;',
+            'fa-file-powerpoint-o'=>'&#xf1c4;',
+            'fa-file-sound-o (alias)'=>'&#xf1c7;',
+            'fa-file-text'=>'&#xf15c;',
+            'fa-file-text-o'=>'&#xf0f6;',
+            'fa-file-video-o'=>'&#xf1c8;',
+            'fa-file-word-o'=>'&#xf1c2;',
+            'fa-file-zip-o (alias)'=>'&#xf1c6;',
+            'fa-files-o'=>'&#xf0c5;',
+            'fa-film' =>'&#xf008; ',
+        ];
+
+        $values = array_values($codes);
+        $index = array_search($name, array_keys($codes));
+        $code = $values[$index ? $index : 0];
+        return $code;
+    }
 }
 
 function bower_install(){
@@ -1455,5 +1489,15 @@ if (! function_exists('week')) {
 if(! function_exists('str_starts_with')){
     function str_starts_with($string,$needle){
         return Str::startsWith($string,$needle);
+    }
+}
+
+
+if (!function_exists('get_filesize')) {
+    function get_filesize($filename, $decimals = 2) {
+        $bytes = filesize($filename);
+        $factor = floor((strlen($bytes) - 1) / 3);
+        if ($factor > 0) $sz = 'KMGT';
+        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor - 1] . 'B';
     }
 }
