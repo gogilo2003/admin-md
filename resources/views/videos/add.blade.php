@@ -30,11 +30,18 @@
 	<form method="post" action="{{route('admin-videos-add')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-sm-6 col-md-3 col-lg-3">
-				<div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
-					<label for="name">Video</label>
-					<input type="file" id="name" name="name" class="form-control" title="Select video here">
+                <div class="form-group form-file-upload form-file-multiple{!! $errors->has('name') ? ' has-error':'' !!}">
+                    <input type="file" class="inputFileHidden" name="name" accept="video/*">
+                    <div class="input-group">
+                        <input type="text" class="form-control inputFileVisible" placeholder="Select a video here">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-fab btn-round btn-outline-primary">
+                                <i class="fa fa-film"></i>
+                            </button>
+                        </span>
+                    </div>
 					{!! $errors->has('name') ? '<span class="text-danger">'.$errors->first('name').'</span>' : ''!!}
-				</div>
+                </div>
 			</div>
 			<div class="col-md-9 col-lg-9">
 				<div class="row">
@@ -48,7 +55,7 @@
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
 							<label for="video_category">Video Category</label>
-							<select class="form-control selectpicker" data-live-search="true" id="video_category" name="video_category">
+							<select class="form-control selectpicker" data-live-search="true" id="video_category" name="video_category" data-style="btn btn-link">
 								@foreach ($video_categories as $video_category)
 									<option value="{{ $video_category->id }}">{{ $video_category->title }}</option>
 								@endforeach
@@ -65,28 +72,30 @@
 				</div>
 			</div>
 		</div>
-		
+
 		{{ csrf_field() }}
-		<div class="text-right">
-		<button type="submit" class="btn btn-primary"><span class="fa fa-save"></span>  Save</button>
+		<div class="">
+		    <button type="submit" class="btn btn-primary btn-round"><span class="fa fa-save"></span>  Save</button>
 		</div>
 	</form>
-	
+
 @stop
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
 @section('scripts_bottom')
 	<script type="text/javascript">
-		
+        $(document).ready(function(){
+            $('select#video_category').selectpicker('val',{{ old('video_category') ? old('video_category') : 'null' }})
+        })
 	</script>
 @stop

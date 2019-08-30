@@ -29,6 +29,8 @@
 
     @include('admin::web.inc.file')
 
+    @include('admin::web.inc.blogs')
+
 @stop
 
 @section('sidebar_right')

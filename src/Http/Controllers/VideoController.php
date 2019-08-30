@@ -12,11 +12,11 @@ use File;
 use Validator;
 
 /**
-* 
+*
 */
 class VideoController extends Controller
 {
-	
+
 	function __construct()
 	{
 		$this->middleware('auth:admin');
@@ -73,9 +73,9 @@ class VideoController extends Controller
     	$vd->caption = $request->input('description');
 
     	$cat->videos()->save($vd);
-    	
+
     	return redirect()
-    			->back()
+    			->route('admin-videos')
     			->with('global-success','Video added');
     }
 
@@ -107,7 +107,7 @@ class VideoController extends Controller
     	}
 
     	$vd = Video::find($request->input('id'));
-        
+
     	if ($request->hasFile('name')) {
             $video = $request->file('name');
 
@@ -127,13 +127,13 @@ class VideoController extends Controller
 
             $vd->name = $filename;
         }
-        
+
     	$vd->title = $request->input('title');
         $vd->caption = $request->input('description');
     	$vd->video_category_id = $cat->id;
 
         $vd->save();
-    	
+
     	return redirect()
     			->back()
     			->with('global-success','Video Updated');

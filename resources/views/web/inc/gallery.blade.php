@@ -1,9 +1,10 @@
 @php
     $cats = $page->picture_categories->whereNotIn('name',['slideshow']);
 @endphp
-@if ($cats)
+@if ($cats->count())
 <section class="py-5">
     <div class="container">
+        <h3 class="text-uppercase text-center">Photo Gallery</h3>
         @foreach ($cats as $cat)
         <div class="row">
             <div class="col-md-12">

@@ -4,16 +4,12 @@
 @if ($fcs->count())
     <section class="bg-light py-5">
         <div class="container">
+            <h3 class="text-uppercase text-center">Files<br><small>Downloadable resources</small></h3>
             @foreach ($fcs as $fc)
-                <h3 class="text-center text-uppercase pb-3">
-                    {{ $fc->title }}
+                <h5 class="text-uppercase pb-3 mt-5">
+                    {{ $fc->title }}<br>
                     <small>{{ $fc->description }}</small>
-                </h3>
-                <div class="row mb-2">
-                    <div class="col-md-6">
-
-                    </div>
-                </div>
+                </h5>
                 <div class="row">
                 @foreach ($fc->files as $file)
                     <div class="col-lg-6">
@@ -30,20 +26,16 @@
                             <div class="col p-3 d-flex flex-column position-static">
                                 <h3 class="mb-0">{{ $file->title }}</h3>
                                 <div class="mb-1 text-muted">{{ $file->size }}</div>
-                                <p class="card-text mb-auto">{{ $file->description }}</p>
-                                <a href="{{ route('file-download',$file->id) }}" class="stretched-link">Download</a>
+                                <p class="card-text mb-auto">
+                                    {{ $file->description }}
+                                    <a href="{{ route('file-download',$file->id) }}" class="float-md-right stretched-link btn btn-outline-info rounded-circle"><span class="fa fa-cloud-download"></span></a>
+                                </p>
                             </div>
                         </div>
                     </div>
                 @endforeach
                 </div>
             @endforeach
-        </div>
-    </section>
-@else
-    <section class="bg-light py-5">
-        <div class="container">
-            <h3 class="text-center text-uppercase text-light">No files</h3>
         </div>
     </section>
 @endif

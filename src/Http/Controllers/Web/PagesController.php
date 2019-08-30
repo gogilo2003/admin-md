@@ -13,6 +13,7 @@ use Ogilo\AdminMd\Models\Package;
 use Ogilo\AdminMd\Models\Event;
 use Ogilo\AdminMd\Models\Guest;
 use Ogilo\AdminMd\Models\Comment;
+use Ogilo\AdminMd\Models\File;
 
 use Validator;
 use Mail;
@@ -230,6 +231,14 @@ class PagesController extends Controller
             return response(['success'=>false,'message'=>'Email Could not be sent due to a server problem. Please check back later','details'=>$e->getMessage()])->header('Content-Type','application/json');
         }
 
-	}
+    }
+
+    public function downlodFile($id)
+    {
+        $file = File::find($id);
+        $path = public_path('files/'.$file->name);
+        $name = $file->title .'.'. get_file_extension($file->name);
+        return response()->download($path, $name);
+    }
 
 }

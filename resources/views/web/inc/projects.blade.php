@@ -1,7 +1,7 @@
 @php
     $cats = $page->project_categories;
 @endphp
-@if ($cats)
+@if ($cats->count())
     <section class="py-5 bg-purple text-light">
         <div class="container">
             @foreach ($cats as $cat)

@@ -9,7 +9,14 @@
 @stop
 
 @section('content')
-	<img class="img-fluid w-100" src="{{ asset('public/images/articles/'.$article->picture) }}" alt="">
+<section class="mt-5 py-5 clearfix">
+    <div class="container">
+        <h3 class="text-center text-uppercase">{{ $article->title }}</h3>
+        <img class="mr-5 mb-5 w-50 float-md-left" src="{{ asset('public/images/articles/'.$article->picture) }}" alt="">
+        {!! $article->content !!}
+    </div>
+</section>
+
 @stop
 
 @section('sidebar_right')
