@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html class="h-100" lang="en">
 
     <head>
         <meta charset="utf-8">
@@ -34,23 +34,23 @@
         <!--<link href="carousel.css" rel="stylesheet">-->
     </head>
 
-    <body>
+    <body class="d-flex flex-column h-100">
         <header>
             @include('admin::web.layout.navigation')
         </header>
 
-        <main role="main">
+        <main class="flex-shrink-0" role="main">
 
             @yield('content')
 
-            <!-- FOOTER -->
-            <footer class="py-5 bg-dark text-info">
-                <div class="container">
-                    <p class="float-right"><a href="#">Back to top</a></p>
-                    <p>&copy; {{ date('Y') }} {{ config('app.name') }}, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-                </div>
-            </footer>
         </main>
+        <!-- FOOTER -->
+        <footer class="mt-auto py-5 bg-dark text-info">
+            <div class="container">
+                <p class="float-right"><a href="#">Back to top</a></p>
+                <p>&copy; {{ date('Y') }} {{ config('app.name') }}, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+            </div>
+        </footer>
         <script src="{{ url('public/vendor/admin/js/jquery.min.js') }}"></script>
         <script src="{{ url('public/vendor/admin/js/bootstrap.min.js') }}"></script>
     </body>
