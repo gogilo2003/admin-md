@@ -35,7 +35,7 @@
 		</div>
 		<div class="form-group{!! $errors->has('icon') ? ' has-error':'' !!}">
 			<label for="icon">Icon</label>
-			<select class="selectpicker form-control" name="icon" data-live-search="true" data-size="5">
+			<select class="selectpicker form-control" name="icon" data-live-search="true" data-size="5" data-style="btn btn-link">
 				@foreach (get_icons() as $icon => $caption)
 					<option data-icon="{{ $icon }}" value="{{ $icon }}" {{ $icon == old('icon') ? 'selected' : '' }}>{{ $caption }}</option>
 				@endforeach
@@ -49,7 +49,7 @@
 		</div>
 		<div class="form-group">
 			<label for="menu">Menus</label>
-			<select class="form-control" id="menu" name="menu">
+			<select class="selectpicker form-control" id="menu" name="menu" data-live-search="true" data-size="5" data-style="btn btn-link">
 				@foreach(Ogilo\AdminMd\Models\Menu::all() as $menu)
 				<option value="{{ $menu->id }}">{{ $menu->caption }}</option>
 				@endforeach
@@ -63,18 +63,18 @@
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
 @section('scripts_bottom')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
