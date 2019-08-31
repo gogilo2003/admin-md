@@ -32,7 +32,6 @@ class PagesController extends Controller
 
 	public function getPage($page_name='home')
 	{
-		// dd($page_name);
 
 		if($page = Page::with([
 			'article_categories.articles'=>function($query){
@@ -64,11 +63,7 @@ class PagesController extends Controller
 			}
 			])->where('name','=',$page_name)->first()){
 
-			// dd(json_encode($page));
-
-			$template = file_exists(resource_path('views/'.$page_name.'.blade.php'))? $page_name : ( file_exists(resource_path('views/web/'.$page_name.'.blade.php')) ? 'web.'.$page_name :'admin::web.home');
-			// dd(resource_path('views/web/'.$page_name.'.blade.php'));
-			return view($template,compact('page'));
+			return view()->first([$page_name,'web.'.$page_name,'admin::web.'.$page_name,'admin::web.home'],compact('page'));
 
 		}else{
 			return abort(404);
@@ -77,17 +72,14 @@ class PagesController extends Controller
 
 	public function getArticle($article_name,$page_name=null)
 	{
-		// dd($page_name);
 
 		$article = Article::with('category.pages')->where('name','=',$article_name)->first() ;
 
-		$template = file_exists(resource_path('views/web/article.blade.php')) ? 'web.article' :'admin::web.article';
-
 		$page = $page_name ? Page::with('link')->where('name','=',$page_name)->first() : $article->category->pages->first();
 
-		// dd($page->link);
+		// $template = file_exists(resource_path('views/web/article.blade.php')) ? 'web.article' :'admin::web.article';
 
-		return view($template,compact('article','page'));
+		return view()->first(['web.article','article','admin::web.article'],compact('article','page'));
 	}
 
 	public function getSermon($sermon_name,$page_name=null)
@@ -95,15 +87,13 @@ class PagesController extends Controller
 
 		$sermon = Sermon::where('name','=',$sermon_name)->first();
 
-		// dd($sermon->pages);
-
 		$sermon = $sermon ? $sermon : Sermon::where('name','=',$page_name)->first() ;
-
-		$template = file_exists(resource_path('views/web/sermon.blade.php')) ? 'web.sermon' :'admin::web.sermon';
 
 		$page = $page_name ? $sermon->pages->where('name','=',$page_name)->first() : $sermon->pages->first();
 
-		return view($template,compact('sermon','template','page'));
+		// $template = file_exists(resource_path('views/web/sermon.blade.php')) ? 'web.sermon' :'admin::web.sermon';
+
+		return view()->first(['web.sermon','sermon','admin::web.sermon'],compact('sermon','template','page'));
 	}
 
 	public function getProfile($profile_name,$page_name=null)
@@ -115,11 +105,11 @@ class PagesController extends Controller
 
 		$profile = $profile ? $profile : Profile::where('name','=',$page_name)->first() ;
 
-		$template = file_exists(resource_path('views/web/profile.blade.php')) ? 'web.profile' :'admin::web.profile';
-
 		$page = $page_name ? $profile->pages->where('name','=',$page_name)->first() : $profile->pages->first();
 
-		return view($template,compact('profile','template','page'));
+		// $template = file_exists(resource_path('views/web/profile.blade.php')) ? 'web.profile' :'admin::web.profile';
+
+		return view()->first(['web.profile','profile','admin::web.profile'],compact('profile','template','page'));
 	}
 
     public function getPackage($package_name,$page_name=null)
@@ -131,11 +121,11 @@ class PagesController extends Controller
 
 		$package = $package ? $package : Package::where('title','=',$package_name)->first() ;
 
-		$template = file_exists(resource_path('views/web/package.blade.php')) ? 'web.package' : (file_exists(resource_path('views/package.blade.php')) ? 'package' : 'admin::web.package');
-
 		$page = $page_name ? $package->pages->where('name','=',$page_name)->first() : $package->pages->first();
 
-		return view($template,compact('package','template','page'));
+		// $template = file_exists(resource_path('views/web/package.blade.php')) ? 'web.package' : (file_exists(resource_path('views/package.blade.php')) ? 'package' : 'admin::web.package');
+
+		return view()->first(['web.package','package','admin::web.package'],compact('package','template','page'));
 	}
 
 	public function getEvent($event_name,$page_name=null)
@@ -147,13 +137,13 @@ class PagesController extends Controller
 
 		$event = $event ? $event : Event::where('name','=',$page_name)->first() ;
 
-		$template = file_exists(resource_path('views/web/event.blade.php')) ? 'web.event' :'admin::web.event';
-
 		$page = $page_name ? $event->pages->where('name','=',$page_name)->first() : $event->pages->first();
 
 		$events = Event::where('published','=',1)->orderBy('held_at','DESC')->get();
 
-		return view($template,compact('events', 'event','template','page'));
+		// $template = file_exists(resource_path('views/web/event.blade.php')) ? 'web.event' :'admin::web.event';
+
+		return view()->first(['web.event','event','admin::web.event'],compact('events', 'event','template','page'));
 	}
 
 	public function postEventGuest(Request $request)

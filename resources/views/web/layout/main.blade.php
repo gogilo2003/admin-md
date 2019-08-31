@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="author" content="Georsamarts ICT Solutions">
-        <meta name="description" content="Sites Description">
+        <meta name="description" content="{{ str_words_alt($page->content,160) }}">
         <meta name="keywords" content="keywords separated by comma">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="{!! url('public/favicon.png') !!}">
@@ -35,10 +35,10 @@
     </head>
 
     <body class="d-flex flex-column h-100">
-        <header>
-            @include('admin::web.layout.navigation')
-            @include('admin::web.inc.breadcrumbs')
-        </header>
+
+        @include('admin::web.layout.navigation')
+
+        @include('admin::web.inc.breadcrumbs')
 
         <main class="flex-shrink-0" role="main">
 

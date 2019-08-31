@@ -4,8 +4,16 @@
 	{{ $page->title }}
 @stop
 
-@section('sidebar_left')
-	page sidebar_left
+@section('breadcrumbs')
+    @if ($page->name === 'home')
+        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ $article->title }}</li>
+    @else
+        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ url($page->name) }}">{{ $page->title }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ $article->title }}</li>
+    @endif
+
 @stop
 
 @section('content')
@@ -17,10 +25,6 @@
     </div>
 </section>
 
-@stop
-
-@section('sidebar_right')
-	page sidebar_right
 @stop
 
 @section('styles')
