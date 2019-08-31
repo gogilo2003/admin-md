@@ -37,6 +37,7 @@
     <body class="d-flex flex-column h-100">
         <header>
             @include('admin::web.layout.navigation')
+            @include('admin::web.inc.breadcrumbs')
         </header>
 
         <main class="flex-shrink-0" role="main">
