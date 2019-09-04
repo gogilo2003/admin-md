@@ -129,7 +129,6 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__.'/../public/bower_components/bootstrap-select/dist/css' => public_path('vendor/admin/css'),
 			__DIR__.'/../public/bower_components/datatables/media/css' => public_path('vendor/admin/css'),
 			__DIR__.'/../public/bower_components/datatables/media/images' => public_path('vendor/admin/images'),
-			// __DIR__.'/../public/bower_components/bootstrap/dist/fonts' => public_path('vendor/admin/fonts'),
 			__DIR__.'/../public/bower_components/font-awesome/fonts' => public_path('vendor/admin/fonts'),
 			__DIR__.'/../public/bower_components/jquery/dist' => public_path('vendor/admin/js'),
 			__DIR__.'/../public/bower_components/bootstrap/dist/js' => public_path('vendor/admin/js'),
@@ -152,7 +151,6 @@ class AdminServiceProvider extends ServiceProvider
         $this->publishes([
 			__DIR__.'/../public/material-design-icons' => public_path('vendor/admin/material-design-icons'),
 			__DIR__.'/../public/iconmoon' => public_path('vendor/admin/iconmoon'),
-			// __DIR__.'/../public/bower_components/chart.js/dist/Chart.min.js' => public_path('vendor/admin/js/Chart.min.js'),
         ],'admin-icons');
 
 		$this->publishes([
@@ -171,7 +169,7 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.css'=>public_path('vendor/admin/cropper/cropper.min.css'),
 		],'cropper');
 
-        $this->publishes([__DIR__.'/../config/admin.php'=>config_path('admin.php')],'config');
+        $this->publishes([__DIR__.'/../config/admin.php'=>config_path('admin.php')],'admin-config');
 
         $this->publishes([
             __DIR__.'/../resources/assets/js'=>resource_path('assets/vendor/admin/js'),
