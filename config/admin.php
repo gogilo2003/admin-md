@@ -8,7 +8,7 @@
     'files' => false,
     'projects' => false,
     'profiles' => false,
-    'profile_picture' => ['w'=>4,'h'=>3],
+    'profile_picture' => ['w'=>3,'h'=>4],
     'sermons' => false,
     'events' => false,
     'packages' => false,

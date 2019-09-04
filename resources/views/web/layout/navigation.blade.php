@@ -8,7 +8,7 @@
             <ul class="navbar-nav mr-auto">
                 @foreach (Ogilo\AdminMd\Models\Menu::first()->links as $link)
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url($link->url) }}"><i class="{{ $link->icon }}"></i> {{ $link->caption }}<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ url($link->url ? $link->url : '/') }}"><i class="{{ $link->icon }}"></i> {{ $link->caption }}<span class="sr-only">(current)</span></a>
                 </li>
                 @endforeach
                 @yield('menu')
