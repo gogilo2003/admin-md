@@ -4,9 +4,13 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        @section('meta')
         <meta name="author" content="Georsamarts ICT Solutions">
         <meta name="description" content="{{ str_words_alt($page->content,160) }}">
         <meta name="keywords" content="keywords separated by comma">
+        @endsection
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="{!! url('public/favicon.png') !!}">
 
