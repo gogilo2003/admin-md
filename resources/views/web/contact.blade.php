@@ -1,6 +1,7 @@
 @extends('admin::web.layout.main')
 
 @section('content')
+<section class="container">
 	<form method="post" action="{{route('post-contact')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
 		<div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
 			<label for="name">Name</label>
@@ -20,4 +21,5 @@
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>  Save</button>
 	</form>
+</section>
 @endsection

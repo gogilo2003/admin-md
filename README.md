@@ -33,14 +33,14 @@ Ogilo\AdminMd\AdminServiceProvider::class,
 ```
 
 ### Handling guest access to the admin routes
-To ensure the user is directed to the correct login page why trying to access the admin page, modify the unauthenticated() function inthe app/Exceptions/Handler.php by adding 
+To ensure the user is directed to the correct login page why trying to access the admin page, modify the unauthenticated() function inthe app/Exceptions/Handler.php by adding
 
 ```
 if(is_admin_path()){
     return redirect()->guest('admin/login');
 }
 ```
-in case the function is not already in your exceptions handler class, you can just add the unction below to overide the inherited function.
+in case the function is not already in your exceptions handler class, you can just add the function below to overide the inherited function.
 
 
 ```
@@ -49,7 +49,7 @@ protected function unauthenticated($request, \Illuminate\Auth\AuthenticationExce
     if(is_admin_path()){
         return redirect()->guest('admin/login');
     }
-    
+
     if ($request->expectsJson()) {
         return response()->json(['error' => 'Unauthenticated.'], 401);
     }
@@ -60,7 +60,7 @@ protected function unauthenticated($request, \Illuminate\Auth\AuthenticationExce
 
 ### Install or Update
 
-run artisan admin:intsal/admin:update command to create all the neccesary tables for the CMS including all roles and user tables as well as publish all required resources; 
+run artisan admin:intsal/admin:update command to create all the neccesary tables for the CMS including all roles and user tables as well as publish all required resources;
 
 This Commands will install all frontend components, create the neccesary database structure(perform migrations) and publish neccesary recsources for the package.
 ```
@@ -199,18 +199,18 @@ Your views should:
 
 @section('styles')
     <style type="text/css">
-        
+
     </style>
 @endsection
 @section('scripts_top')
     <script type="text/javascript">
-        
+
     </script>
 @endsection
 
 @section('scripts_bottom')
     <script type="text/javascript">
-    
+
     </script>
 @endsection
 ```
@@ -220,7 +220,7 @@ Submit feedback by posting to the contact/post or contact-post route in Laravel.
 url: domain.tld/contact/post
 OR
 url: {{ route('contact-post') }}
-data: 
+data:
 {
     "name": "appropriate name",
     "email": "email@example",

@@ -180,5 +180,22 @@ class AdminServiceProvider extends ServiceProvider
             __DIR__.'/../resources/views'=>resource_path('views/vendor/admin'),
         ],'admin-views');
 
+        $this->publishes([
+            __DIR__.'/../resources/views/web/inc'=>resource_path('views/vendor/admin/web/inc'),
+            __DIR__.'/../resources/views/web/layout'=>resource_path('views/vendor/admin/web/layout'),
+            __DIR__.'/../resources/views/web/article.blade.php'=>resource_path('views/web/article.blade.php'),
+            __DIR__.'/../resources/views/web/blogs.blade.php'=>resource_path('views/web/blogs.blade.php'),
+            __DIR__.'/../resources/views/web/contact.blade.php'=>resource_path('views/web/contact.blade.php'),
+            __DIR__.'/../resources/views/web/event.blade.php'=>resource_path('views/web/event.blade.php'),
+            __DIR__.'/../resources/views/web/file.blade.php'=>resource_path('views/web/file.blade.php'),
+            __DIR__.'/../resources/views/web/files.blade.php'=>resource_path('views/web/files.blade.php'),
+            __DIR__.'/../resources/views/web/home.blade.php'=>resource_path('views/web/home.blade.php'),
+            __DIR__.'/../resources/views/web/profile.blade.php'=>resource_path('views/web/profile.blade.php'),
+            __DIR__.'/../resources/views/web/projects.blade.php'=>resource_path('views/web/projects.blade.php'),
+            __DIR__.'/../resources/views/web/sermons.blade.php'=>resource_path('views/web/sermons.blade.php'),
+            __DIR__.'/../resources/views/web/sermon.blade.php'=>resource_path('views/web/sermon.blade.php'),
+            __DIR__.'/../resources/views/web/gallery.blade.php'=>resource_path('views/web/gallery.blade.php'),
+        ],'web-views');
+
 	}
 }
