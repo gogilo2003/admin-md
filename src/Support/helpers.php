@@ -1138,7 +1138,7 @@ function get_icons(){
 function get_file_icon($filename,$icon_type=false){
     $type = get_file_type(get_file_extension($filename));
     $icon = $type ? 'fa-file-'.$type.'-o' : 'fa-file';
-	$icon = $icon_type ? get_fa_code($icon) : ($icon.='fa ');
+	$icon = $icon_type ? get_fa_code($icon) : ($icon='fa '.$icon);
 
 	return $icon;
 }

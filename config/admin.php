@@ -8,6 +8,7 @@
     'files' => false,
     'projects' => false,
     'profiles' => false,
+    'profile_picture' => ['w'=>4,'h'=>3],
     'sermons' => false,
     'events' => false,
     'packages' => false,
@@ -15,7 +16,7 @@
     'branches' => false,
     'contact' => NULL,
     'content_css' => NULL,
-    'menu' => 
+    'menu' =>
         array (
             'admin-articles' => 'Articles',
             'admin-pictures' => 'Pictures',
