@@ -64,6 +64,7 @@ class UpdateCommand extends Command
         $this->call('vendor:publish', ['--tag'=>'md-public', '--force']);
         $this->call('vendor:publish', ['--tag'=>'chartjs', '--force']);
         $this->call('vendor:publish', ['--tag'=>'cropper', '--force']);
+        $this->call('vendor:publish', ['--tag'=>'popper', '--force']);
         $this->call('vendor:publish', ['--tag'=>'admin-icons', '--force']);
         $this->call('vendor:publish', ['--tag'=>'admin-assets', '--force']);
         $this->call('vendor:publish', ['--tag'=>'vue-resources', '--force']);
