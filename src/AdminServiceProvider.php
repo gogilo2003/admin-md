@@ -169,6 +169,10 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.css'=>public_path('vendor/admin/cropper/cropper.min.css'),
 		],'cropper');
 
+		$this->publishes([
+			__DIR__.'/../public/node_modules/popper.js/dist/popper.min.js'=>public_path('vendor/admin/js/popper.min.js'),
+		],'popper');
+
         $this->publishes([__DIR__.'/../config/admin.php'=>config_path('admin.php')],'admin-config');
 
         $this->publishes([

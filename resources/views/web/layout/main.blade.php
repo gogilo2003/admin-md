@@ -60,6 +60,7 @@
             </div>
         </footer>
         <script src="{{ url('public/vendor/admin/js/jquery.min.js') }}"></script>
+        <script src="{{ url('public/vendor/admin/js/popper.min.js') }}"></script>
         <script src="{{ url('public/vendor/admin/js/bootstrap.min.js') }}"></script>
     </body>
 
