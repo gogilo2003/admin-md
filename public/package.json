@@ -1,7 +1,8 @@
 {
 	"dependencies": {
 		"cropper": "^4.0.0",
-		"gulp-minify-css": "^1.2.4"
+		"gulp-minify-css": "^1.2.4",
+		"popper.js": "^1.15.0"
 	},
 	"devDependencies": {
 		"gulp": "^3.9.1",
