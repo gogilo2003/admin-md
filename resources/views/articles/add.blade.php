@@ -51,7 +51,7 @@
                 <div class="form-group{!! $errors->has('picture') ? ' has-error':'' !!}">
                     <label for="picture">Picture</label>
                     <img id="picture_preview" class="picture_preview w-100 h100" src="{{ url('public/vendor/admin/img/placeholder.png') }}" alt="Preview">
-
+                    {!! $errors->has('picture') ? '<span class="text-danger">'.$errors->first('picture').'</span>' : ''!!}
                     <input
                         data-filename-placement="inside"
                         title="Select a picture to upload"
