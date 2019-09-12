@@ -61,7 +61,9 @@ class ProfileController extends Controller
 
 		if ($request->hasFile('picture')) {
 			$image = Img::make($request->file('picture')->getRealPath());
-			$image->fit(359, 244);
+			// $image->fit(359, 244);
+			$img = json_decode($request->input('image_cropdetails'));
+			$image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
 			$dir = public_path('images/profiles/');
 			if (!file_exists($dir)) {
 				mkdir($dir,0755,TRUE);
@@ -124,7 +126,9 @@ class ProfileController extends Controller
 
 		if ($request->hasFile('picture')) {
 			$image = Img::make($request->file('picture')->getRealPath());
-			$image->fit(359, 244);
+			// $image->fit(359, 244);
+			$img = json_decode($request->input('image_cropdetails'));
+			$image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
 			$dir = public_path('images/profiles/');
 			if (!file_exists($dir)) {
 				mkdir($dir,0755,TRUE);
