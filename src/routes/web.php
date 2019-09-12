@@ -3,7 +3,7 @@ Route::group(['middleware'=>'web','namespace'=>'Ogilo\AdminMd\Http\Controllers\W
 	Route::get('{page_name?}',['as'=>'home','uses'=>'PagesController@getPage']);
 	Route::get('article/{item_name}/{page?}',['as'=>'article','uses'=>'PagesController@getArticle']);
 	Route::get('sermon/{sermon_name}/{page_name?}',['as'=>'sermon','uses'=>'PagesController@getSermon']);
-	Route::get('file/{file_name}',['as'=>'file','uses'=>'PagesController@getFile']);
+	Route::get('file/{id}/{page_name?}',['as'=>'file','uses'=>'PagesController@getFile']);
 	Route::get('file/download/{id}',['as'=>'file-download','uses'=>'PagesController@downlodFile']);
 	Route::get('profile/{id}/{page_name?}',['as'=>'profile','uses'=>'PagesController@getProfile']);
     Route::get('package/{id}/{page_name?}',['as'=>'package','uses'=>'PagesController@getPackage']);

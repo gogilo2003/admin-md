@@ -231,4 +231,12 @@ class PagesController extends Controller
         return response()->download($path, $name);
     }
 
+	public function getFile($file_id,$page_name=null)
+	{
+		$file = File::with('category.pages')->find($file_id);
+
+		$page = $page_name ? Page::with('link')->where('name','=',$page_name)->first() : $file->category->pages->first();
+
+		return view()->first(['web.file','file','admin::web.file'],compact('file','page'));
+	}
 }
