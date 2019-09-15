@@ -6,7 +6,8 @@
         "laravel/framework": ">=5.2",
         "intervention/image": ">=2.3",
         "intervention/imagecache": ">=2.3",
-        "doctrine/dbal": "2.*"
+        "doctrine/dbal": "2.*",
+        "laravel/helpers" : "^1.1"
     },
     "license": "MIT",
     "authors": [
