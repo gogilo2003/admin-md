@@ -26,7 +26,7 @@
 		@foreach ($package->pictures as $picture)
 			<div class="col-md-4">
                 <div class="card bg-dark text-white">
-                    <img class="card-img" src="{{ asset('public/images/packages/'.$picture->picture) }}" alt="{{ $picture->title }}">
+                    <img class="card-img" src="{{ asset(config('admin.path_prefix').'images/packages/'.$picture->picture) }}" alt="{{ $picture->title }}">
                     <div class="card-img-overlay">
                         <h4 class="card-title">{{ $picture->title }}</h4>
                     </div>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                             <div class="fileinput-new thumbnail img-raised">
-                                <img src="{{ asset('public/vendor/admin/img/placeholder.png') }}" alt="">
+                                <img src="{{ asset(config('admin.path_prefix').'vendor/admin/img/placeholder.png') }}" alt="">
                             </div>
                             <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
                             <div>

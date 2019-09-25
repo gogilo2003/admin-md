@@ -13,7 +13,7 @@
             @foreach ($cat->pictures as $picture)
             <div class="col-md-4">
                 <div class="card text-purple shadow-lg">
-                    <img class="card-img" src="{{ asset('public/images/pictures/'.$picture->name) }}" alt="{{ $picture->alt }}">
+                    <img class="card-img" src="{{ asset(config('admin.path_prefix').'images/pictures/'.$picture->name) }}" alt="{{ $picture->alt }}">
                     <div class="card-img-overlay">
                         <h3 class="card-title">{{ $picture->title }}</h3>
                         <p class="card-text">{{ $picture->caption }}</p>

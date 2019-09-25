@@ -49,7 +49,7 @@
 				<td>{{ date_format(date_create($sermon->sermon_at),'d M Y') }}</td>
 				<td>
 					<div class="btn-group">
-						<a data-picture="{{ $sermon->picture ? asset('public/images/sermons/'.$sermon->picture) : asset('public/vendor/admin/img/placeholder.png') }}" data-id="{{ $sermon->id }}" class="btn btn-primary btn-sm btn-round" data-toggle="modal" href='#pictureModal'><span class="material-icons">add_a_photo</span> Picture</a>
+						<a data-picture="{{ $sermon->picture ? asset(config('admin.path_prefix').'images/sermons/'.$sermon->picture) : asset(config('admin.path_prefix').'vendor/admin/img/placeholder.png') }}" data-id="{{ $sermon->id }}" class="btn btn-primary btn-sm btn-round" data-toggle="modal" href='#pictureModal'><span class="material-icons">add_a_photo</span> Picture</a>
 						<a data-id="{{ $sermon->id }}" class="btn btn-primary btn-sm btn-round" data-toggle="modal" href='#audioModal'><span class="material-icons">audiotrack</span> Audio</a>
 						<a data-id="{{ $sermon->id }}" class="btn btn-primary btn-sm btn-round" data-toggle="modal" href='#videoModal'><span class="material-icons">video_call</span> Video</a>
 						<a data-id="{{ $sermon->id }}" class="publishSermon btn btn-primary btn-sm" href='javascript:'><span class="material-icons">cloud_{{ $sermon->published ? 'download' : 'upload' }}</span> {{ $sermon->published ? 'Un-Publish' : 'Publish' }}</a>
@@ -76,7 +76,7 @@
 
                                 <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                     <div class="fileinput-new thumbnail img-raised">
-                                        <img id="currentPicture" src="{{ asset('public/vendor/admin/img/placeholder.png') }}" alt="...">
+                                        <img id="currentPicture" src="{{ asset(config('admin.path_prefix').'vendor/admin/img/placeholder.png') }}" alt="...">
                                     </div>
                                     <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
                                     {!! $errors->has('picture') ? '<p><span class="text-danger">'.$errors->first('picture').'</span></p>' : ''!!}

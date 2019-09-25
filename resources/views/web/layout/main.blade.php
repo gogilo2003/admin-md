@@ -16,10 +16,10 @@
 
         <title>{{ $page->title }}</title>
 
-        <link href="{{ asset('public/vendor/admin/css/web.css') }}" rel="stylesheet">
-        <link href="{{ asset('public/vendor/admin/css/font-awesome.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('public/vendor/admin/material-design-icons/material-icons.css') }}" rel="stylesheet">
-        <link href="{{ asset('public/vendor/admin/iconmoon/linea-icon.css') }}" rel="stylesheet">
+        <link href="{{ asset(config('admin.path_prefix').'vendor/admin/css/web.css') }}" rel="stylesheet">
+        <link href="{{ asset(config('admin.path_prefix').'vendor/admin/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset(config('admin.path_prefix').'vendor/admin/material-design-icons/material-icons.css') }}" rel="stylesheet">
+        <link href="{{ asset(config('admin.path_prefix').'vendor/admin/iconmoon/linea-icon.css') }}" rel="stylesheet">
 
         <style>
             .bd-placeholder-img {

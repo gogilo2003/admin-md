@@ -13,7 +13,7 @@ $cat = $page->picture_categories->where('name','=','slideshow')->first();
     <div class="carousel-inner">
         @foreach($slides as $key => $slide)
         <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-            <img class="img-fluid w-100" src="{{ asset('public/images/pictures/'.$slide->name) }}" alt="">
+            <img class="img-fluid w-100" src="{{ asset(config('admin.path_prefix').'images/pictures/'.$slide->name) }}" alt="">
             @if ($slide->title || $slide->caption || $slide->url)
             <div class="container">
                 <div class="carousel-caption text-left">

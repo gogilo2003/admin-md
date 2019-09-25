@@ -14,7 +14,7 @@
                     <div class="card bg-purple border-light shadow-lg rounded-pill">
                         <div class="row">
                             <div class="col-md-3">
-                                <img src="{{ asset('public/images/projects/160x160/'.$project->picture) }}" alt="" class="img-fluid w-100 rounded-circle">
+                                <img src="{{ asset(config('admin.path_prefix').'images/projects/160x160/'.$project->picture) }}" alt="" class="img-fluid w-100 rounded-circle">
                             </div>
                             <div class="card-body col-md-9 pr-5">
                                 <h5 class="card-title text-uppercase"><a href="{{ route('project',[$project->id,$page->id]) }}" class="text-light">{{ $project->title }}</a></h5>
