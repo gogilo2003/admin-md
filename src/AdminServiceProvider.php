@@ -201,5 +201,9 @@ class AdminServiceProvider extends ServiceProvider
             __DIR__.'/../resources/views/web/gallery.blade.php'=>resource_path('views/web/gallery.blade.php'),
         ],'web-views');
 
+        $this->publishes([
+            __DIR__.'/../public/stopwords.txt'=>public_path('stopwords.txt')
+        ],'stopwords');
+
 	}
 }

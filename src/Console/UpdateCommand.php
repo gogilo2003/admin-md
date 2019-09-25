@@ -68,6 +68,7 @@ class UpdateCommand extends Command
         $this->call('vendor:publish', ['--tag'=>'admin-icons', '--force']);
         $this->call('vendor:publish', ['--tag'=>'admin-assets', '--force']);
         $this->call('vendor:publish', ['--tag'=>'vue-resources', '--force']);
+        $this->call('vendor:publish', ['--tag'=>'stopwords', '--force']);
 
         clean_directories();
 
