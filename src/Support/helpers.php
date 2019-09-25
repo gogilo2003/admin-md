@@ -1502,8 +1502,8 @@ if (!function_exists('get_filesize')) {
     }
 }
 
-if(!function_exists('')){
-    function stopWords($text) {
+if(!function_exists('stop_words')){
+    function stop_words($text) {
         $stopwords = file_get_contents(asset('stopwords.txt'));
         // Remove line breaks and spaces from stopwords
         $stopwords = array_map(function($x){return trim(strtolower($x));}, $stopwords);
