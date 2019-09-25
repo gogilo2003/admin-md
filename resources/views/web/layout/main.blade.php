@@ -12,7 +12,7 @@
         @endsection
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="{!! url('public/favicon.png') !!}">
+        <link rel="icon" type="image/png" href="{!! asset(config('admin.path_prefix').'favicon.png') !!}">
 
         <title>{{ $page->title }}</title>
 
@@ -59,9 +59,9 @@
                 <p>&copy; {{ date('Y') }} {{ config('app.name') }}, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
             </div>
         </footer>
-        <script src="{{ url('public/vendor/admin/js/jquery.min.js') }}"></script>
-        <script src="{{ url('public/vendor/admin/js/popper.min.js') }}"></script>
-        <script src="{{ url('public/vendor/admin/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset(config('admin.path_prefix').'vendor/admin/js/jquery.min.js') }}"></script>
+        <script src="{{ asset(config('admin.path_prefix').'vendor/admin/js/popper.min.js') }}"></script>
+        <script src="{{ asset(config('admin.path_prefix').'vendor/admin/js/bootstrap.min.js') }}"></script>
     </body>
 
 </html>

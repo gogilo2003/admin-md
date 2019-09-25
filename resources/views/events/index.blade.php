@@ -29,7 +29,7 @@
 			<div class="col-md-4 col-lg-4">
 				<div class="thumbnail text-center">
 					<h3>{{ $event->title }}</h3>
-					<img src="{{ url('public/images/events/'.$event->picture) }}" class="img-responsive img-fluid" alt="Image">
+					<img src="{{ asset(config('admin.path_prefix').'images/events/'.$event->picture) }}" class="img-responsive img-fluid" alt="Image">
 					<p class="text-justify">{{ str_words($event->content) }}</p>
 					{{ $event->category->name }}
 					<hr>

@@ -13,7 +13,7 @@
 		<div class="row">
 			<div class="col-md-4">
 				<div class="thumbnail">
-					<img src="{{ url('public/images/profiles/'.$profile->picture) }}" class="img-responsive img-fluid" alt="{{ $profile->name }}">
+					<img src="{{ asset(config('admin.path_prefix').'images/profiles/'.$profile->picture) }}" class="img-responsive img-fluid" alt="{{ $profile->name }}">
 				</div>
 			</div>
 			<div class="col-md-8">
@@ -33,7 +33,7 @@
 
 @section('styles')
 	<style>
-		
+
 	</style>
 @stop
 

@@ -41,7 +41,7 @@
 			<tr>
 				<td>{{ $loop->iteration }}</td>
 				<td width="128">
-					<img src="{{ url('public/images/pictures/thumbnails/'.$picture->name) }}" class="img-responsive img-fluid" alt="{{ $picture->alt }}">
+					<img src="{{ asset(config('admin.path_prefix').'images/pictures/thumbnails/'.$picture->name) }}" class="img-responsive img-fluid" alt="{{ $picture->alt }}">
 				</td>
 				<td>
 					{{ $picture->category->title }}

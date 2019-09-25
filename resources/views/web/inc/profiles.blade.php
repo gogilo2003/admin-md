@@ -8,7 +8,7 @@
             @foreach ($page->profiles as $key => $profile)
             <div class="col-md-4">
                 <div class="card shadow">
-                    <img class="card-img-top" src="{{ url('public/images/profiles/'.$profile->picture) }}" alt="">
+                    <img class="card-img-top" src="{{ asset(config('admin.path_prefix').'images/profiles/'.$profile->picture) }}" alt="">
                     <div class="card-body text-center">
                         <h5 class="card-title text-uppercase">{{ $profile->name }} <small>{{ $profile->position }}</small></h5>
                         <p class="card-text">{{ str_words($profile->details) }}</p>

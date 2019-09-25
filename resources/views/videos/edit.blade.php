@@ -31,7 +31,7 @@
 
 		<div class="row">
 			<div class="col-md-4 col-lg-4">
-                <video src="{{ url('public/videos/'.$video->name) }}" width="100%" controls></video>
+                <video src="{{ asset(config('admin.path_prefix').'videos/'.$video->name) }}" width="100%" controls></video>
                 <div class="form-group form-file-upload form-file-multiple{!! $errors->has('name') ? ' has-error':'' !!}">
                     <input type="file" class="inputFileHidden" name="name" accept="video/*">
                     <div class="input-group">

@@ -8,7 +8,7 @@
 		@foreach ($page->events as $event)
 			<div class="col-md-4">
 				<div class="card shadow-lg bg-info text-light h-100">
-                    <img src="{{ url('public/images/events/'.$event->picture) }}" class="card-img-top" alt="{{ $event->title }}">
+                    <img src="{{ asset(config('admin.path_prefix').'images/events/'.$event->picture) }}" class="card-img-top" alt="{{ $event->title }}">
                     <div class="card-body">
                         <h3 class="text-uppercase border-bottom">{{ $event->title }}<br><small>By {{ $event->leader }}</small></h3>
                         <p class="text-justify">{{ str_words($event->content) }}</p>

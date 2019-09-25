@@ -25,17 +25,17 @@
                     <div class="border border-purple text-purple rounded-lg text-center shadow-lg p-4">
                         @if($sermon->audio)
                             <h5 class="py-2 text-uppercase">Listen to the recorded sermon</h5>
-                            <audio src="{{ url('public/audio/sermons/'.$sermon->audio) }}" class="w-100 img-fluid shadow-lg mb-5" controls="true"></audio>
+                            <audio src="{{ asset(config('admin.path_prefix').'audio/sermons/'.$sermon->audio) }}" class="w-100 img-fluid shadow-lg mb-5" controls="true"></audio>
                         @endif
                         @if($sermon->video)
                             <h5 class="py-2 text-uppercase">Watch the sermon here</h5>
-                            <video src="{{ url('public/video/sermons/'.$sermon->video) }}" class="w-100 img-fluid shadow-lg mb-5" controls="true"></video>
+                            <video src="{{ asset(config('admin.path_prefix').'video/sermons/'.$sermon->video) }}" class="w-100 img-fluid shadow-lg mb-5" controls="true"></video>
                         @endif
                     </div>
                 </div>
             @endif
 			<div class="{{ $hasPicVideo ? 'col-md-8' : 'col-md-12' }} mb-4">
-                <img src="{{ url('public/images/sermons/'.$sermon->picture) }}" class="img-fluid w-100" alt="{{ $sermon->title }}">
+                <img src="{{ asset(config('admin.path_prefix').'images/sermons/'.$sermon->picture) }}" class="img-fluid w-100" alt="{{ $sermon->title }}">
 			</div>
 			<div class="col-md-12">
 				<div class="text-justify"> {!! $sermon->content !!}</div>

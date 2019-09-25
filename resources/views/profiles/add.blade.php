@@ -29,7 +29,7 @@
                 <div class="form-group{!! $errors->has('picture') ? ' has-error':'' !!}">
                     <label for="picture">Picture</label>
                     {!! $errors->has('picture') ? '<span class="text-danger">'.$errors->first('picture').'</span>' : ''!!}
-                    <img id="picture_preview" class="picture_preview w-100 h100" src="{{ url('public/vendor/admin/img/placeholder.png') }}" alt="Preview">
+                    <img id="picture_preview" class="picture_preview w-100 h100" src="{{ asset(config('admin.path_prefix').'vendor/admin/img/placeholder.png') }}" alt="Preview">
 
                     <input
                         data-filename-placement="inside"

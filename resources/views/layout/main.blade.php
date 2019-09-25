@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{!! url('public/favicon.png') !!}">
-    <link rel="icon" type="image/png" href="{!! url('public/favicon.png') !!}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{!! asset(config('admin.path_prefix').'favicon.png') !!}">
+    <link rel="icon" type="image/png" href="{!! asset(config('admin.path_prefix').'favicon.png') !!}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script type="text/javascript">
@@ -29,17 +29,17 @@
     <link rel="stylesheet" href="/public/vendor/admin/css/font-awesome.min.css">
     <link rel="stylesheet" href="/public/vendor/admin/material-design-icons/material-icons.css">
     <!-- CSS Files -->
-    <!--<link rel="stylesheet" href="{{ url('public/vendor/admin/css/bootstrap-select.min.css') }}">-->
+    <!--<link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/css/bootstrap-select.min.css') }}">-->
     <link href="/public/vendor/admin/material-dashboard-master/assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
 
-    <!--<link rel="stylesheet" href="{{ url('public/vendor/admin/css/bootstrap-datetimepicker.min.css') }}">-->
-    <!--<link rel="stylesheet" href="{{ url('public/vendor/admin/css/file-input.css') }}">-->
-    <link rel="stylesheet" href="{{ url('public/vendor/admin/iconmoon/linea-icon.css') }}">
-    <link rel="stylesheet" href="{{ url('public/vendor/admin/cropper/cropper.min.css') }}">
+    <!--<link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/css/bootstrap-datetimepicker.min.css') }}">-->
+    <!--<link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/css/file-input.css') }}">-->
+    <link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/iconmoon/linea-icon.css') }}">
+    <link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/cropper/cropper.min.css') }}">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <!--<link href="/public/vendor/admin/material-dashboard-master/assets/demo/demo.css" rel="stylesheet" />-->
-    <script type="text/javascript" src="{{ url('public/vendor/admin/js/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url('public/vendor/admin/js/tinymce.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/tinymce.min.js') }}"></script>
     @yield('styles')
     @yield('scripts_top')
 </head>
@@ -51,7 +51,7 @@
 Tip 2: you can also add an image using data-image tag-->
             <div class="logo">
                 <a href="{{ url('/') }}" class="simple-text logo-normal">
-                    <img src="{!! file_exists(public_path('favicon.png')) ? url('public/favicon.png') : (file_exists(public_path('logo.png')) ? url('public/logo.png') : (file_exists(public_path('images/favicon.png') ? url('images/favicon.png') : (file_exists('images/logo.png') ? url('images/logo.png') : '')))) !!}" alt="" class="img-fluid" style="max-width: 5em">
+                    <img src="{!! file_exists(public_path('favicon.png')) ? asset(config('admin.path_prefix').'favicon.png') : (file_exists(public_path('logo.png')) ? asset(config('admin.path_prefix').'logo.png') : (file_exists(public_path('images/favicon.png') ? url('images/favicon.png') : (file_exists('images/logo.png') ? url('images/logo.png') : '')))) !!}" alt="" class="img-fluid" style="max-width: 5em">
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -167,17 +167,17 @@ Tip 2: you can also add an image using data-image tag-->
     <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script type="text/javascript" src="/public/vendor/admin/material-dashboard-master/assets/js/material-dashboard.js?v=2.1.1"></script>
-    <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/jquery.dataTables.min.js') }}"></script>-->
-    <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-notify.min.js') }}"></script>-->
-    <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-select.min.js') }}"></script>-->
-    <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap.file-input.js') }}"></script>-->
-    <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-hover-dropdown.min.js') }}"></script>
-    <!--<script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap-datetimepicker.min.js') }}"></script>-->
-    <script type="text/javascript" src="{{ url('public/vendor/admin/js/bootstrap3-typeahead.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url('public/vendor/admin/js/file-input.js') }}"></script>
-    <script type="text/javascript" src="{{ url('public/vendor/admin/cropper/cropper.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url('public/vendor/admin/js/main.js') }}"></script>
-    <script type="text/javascript" src="{{ url('public/vendor/admin/js/admin.js') }}"></script>
+    <!--<script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/jquery.dataTables.min.js') }}"></script>-->
+    <!--<script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/bootstrap-notify.min.js') }}"></script>-->
+    <!--<script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/bootstrap-select.min.js') }}"></script>-->
+    <!--<script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/bootstrap.file-input.js') }}"></script>-->
+    <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/bootstrap-hover-dropdown.min.js') }}"></script>
+    <!--<script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/bootstrap-datetimepicker.min.js') }}"></script>-->
+    <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/bootstrap3-typeahead.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/file-input.js') }}"></script>
+    <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/cropper/cropper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/admin.js') }}"></script>
     <script type="text/javascript">
     @if(Session::has('global-info'))
     {!!"$.notify( { message: '".Session::get('global-info')."',icon: 'info_outline'}, {type: 'info'})"!!}

@@ -20,7 +20,7 @@
 			<div class="card card-profile">
 				<div class="card-avatar">
 					<a href="#pablo">
-						<img class="img" src="{{ $user->photo ? url('public/images/users',$user->photo) : url('public','favicon.png') }}">
+						<img class="img" src="{{ $user->photo ? asset(config('admin.path_prefix').'images/users',$user->photo) : url('public','favicon.png') }}">
 					</a>
 				</div>
 				<div class="card-body">
@@ -61,7 +61,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 @stop
 
 @section('styles')
@@ -87,12 +87,12 @@
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 
 @section('scripts_bottom')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop

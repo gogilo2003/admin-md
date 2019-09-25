@@ -10,7 +10,7 @@
 				<div class="card text-purple mb-4 border-0 shadow-sm">
                     <div class="row">
                         <div class="col-md-3">
-                            <img src="{{ url('public/images/sermons/thumbnails/'.$sermon->picture) }}" class="img-fluid rounded-circle rounded mt-4 ml-4 border-purple border" alt="{{ $sermon->name }}">
+                            <img src="{{ asset(config('admin.path_prefix').'images/sermons/thumbnails/'.$sermon->picture) }}" class="img-fluid rounded-circle rounded mt-4 ml-4 border-purple border" alt="{{ $sermon->name }}">
                         </div>
                         <div class="col-md-9">
                             <div class="card-body">

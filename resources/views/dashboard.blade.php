@@ -81,7 +81,7 @@ Dashboard
 	}
 </style>
 -->
-<link rel="stylesheet" href="{{ url('public/vendor/admin/material-dashboard-master/assets/css/Chart.min.css') }}">
+<link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/css/Chart.min.css') }}">
 @endsection
 
 @section('scripts_top')
@@ -101,7 +101,7 @@ Dashboard
 </script>
 -->
 
-<script type="text/javascript" src="{{ url('public/vendor/admin/material-dashboard-master/assets/js/plugins/Chart.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/Chart.min.js') }}"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
 		$.post("{{ route('admin-hits-browsers') }}").then(function (response) {

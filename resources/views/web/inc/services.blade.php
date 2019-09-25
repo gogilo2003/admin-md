@@ -15,7 +15,7 @@
             @foreach ($services as $service)
                 <div class="col-lg-4 p-3">
                     <div class="shadow h-100 p-3">
-                        <img src="{{ url('public/images/articles/'.$service->picture) }}" alt="" width="140" height="140" class="bd-placeholder-img rounded-circle border border-info">
+                        <img src="{{ asset(config('admin.path_prefix').'images/articles/'.$service->picture) }}" alt="" width="140" height="140" class="bd-placeholder-img rounded-circle border border-info">
                         <h2 class="text-uppercase pt-3 border-bottom">{{ $service->title }}</h2>
                         <p>{{ str_words(strip_tags($service->content),25) }}</p>
                         <p><a class="btn btn-secondary" href="{{ route('article',[$service->name,$page->name]) }}" role="button">View details &raquo;</a></p>
