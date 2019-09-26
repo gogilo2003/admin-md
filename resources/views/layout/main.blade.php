@@ -26,18 +26,18 @@
     <title>@yield('title')</title>
     <!--     Fonts and icons     -->
     <!--<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />-->
-    <link rel="stylesheet" href="/public/vendor/admin/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/public/vendor/admin/material-design-icons/material-icons.css">
+    <link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/material-design-icons/material-icons.css') }}">
     <!-- CSS Files -->
     <!--<link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/css/bootstrap-select.min.css') }}">-->
-    <link href="/public/vendor/admin/material-dashboard-master/assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+    <link href="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
 
     <!--<link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/css/bootstrap-datetimepicker.min.css') }}">-->
     <!--<link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/css/file-input.css') }}">-->
     <link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/iconmoon/linea-icon.css') }}">
     <link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/cropper/cropper.min.css') }}">
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <!--<link href="/public/vendor/admin/material-dashboard-master/assets/demo/demo.css" rel="stylesheet" />-->
+    <!--<link href="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/demo/demo.css') }}" rel="stylesheet" />-->
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/moment.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/tinymce.min.js') }}"></script>
     @yield('styles')
@@ -46,7 +46,7 @@
 
 <body class="">
     <div class="wrapper " id="app">
-        <div class="sidebar" data-color="purple" data-background-color="green" data-image="/public/vendor/admin/material-dashboard-master/assets/img/sidebar-1.jpg">
+        <div class="sidebar" data-color="purple" data-background-color="green" data-image="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/img/sidebar-1.jpg') }}">
             <!-- Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 Tip 2: you can also add an image using data-image tag-->
             <div class="logo">
@@ -126,47 +126,47 @@ Tip 2: you can also add an image using data-image tag-->
         var contentCSS = "{{ config('admin.contact') }}"
     </script>
     <!--   Core JS Files   -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/core/jquery.min.js"></script>
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/core/popper.min.js"></script>
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/core/bootstrap-material-design.min.js"></script>
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/core/jquery.min.js') }}"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/core/popper.min.js') }}"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/core/bootstrap-material-design.min.js') }}"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
     <!-- Plugin for the momentJs  -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/moment.min.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/moment.min.js') }}"></script>
     <!--  Plugin for Sweet Alert -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/sweetalert2.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/sweetalert2.js') }}"></script>
     <!-- Forms Validations Plugin -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jquery.validate.min.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/jquery.validate.min.js') }}"></script>
     <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/jquery.bootstrap-wizard.js') }}"></script>
     <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-selectpicker.js') }}"></script>
     <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-datetimepicker.min.js') }}"></script>
     <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jquery.dataTables.min.js"></script>
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/dataTables.bootstrap4.min.js') }}"></script>
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-tagsinput.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-tagsinput.js') }}"></script>
     <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jasny-bootstrap.min.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/jasny-bootstrap.min.js') }}"></script>
     <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/fullcalendar.min.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/fullcalendar.min.js') }}"></script>
     <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/jquery-jvectormap.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/jquery-jvectormap.js') }}"></script>
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/nouislider.min.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/nouislider.min.js') }}"></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js') }}"></script>-->
     <!-- Library for adding dinamically elements -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/arrive.min.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/arrive.min.js') }}"></script>
     <!--  Google Maps Plugin    -->
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>-->
     <!-- Chartist JS -->
-    <!--<script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/chartist.min.js"></script>-->
+    <!--<script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/chartist.min.js') }}"></script>-->
     <!--  Notifications Plugin    -->
-    <script src="/public/vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-notify.js"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-notify.js') }}"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script type="text/javascript" src="/public/vendor/admin/material-dashboard-master/assets/js/material-dashboard.js?v=2.1.1"></script>
+    <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/material-dashboard.js?v=2.1.1') }}"></script>
     <!--<script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/jquery.dataTables.min.js') }}"></script>-->
     <!--<script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/bootstrap-notify.min.js') }}"></script>-->
     <!--<script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/bootstrap-select.min.js') }}"></script>-->
