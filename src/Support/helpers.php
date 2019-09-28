@@ -1523,6 +1523,13 @@ if(!function_exists('stop_words')){
     }
 }
 
+if (!function_exists('keywords')) {
+	function keywords($text)
+	{
+		return implode(', ', stop_words($text));
+	}
+}
+
 
 if (!function_exists('is_current_url')) {
 	function is_current_url($path){
