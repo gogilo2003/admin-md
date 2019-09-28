@@ -112,6 +112,7 @@ function str_words($string, $words=15)
  */
 function str_words_alt($string, $characters=100)
 {
+	$string = preg_replace('/\s+/', ' ', html_entity_decode($string));
     $words = count(explode(' ',substr($string,0,$characters)));
 	$string = strip_tags($string);
 	return Str::words($string,$words);
@@ -1505,7 +1506,7 @@ if (!function_exists('get_filesize')) {
 if(!function_exists('stop_words')){
     function stop_words($text) {
     	$text = strip_tags($text);
-    	
+
         $stopwords = file(public_path('stopwords.txt'));
         // Remove line breaks and spaces from stopwords
         $stopwords = array_map(function($x){return trim(strtolower($x));}, $stopwords);
