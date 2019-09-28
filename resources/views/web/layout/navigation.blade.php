@@ -7,8 +7,11 @@
         <div class="collapse navbar-collapse text-uppercase" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 @foreach (Ogilo\AdminMd\Models\Menu::first()->links as $link)
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url($link->url ? $link->url : '/') }}">
+                @php
+                    $url = $link->url ? $link->url : '/';
+                @endphp
+                <li class="nav-item{{ is_current_url($url) ? ' active' : '' }}">
+                    <a class="nav-link" href="{{ url($url) }}">
                         <i class="{{ $link->icon }}"></i>
                         {{ $link->caption }}
                         <span class="sr-only">(current)</span>

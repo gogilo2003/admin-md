@@ -2,34 +2,34 @@
 
 @section('title')
 	{{ $event->title }}
-@stop
+@endsection
 
 @section('sidebar_left')
 	{{ $event->title }}
-@stop
+@endsection
 
 @section('content')
 	<div class="container"> {{ $event->title }}</div>
-@stop
+@endsection
 
 @section('sidebar_right')
 	{{ $event->title }}
-@stop
+@endsection
 
 @section('styles')
 	<style>
-		
+
 	</style>
-@stop
+@endsection
 
 @section('scripts_top')
 	<script type="text/javascript">
 
 	</script>
-@stop
+@endsection
 
 @section('scripts_bottom')
 	<script type="text/javascript">
 
 	</script>
-@stop
+@endsection

@@ -2,7 +2,7 @@
 
 @section('title')
 	{{ $page->title }}
-@stop
+@endsection
 
 @section('breadcrumbs')
     @if ($page->name === 'home')
@@ -14,7 +14,7 @@
         <li class="breadcrumb-item active" aria-current="page">{{ $article->title }}</li>
     @endif
 
-@stop
+@endsection
 
 @section('content')
 <section class="mt-5 py-5 clearfix">
@@ -25,22 +25,22 @@
     </div>
 </section>
 
-@stop
+@endsection
 
 @section('styles')
 	<style>
 
 	</style>
-@stop
+@endsection
 
 @section('scripts_top')
 	<script type="text/javascript">
 
 	</script>
-@stop
+@endsection
 
 @section('scripts_bottom')
 	<script type="text/javascript">
 
 	</script>
-@stop
+@endsection

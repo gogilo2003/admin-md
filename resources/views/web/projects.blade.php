@@ -2,35 +2,35 @@
 
 @section('title')
 	Projects
-@stop
+@endsection
 
 @section('breadcrumbs')
     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page">Projects</li>
-@stop
+@endsection
 
 @section('content')
 	@include('admin::web.inc.projects')
-@stop
+@endsection
 
 @section('sidebar_right')
 	page sidebar_right
-@stop
+@endsection
 
 @section('styles')
 	<style>
 
 	</style>
-@stop
+@endsection
 
 @section('scripts_top')
 	<script type="text/javascript">
 
 	</script>
-@stop
+@endsection
 
 @section('scripts_bottom')
 	<script type="text/javascript">
 
 	</script>
-@stop
+@endsection

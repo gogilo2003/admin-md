@@ -2,11 +2,11 @@
 
 @section('title')
 	Profile
-@stop
+@endsection
 
 @section('sidebar_left')
 	page sidebar_left
-@stop
+@endsection
 
 @section('content')
 	<div class="container">
@@ -25,26 +25,26 @@
 			</div>
 		</div>
 	</div>
-@stop
+@endsection
 
 @section('sidebar_right')
 	page sidebar_right
-@stop
+@endsection
 
 @section('styles')
 	<style>
 
 	</style>
-@stop
+@endsection
 
 @section('scripts_top')
 	<script type="text/javascript">
 
 	</script>
-@stop
+@endsection
 
 @section('scripts_bottom')
 	<script type="text/javascript">
 
 	</script>
-@stop
+@endsection

@@ -1522,3 +1522,10 @@ if(!function_exists('stop_words')){
         return array_filter($keywords);
     }
 }
+
+
+if (!function_exists('is_current_url')) {
+	function is_current_url($path){
+		return starts_with(Request::path(),$path);
+	}
+}

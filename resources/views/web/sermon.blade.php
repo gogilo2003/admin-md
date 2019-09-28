@@ -2,11 +2,11 @@
 
 @section('title')
 	{{ $sermon->title }}
-@stop
+@endsection
 
 @section('sidebar_left')
 	page sidebar_left
-@stop
+@endsection
 
 @section('content')
 <section class="py-5 mt-5 clearfix">
@@ -48,26 +48,26 @@
 		</div>
     </div>
 </section>
-@stop
+@endsection
 
 @section('sidebar_right')
 	page sidebar_right
-@stop
+@endsection
 
 @section('styles')
 	<style>
 
 	</style>
-@stop
+@endsection
 
 @section('scripts_top')
 	<script type="text/javascript">
 
 	</script>
-@stop
+@endsection
 
 @section('scripts_bottom')
 	<script type="text/javascript">
 
 	</script>
-@stop
+@endsection
