@@ -113,7 +113,7 @@ function str_words($string, $words=15)
 function str_words_alt($string, $characters=100)
 {
 	$string = preg_replace('/\s+/', ' ', html_entity_decode($string));
-    $words = count(explode(' ',substr($string,0,$characters)));
+    $words = count(explode(' ',preg_replace('/\s+/', ' ',substr($string,0,$characters))));
 	$string = strip_tags($string);
 	return Str::words($string,$words);
 }
