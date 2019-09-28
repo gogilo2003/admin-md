@@ -110,12 +110,24 @@ function str_words($string, $words=15)
  * @param: $characters
  * The number of characters you intend to limit the truncated string to.
  */
-function str_words_alt($string, $characters=100)
+function str_words_alt($string, $characters=100, $leader = false)
 {
-	$string = preg_replace('/\s+/', ' ', html_entity_decode($string));
-    $words = count(explode(' ',preg_replace('/\s+/', ' ',substr($string,0,$characters))));
-	$string = strip_tags($string);
-	return Str::words($string,$words);
+	// remove any html tags
+	$lcl_string = strip_tags($string);
+
+	// remove any html whitespaces
+	$lcl_string = preg_replace('/(&nbsp;)+/', ' ',$lcl_string);
+
+	// remove all unnecesary spaces, newline and tab spaces
+	$lcl_string = preg_replace('/\s+/', ' ', $lcl_string);
+
+	// return $lcl_string;
+
+    $words = count(explode(' ',substr($lcl_string,0,$characters)));
+	if($leader)
+		return Str::words($lcl_string,$words);
+	else
+		return trim(Str::words($lcl_string,$words),'.');
 }
 
 function get_menus()
