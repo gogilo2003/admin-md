@@ -14,7 +14,9 @@ class AlterLinksTable extends Migration
     public function up()
     {
         Schema::table('links', function (Blueprint $table) {
-            $table->integer('order')->default(0);
+            if(!Schema::hasColumn('links','order')){
+                $table->integer('order')->default(0);
+            }
         });
     }
 
