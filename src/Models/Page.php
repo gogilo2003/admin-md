@@ -38,6 +38,11 @@ class Page extends Model
     {
         return $this->belongsToMany('Ogilo\AdminMd\Models\PictureCategory');
     }
+
+    public function pictures()
+    {
+        return $this->hasManyThrough(Picture::class, PictureCategory::class);
+    }
     
     public function video_categories()
     {
