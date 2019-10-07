@@ -39,9 +39,10 @@ class Page extends Model
         return $this->belongsToMany('Ogilo\AdminMd\Models\PictureCategory');
     }
 
-    public function pictures()
+    public function getPicturesAttribute()
     {
-        return $this->hasManyThrough(Picture::class, PictureCategory::class);
+        $pictures = Picture::where('published',1)->whereIn($this->picture_categories->pluck('id')->toArray());
+        return $pictures;
     }
     
     public function video_categories()
