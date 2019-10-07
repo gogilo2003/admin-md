@@ -1556,6 +1556,6 @@ if (!function_exists('is_current_url')) {
 if (!function_exists('str_ends_with')) {
 	function str_ends_with($string,$end)
 	{
-		Str::endsWith($string,$end)
+		Str::endsWith($string,$end);
 	}
 }
