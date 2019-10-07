@@ -1529,6 +1529,7 @@ if(!function_exists('stop_words')){
         $text_array = explode(",",$text);
         // remove whitespace and lowercase words in $text
         $text_array = array_map(function($x){return trim(strtolower($x));}, $text_array);
+        $keywords = null;
         foreach ($text_array as $term) {
             if (!in_array($term, $stopwords)) {
                 $keywords[] = $term;
