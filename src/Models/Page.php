@@ -41,7 +41,8 @@ class Page extends Model
 
     public function getPicturesAttribute()
     {
-        $pictures = Picture::with('category')->where('published',1)->whereIn('id',$this->picture_categories->pluck('id')->toArray())->get();
+        $cats = $this->picture_categories->pluck('id')->toArray();
+        $pictures = Picture::with('category')->where('published',1)->whereIn('picture_category_id',$cats)->get();
         return $pictures;
     }
     
