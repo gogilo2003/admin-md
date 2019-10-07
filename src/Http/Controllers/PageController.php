@@ -72,8 +72,10 @@ class PageController extends Controller
 				}
 				$image = Img::make($title_image->getRealPath());
 
-				$image->save($dir.$filename);
+		        $img = json_decode($request->input('image_cropdetails'));
+		        $image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
 
+				$image->save($dir.$filename);
 				$image->destroy();
 
 				$page->title_image = $filename;
@@ -143,8 +145,10 @@ class PageController extends Controller
 
 				$image = Img::make($title_image->getRealPath());
 
-				$image->save($dir.$filename);
+				$img = json_decode($request->input('image_cropdetails'));
+		        $image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
 
+				$image->save($dir.$filename);
 				$image->destroy();
 
 				$page->title_image = $filename;
@@ -163,6 +167,12 @@ class PageController extends Controller
 		// dd($request->all());
 
 		$page = Page::findOrFail($request->input('id'));
+
+		$dir = public_path( 'images/pages/');
+		if ($page->title_image && file_exists($dir.$page->title_image)) {
+			unlink($dir.$page->title_image);
+		}
+		
 		$name = $page->name;
 		$page->delete();
 
