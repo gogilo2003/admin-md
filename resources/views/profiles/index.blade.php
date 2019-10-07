@@ -43,7 +43,9 @@
 
 @section('styles')
 	<style type="text/css">
-
+		.img-responsive{
+			width: 100%;
+		}
 	</style>
 @stop
 @section('scripts_top')

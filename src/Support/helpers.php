@@ -1551,3 +1551,11 @@ if (!function_exists('is_current_url')) {
 		return starts_with(Request::path(),$path);
 	}
 }
+
+
+if (!function_exists('str_ends_with')) {
+	function str_ends_with($string,$end)
+	{
+		Str::endsWith($string,$end)
+	}
+}
