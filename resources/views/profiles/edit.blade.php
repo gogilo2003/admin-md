@@ -28,16 +28,9 @@
                 <div class="form-group{!! $errors->has('picture') ? ' has-error':'' !!}">
                     <label for="picture">Picture</label>
                     {!! $errors->has('picture') ? '<span class="text-danger">'.$errors->first('picture').'</span>' : ''!!}
-                    <img id="picture_preview" class="picture_preview w-100 h100" src="{{ asset(config('admin.path_prefix').'vendor/admin/img/placeholder.png') }}" alt="Preview">
+                    <img id="picture_preview" class="picture_preview w-100 h100" src="{{ $profile->picture ? asset(config('admin.path_prefix').'images/profiles/'.$profile->picture) : asset(config('admin.path_prefix').'vendor/admin/img/placeholder.png') }}" alt="Preview">
 
-                    <input
-                        data-filename-placement="inside"
-                        title="Select a picture to upload"
-                        type="file"
-                        id="picture"
-                        name="picture"
-                        class="form-control"
-                        >
+                    <input type="file" id="picture" name="picture">
                 </div>
 
                 <a href="JavaScript:" id="load_picture" class="btn btn-round btn-outline-info btn-block"><i class="material-icons">search</i> Browse</a>
