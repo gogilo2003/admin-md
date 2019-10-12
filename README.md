@@ -265,6 +265,24 @@ class="selectpicker" data-live-search="true" data-size="5"
 </select>
 ```
 
+## Frontend
+You can now use vuejs in your admin pages. all admin related vuejs components along with any related sass files will be compiled into admin.js and admin.css files respectively, this therefore requires that you you modify the wbpack.mix.js to cover these two files. The following steps will help you in handling this situation.
+### 1. Publish Vue Resources
+run the publish artisan command with the tag vue-resources as follows
+```
+php artisan vendor:publish --tag=vue-resources
+```
+
+### 2. Update webpack.mix.js file
+Add compilation of admin.js and admin.css to webpack config
+
+```
+mix.js('resources/assets/js/app.js', 'public/js')
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .js('resources/assets/vendor/admin/js/admin.js','public/vendor/admin/js')
+   .sass('resources/assets/vendor/admin/scss/admin.scss', 'public/vendor/admin/css');
+```
+
 By George Ogilo
 info@gogilo.com
 https://www.gogilo.com
