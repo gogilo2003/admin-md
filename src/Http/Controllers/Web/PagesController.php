@@ -66,7 +66,7 @@ class PagesController extends Controller
 			return view()->first([$page_name,'web.'.$page_name,'admin::web.'.$page_name,'admin::web.home'],compact('page'));
 
 		}else{
-			return abort(404);
+			return view('welcome');
 		}
 	}
 

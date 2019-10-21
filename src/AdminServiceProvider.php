@@ -23,15 +23,15 @@ class AdminServiceProvider extends ServiceProvider
 			return new Admin;
         });
 
-        // $file = __DIR__.'/Support/helpers.php';
-        // if (file_exists($file)) {
-        //     require_once($file);
-        // }
+        $file = __DIR__.'/Support/helpers.php';
+        if (file_exists($file)) {
+            require_once($file);
+        }
 	}
 
 	public function boot()
 	{
-		// dd(config('admin'));
+		// dd(public_url('vendor/admin/css'));
 
 		if(config('admin.articles')){
 			config(['admin.menu.admin-articles'=>'Articles']);

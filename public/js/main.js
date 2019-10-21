@@ -32,8 +32,13 @@ tinymce.init({
 
         formData = new FormData();
         formData.append('file', blobInfo.blob(), blobInfo.filename());
-        formData.append('_token', '{{ csrf_token() }}');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
 
+        if (token) {
+            formData.append('_token', token.content);
+        } else {
+            console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+        }
         xhr.send(formData);
     }
 });

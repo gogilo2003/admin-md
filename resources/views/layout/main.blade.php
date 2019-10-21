@@ -128,7 +128,8 @@ Tip 2: you can also add an image using data-image tag-->
         </div>
     </div>
     <script type="text/javascript">
-        var contentCSS = "{{ config('admin.contact') }}"
+        var contentCSS = "{{ config('admin.content_css') }}"
+        let images_upload_url = '{{ route('admin-images_upload_url') }}'
     </script>
     <!--   Core JS Files   -->
     <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/core/jquery.min.js') }}"></script>

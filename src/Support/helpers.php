@@ -1560,3 +1560,14 @@ if (!function_exists('str_ends_with')) {
 		return Str::endsWith($string,$end);
 	}
 }
+
+if (!function_exists('public_url')) {
+    function public_url($url,$full=false)
+    {
+        $path = str_replace('//','/',config('admin.path_prefix').'/'.$url);
+        if ($full) {
+            $path = url($path);
+        }
+        return $path;
+    }
+}

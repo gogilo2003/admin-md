@@ -41,7 +41,7 @@
                         <div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
                             <label for="name">Thumbnail</label>
                             <div>
-                                <img id="thumbnail_preview" class="image_preview" src="{{ asset($picture->name ? 'public/images/pictures/thumbnails/'.$picture->name :'public/vendor/admin/img/placeholder.png') }}" class="img-responsive img-fluid" alt="Preview">
+                                <img id="thumbnail_preview" class="image_preview" src="{{ asset($picture->name ? config('admin.path_prefix').'/images/pictures/thumbnails/'.$picture->name :config('admin.path_prefix').'/vendor/admin/img/placeholder.png') }}" class="img-responsive img-fluid" alt="Preview">
                             </div>
 
                             <input
@@ -61,7 +61,7 @@
                         <div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
                             <label for="name">Thumbnail</label>
                             <div>
-                                <img id="image_preview" class="image_preview" src="{{ asset($picture->name ? 'public/images/pictures/'.$picture->name : 'public/vendor/admin/img/placeholder.png') }}" class="img-responsive img-fluid" alt="Preview">
+                                <img id="image_preview" class="image_preview" src="{{ asset($picture->name ? config('admin.path_prefix').'/images/pictures/'.$picture->name : config('admin.path_prefix').'/vendor/admin/img/placeholder.png') }}" class="img-responsive img-fluid" alt="Preview">
                             </div>
 
                         </div>
