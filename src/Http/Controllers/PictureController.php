@@ -64,6 +64,13 @@ class PictureController extends Controller
 		$cat = PictureCategory::find($request->input('picture_category'));
 
 		$image = Image::make($request->file('name')->getRealPath());
+
+		if(!File::exists($dir.'/original')){
+			File::makeDirectory($dir.'/original',0755,TRUE);
+		}
+
+		$image->save($dir.'/original/'.$filename);
+
         // $image->fit($cat->max_width,$cat->max_height);
         $img = json_decode($request->input('image_cropdetails'));
         $image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
@@ -120,14 +127,23 @@ class PictureController extends Controller
 						->withErrors($validator)
 						->with('global-warning','Some fields failed validation. Please check and try again');
 		}
+
 		$picture = Picture::find($request->input('id'));
+
 		if($request->hasFile('name')){
+
+			$filename 	= $picture->name ? $picture->name : time().'.jpg';
+			$dir 		= public_path('images/pictures');
+
 			// Image::configure(array('driver' => 'imagick'));
 
 			$image 		= Image::make($request->file('name')->getRealPath());
 
-			$filename 	= $picture->name ? $picture->name : time().'.jpg';
-			$dir 		= public_path('images/pictures');
+			if(!File::exists($dir.'/original')){
+				File::makeDirectory($dir.'/original',0755,TRUE);
+			}
+
+			$image->save($dir.'/original/'.$filename);
 
 			if(!File::exists($dir)){
 				File::makeDirectory($dir,0755,TRUE);

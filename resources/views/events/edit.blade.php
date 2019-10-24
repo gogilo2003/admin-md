@@ -92,7 +92,7 @@
 					<div class="col-md-12 col-lg-12">
 						<div class="form-group{!! $errors->has('content') ? ' has-error':'' !!}">
 							<label for="content">Description</label>
-							<textarea class="form-control" id="content" name="content" placeholder="Enter content">{!! ((old('content')) ? old('content') : $event->content) !!}</textarea>
+							<textarea class="form-control tinymce" id="content" name="content" placeholder="Enter content">{!! ((old('content')) ? old('content') : $event->content) !!}</textarea>
 							{!! $errors->has('content') ? '<span class="text-danger">'.$errors->first('content').'</span>' : '' !!}
 						</div>
 					</div>
