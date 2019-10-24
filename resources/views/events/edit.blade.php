@@ -102,7 +102,7 @@
 
 		<input type="hidden" name="id" value="{{ $event->id }}">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
-		<div class="text-right"><button type="submit" class="btn btn-primary"><span class="fa fa-save"></span>  Save</button></div>
+		<div class="text-right"><button type="submit" class="btn btn-primary"><span class="fa fa-save"></span> Save</button></div>
 	</form>
 
 @stop

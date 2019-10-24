@@ -70,9 +70,18 @@ class EventController extends Controller
             if (!File::exists($dir)) {
                 File::makeDirectory($dir,0755,TRUE);
             }
+            if (!File::exists($dir.'thumbnails/')) {
+                File::makeDirectory($dir.'thumbnails/',0755,TRUE);
+            }
 
             $filename = time().'.jpg';
             $image->save($dir.$filename);
+
+            $image->fit(160,160);
+            $image->save($dir.'thumbnails/'.$filename);
+
+            $image-destroy();
+
             $event->picture = $filename;
         }
 
@@ -119,6 +128,9 @@ class EventController extends Controller
             if (!File::exists($dir)) {
                 File::makeDirectory($dir,0755,TRUE);
             }
+            if (!File::exists($dir.'thumbnails/')) {
+                File::makeDirectory($dir.'thumbnails/',0755,TRUE);
+            }
 
             $filename = time().'.jpg';
 
@@ -128,9 +140,18 @@ class EventController extends Controller
                 chmod($old_picture,0777);
                 unlink($old_picture);
             }
+            $old_picture = $dir.'thumbnails/'.$event->picture;
+
+            if (file_exists($old_picture)) {
+                chmod($old_picture,0777);
+                unlink($old_picture);
+            }
             
             $image = Img::make($request->file('picture')->getRealPath());
             $image->save($dir.$filename);
+
+            $mage->fit(160,160);
+            $image->save($dir.'thumbnails/'.$filename);
 
             $event->picture = $filename;
         }
@@ -152,7 +173,20 @@ class EventController extends Controller
     public function postDelete(Request $request)
     {
         $event = Event::find($request->input('id'));
-        unlink(public_path('events/'.$event->name));
+
+        $old_picture = $dir.$event->picture;
+
+        if (file_exists($old_picture)) {
+            chmod($old_picture,0777);
+            unlink($old_picture);
+        }
+        $old_picture = $dir.'thumbnails/'.$event->picture;
+
+        if (file_exists($old_picture)) {
+            chmod($old_picture,0777);
+            unlink($old_picture);
+        }
+
         $event->delete();
 
         return response(['message'=>'Event has been deleted'])
