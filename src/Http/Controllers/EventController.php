@@ -150,7 +150,7 @@ class EventController extends Controller
             $image = Img::make($request->file('picture')->getRealPath());
             $image->save($dir.$filename);
 
-            $mage->fit(160,160);
+            $image->fit(160,160);
             $image->save($dir.'thumbnails/'.$filename);
 
             $event->picture = $filename;
