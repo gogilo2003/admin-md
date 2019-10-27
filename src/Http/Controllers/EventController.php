@@ -80,7 +80,7 @@ class EventController extends Controller
             $image->fit(160,160);
             $image->save($dir.'thumbnails/'.$filename);
 
-            $image-destroy();
+            $image->destroy();
 
             $event->picture = $filename;
         }
@@ -152,6 +152,8 @@ class EventController extends Controller
 
             $image->fit(160,160);
             $image->save($dir.'thumbnails/'.$filename);
+
+            $image->destroy();
 
             $event->picture = $filename;
         }
