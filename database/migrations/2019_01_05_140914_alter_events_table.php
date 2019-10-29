@@ -14,10 +14,10 @@ class AlterEventsTable extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->string('leader')->nullable();
-            $table->dateTime('held_at')->nullable();
-            $table->string('location')->nullable();
-            $table->string('picture')->nullable();
+            $table->string('leader')->nullable()->change();
+            $table->dateTime('held_at')->nullable()->change();
+            $table->string('location')->nullable()->change();
+            $table->string('picture')->nullable()->change();
         });
     }
 
