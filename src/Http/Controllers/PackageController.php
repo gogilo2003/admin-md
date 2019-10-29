@@ -202,12 +202,12 @@ class PackageController extends Controller
 		return response(["message"=>$package->published ? "Package published successfuly" : "Package un-published successfuly"])->header('Content-Type','application/json');
 	}
 	
-	public function postPages(Request $request)
+	public function postCategories(Request $request)
 	{
 		// dd($request->all());
 		$package = Package::find($request->input('id'));
-		$package->pages()->detach($package->pageIds());
-		$package->pages()->attach($request->input('pages'));
+		$package->categories()->detach($package->categoryIds());
+		$package->categories()->attach($request->input('categories'));
 		
 		return redirect()
 				->back()

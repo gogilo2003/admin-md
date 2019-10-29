@@ -9,20 +9,20 @@ use Illuminate\Database\Eloquent\Model;
 class Package extends Model
 {
 	
-	public function pages()
+	public function categories()
 	{
-		return $this->belongsToMany('Ogilo\AdminMd\Models\Page');
+		return $this->belongsToMany('Ogilo\AdminMd\Models\PackageCategory');
 	}
 
 	public function pictures()
 	{
 		return $this->hasMany('Ogilo\AdminMd\Models\PackagePicture','package_id');
 	}
-	
-	public function pageIds()
+
+	public function categoryIds()
     {
     	$ids = array();
-    	foreach ($this->pages as $key => $value) {
+    	foreach ($this->categories as $key => $value) {
     		$ids[] = $value->id;
     	}
     	return $ids;

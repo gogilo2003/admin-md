@@ -15,7 +15,7 @@
 
 @section('sidebar')
 	@parent
-	@include('admin::packages.sidebar')
+	@include('admin::package_categories.sidebar')
 @stop
 
 @section('content')
@@ -27,6 +27,7 @@
 			<tr>
 				<th>&nbsp;</th>
 				<th>Title</th>
+				<th>Category</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -35,12 +36,13 @@
 			<tr>
 				<td>{{ $loop->iteration }}.</td>
 				<td>{{ $package->title }}</td>
+				<td>{{ implode(', ',$package->categories->pluck('title')->toArray()) }}</td>
 				<td>
 					<div class="btn-group">
 						<a href="{{ route('admin-packages-pictures',$package->id) }}" class="btn btn-sm btn-primary btn-round"><i class="fa fa-image"></i>  Pictures&nbsp;&nbsp;<span class="badge">{{ $package->pictures->count() }}</span></a>
+						<a data-id="{{ $package->id }}" data-categories="{{ implode(',', $package->categoryIds()) }}" data-toggle="modal" href='#categoriesModal' class="btn btn-primary btn-sm btn-round"><i class="fa fa-file-o"></i> Categories&nbsp;&nbsp;<span class="badge">{{ $package->categories->count() }}</span></a>
 						<a href="{{ route('admin-packages-edit',$package->id) }}" class="btn btn-sm btn-success btn-round"><i class="fa fa-edit"></i> Edit</a>
 						<a href="javascript:publishPackage({{ $package->id }})" class="btn btn-warning btn-sm btn-round"><span class="fa fa-arrow-{{ $package->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $package->published ? ' Unpublish' : 'Publish' }}</a>
-						<a data-id="{{ $package->id }}" data-pages="{{ implode(',', $package->pageIds()) }}" data-toggle="modal" href='#pagesModal' class="btn btn-primary btn-sm btn-round"><i class="fa fa-file-o"></i> Pages&nbsp;&nbsp;<span class="badge">{{ $package->pages->count() }}</span></a>
 					</div>
 				</td>
 			</tr>
@@ -48,9 +50,9 @@
 		</tbody>
 	</table>
 
-	<div class="modal fade" id="pagesModal" data-backdrop="static">
+	<div class="modal fade" id="categoriesModal" data-backdrop="static">
 		<div class="modal-dialog">
-			<form method="post" action="{{route('admin-packages-pages')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
+			<form method="post" action="{{route('admin-packages-categories')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
                 <div class="modal-content">
                     <div class="card">
                         <div class="card-header">
@@ -58,9 +60,9 @@
                             <h4 class="card-title">Pages</h4>
                         </div>
                         <div class="card-body">
-                            <select name="pages[]" id="pages" data-live-search="true" multiple data-size="5" data-width="100%" data-style="btn btn-outline-primary btn-round">
-                            @foreach (\Ogilo\AdminMd\Models\Page::all() as $page)
-                                <option value="{{ $page->id }}">{{ $page->title }}</option>
+                            <select name="categories[]" id="categories" data-live-search="true" multiple data-size="5" data-width="100%" data-style="btn btn-outline-primary btn-round">
+                            @foreach (\Ogilo\AdminMd\Models\PackageCategory::all() as $category)
+                                <option value="{{ $category->id }}">{{ $category->title }}</option>
                             @endforeach
                             </select>
                             <input type="hidden" name="id" value="">
@@ -115,18 +117,18 @@
 			}
 		}
 
-		$('#pagesModal').on('show.bs.modal', function (e) {
+		$('#categoriesModal').on('show.bs.modal', function (e) {
 			var button = $(e.relatedTarget) // Button that triggered the modal
 		  	var id = button.data('id')
 			$('form input[name="id"]').val(id)
-			let data = button.data('pages');
+			let data = button.data('categories');
 			// console.log(data.length)
 			if(data.length>1)
-				pages = data.split(',');
+				categories = data.split(',');
 			else
-				pages = data
-			console.log(pages)
-			$('form select#pages').selectpicker('val', pages);
+				categories = data
+			console.log(categories)
+			$('form select#categories').selectpicker('val', categories);
 
 		})
 

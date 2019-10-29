@@ -14,9 +14,9 @@ class Page extends Model
         return $this->morphOne('Ogilo\AdminMd\Models\Link','linkable');
     }
 
-    public function packages()
+    public function package_categories()
     {
-        return $this->belongsToMany('Ogilo\AdminMd\Models\Package');
+        return $this->belongsToMany('Ogilo\AdminMd\Models\PackageCategory')->withTimestamps();
     }
 
     public function branches()
@@ -26,7 +26,7 @@ class Page extends Model
     
     public function article_categories()
     {
-        return $this->belongsToMany('Ogilo\AdminMd\Models\ArticleCategory');
+        return $this->belongsToMany('Ogilo\AdminMd\Models\ArticleCategory')->withTimestamps();
     }
 
     public function articles()

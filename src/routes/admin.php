@@ -224,6 +224,16 @@ Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'
 			Route::post('delete',['as'=>'-delete','uses'=>'EventController@postDelete']);
 		});
 
+		Route::group(['as'=>'-package_categories','prefix'=>'package_categories'],function(){
+			Route::get('',['uses'=>'PackageCategoryController@getPackageCategories']);
+			Route::get('add',['as'=>'-add','uses'=>'PackageCategoryController@getAdd']);
+			Route::post('add',['as'=>'-add','uses'=>'PackageCategoryController@postAdd']);
+			Route::get('edit/{id?}',['as'=>'-edit','uses'=>'PackageCategoryController@getEdit']);
+			Route::post('edit',['as'=>'-edit-post','uses'=>'PackageCategoryController@postEdit']);
+			Route::post('pages',['as'=>'-pages','uses'=>'PackageCategoryController@postPages']);
+			Route::post('delete',['as'=>'-delete','uses'=>'PackageCategoryController@postDelete']);
+		});
+
 		Route::group(['as'=>'-packages','prefix'=>'packages'],function(){
 			Route::get('',['uses'=>'PackageController@getPackages']);
 			Route::get('add',['as'=>'-add','uses'=>'PackageController@getAdd']);
@@ -232,7 +242,7 @@ Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'
 			Route::post('edit',['as'=>'-edit-post','uses'=>'PackageController@postEdit']);
 			Route::get('pictures/{id?}',['as'=>'-pictures','uses'=>'PackageController@getPictures']);
 			Route::post('pictures',['as'=>'-pictures-post','uses'=>'PackageController@postPictures']);
-			Route::post('pages',['as'=>'-pages','uses'=>'PackageController@postPages']);
+			Route::post('categories',['as'=>'-categories','uses'=>'PackageController@postCategories']);
 			Route::post('publish',['as'=>'-publish','uses'=>'PackageController@postPublish']);
 			Route::post('delete',['as'=>'-delete','uses'=>'PackageController@postDelete']);
 		});
