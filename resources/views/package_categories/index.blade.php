@@ -25,7 +25,7 @@
 	@foreach ($package_categories as $category)
 		<div class="col-sm-6 col-md-4 col-lg-4">
 			<div class="thumbnail text-center text-default">
-				<h3>{{ $category->name }}</h3>
+				<h3>{{ $category->title }}</h3>
 				<i class="fa fa-folder-o fa-5x"></i><br>
 				<hr>
 				@if ($category->pages->count())

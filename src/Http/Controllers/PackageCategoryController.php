@@ -45,6 +45,7 @@ class PackageCategoryController extends Controller
 
 		$category = new PackageCategory;
 
+		$category->title = str_slug($request->input('title'));
 		$category->name = $request->input('title');
 		$category->description = $request->input('description');
 
@@ -71,7 +72,8 @@ class PackageCategoryController extends Controller
 
 		$category = PackageCategory::find($request->input('id'));
 
-		$category->name = $request->input('title');
+		$category->title = $request->input('title');
+		$category->name = str_slug($request->input('title'));
 		$category->description = $request->input('description');
 
 		$category->save();

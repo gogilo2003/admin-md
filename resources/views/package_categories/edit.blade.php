@@ -25,7 +25,7 @@
 			<div class="col-md-12 col-lg-12">
 				<div class="form-group{!! $errors->has('title') ? ' has-error':'' !!}">
 					<label for="title">Title</label>
-					<input type="text" class="form-control" id="title" name="title" placeholder="Enter title"{!! ((old('title')) ? ' value="'.old('title').'"' : ' value="'.$package_category->name.'"') !!}>
+					<input type="text" class="form-control" id="title" name="title" placeholder="Enter title"{!! ((old('title')) ? ' value="'.old('title').'"' : ' value="'.$package_category->title.'"') !!}>
 					{!! $errors->has('title') ? '<span class="text-danger">'.$errors->first('title').'</span>' : '' !!}
 				</div>
 			</div>
