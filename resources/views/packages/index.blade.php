@@ -22,12 +22,12 @@
 
 	<a href="{{ route('admin-packages-add') }}" class="btn btn-info btn-round"><i class="fa fa-plus"></i> Add Package</a>
 	<hr>
-	<table class="table table-striped">
+	<table class="table table-striped" id="packagesDataTable">
 		<thead>
 			<tr>
 				<th>&nbsp;</th>
 				<th>Title</th>
-				<th>Category</th>
+				<th>Categories</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -131,6 +131,10 @@
 			$('form select#categories').selectpicker('val', categories);
 
 		})
+
+        $(document).ready(function(){
+            $('#packagesDataTable').dataTable();
+        })
 
 	</script>
 @stop
