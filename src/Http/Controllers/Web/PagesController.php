@@ -121,7 +121,7 @@ class PagesController extends Controller
 
 		$package = $package ? $package : Package::where('title','=',$package_name)->first() ;
 
-		$page = $page_name ? $package->pages->where('name','=',$page_name)->first() : $package->pages->first();
+		$page = $page_name ? Page::where('name','=',$page_name)->first() : $package->categories->first()->pages->first();
 
 		// $template = file_exists(resource_path('views/web/package.blade.php')) ? 'web.package' : (file_exists(resource_path('views/package.blade.php')) ? 'package' : 'admin::web.package');
 
