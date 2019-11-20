@@ -16,6 +16,7 @@ class AlterVideosTableAddUrlColumn extends Migration
         Schema::table('videos', function (Blueprint $table) {
             $table->string('url')->after('picture')->default(null)->nullable();
             $table->string('name')->nullable()->change();
+            $table->text('caption')->nullable()->change();
         });
     }
 
