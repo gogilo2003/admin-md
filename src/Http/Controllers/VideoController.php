@@ -43,7 +43,7 @@ class VideoController extends Controller
 
     	$validator = Validator::make($request->all(),[
                 'name'			=>'required_without:url|file|mimes:'.$cat->mimes.'|max:'.$cat->maxSizeKilobytes(),
-                'url'           => 'sometimes|required_without:name|url',
+                'url'           => 'nullable|required_without:name|url',
     			'title'			=>'required',
     			'video_category' =>'required|integer'
     		]);
