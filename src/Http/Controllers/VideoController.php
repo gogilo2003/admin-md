@@ -42,7 +42,8 @@ class VideoController extends Controller
     	// dd($request->all());
 
     	$validator = Validator::make($request->all(),[
-    			'name'			=>'required|file|mimes:'.$cat->mimes.'|max:'.$cat->maxSizeKilobytes(),
+                'name'			=>'required_without:url|file|mimes:'.$cat->mimes.'|max:'.$cat->maxSizeKilobytes(),
+                'url'           => 'sometimes|required_without:name|url',
     			'title'			=>'required',
     			'video_category' =>'required|integer'
     		]);
@@ -54,21 +55,25 @@ class VideoController extends Controller
     				->withErrors($validator)
     				->with('global-warning','Some fileds failed validation. Please check and try again');
     	}
+        if ($request->hasFile('name')) {
+            $vd = new Video;
+            $video = $request->file('name');
 
-    	$vd = new Video;
-    	$video = $request->file('name');
+            $dir = public_path('videos');
 
-    	$dir = public_path('videos');
+            if (!File::exists($dir)) {
+            File::makeDirectory($dir,0755,TRUE);
+            }
 
-    	if (!File::exists($dir)) {
-    		File::makeDirectory($dir,0755,TRUE);
-    	}
+            $filename = time().'.'.$video->clientExtension();
 
-    	$filename = time().'.'.$video->clientExtension();
+            $video->move($dir, $filename);
 
-        $video->move($dir, $filename);
+            $vd->name = $filename;
+        }else{
+            $vd->url = $request->url;
+        }
 
-    	$vd->name = $filename;
     	$vd->title = $request->input('title');
     	$vd->caption = $request->input('description');
 
@@ -127,6 +132,8 @@ class VideoController extends Controller
 
             $vd->name = $filename;
         }
+
+        $vd->url = $request->url ? $request->url : $vd->url;
 
     	$vd->title = $request->input('title');
         $vd->caption = $request->input('description');

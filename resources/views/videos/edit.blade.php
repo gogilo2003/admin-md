@@ -44,6 +44,12 @@
                     </div>
 					{!! $errors->has('name') ? '<span class="text-danger">'.$errors->first('name').'</span>' : ''!!}
                 </div>
+                <p>OR</p>
+                <div class="form-group{!! $errors->has('url') ? ' has-error':'' !!}">
+                    <label for="url">Url</label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="Enter url"{!! ((old('url')) ? ' value="'.old('url').'"' : ' value="'.$video->url.'"') !!}>
+                    {!! $errors->has('url') ? '<span class="text-danger">'.$errors->first('url').'</span>' : '' !!}
+                </div>
 			</div>
 			<div class="col-md-8 col-lg-8">
 				<div class="row">
