@@ -54,9 +54,10 @@ class VideoController extends Controller
     				->withInput()
     				->withErrors($validator)
     				->with('global-warning','Some fileds failed validation. Please check and try again');
-    	}
+        }
+
+        $vd = new Video;
         if ($request->hasFile('name')) {
-            $vd = new Video;
             $video = $request->file('name');
 
             $dir = public_path('videos');
