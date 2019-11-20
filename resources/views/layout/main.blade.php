@@ -44,6 +44,9 @@
         textarea.mce-textbox {
             height: 100% !important;
         }
+        .mce-edit-area{
+            padding: 5px !important;
+        }
     </style>
     @yield('styles')
     @yield('scripts_top')

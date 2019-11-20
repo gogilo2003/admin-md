@@ -44,7 +44,6 @@
 						@foreach (get_icons() as $icon=>$caption)
 							<option value="{{ $icon }}" data-icon="{{ $icon }}">{{ $caption }}</option>
 						@endforeach
-
 					</select>
                 </div>
 
