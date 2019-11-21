@@ -60,7 +60,7 @@ class UpdateCommand extends Command
         }
 
         $this->call('vendor:publish', ['--tag'=>'bower_components', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'public', '--force']);
+        // $this->call('vendor:publish', ['--tag'=>'public', '--force']);
         $this->call('vendor:publish', ['--tag'=>'md-public', '--force']);
         $this->call('vendor:publish', ['--tag'=>'chartjs', '--force']);
         $this->call('vendor:publish', ['--tag'=>'cropper', '--force']);
@@ -70,7 +70,7 @@ class UpdateCommand extends Command
         $this->call('vendor:publish', ['--tag'=>'vue-resources', '--force']);
         $this->call('vendor:publish', ['--tag'=>'stopwords', '--force']);
 
-        clean_directories();
+        // clean_directories();
 
         /**
          * Update hits table

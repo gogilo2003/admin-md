@@ -6,12 +6,12 @@ window._ = require('lodash');
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
-// require('../../../../../public/vendor/admin/material-dashboard-master/assets/js/core/jquery-3.3.1.js')
-// try {
-//     window.$ = window.jQuery = require('../../../../../public/vendor/admin/material-dashboard-master/assets/js/core/jquery-3.3.1.js');
+require('../../../../../public/vendor/admin/material-dashboard-master/assets/js/core/jquery-3.3.1.js')
+try {
+    window.$ = window.jQuery = require('../../../../../public/vendor/admin/material-dashboard-master/assets/js/core/jquery-3.3.1.js');
 
-//     // require('bootstrap');
-// } catch (e) {}
+    // require('bootstrap');
+} catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

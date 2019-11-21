@@ -48,6 +48,7 @@
             padding: 5px !important;
         }
     </style>
+    @stack('styles')
     @yield('styles')
     @yield('scripts_top')
 </head>
@@ -186,7 +187,10 @@ Tip 2: you can also add an image using data-image tag-->
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/file-input.js') }}"></script>
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/cropper/cropper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/main.js') }}"></script>
-    <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/admin.js') }}"></script>
+    @if (file_exists(public_path(config('admin.path_prefix').'vendor/admin/js/admin.js')))
+        <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/admin.js') }}"></script>
+    @endif
+    
     <script type="text/javascript">
     @if(Session::has('global-info'))
     {!!"$.notify( { message: '".Session::get('global-info')."',icon: 'info_outline'}, {type: 'info'})"!!}
