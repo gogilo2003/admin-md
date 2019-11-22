@@ -45,7 +45,7 @@
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                         <tr>
                             <td>
-                                <!--<img src="/public/vendor/admin/img/email/about-2.jpg" alt=""
+                                <!--<img src="{{ config('admin.path_prefix') }}/vendor/admin/img/email/about-2.jpg" alt=""
                                     style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block;">-->
                             </td>
                         </tr>

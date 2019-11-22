@@ -50,6 +50,7 @@
     </style>
     @stack('styles')
     @yield('styles')
+    @stack('scripts_top')
     @yield('scripts_top')
 </head>
 
@@ -210,6 +211,7 @@ Tip 2: you can also add an image using data-image tag-->
     </script>
     @stack('body_scripts')
     @yield('scripts_bottom')
+    @stack('scripts_bottom')
 </body>
 
 </html>

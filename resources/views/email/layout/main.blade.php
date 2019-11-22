@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>{{ config('app.name') }}</title>
 	@php
-		print(file_get_contents('../public/css/email.css'))
+		print(file_get_contents(public_path('vendor/admin/css/email.css')));
 	@endphp
 </head>
 <body>

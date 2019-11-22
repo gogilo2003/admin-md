@@ -1,5 +1,5 @@
 <?php return array (
-    'path_prefix'=>'public',
+    'path_prefix'=>'',
     'menus' => false,
     'links' => false,
     'pages' => false,

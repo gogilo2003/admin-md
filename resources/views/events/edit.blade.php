@@ -34,7 +34,7 @@
                 </div>
                 <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                     <div class="fileinput-new thumbnail img-raised">
-                        <img src="{{ asset($event->picture ? asset(config('admin.path_prefix').'images/events/'.$event->picture) : 'public/vendor/admin/img/placeholder.png') }}" alt="...">
+                        <img src="{{ asset($event->picture ? asset(config('admin.path_prefix').'images/events/'.$event->picture) : config('admin.path_prefix').'/vendor/admin/img/placeholder.png') }}" alt="...">
                     </div>
                     <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
 					{!! $errors->has('picture') ? '<span class="text-danger">'.$errors->first('picture').'</span>' : ''!!}
