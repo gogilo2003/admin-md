@@ -1458,15 +1458,18 @@ if (! function_exists('str_ordinal')) {
 
 if(! function_exists('clean_isdn')){
     function clean_isdn($phone_number){
-
-        $isdn = ltrim($phone_number,0);
+    	$isdn = str_replace('-','',$phone_number);
+    	$isdn = str_replace('+2540','',$isdn);
+        $isdn = ltrim($isdn,'0');
+        $isdn = trim($isdn);
 
         if(strlen($isdn) === 9){
             $isdn = '+254'.$isdn;
-        }elseif(strlen($isdn)===12){
+        }elseif(strlen($isdn)===12 && !starts_with($isdn,'+')){
             $isdn = '+'.$isdn;
+        }elseif(strlen($isdn)===11 && (starts_with($isdn,'6')||starts_with($isdn,'7')||starts_with($isdn,'1'))){
+        	$isdn = '+'.$isdn;
         }
-
         return $isdn;
     }
 }
