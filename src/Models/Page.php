@@ -104,5 +104,10 @@ class Page extends Model
     {
         return ($page_id == $this->id);
     }
+
+    public function slides()
+    {
+        return $this->belongsToMany(\Ogilo\Slides\Models\Slide::class, 'slide_page', 'page_id', 'slide_id');
+    }
     
 }

@@ -1574,3 +1574,16 @@ if (!function_exists('public_url')) {
         return $path;
     }
 }
+
+
+if (!function_exists('make_icon')) {
+	function make_icon($icon, $element = 'i', $classes = [])
+	{
+		$classes.push($icon);
+
+		$res = '<i class="'. implode(' ',$classes) .'"></i>';
+		if ($icon == 'material-icons') {
+			
+		}
+	}
+}
