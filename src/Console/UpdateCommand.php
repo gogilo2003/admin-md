@@ -70,7 +70,7 @@ class UpdateCommand extends Command
         $this->call('vendor:publish', ['--tag'=>'vue-resources', '--force']);
         $this->call('vendor:publish', ['--tag'=>'stopwords', '--force']);
 
-        // clean_directories();
+        clean_directories();
 
         /**
          * Update hits table
