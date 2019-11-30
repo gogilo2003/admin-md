@@ -171,6 +171,7 @@ Your views should:
     vi) styles
     vii) scripts_top
     viii) scripts_bottom
+
 ##### Example
 ```
 @extends('admin::layout.main')
