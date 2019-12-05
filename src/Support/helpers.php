@@ -1515,10 +1515,17 @@ if(! function_exists('str_starts_with')){
 
 if (!function_exists('get_filesize')) {
     function get_filesize($filename, $decimals = 2) {
-        $bytes = filesize($filename);
-        $factor = floor((strlen($bytes) - 1) / 3);
-        if ($factor > 0) $sz = 'KMGT';
-        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor - 1] . 'B';
+    	dump($filename);
+    	if (file_exists($filename)) {
+    		$bytes = filesize($filename);
+	        $factor = floor((strlen($bytes) - 1) / 3);
+	        if ($factor > 0) $sz = 'KMGT';
+	        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor - 1] . 'B';
+    	} else {
+    		return false;
+    	}
+    	
+        
     }
 }
 

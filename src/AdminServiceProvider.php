@@ -105,7 +105,7 @@ class AdminServiceProvider extends ServiceProvider
 				]);
 		}
 		// print(config('app.name').' in boot()');
-		require_once(__DIR__.'/Support/helpers.php');
+		// require_once(__DIR__.'/Support/helpers.php');
 
 		$this->loadRoutesFrom(__DIR__.'/routes/admin.php');
 		$this->loadRoutesFrom(__DIR__.'/routes/web.php');
