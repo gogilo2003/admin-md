@@ -125,7 +125,7 @@ class PagesController extends Controller
 
 		// $template = file_exists(resource_path('views/web/package.blade.php')) ? 'web.package' : (file_exists(resource_path('views/package.blade.php')) ? 'package' : 'admin::web.package');
 
-		return view()->first(['web.package','package','admin::web.package'],compact('package','template','page'));
+		return view()->first(['web.package','package','admin::web.package'],compact('package','page'));
 	}
 
 	public function getEvent($event_name,$page_name=null)
