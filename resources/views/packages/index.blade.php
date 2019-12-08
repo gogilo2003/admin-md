@@ -22,33 +22,35 @@
 
 	<a href="{{ route('admin-packages-add') }}" class="btn btn-info btn-round"><i class="fa fa-plus"></i> Add Package</a>
 	<hr>
-	<table class="table table-striped" id="packagesDataTable">
-		<thead>
-			<tr>
-				<th>&nbsp;</th>
-				<th>Title</th>
-				<th>Categories</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach($packages as $package)
-			<tr>
-				<td>{{ $loop->iteration }}.</td>
-				<td>{{ $package->title }}</td>
-				<td>{{ implode(', ',$package->categories->pluck('title')->toArray()) }}</td>
-				<td>
-					<div class="btn-group">
-						<a href="{{ route('admin-packages-pictures',$package->id) }}" class="btn btn-sm btn-primary btn-round"><i class="fa fa-image"></i>  Pictures&nbsp;&nbsp;<span class="badge">{{ $package->pictures->count() }}</span></a>
-						<a data-id="{{ $package->id }}" data-categories="{{ implode(',', $package->categoryIds()) }}" data-toggle="modal" href='#categoriesModal' class="btn btn-primary btn-sm btn-round"><i class="fa fa-file-o"></i> Categories&nbsp;&nbsp;<span class="badge">{{ $package->categories->count() }}</span></a>
-						<a href="{{ route('admin-packages-edit',$package->id) }}" class="btn btn-sm btn-success btn-round"><i class="fa fa-edit"></i> Edit</a>
-						<a href="javascript:publishPackage({{ $package->id }})" class="btn btn-warning btn-sm btn-round"><span class="fa fa-arrow-{{ $package->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $package->published ? ' Unpublish' : 'Publish' }}</a>
-					</div>
-				</td>
-			</tr>
-			@endforeach
-		</tbody>
-	</table>
+	<div class="table-responsive">
+		<table class="table table-striped" id="packagesDataTable">
+			<thead>
+				<tr>
+					<th>&nbsp;</th>
+					<th>Title</th>
+					<th>Categories</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($packages as $package)
+				<tr>
+					<td>{{ $loop->iteration }}.</td>
+					<td>{{ $package->title }}</td>
+					<td>{{ implode(', ',$package->categories->pluck('title')->toArray()) }}</td>
+					<td>
+						<div class="btn-group">
+							<a href="{{ route('admin-packages-pictures',$package->id) }}" class="btn btn-sm btn-primary btn-round"><i class="fa fa-image"></i>  Pictures&nbsp;&nbsp;<span class="badge">{{ $package->pictures->count() }}</span></a>
+							<a data-id="{{ $package->id }}" data-categories="{{ implode(',', $package->categoryIds()) }}" data-toggle="modal" href='#categoriesModal' class="btn btn-primary btn-sm btn-round"><i class="fa fa-file-o"></i> Categories&nbsp;&nbsp;<span class="badge">{{ $package->categories->count() }}</span></a>
+							<a href="{{ route('admin-packages-edit',$package->id) }}" class="btn btn-sm btn-success btn-round"><i class="fa fa-edit"></i> Edit</a>
+							<a href="javascript:publishPackage({{ $package->id }})" class="btn btn-warning btn-sm btn-round"><span class="fa fa-arrow-{{ $package->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $package->published ? ' Unpublish' : 'Publish' }}</a>
+						</div>
+					</td>
+				</tr>
+				@endforeach
+			</tbody>
+		</table>
+	</div>
 
 	<div class="modal fade" id="categoriesModal" data-backdrop="static">
 		<div class="modal-dialog">
