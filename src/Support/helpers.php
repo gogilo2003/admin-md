@@ -1607,3 +1607,11 @@ if(!function_exists('validate_url')){
 	    return filter_var($url, FILTER_VALIDATE_URL) ? true : false;
 	}
 }
+
+if (!function_exists('str_slug_alt')) {
+	function str_slug_alt($value)
+	{
+		$value = str_replace('/',' ',$value);
+		return str_slug($value);
+	}
+}
