@@ -112,22 +112,6 @@ class PagesController extends Controller
 		return view()->first(['web.profile','profile','admin::web.profile'],compact('profile','template','page'));
 	}
 
-    public function getPackage($package_name,$page_name=null)
-	{
-
-		$package = Package::where('title','=',$package_name)->first();
-
-		// dd($package);
-
-		$package = $package ? $package : Package::where('title','=',$package_name)->first() ;
-
-		$page = $page_name ? Page::where('name','=',$page_name)->first() : $package->categories->first()->pages->first();
-
-		// $template = file_exists(resource_path('views/web/package.blade.php')) ? 'web.package' : (file_exists(resource_path('views/package.blade.php')) ? 'package' : 'admin::web.package');
-
-		return view()->first(['web.package','package','admin::web.package'],compact('package','page'));
-	}
-
 	public function getEvent($event_name,$page_name=null)
 	{
 

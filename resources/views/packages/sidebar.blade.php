@@ -1,2 +1,0 @@
-<li class="nav-item{{ is_current_path('admin-packages') ? ' active' : ''}}"><a href="{{ route('admin-packages') }}" class="nav-link"><i class="fa fa-files-o"></i> Packages</a></li>
-<li class="nav-item{{ is_current_path('admin-packages-add') ? ' active' : ''}}"><a href="{{ route('admin-packages-add') }}" class="nav-link"><i class="fa fa-plus"></i> New Package</a></li>

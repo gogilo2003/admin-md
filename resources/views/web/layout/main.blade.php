@@ -9,12 +9,11 @@
         <meta name="author" content="Georsamarts ICT Solutions">
         <meta name="description" content="{{ str_words_alt($page->content,160) }}">
         <meta name="keywords" content="keywords separated by comma">
-        @endsection
+        <title>{{ $page->title }}</title>
+        @show
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="{!! asset(config('admin.path_prefix').'favicon.png') !!}">
-
-        <title>{{ $page->title }}</title>
 
         <link href="{{ asset(config('admin.path_prefix').'vendor/admin/css/web.css') }}" rel="stylesheet">
         <link href="{{ asset(config('admin.path_prefix').'vendor/admin/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -39,6 +38,7 @@
         </style>
         <!-- Custom styles for this template -->
         <!--<link href="carousel.css" rel="stylesheet">-->
+        @stack('styles')
     </head>
 
     <body class="d-flex flex-column h-100">

@@ -4,9 +4,8 @@ Route::group(['middleware'=>'web','namespace'=>'Ogilo\AdminMd\Http\Controllers\W
 	Route::get('sermon/{sermon_name}/{page_name?}',['as'=>'sermon','uses'=>'PagesController@getSermon']);
 	Route::get('file/{id}/{page_name?}',['as'=>'file','uses'=>'PagesController@getFile']);
 	Route::get('download/{id}',['as'=>'file-download','uses'=>'PagesController@downlodFile']);
-	Route::get('profile/{id}/{page_name?}',['as'=>'profile','uses'=>'PagesController@getProfile']);
-    Route::get('package/{id}/{page_name?}',['as'=>'package','uses'=>'PagesController@getPackage']);
     Route::get('project/{id}/{page_name?}',['as'=>'project','uses'=>'PagesController@getProject']);
+	Route::get('profile/{id}/{page_name?}',['as'=>'profile','uses'=>'PagesController@getProfile']);
 	Route::get('event/{event_name}/{page_name?}',['as'=>'event','uses'=>'PagesController@getEvent']);
 	Route::post('event/guest/register',['as'=>'event-guest-register','uses'=>'PagesController@postEventGuest']);
 	Route::post('comment',['as'=>'post-comment','uses'=>'PagesController@postComment']);

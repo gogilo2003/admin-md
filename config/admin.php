@@ -12,7 +12,6 @@
     'profile_picture' => ['w'=>3,'h'=>4],
     'sermons' => false,
     'events' => false,
-    'packages' => false,
     'products' => false,
     'branches' => false,
     'contact' => NULL,

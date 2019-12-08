@@ -86,18 +86,6 @@ class AdminServiceProvider extends ServiceProvider
 			config(['admin.menu.admin-products'=>null]);
 		}
 
-		if(config('admin.packages')){
-			config(['admin.menu.admin-packages'=>'Packages']);
-		}else{
-			config(['admin.menu.admin-packages'=>null]);
-		}
-
-		if(config('admin.search',false)){
-			config(['admin.menu.admin-packages-search'=>'Search']);
-		}else{
-			config(['admin.menu.admin-packages-search'=>null]);
-		}
-
 		if ($this->app->runningInConsole()) {
 			$this->commands([
 					InstallCommand::class,
