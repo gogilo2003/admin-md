@@ -16,7 +16,7 @@ class Page extends Model
 
     public function package_categories()
     {
-        return $this->belongsToMany('Ogilo\AdminMd\Models\PackageCategory')->withTimestamps();
+        return $this->belongsToMany('Ogilo\TourPackage\Models\PackageCategory')->withTimestamps();
     }
 
     public function branches()
