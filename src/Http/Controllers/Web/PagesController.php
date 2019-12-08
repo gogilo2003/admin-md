@@ -9,7 +9,7 @@ use Ogilo\AdminMd\Models\Page;
 use Ogilo\AdminMd\Models\Article;
 use Ogilo\AdminMd\Models\Sermon;
 use Ogilo\AdminMd\Models\Profile;
-use Ogilo\AdminMd\Models\Package;
+use Ogilo\TourPackage\Models\Package;
 use Ogilo\AdminMd\Models\Event;
 use Ogilo\AdminMd\Models\Guest;
 use Ogilo\AdminMd\Models\Comment;
