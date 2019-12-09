@@ -1611,7 +1611,7 @@ if(!function_exists('validate_url')){
 if (!function_exists('str_slug_alt')) {
 	function str_slug_alt($value)
 	{
-		$value = str_replace('/',' ',$value);
+		$value = str_replace(' ','/',$value);
 		return str_slug($value);
 	}
 }
