@@ -100,68 +100,58 @@ class AdminServiceProvider extends ServiceProvider
 		$this->loadRoutesFrom(__DIR__.'/routes/hits.php');
 		$this->loadViewsFrom(__DIR__.'/../resources/views','admin');
 		$this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-		// $this->loadSeedsFrom(__DIR__.'/../database/seeds');
 
-		$this->publishes([
-			__DIR__.'/../database/seeds' => database_path('seeds/vendor/admin'),
-		], 'database');
+		// $this->publishes([
+		// 	__DIR__.'/../database/seeds' => database_path('seeds/vendor/admin'),
+		// ], 'database');
 
 		$this->publishes([
 
 			__DIR__.'/../public/css' => public_path('vendor/admin/css'),
 			__DIR__.'/../public/img' => public_path('vendor/admin/img'),
             __DIR__.'/../public/js' => public_path('vendor/admin/js'),
-        ],'admin-assets');
-
-        $this->publishes([
-			__DIR__.'/../public/bower_components/bootstrap-select/dist/css' => public_path('vendor/admin/css'),
-			__DIR__.'/../public/bower_components/datatables/media/css' => public_path('vendor/admin/css'),
-			__DIR__.'/../public/bower_components/datatables/media/images' => public_path('vendor/admin/images'),
-			__DIR__.'/../public/bower_components/font-awesome/fonts' => public_path('vendor/admin/fonts'),
-			__DIR__.'/../public/bower_components/jquery/dist' => public_path('vendor/admin/js'),
-			__DIR__.'/../public/bower_components/bootstrap/dist/js' => public_path('vendor/admin/js'),
-			__DIR__.'/../public/bower_components/bootstrap-select/dist/js' => public_path('vendor/admin/js'),
-			__DIR__.'/../public/bower_components/datatables/media/js' => public_path('vendor/admin/js'),
-			__DIR__.'/../public/bower_components/tinymce/tinymce.min.js' => public_path('vendor/admin/js/tinymce.min.js'),
-			__DIR__.'/../public/bower_components/tinymce/themes' => public_path('vendor/admin/js/themes'),
-			__DIR__.'/../public/bower_components/tinymce/skins' => public_path('vendor/admin/js/skins'),
-			__DIR__.'/../public/bower_components/tinymce/plugins' => public_path('vendor/admin/js/plugins'),
-			__DIR__.'/../public/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js' => public_path('vendor/admin/js/bootstrap-notify.min.js'),
-			__DIR__.'/../public/bower_components/bootstrap-file-input/bootstrap.file-input.js' => public_path('vendor/admin/js/bootstrap.file-input.js'),
-			__DIR__.'/../public/bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js' => public_path('vendor/admin/js/bootstrap-hover-dropdown.min.js'),
-			__DIR__.'/../public/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js' => public_path('vendor/admin/js/bootstrap-datetimepicker.min.js'),
-			__DIR__.'/../public/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' => public_path('vendor/admin/css/bootstrap-datetimepicker.min.css'),
-			__DIR__.'/../public/bower_components/moment/min/moment.min.js' => public_path('vendor/admin/js/moment.min.js'),
-			__DIR__.'/../public/bower_components/bootstrap3-typeahead/bootstrap3-typeahead.min.js' => public_path('vendor/admin/js/bootstrap3-typeahead.min.js'),
-            __DIR__.'/../public/bower_components/font-awesome/css/font-awesome.min.css' => public_path('vendor/admin/css/font-awesome.min.css'),
-        ],'bower_components');
-
-        $this->publishes([
 			__DIR__.'/../public/material-design-icons' => public_path('vendor/admin/material-design-icons'),
 			__DIR__.'/../public/iconmoon' => public_path('vendor/admin/iconmoon'),
-        ],'admin-icons');
+        ],'admin-assets');
 
 		$this->publishes([
-			__DIR__.'/../public/material-dashboard-master/node_modules/chart.js/dist/Chart.min.js'=>public_path('vendor/admin/material-dashboard-master/assets/js/plugins/Chart.min.js'),
-			__DIR__.'/../public/material-dashboard-master/node_modules/chart.js/dist/Chart.min.css'=>public_path('vendor/admin/material-dashboard-master/assets/css/Chart.min.css'),
-		],'chartjs');
+			__DIR__.'/../public/node_modules/bootstrap-notify/bootstrap-notify.min.js' => public_path('vendor/admin/js/bootstrap-notify.min.js'),
+			__DIR__.'/../public/node_modules/moment/min/moment.min.js' => public_path('vendor/admin/js/moment.min.js'),
+			__DIR__.'/../public/node_modules/bootstrap-typeahead/bootstrap-typeahead.js' => public_path('vendor/admin/js/bootstrap3-typeahead.min.js'),
+			__DIR__.'/../public/node_modules/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js' => public_path('vendor/admin/js/bootstrap-hover-dropdown.min.js'),
+			__DIR__.'/../public/node_modules/tinymce/tinymce.min.js' => public_path('vendor/admin/js/tinymce.min.js'),
+			__DIR__.'/../public/node_modules/tinymce/themes' => public_path('vendor/admin/js/themes'),
+			__DIR__.'/../public/node_modules/tinymce/skins' => public_path('vendor/admin/js/skins'),
+			__DIR__.'/../public/node_modules/tinymce/plugins' => public_path('vendor/admin/js/plugins'),
+			__DIR__.'/../public/node_modules/bootstrap/dist/js' => public_path('vendor/admin/js'),
+			__DIR__.'/../public/node_modules/jquery/dist' => public_path('vendor/admin/js'),
+			__DIR__.'/../public/node_modules/font-awesome/fonts' => public_path('vendor/admin/fonts'),
+            __DIR__.'/../public/node_modules/font-awesome/css/font-awesome.min.css' => public_path('vendor/admin/css/font-awesome.min.css'),
+			__DIR__.'/../public/node_modules/datatables/media/css' => public_path('vendor/admin/css'),
+			__DIR__.'/../public/node_modules/datatables/media/images' => public_path('vendor/admin/images'),
+			__DIR__.'/../public/node_modules/datatables/media/js' => public_path('vendor/admin/js'),
+			__DIR__.'/../public/node_modules/bootstrap-select/dist/css' => public_path('vendor/admin/css'),
+			__DIR__.'/../public/node_modules/bootstrap-select/dist/js' => public_path('vendor/admin/js'),
+			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.js'=>public_path('vendor/admin/cropper/cropper.min.js'),
+			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.css'=>public_path('vendor/admin/cropper/cropper.min.css'),
+			__DIR__.'/../public/node_modules/popper.js/dist/popper.min.js'=>public_path('vendor/admin/js/popper.min.js'),
+		],'node_modules');
 
 		$this->publishes([
 			__DIR__.'/../public/material-dashboard-master/assets/img'=>public_path('vendor/admin/material-dashboard-master/assets/img'),
 			__DIR__.'/../public/material-dashboard-master/assets/css'=>public_path('vendor/admin/material-dashboard-master/assets/css'),
 			__DIR__.'/../public/material-dashboard-master/assets/js'=>public_path('vendor/admin/material-dashboard-master/assets/js'),
+			__DIR__.'/../public/material-dashboard-master/node_modules/chart.js/dist/Chart.min.js'=>public_path('vendor/admin/material-dashboard-master/assets/js/plugins/Chart.min.js'),
+			__DIR__.'/../public/material-dashboard-master/node_modules/chart.js/dist/Chart.min.css'=>public_path('vendor/admin/material-dashboard-master/assets/css/Chart.min.css'),
         ],'md-public');
 
-		$this->publishes([
-			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.js'=>public_path('vendor/admin/cropper/cropper.min.js'),
-			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.css'=>public_path('vendor/admin/cropper/cropper.min.css'),
-		],'cropper');
+        $this->publishes([
+        	__DIR__.'/../config/admin.php'=>config_path('admin.php')
+        ],'admin-config');
 
-		$this->publishes([
-			__DIR__.'/../public/node_modules/popper.js/dist/popper.min.js'=>public_path('vendor/admin/js/popper.min.js'),
-		],'popper');
-
-        $this->publishes([__DIR__.'/../config/admin.php'=>config_path('admin.php')],'admin-config');
+        $this->publishes([
+            __DIR__.'/../public/stopwords.txt'=>public_path('stopwords.txt')
+        ],'stopwords');
 
         $this->publishes([
             __DIR__.'/../resources/assets/js'=>resource_path('assets/vendor/admin/js'),
@@ -188,10 +178,6 @@ class AdminServiceProvider extends ServiceProvider
             __DIR__.'/../resources/views/web/sermon.blade.php'=>resource_path('views/web/sermon.blade.php'),
             __DIR__.'/../resources/views/web/gallery.blade.php'=>resource_path('views/web/gallery.blade.php'),
         ],'web-views');
-
-        $this->publishes([
-            __DIR__.'/../public/stopwords.txt'=>public_path('stopwords.txt')
-        ],'stopwords');
 
 	}
 }

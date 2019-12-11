@@ -26,6 +26,7 @@ class HitsController extends Controller
 						->where('url','NOT LIKE',"%admin%")
 						->where('url','NOT LIKE',"%api%")
 						->where('url','NOT LIKE',"%public%")
+						->where('browser','<>','Unknown Browser')
 						->groupBy('browser')
 						->get();
 
@@ -42,6 +43,7 @@ class HitsController extends Controller
 						->where('url','NOT LIKE',"%admin%")
 						->where('url','NOT LIKE',"%api%")
 						->where('url','NOT LIKE',"%public%")
+						->where('platform','<>','Unknown OS Platform')
 						->groupBy('platform')
 						->get();
 

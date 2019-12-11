@@ -40,11 +40,11 @@ class UpdateCommand extends Command
      */
     public function handle()
     {
-        $res = bower_install();
-        $this->comment($res);
+        // $res = bower_install();
+        // $this->comment($res);
 
         $res = node_modules_install();
-        $this->comment($res);
+        // $this->comment($res);
 
         $this->call('migrate');
 
@@ -59,16 +59,14 @@ class UpdateCommand extends Command
 
         }
 
-        $this->call('vendor:publish', ['--tag'=>'bower_components', '--force']);
-        // $this->call('vendor:publish', ['--tag'=>'public', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'md-public', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'chartjs', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'cropper', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'popper', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'admin-icons', '--force']);
         $this->call('vendor:publish', ['--tag'=>'admin-assets', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'vue-resources', '--force']);
+        $this->comment('Admin Assets Published');
+        $this->call('vendor:publish', ['--tag'=>'node_modules', '--force']);
+        $this->comment('Node Modules Published');
+        $this->call('vendor:publish', ['--tag'=>'md-public', '--force']);
+        $this->comment('md-public Published');
         $this->call('vendor:publish', ['--tag'=>'stopwords', '--force']);
+        $this->comment('stopwords Published');
 
         clean_directories();
 
@@ -76,12 +74,18 @@ class UpdateCommand extends Command
          * Update hits table
          * add browsers column and platforms column
         */
-        $this->comment('Updating hits new columns');
+        $this->comment('Updating hits new columns'."\n");
+
         $hits = Hit::all();
+        $bar = $this->output->createProgressBar(count($hits));
+        $bar->start();
         foreach ($hits as $key => $hit) {
             $hit->browser = getBrowser($hit->user_agent);
             $hit->platform = getOs($hit->user_agent);
             $hit->save();
+            $bar->advance();
         }
+        $bar->finish();
+        $this->comment("\n");
     }
 }

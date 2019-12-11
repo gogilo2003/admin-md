@@ -39,21 +39,16 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $res = bower_install();
-        $this->comment(var_export($res,TRUE));
+        // $res = bower_install();
+        // $this->comment(var_export($res,TRUE));
 
         $res = node_modules_install();
-        $this->comment(var_export($res,TRUE));
+        // $this->comment(var_export($res,TRUE));
 
         $this->call('migrate');
 
-        $this->call('vendor:publish', ['--tag'=>'bower_components', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'public', '--force']);
+        $this->call('vendor:publish', ['--tag'=>'node_modules', '--force']);
         $this->call('vendor:publish', ['--tag'=>'md-public', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'chartjs', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'cropper', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'popper', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'admin-icons', '--force']);
         $this->call('vendor:publish', ['--tag'=>'admin-assets', '--force']);
         $this->call('vendor:publish', ['--tag'=>'vue-resources', '--force']);
         $this->call('vendor:publish', ['--tag'=>'stopwords', '--force']);

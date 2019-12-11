@@ -1,6 +1,6 @@
 @import 'variables';
-@import '../bower_components/bootstrap/scss/bootstrap.scss';
-@import '../bower_components/font-awesome/scss/font-awesome.scss';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../node_modules/font-awesome/scss/font-awesome.scss';
 
 /* GLOBAL STYLES
 -------------------------------------------------- */
@@ -37,7 +37,7 @@ body {
     top: 0;
     left: 0;
     min-width: 100%;
-    height: 32rem;
+    // height: 32rem;
 }
 
 

@@ -1217,7 +1217,7 @@ if (!function_exists('get_fa_code')) {
         return $code;
     }
 }
-
+/*
 function bower_install(){
 	$cwmd = getcwd();
     $dir = __DIR__;
@@ -1235,7 +1235,7 @@ function bower_install(){
 
     return "Bower components installed/Updated\n\n".$resp;
 }
-
+*/
 function node_modules_install(){
 	$cwmd = getcwd();
     $dir = __DIR__;
@@ -1268,8 +1268,8 @@ function clean_directories()
     chdir($dir);
     chdir('../../public');
 
-    if(file_exists('bower_components'))
-    	exec('rm -R bower_components');
+    // if(file_exists('bower_components'))
+    // 	exec('rm -R bower_components');
 
     if(file_exists('node_modules'))
     	exec('rm -R node_modules');
