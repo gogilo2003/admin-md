@@ -9,6 +9,7 @@ class Picture
 
 	function __construct($dir,$filename)
 	{
+		///vendor/admin/img/placeholder.png'
 		$this->dir = starts_with($dir, config('admin.path_prefix')) ? $dir : config('admin.path_prefix').$dir;
 		$this->filename = $filename;
 		$this->url = $this->dir.'/'.$filename;

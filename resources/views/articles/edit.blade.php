@@ -49,7 +49,7 @@
 				</div>
 				<div class="form-group{!! $errors->has('picture') ? ' has-error':'' !!}">
 					<label for="picture">Picture</label>
-                    <img id="picture_preview" class="picture_preview" src="{{ url($article->picture ? config('admin.path_prefix').'/images/articles/'.$article->picture : config('admin.path_prefix').'/vendor/admin/img/placeholder.png') }}" alt="Preview">
+                    <img id="picture_preview" class="picture_preview" src="{{ $article->picture->url }}" alt="Preview">
                     {!! $errors->has('picture') ? '<span class="text-danger">'.$errors->first('picture').'</span>' : ''!!}
                     <input
                         data-filename-placement="inside"
