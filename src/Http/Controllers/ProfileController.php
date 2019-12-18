@@ -176,13 +176,13 @@ class ProfileController extends Controller
 
 	public function getPositions()
 	{
-		$profiles = Profile::distinct('position')->get(['position']);
+		$profiles = Profile::distinct('position')->get(['position'])->pluck('position');
 
-		$positions = array();
+		$positions = $profiles->toArray();
 
-		foreach ($profiles as $key => $value) {
-			$positions[] = $value->position;
-		}
+		// foreach ($profiles as $key => $value) {
+		// 	$positions[] = $value->position;
+		// }
 
 		return response($positions)
 				->header('Content-Type','application/json');

@@ -187,11 +187,12 @@
 			$(document).ready(function(){
 				$('.selectpicker').selectpicker('val', [{{ implode(',', $profile->pageIds()) }}]);
 			})
-			$('.typeahead').typeahead('destroy');
+            
+			// $('.typeahead').typeahead('destroy');
 			$.ajax({
 				url: '{{ route('admin-profiles-positions') }}',
 				complete: function(xhr){
-					// console.log(xhr);
+					console.log(xhr.responseJSON);
 					$('.typeahead').typeahead({source: xhr.responseJSON});
 					// console.log(xhr.responseJSON)
 				}

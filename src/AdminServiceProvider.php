@@ -117,7 +117,7 @@ class AdminServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__.'/../public/node_modules/bootstrap-notify/bootstrap-notify.min.js' => public_path('vendor/admin/js/bootstrap-notify.min.js'),
 			__DIR__.'/../public/node_modules/moment/min/moment.min.js' => public_path('vendor/admin/js/moment.min.js'),
-			__DIR__.'/../public/node_modules/bootstrap-typeahead/bootstrap-typeahead.js' => public_path('vendor/admin/js/bootstrap3-typeahead.min.js'),
+			__DIR__.'/../public/node_modules/bootstrap-3-typeahead/bootstrap3-typeahead.js' => public_path('vendor/admin/js/bootstrap3-typeahead.min.js'),
 			__DIR__.'/../public/node_modules/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js' => public_path('vendor/admin/js/bootstrap-hover-dropdown.min.js'),
 			__DIR__.'/../public/node_modules/tinymce/tinymce.min.js' => public_path('vendor/admin/js/tinymce.min.js'),
 			__DIR__.'/../public/node_modules/tinymce/themes' => public_path('vendor/admin/js/themes'),

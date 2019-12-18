@@ -178,7 +178,7 @@
 @section('scripts_bottom')
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('.typeahead').typeahead('destroy');
+			// $('.typeahead').typeahead('destroy');
 			$.ajax({
 				url: '{{ route('admin-profiles-positions') }}',
 				complete: function(xhr){

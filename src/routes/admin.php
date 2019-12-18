@@ -224,19 +224,17 @@ Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'
 			Route::post('delete',['as'=>'-delete','uses'=>'EventController@postDelete']);
 		});
 
-		
-
 		Route::group(['middleware'=>'auth:admin','as'=>'-products','prefix'=>'products'],function(){
-            Route::get('',['uses'=>'PackageController@getPackages']);
-            Route::get('add',['as'=>'-add','uses'=>'PackageController@getAdd']);
-            Route::post('add',['as'=>'-add','uses'=>'PackageController@postAdd']);
-            Route::get('edit/{id?}',['as'=>'-edit','uses'=>'PackageController@getEdit']);
-            Route::post('edit',['as'=>'-edit-post','uses'=>'PackageController@postEdit']);
-            Route::get('pictures/{id?}',['as'=>'-pictures','uses'=>'PackageController@getPictures']);
-            Route::post('pictures',['as'=>'-pictures-post','uses'=>'PackageController@postPictures']);
-            Route::post('pages',['as'=>'-pages','uses'=>'PackageController@postPages']);
-            Route::post('publish',['as'=>'-publish','uses'=>'PackageController@postPublish']);
-            Route::post('delete',['as'=>'-delete','uses'=>'PackageController@postDelete']);
+            Route::get('',['uses'=>'ProductController@getProducts']);
+            Route::get('add',['as'=>'-add','uses'=>'ProductController@getAdd']);
+            Route::post('add',['as'=>'-add','uses'=>'ProductController@postAdd']);
+            Route::get('edit/{id?}',['as'=>'-edit','uses'=>'ProductController@getEdit']);
+            Route::post('edit',['as'=>'-edit-post','uses'=>'ProductController@postEdit']);
+            Route::get('pictures/{id?}',['as'=>'-pictures','uses'=>'ProductController@getPictures']);
+            Route::post('pictures',['as'=>'-pictures-post','uses'=>'ProductController@postPictures']);
+            Route::post('pages',['as'=>'-pages','uses'=>'ProductController@postPages']);
+            Route::post('publish',['as'=>'-publish','uses'=>'ProductController@postPublish']);
+            Route::post('delete',['as'=>'-delete','uses'=>'ProductController@postDelete']);
         });
 
 		Route::get('settings',['as'=>'-settings','uses'=>'SettingsController@getSettings']);
