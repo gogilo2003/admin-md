@@ -6,7 +6,10 @@
         </button>
         <div class="collapse navbar-collapse text-uppercase" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                @foreach (Ogilo\AdminMd\Models\Menu::first()->links as $link)
+                @php
+                    $links = Ogilo\AdminMd\Models\Menu::first()->links->sortBy('order');
+                @endphp
+                @foreach ($links as $link)
                 @php
                     $url = $link->url ? $link->url : '/';
                 @endphp

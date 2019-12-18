@@ -68,6 +68,7 @@ Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'
 			Route::get('edit/{id?}',['as'=>'-edit','uses'=>'LinkController@getEdit']);
 			Route::post('edit',['as'=>'-edit-post','uses'=>'LinkController@postEdit']);
 			Route::post('delete',['as'=>'-delete','uses'=>'LinkController@postDelete']);
+			Route::post('order',['as'=>'-order','uses'=>'LinkController@postOrder']);
 		});
 
 		Route::group(['as'=>'-pages','prefix'=>'pages'],function(){

@@ -28,6 +28,7 @@
                                 <div class="mb-1 text-muted">{{ $file->size }}</div>
                                 <p class="card-text mb-auto">
                                     {{ $file->description }}
+                                    
                                     <a href="{{ route('file-download',$file->id) }}" class="float-md-right stretched-link btn btn-outline-info rounded-circle"><span class="fa fa-cloud-download"></span></a>
                                 </p>
                             </div>

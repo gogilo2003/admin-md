@@ -1167,6 +1167,7 @@ function get_file_extension($filename){
 }
 
 function get_file_type($extension){
+
 	$types = [
 		"pdf" => "pdf",
 		"doc" => "word",
@@ -1182,7 +1183,7 @@ function get_file_type($extension){
 	];
     $t = array_values($types);
     $index = array_search($extension, array_keys($types));
-	$type = $index ? $t[$index] : '';
+	$type = $index || $index===0 ? $t[$index] : '';
 	return $type;
 }
 
@@ -1198,6 +1199,7 @@ if (!function_exists('get_fa_code')) {
             'fa-file-movie-o (alias)'=>'&#xf1c8;',
             'fa-file-o'=>'&#xf016;',
             'fa-file-pdf-o'=>'&#xf1c1;',
+            'fa-file-pdf'=>'&#xf1c1;',
             'fa-file-photo-o (alias)'=>'&#xf1c5;',
             'fa-file-picture-o (alias)'=>'&#xf1c5;',
             'fa-file-powerpoint-o'=>'&#xf1c4;',
@@ -1515,7 +1517,7 @@ if(! function_exists('str_starts_with')){
 
 if (!function_exists('get_filesize')) {
     function get_filesize($filename, $decimals = 2) {
-    	dump($filename);
+    	// dump($filename);
     	if (file_exists($filename)) {
     		$bytes = filesize($filename);
 	        $factor = floor((strlen($bytes) - 1) / 3);

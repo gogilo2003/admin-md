@@ -116,4 +116,17 @@ class LinkController extends Controller
 				->with('global-success','Link '.$name.' Deleted');*/
 	}
 
+	public function postOrder(Request $request)
+	{
+		
+		foreach ($request->rows as $key => $row) {
+			$link = Link::find($row['id']);
+			$link->order = $row['order'];
+			$link->save();
+		}
+
+		return response(['success'=>true,'msg'=>'Links order updated'])->header('Content-Type','application/json');
+
+	}
+
 }

@@ -138,6 +138,7 @@ Tip 2: you can also add an image using data-image tag-->
     </script>
     <!--   Core JS Files   -->
     <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/core/jquery.min.js') }}"></script>
+    <script src="{{ asset(config('admin.path_prefix').'vendor/admin/js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/core/bootstrap-material-design.min.js') }}"></script>
     <script src="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>

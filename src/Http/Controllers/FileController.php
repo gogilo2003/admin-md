@@ -117,8 +117,10 @@ class FileController extends Controller
             $filename = time().'.'.$file->clientExtension();
 
             $old_filename = public_path('files/'.$fl->name);
-            chmod($old_filename,0777);
-            unlink($old_filename);
+            if(file_exists($old_filename)){
+                chmod($old_filename,0777);
+                unlink($old_filename);
+            }
 
             $file->move($dir, $filename);
 

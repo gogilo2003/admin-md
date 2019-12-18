@@ -39,7 +39,7 @@
 		</thead>
 		<tbody>
 			@foreach ($links as $link)
-			<tr>
+			<tr data-id="{{ $link->id }}">
 				<td>{{ $link->id }}</td>
 				<td>{{ $link->name }}</td>
 				<td>{{ $link->caption }}</td>
@@ -61,7 +61,21 @@
 
 @section('styles')
 	<style type="text/css">
-		
+	.ui-sortable-handle {
+        cursor: move;
+        cursor: grab;
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
+        .thumbnails-list{
+            cursor: pointer;
+        }
+    }
+
+    .ui-sortable-handle:active {
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+    }
 	</style>
 @endsection
 @section('scripts_top')
@@ -73,7 +87,33 @@
 @section('scripts_bottom')
 	<script type="text/javascript">
 	jQuery(document).ready(function($) {
-		$('#linksDataTable').dataTable();
+		// $('#linksDataTable').dataTable();
+		$('#linksDataTable tbody').sortable({
+			stop: function( event, ui ) {
+				let data = {
+					_token:"{!! csrf_token() !!}",
+					rows: []
+				}
+				
+				$('#linksDataTable > tbody > tr').each((index,item)=>{
+					let row = {
+						id: $(item).data('id'),
+						order: $(item).index(),
+					}
+					data.rows.push(row)
+				})
+				
+				$.post('/admin/links/order',data).then(xhr=>{
+					if (xhr.success) {
+						$.notify({message:xhr.msg}, {type: 'success'})
+					} else {
+						$.notify({message:xhr.msg}, {type: 'danger'})
+					}
+					// console.log(xhr)
+				})
+			}
+		})
+
 
 		$('a.deleteLink').click(function(){
 			answer = confirm("Are you sure you want to delete this link?");
