@@ -112,6 +112,7 @@ class AdminServiceProvider extends ServiceProvider
             __DIR__.'/../public/js' => public_path('vendor/admin/js'),
 			__DIR__.'/../public/material-design-icons' => public_path('vendor/admin/material-design-icons'),
 			__DIR__.'/../public/iconmoon' => public_path('vendor/admin/iconmoon'),
+			__DIR__.'/../public/slick' => public_path('vendor/admin/slick'),
         ],'admin-assets');
 
 		$this->publishes([

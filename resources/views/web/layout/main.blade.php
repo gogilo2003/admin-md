@@ -61,6 +61,7 @@
         </footer>
         <script src="{{ asset(config('admin.path_prefix').'vendor/admin/js/jquery.min.js') }}"></script>
         <script src="{{ asset(config('admin.path_prefix').'vendor/admin/js/bootstrap.min.js') }}"></script>
+        @stack('scripts_bottom')
     </body>
 
 </html>
