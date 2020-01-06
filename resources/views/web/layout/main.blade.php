@@ -48,7 +48,9 @@
         @include('admin::web.inc.breadcrumbs')
 
         <main class="flex-shrink-0" role="main">
-
+            
+            @include('admin::web.inc.messages')
+            
             @yield('content')
 
         </main>
