@@ -159,6 +159,21 @@ config(['admin.menu.admin-example'=>
 ```
 **NOTE:** Each submenu must have a caption and submenu keys. The caption will be the caption of the menu while submenu cantains route caption key value pairs for all the items in the submenu.
 
+To add a devider in the sub menu. just add a dash key value pair item 
+```
+'-'=>'-'
+```
+
+```
+'submenu'=>[
+        'menu-one-route-name-one'=>'Caption One',
+        'menu-one-route-name-two'=>'Caption Two',
+        '-'=>'-',
+        'menu-one-route-name-three'=>'Caption Three',
+        'menu-one-route-name-four'=>'Caption Four',
+    ]
+```
+
 #### Views
 Your views should:
 1. extend the admin::layout.main.

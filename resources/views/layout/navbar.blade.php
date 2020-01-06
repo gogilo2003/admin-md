@@ -82,7 +82,11 @@
 										</a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 											@foreach($menu['submenu'] as $key => $value)
-											<a class="dropdown-item" href="{{ route($key) }}">{{ $value }}</a>
+												@if ($value === '-')
+													<div class="dropdown-divider"></div>
+												@else
+													<a class="dropdown-item" href="{{ route($key) }}">{{ $value }}</a>
+												@endif
 											@endforeach
 										</div>
 									</li>
@@ -95,7 +99,11 @@
 												</a>
 												<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 													@foreach($item['submenu'] as $key => $value)
-													<a class="dropdown-item" href="{{ route($key) }}">{{ $value }}</a>
+														@if ($value === '-')
+															<div class="dropdown-divider"></div>
+														@else
+															<a class="dropdown-item" href="{{ route($key) }}">{{ $value }}</a>
+														@endif
 													@endforeach
 												</div>
 											</li>
@@ -119,8 +127,7 @@
 						@endif
 					@endforeach
 				@endif
-
-				<!--
+				<!-- 
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Dropdown link
@@ -129,10 +136,15 @@
 						<a class="dropdown-item" href="#">Action</a>
 						<a class="dropdown-item" href="#">Another action</a>
 						<a class="dropdown-item" href="#">Something else here</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Something else here</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Separated link</a>
 					</div>
 				</li>
-				-->
-			
+			 	-->
 				<li class="nav-item dropdown">
 					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 						<i class="fa fa-user-circle"></i>
