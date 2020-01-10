@@ -149,7 +149,7 @@ class ArticleController extends Controller
 				mkdir($dir,0755,true);
 			}
 
-			$filename = $article->picture ? $article->picture->filename : time().'.jpg';
+			$filename = $article->picture->filename ? $article->picture->filename : time().'.jpg';
 			$image->save($dir.$filename);
 			$image->destroy();
 
