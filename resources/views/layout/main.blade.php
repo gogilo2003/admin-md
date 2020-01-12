@@ -86,7 +86,7 @@ Tip 2: you can also add an image using data-image tag-->
                                 <h4 class="card-title">@yield('title')</h4>
                                 <p class="category">@yield('page_title')</p>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body @yield('content_classes')">
                                 @yield('content')
                             </div>
                         </div>
