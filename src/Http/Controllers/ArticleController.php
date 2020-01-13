@@ -82,10 +82,10 @@ class ArticleController extends Controller
 				mkdir($dir.'512x512/',0755,true);
 			}
 
-			$square = Img::make($picture->getRealPath());
-			$square->fit(512,512);
-			$square->save($dir.'512x512/'.$filename);
-			$square->destroy();
+			$square_hd = Img::make($picture->getRealPath());
+			$square_hd->fit(512,512);
+			$square_hd->save($dir.'512x512/'.$filename);
+			$square_hd->destroy();
 
 			if (!file_exists($dir.'480x240/')) {
 				mkdir($dir.'480x240/',0755,true);
@@ -159,7 +159,8 @@ class ArticleController extends Controller
             $image = Img::make($picture->getRealPath());
 
             $cropdetails = json_decode($request->input('image_cropdetails'));
-            $image->crop((int)$cropdetails->width, (int)$cropdetails->height, (int)$cropdetails->x, (int)$cropdetails->y);
+            $width = $image->width;
+            $image->crop($width, (int)$cropdetails->height, (int)$cropdetails->x, (int)$cropdetails->y);
 
 			$dir = public_path('images/articles/');
 			if (!file_exists($dir)) {
@@ -179,6 +180,15 @@ class ArticleController extends Controller
 			$square->save($dir.'160x160/'.$filename);
 			$square->destroy();
 
+            if (!file_exists($dir.'512x512/')) {
+				mkdir($dir.'512x512/',0755,true);
+			}
+
+			$square_hd = Img::make($picture->getRealPath());
+			$square_hd->fit(512,512);
+			$square_hd->save($dir.'512x512/'.$filename);
+			$square_hd->destroy();
+
 			if (!file_exists($dir.'480x240/')) {
 				mkdir($dir.'480x240/',0755,true);
 			}
@@ -187,6 +197,14 @@ class ArticleController extends Controller
 			$rectangle->fit(480,240);
 			$rectangle->save($dir.'480x240/'.$filename);
 			$rectangle->destroy();
+
+			if (!file_exists($dir.'originals/')) {
+				mkdir($dir.'originals/',0755,true);
+			}
+
+			$original 	= Img::make($picture->getRealPath());
+			$original->save($dir.'originals/'.$filename);
+			$original->destroy();
 
 			$article->picture = $filename;
 

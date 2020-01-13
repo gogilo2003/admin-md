@@ -1,7 +1,7 @@
-<?php 
+<?php
 namespace Ogilo\AdminMd\Support;
 /**
- * 
+ *
  */
 class Picture
 {
@@ -14,7 +14,9 @@ class Picture
 		$this->filename = $filename;
 		$this->url = $this->dir.'/'.$filename;
 		$this->thumbnail = $this->dir.'/160x160/'.$filename;
+		$this->thumbnail_hd = $this->dir.'/512x512/'.$filename;
 		$this->url_alt = $this->dir.'/480x240/'.$filename;
+		$this->original = $this->dir.'/originals/'.$filename;
 		return $this->url;
 	}
 }

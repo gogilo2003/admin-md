@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 */
 class Article extends Model
 {
-
+    protected $filename = null;
 	public function category()
 	{
 		return $this->belongsTo('Ogilo\AdminMd\Models\ArticleCategory','article_category_id');
@@ -38,24 +38,7 @@ class Article extends Model
 
 	public function getPictureAttribute($value)
 	{
-        $this->filename = $value;
 		return new Picture(asset('images/articles'),$value);
-	}
-
-	public function getPictureOriginalAttribute($value)
-	{
-        $this->filename = $value;
-		return new Picture(asset('images/articles/originals/'),$this->filename);
-	}
-
-	public function getThumbnailAttribute($value)
-	{
-		return new Picture(asset('images/articles/160x160/'),$this->filename);
-	}
-
-	public function getThumbnailAltAttribute($value)
-	{
-		return new Picture(asset('images/articles/512x512/'),$this->filename);
 	}
 
 }
