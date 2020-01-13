@@ -78,6 +78,15 @@ class ArticleController extends Controller
 			$square->save($dir.'160x160/'.$filename);
 			$square->destroy();
 
+			if (!file_exists($dir.'512x512/')) {
+				mkdir($dir.'512x512/',0755,true);
+			}
+
+			$square = Img::make($picture->getRealPath());
+			$square->fit(512,512);
+			$square->save($dir.'512x512/'.$filename);
+			$square->destroy();
+
 			if (!file_exists($dir.'480x240/')) {
 				mkdir($dir.'480x240/',0755,true);
 			}
