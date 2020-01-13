@@ -96,6 +96,14 @@ class ArticleController extends Controller
 			$rectangle->save($dir.'480x240/'.$filename);
 			$rectangle->destroy();
 
+			if (!file_exists($dir.'originals/')) {
+				mkdir($dir.'originals/',0755,true);
+			}
+
+			$original 	= Img::make($picture->getRealPath());
+			$original->save($dir.'originals/'.$filename);
+			$original->destroy();
+
 			$article->picture = $filename;
 
 		}
