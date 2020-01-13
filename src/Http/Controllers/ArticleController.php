@@ -159,8 +159,7 @@ class ArticleController extends Controller
             $image = Img::make($picture->getRealPath());
 
             $cropdetails = json_decode($request->input('image_cropdetails'));
-            $width = $image->width;
-            $image->crop($width, (int)$cropdetails->height, (int)$cropdetails->x, (int)$cropdetails->y);
+            $image->crop((int)$cropdetails->width, (int)$cropdetails->height, (int)$cropdetails->x, (int)$cropdetails->y);
 
 			$dir = public_path('images/articles/');
 			if (!file_exists($dir)) {
