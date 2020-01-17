@@ -78,7 +78,7 @@
 					$.notify(
                             {
                                 message:xhr.message,
-                                icon: 'fa fa-check-circle'
+                                icon: 'check_circle'
                             },
                             {
                                 type:'success',
@@ -101,7 +101,7 @@
 					$.notify(
                             {
                                 message:xhr.message,
-                                icon: 'fa fa-check-circle'
+                                icon: 'check_circle'
                             },
                             {
                                 type:'success',

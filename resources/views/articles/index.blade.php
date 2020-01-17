@@ -52,19 +52,19 @@
 				</td>
 			</tr>
 			@endforeach
-			
+
 		</tbody>
 	</table>
 @endsection
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @endsection
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @endsection
 
@@ -76,7 +76,7 @@
 			answer = confirm("Are you sure you want to delete this article?");
 
 			if (answer) {
-				
+
 				$.ajax({
 					url: '{{ route('admin-articles-delete') }}',
 					type: 'POST',
@@ -89,7 +89,7 @@
 					$.notify(
                             {
                                 message:xhr.message,
-                                icon: 'fa fa-check-circle'
+                                icon: 'check_circle'
                             },
                             {
                                 type:'success'
@@ -101,14 +101,14 @@
 			} else {
 				alert('Article deletion canceled by article');
 			}
-			
+
 		});
 
 		$('a.publishArticle').click(function(){
 			answer = confirm("Are you sure you want to publish this article?");
 
 			if (answer) {
-				
+
 				$.ajax({
 					url: '{{ route('admin-articles-publish') }}',
 					type: 'POST',
@@ -122,7 +122,7 @@
 					$.notify(
                             {
                                 message:xhr.message,
-                                icon: 'fa fa-check-circle'
+                                icon: 'check_circle'
                             },
                             {
                                 type:'success'
@@ -134,7 +134,7 @@
 			} else {
 				alert('Article publishing canceled by user');
 			}
-			
+
 		});
 
 		$('#articlesDataTable').dataTable();

@@ -52,19 +52,19 @@
 				</td>
 			</tr>
 			@endforeach
-			
+
 		</tbody>
 	</table>
 @endsection
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @endsection
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @endsection
 
@@ -77,7 +77,7 @@
 			answer = confirm("Are you sure you want to delete this project?");
 
 			if (answer) {
-				
+
 				$.ajax({
 					url: '{{ route('admin-projects-delete') }}',
 					type: 'POST',
@@ -90,7 +90,7 @@
 					$.notify(
                             {
                                 message:xhr.message,
-                                icon: 'fa fa-check-circle'
+                                icon: 'check_circle'
                             },
                             {
                                 type:'success',
@@ -105,14 +105,14 @@
 			} else {
 				alert('Project deletion canceled by project');
 			}
-			
+
 		});
 
 		$('a.publishProject').click(function(){
 			answer = confirm("Are you sure you want to publish this project?");
 
 			if (answer) {
-				
+
 				$.ajax({
 					url: '{{ route('admin-projects-publish') }}',
 					type: 'POST',
@@ -126,7 +126,7 @@
 					$.notify(
                             {
                                 message:xhr.message,
-                                icon: 'fa fa-check-circle'
+                                icon: 'check_circle'
                             },
                             {
                                 type:'success',
@@ -141,7 +141,7 @@
 			} else {
 				alert('Project deletion canceled by project');
 			}
-			
+
 		});
 
 	});
