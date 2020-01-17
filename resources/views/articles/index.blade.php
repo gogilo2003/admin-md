@@ -46,7 +46,7 @@
 				<td>
 					<div class="btn-group">
 						<a href="{{route('admin-articles-edit', $article->id)}}" class="btn btn-primary btn-sm"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
-						<a href="javascript:" data-id="{{ $article->id }}" class="btn btn-primary btn-sm publishArticle"><span class="fa fa-arrow-{{ $article->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; Publish</a>
+						<a href="javascript:" data-id="{{ $article->id }}" class="btn btn-primary btn-sm publishArticle"><span class="fa fa-arrow-{{ $article->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $article->published ? 'Un-publish' : 'Publish' }}</a>
 						<a href="javascript:" data-id="{{ $article->id }}" class="btn btn-danger btn-sm deleteArticle"><span class="fa fa-remove"></span>&nbsp;&nbsp; Delete</a>
 					</div>
 				</td>
@@ -104,38 +104,57 @@
 
 		});
 
-		$('a.publishArticle').click(function(){
-			answer = confirm("Are you sure you want to publish this article?");
+		document.querySelectorAll('a.publishArticle').forEach(function(item){
+            item.addEventListener('click',function(e){
+                answer = confirm("Are you sure you want to publish this article?");
+                let btn = this
+                if (answer) {
 
-			if (answer) {
+                    $.ajax({
+                        url: '{{ route('admin-articles-publish') }}',
+                        type: 'POST',
+                        data: {
+                            id:$(this).data('id'),
+                            _token:'{{ csrf_token() }}'
+                        }
+                    }).then(function(xhr){
+                        // console.log(xhr);
+                        if (xhr.success) {
+                            btn.innerHTML = null
+                            let icon = document.createElement('i')
+                            icon.className = "fa fa-arrow-" + (xhr.published ? 'down' : 'up')
+                            btn.appendChild(icon)
+                            let text = "  " + (xhr.published ? 'Un-publish' : 'Publish')
+                            btn.appendChild(document.createTextNode(text))
+                            $.notify(
+                                {
+                                    message:xhr.message,
+                                    icon: 'check_circle'
+                                },
+                                {
+                                    type:'success'
+                                }
+                            );
+                        } else {
+                            $.notify(
+                                {
+                                    message:xhr.message,
+                                    icon: 'not_interested'
+                                },
+                                {
+                                    type:'dangeer'
+                                }
+                            );
+                        }
 
-				$.ajax({
-					url: '{{ route('admin-articles-publish') }}',
-					type: 'POST',
-					data: {
-						id:$(this).data('id'),
-						_token:'{{ csrf_token() }}'
-					}
-				}).done(function(xhr){
-					// alert('Article Deleted');
-					// console.log(xhr.message);
-					$.notify(
-                            {
-                                message:xhr.message,
-                                icon: 'check_circle'
-                            },
-                            {
-                                type:'success'
-                            }
-                        );
-					// window.location = '{{ route('admin-articles') }}';
-				});
+                    });
 
-			} else {
-				alert('Article publishing canceled by user');
-			}
+                } else {
+                    alert('Article publishing canceled by user');
+                }
 
-		});
+            })
+        })
 
 		$('#articlesDataTable').dataTable();
 

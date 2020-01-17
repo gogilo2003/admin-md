@@ -231,7 +231,7 @@ class ArticleController extends Controller
 		$name = $article->title;
 		$article->save();
 
-		return response(["message"=>"Article $name ".($article->published ? "Published" : "Un published")." successfuly"])
+		return response(["success"=>true,"message"=>"Article $name ".($article->published ? "Published" : "Un published")." successfuly","published"=>$article->published])
 				->header('Content-Type','application/json');
 
 		// return redirect()
