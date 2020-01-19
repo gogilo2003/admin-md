@@ -1526,8 +1526,8 @@ if (!function_exists('get_filesize')) {
     	} else {
     		return false;
     	}
-    	
-        
+
+
     }
 }
 
@@ -1596,7 +1596,7 @@ if (!function_exists('make_icon')) {
 
 		$res = '<i class="'. implode(' ',$classes) .'"></i>';
 		if ($icon == 'material-icons') {
-			
+
 		}
 	}
 }
@@ -1616,4 +1616,23 @@ if (!function_exists('str_slug_alt')) {
 		$value = str_replace('/',' ',$value);
 		return str_slug($value);
 	}
+}
+
+if (!function_exists('break_string')) {
+    function break_string($string, $size=10, $br='<br>')
+    {
+        $string = preg_replace('!\s+!', ' ',preg_replace( "/\r|\n/", ' ',trim(strip_tags($string))));
+
+        $collection = collect(explode(" ",$string));
+        $words = $collection->chunk($size);
+        // dd($words);
+
+        $chunks = [];
+        foreach($words as $item){
+            $chunks[] = implode(" ",$item->toArray());
+        }
+
+        $string = implode($br, $chunks);
+        return $string;
+    }
 }

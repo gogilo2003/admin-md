@@ -10,6 +10,10 @@
 
 @section('content')
     @include('admin::web.inc.carousel')
+    <div class="container form-group">
+        <label for="my-textarea">Text</label>
+        <textarea id="my-textarea" class="form-control" name="" rows="10">{!! break_string($page->content,5) !!}</textarea>
+    </div>
 
 	<div class="container">
 		{!! $page->content !!}
@@ -30,6 +34,8 @@
     @include('admin::web.inc.file')
 
     @include('admin::web.inc.blogs')
+
+    @include('clients::web.inc.clients')
 
 @endsection
 
