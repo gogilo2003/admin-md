@@ -19,7 +19,7 @@ class EventController extends Controller
     {
         $this->middleware('auth:admin');
     }
-    
+
     public function getEvents()
     {
     	$events = Event::with('category')->get();
@@ -54,7 +54,7 @@ class EventController extends Controller
     	}
 
     	$event = new Event;
-    	
+
         $event->name = str_slug($request->input('title'));
         $event->title = $request->input('title');
         $event->leader = $request->input('leader');
@@ -64,7 +64,7 @@ class EventController extends Controller
 
         if ($request->hasFile('picture')) {
             $image = Img::make($request->file('picture')->getRealPath());
-            
+
             $dir = public_path('images/events/');
 
             if (!File::exists($dir)) {
@@ -86,7 +86,7 @@ class EventController extends Controller
         }
 
     	$cat->events()->save($event);
-    	
+
     	return redirect()
     			->route('admin-events')
     			->with('global-success','Event added');
@@ -95,7 +95,8 @@ class EventController extends Controller
     public function getEdit($id)
     {
     	$event_categories = EventCategory::all();
-    	$event = Event::find($id);
+        $event = Event::find($id);
+        $pages = Page::all();
     	return view('admin::events.edit',compact('event_categories','pages','event'));
     }
 
@@ -120,7 +121,7 @@ class EventController extends Controller
     	}
 
     	$event = Event::find($request->input('id'));
-        
+
     	if ($request->hasFile('picture')) {
 
             $dir = public_path('images/events/');
@@ -146,7 +147,7 @@ class EventController extends Controller
                 chmod($old_picture,0777);
                 unlink($old_picture);
             }
-            
+
             $image = Img::make($request->file('picture')->getRealPath());
             $image->save($dir.$filename);
 
@@ -157,7 +158,7 @@ class EventController extends Controller
 
             $event->picture = $filename;
         }
-        
+
     	$event->name = str_slug($request->input('title'));
         $event->title = $request->input('title');
         $event->leader = $request->input('leader');
