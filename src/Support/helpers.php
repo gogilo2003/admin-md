@@ -1292,7 +1292,7 @@ function save_config($key,$value){
 }
 
 function str_slug_unique($table,$field,$value,$id=null){
-	$name = str_slug($value);
+	$name = str_slug(strip_tags($value));
 
 	if ($id) {
 		$item = DB::table('articles')->where('id','=',$id)->where($field,'LIKE',$name.'%')->first();
@@ -1613,7 +1613,7 @@ if(!function_exists('validate_url')){
 if (!function_exists('str_slug_alt')) {
 	function str_slug_alt($value)
 	{
-		$value = str_replace('/',' ',$value);
+		$value = str_replace('/',' ',strip_tags($value));
 		return str_slug($value);
 	}
 }
