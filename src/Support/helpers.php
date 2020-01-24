@@ -1295,7 +1295,7 @@ function str_slug_unique($table,$field,$value,$id=null){
 	$name = str_slug(strip_tags($value));
 
 	if ($id) {
-		$item = DB::table('articles')->where('id','=',$id)->where($field,'LIKE',$name.'%')->first();
+		$item = DB::table($table)->where('id','=',$id)->where($field,'LIKE',$name.'%')->first();
 		if ($item) {
 			$name = $item->{$field};
 		} else {
