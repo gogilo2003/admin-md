@@ -1,17 +1,17 @@
 /*!
 
- =========================================================
- * Material Dashboard - v2.1.0
- =========================================================
+=========================================================
+* Material Dashboard - v2.1.0
+=========================================================
 
- * Product Page: https://www.creative-tim.com/product/material-dashboard
- * Copyright 2018 Creative Tim (http://www.creative-tim.com)
+* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2018 Creative Tim (http://www.creative-tim.com)
 
- =========================================================
+=========================================================
 
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
- */
+*/
 /*     brand Colors              */
 .card {
   font-size: .875rem; }
@@ -15556,6 +15556,8 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-
   .modal-content .card {
     margin-top: 0;
     margin-bottom: 0; }
+    .modal-content .card .card-header .close {
+      margin: 0 0 0 auto; }
 
 table.dataTable tbody > tr.selected,
 table.dataTable tbody > tr > .selected {

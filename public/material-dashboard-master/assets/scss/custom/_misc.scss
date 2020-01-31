@@ -2,7 +2,12 @@
 	background: transparent;
 	.card{
 		margin-top: 0 ;
-		margin-bottom: 0 ;
+        margin-bottom: 0 ;
+        .card-header{
+            .close{
+                margin: 0 0 0 auto;
+            }
+        }
 	}
 }
 table.dataTable tbody>tr.selected,
