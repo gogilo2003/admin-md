@@ -1292,7 +1292,8 @@ function save_config($key,$value){
 }
 
 function str_slug_unique($table,$field,$value,$id=null){
-	$name = str_slug(strip_tags($value));
+    $name = str_replace('/',' ',strip_tags($value));
+	// $name = str_slug(strip_tags($value));
 
 	if ($id) {
 		$item = DB::table($table)->where('id','=',$id)->where($field,'LIKE',$name.'%')->first();
