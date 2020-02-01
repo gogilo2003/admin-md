@@ -20,4 +20,6 @@ Homestead.json
 .rocketeer/
 
 public/node_modules
-public/package-lock.json
+# public/package-lock.json
+public/material-dashboard-master
+public/material-dashboard-master/package-lock.json
