@@ -1292,7 +1292,7 @@ function save_config($key,$value){
 }
 
 function str_slug_unique($table,$field,$value,$id=null){
-    $name = str_replace('/',' ',strip_tags($value));
+    $name = str_replace('/',' ',strip_tags(trim($value)));
 	$name = str_slug($name);
 
 	if ($id) {
