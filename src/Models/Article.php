@@ -2,15 +2,27 @@
 
 namespace Ogilo\AdminMd\Models;
 
-use Ogilo\AdminMd\Support\Picture;
+use Spatie\Searchable\Searchable;
 
+use Ogilo\AdminMd\Support\Picture;
+use Spatie\Searchable\SearchResult;
 use Illuminate\Database\Eloquent\Model;
 /**
 * Hit model
 */
-class Article extends Model
+class Article extends Model implements Searchable
 {
     protected $filename = null;
+
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('article', $this->name);
+
+        $details = view('search::web.inc.result',['title'=>$this->title,'content'=>$this->content]);
+
+        return new \Spatie\Searchable\SearchResult($this, $details, $url);
+    }
+
 	public function category()
 	{
 		return $this->belongsTo('Ogilo\AdminMd\Models\ArticleCategory','article_category_id');
