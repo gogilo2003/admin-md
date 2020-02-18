@@ -18,7 +18,7 @@ class Article extends Model implements Searchable
     {
         $url = route('article', $this->name);
 
-        $details = view('search::web.inc.result',['title'=>$this->title,'content'=>$this->content]);
+        $details = view('search::web.inc.result',['title'=>$this->title,'content'=>$this->content, 'url'=>$url]);
 
         return new \Spatie\Searchable\SearchResult($this, $details, $url);
     }
