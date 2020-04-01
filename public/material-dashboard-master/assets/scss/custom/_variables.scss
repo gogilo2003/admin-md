@@ -17,19 +17,31 @@ $enable-gradients: false;
 
 // Changing the theme colors
 $primary: #8bc34a;
-//$secondary: #436296;
+$secondary: #436296;
 //$success: #2bc550;
 //$info: #495dff;
 $warning: orange;
 //$danger: #ff293a;
-//$light: #dfe6ee;
+$light: #dfe6ee;
 //$dark: #0f1319;
 
 
 // Adding (!) an additional theme color (ex. classes btn-cool, bg-cool)
-// $theme-colors: (
-//  "cool": #4d3fa3
-// );
+$theme-colors: (
+ "cool": #4d3fa3
+);
 $theme-colors: (
   "primary": #8bc34a
+);
+$theme-colors: (
+  "indigo": indigo
+);
+$theme-colors: (
+  "purple": purple
+);
+$theme-colors: (
+  "royal": royalblue
+);
+$theme-colors: (
+  "light": $light
 );
