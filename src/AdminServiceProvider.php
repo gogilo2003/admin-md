@@ -5,6 +5,9 @@ namespace Ogilo\AdminMd;
 use Illuminate\Support\ServiceProvider;
 use Ogilo\AdminMd\Console\InstallCommand;
 use Ogilo\AdminMd\Console\UpdateCommand;
+use Illuminate\Support\Facades\Blade;
+
+use Auth;
 /**
 *
 */
@@ -31,7 +34,14 @@ class AdminServiceProvider extends ServiceProvider
 
 	public function boot()
 	{
-		// dd(public_url('vendor/admin/css'));
+        // dd(public_url('vendor/admin/css'));
+
+        Blade::directive('api_token', function () {
+            if(Auth::guard('admin')->check()){
+                return Auth::guard('admin')->user()->api_token;
+            }
+            return null;
+        });
 
 		if(config('admin.articles')){
 			config(['admin.menu.admin-articles'=>'Articles']);

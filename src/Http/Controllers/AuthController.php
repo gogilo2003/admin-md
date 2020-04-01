@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Validator;
 use Auth;
 use Hash;
+use Str;
 
 use Ogilo\AdminMd\Models\AdminRole;
 use Ogilo\AdminMd\Models\Admin;
@@ -54,6 +55,9 @@ class AuthController extends Controller
     	}
 
     	if (Auth::guard('admin')->attempt($admin)) {
+            $user = Auth::guard('admin')->user();
+            $user->api_token = Str::random(80);
+            $user->save();
     		return redirect()
 	    			->intended('admin')
 	    			->with('global-success','Authentication Succesful');
