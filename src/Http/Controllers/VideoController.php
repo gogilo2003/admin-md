@@ -159,12 +159,16 @@ class VideoController extends Controller
 
     public function postPublish(Request $request)
     {
+        // $validator = 
         $video = Video::find($request->input('id'));
-        $video->published = !$video->published;
+        $video->published = $video->published ? 0 : 1 ;
         $video->save();
 
-        return response(['message'=>$video->published ? 'Video has been published' : 'Video has been un-published'])
-                ->header('Content-Type','application/json');
+        return response([
+                'success'=>true,
+                'message'=>$video->published ? 'Video has been published' : 'Video has been un-published',
+                'video'=>$video
+            ])->header('Content-Type','application/json');
     }
 
 }

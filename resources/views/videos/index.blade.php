@@ -37,7 +37,8 @@
 					</div>
 					
 					<p>
-						<a href="{{route('admin-videos-edit',$video->id)}}" class="btn btn-primary btn-sm"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
+						<a href="{{route('admin-videos-edit',$video->id)}}" class="btn btn-outline-primary btn-sm rounded-pill"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
+						<button id="publishVideoButton" class="btn btn-sm btn-outline-success rounded-pill" data-id="{{ $video->id }}"><i class="material-icons">{{ $video->published ? 'get_app' : 'publish' }}</i> <span>{{ $video->published ? 'Un-publish' : 'Publish' }}</span></button>
 					</p>
 				</div>
 			</div>
@@ -45,19 +46,35 @@
 	</div>
 @stop
 
-@section('styles')
+@push('styles')
 	<style type="text/css">
 		
 	</style>
-@stop
-@section('scripts_top')
+@endpush
+@push('scripts_top')
 	<script type="text/javascript">
 		
 	</script>
-@stop
+@endpush
 
-@section('scripts_bottom')
+@push('scripts_bottom')
 	<script type="text/javascript">
-		
+		document.getElementById('publishVideoButton').addEventListener('click', function(e){
+			let btn = this
+			let url = '{{ route('api-admin-videos-publish') }}'
+			let data = {
+				id: this.getAttribute('data-id'),
+				api_token: '@api_token'
+			}
+			$.post(url,data).then(function(response){
+				if (response.success) {
+					let icon = btn.querySelector('i')
+					icon.innerHTML = response.video.published ? 'get_app' : 'publish'
+					let caption = btn.querySelector('span')
+					caption.innerHTML = response.video.published ? 'Un-publish' : 'Publish'
+					$.notify({message:response.message,icon:'done'},{type: 'success'})
+				}
+			})
+		})
 	</script>
-@stop
+@endpush
