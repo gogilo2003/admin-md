@@ -30,7 +30,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
 				<div class="thumbnail text-center">
 					<i class="fa fa-file-video-o fa-5x"></i><br>
-					<div style="height:150px; margin: 15px auto">
+					<div style="height:180px; margin: 15px auto; overflow-y: hidden;">
 						<h3>{{ $video->title }}</h3>
 						<em>{{ $video->caption }}</em> <br>
 						<h4 class="text-info"><hr>{{ $video->category->title }}<hr></h4>
