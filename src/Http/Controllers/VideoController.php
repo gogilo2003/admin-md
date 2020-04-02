@@ -72,7 +72,7 @@ class VideoController extends Controller
 
             $vd->name = $filename;
         }else{
-            $vd->url = $request->url;
+            $vd->url = str_replace("watch?v=","embed/",$request->url);
         }
 
     	$vd->title = $request->input('title');
@@ -134,7 +134,7 @@ class VideoController extends Controller
             $vd->name = $filename;
         }
 
-        $vd->url = $request->url ? $request->url : $vd->url;
+        $vd->url = $vd->url = str_replace("watch?v=","embed/", $request->url ? $request->url : $vd->url);
 
     	$vd->title = $request->input('title');
         $vd->caption = $request->input('description');

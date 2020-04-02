@@ -31,7 +31,12 @@
 
 		<div class="row">
 			<div class="col-md-4 col-lg-4">
+				@if($video->name)
                 <video src="{{ asset(config('admin.path_prefix').'videos/'.$video->name) }}" width="100%" controls></video>
+				@endif
+				@if($video->url)
+                <iframe width="280" height="200" src="{{ $video->url }}" frameborder="0" allowfullscreen></iframe>
+                @endif
                 <div class="form-group form-file-upload form-file-multiple{!! $errors->has('name') ? ' has-error':'' !!}">
                     <input type="file" class="inputFileHidden" name="name" accept="video/*">
                     <div class="input-group">
