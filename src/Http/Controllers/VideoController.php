@@ -133,7 +133,10 @@ class VideoController extends Controller
 
             $vd->name = $filename;
         }
-
+        /**
+        * @todo:
+        * 
+        */
         $vd->url = $vd->url = str_replace("watch?v=","embed/", $request->url ? $request->url : $vd->url);
 
     	$vd->title = $request->input('title');

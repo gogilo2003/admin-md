@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 */
 class Video extends Model
 {
+	protected $appends = ['local_url'];
 	
 	public function category()
 	{
@@ -22,6 +23,11 @@ class Video extends Model
 	public function admins()
 	{
 		return $this->belongsToMany('Ogilo\AdminMd\Models\Admin');
+	}
+
+	public function getLocalUrlAttribute()
+	{
+		return asset('videos/'.$this->name);
 	}
 
 	public function deleteVideo()
