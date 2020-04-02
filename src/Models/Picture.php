@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 */
 class Picture extends Model
 {
+	protected $appends = ['url','url_hd','url_thumbnails'];
 	
 	public function link()
 	{
@@ -22,6 +23,21 @@ class Picture extends Model
 	public function admins()
 	{
 		return $this->belongsToMany('Ogilo\AdminMd\Models\Admin');
+	}
+
+	public function getUrlAttribute()
+	{
+		return asset('images/pictures/'.$this->name);
+	}
+
+	public function getUrlHdAttribute()
+	{
+		return asset('images/pictures/original/'.$this->name);
+	}
+
+	public function getUrlThumnailAttribute()
+	{
+		return asset('images/pictures/thumbnails/'.$this->name);
 	}
 
 }
