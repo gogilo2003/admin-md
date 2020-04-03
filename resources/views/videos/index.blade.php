@@ -39,6 +39,7 @@
 					<p>
 						<a href="{{route('admin-videos-edit',$video->id)}}" class="btn btn-outline-primary btn-sm rounded-pill"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
 						<button class="publishVideoButton btn btn-sm btn-outline-success rounded-pill" data-id="{{ $video->id }}"><i class="material-icons">{{ $video->published ? 'get_app' : 'publish' }}</i> <span>{{ $video->published ? 'Un-publish' : 'Publish' }}</span></button>
+						<button class="featuredVideoButton btn btn-sm btn-outline-info rounded-pill" data-id="{{ $video->id }}"><i class="material-icons">{{ $video->featured ? 'get_app' : 'publish' }}</i> <span>{{ $video->featured ? 'Un-publish' : 'Publish' }}</span></button>
 					</p>
 				</div>
 			</div>

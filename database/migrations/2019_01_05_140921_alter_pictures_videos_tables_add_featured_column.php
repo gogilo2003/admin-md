@@ -18,6 +18,8 @@ class AlterPicturesVideosTablesAddFeaturedColumn extends Migration
         });
         Schema::table('videos', function ($table) {
             $table->boolean('featured')->default(false);
+            $table->string('title')->nullable()->change();
+            $table->string('caption')->nullable()->change();
         });
     }
 
