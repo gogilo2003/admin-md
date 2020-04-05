@@ -34,14 +34,6 @@ class AdminServiceProvider extends ServiceProvider
 
 	public function boot()
 	{
-        // dd(public_url('vendor/admin/css'));
-
-        Blade::directive('api_token', function () {
-            if(Auth::guard('admin')->check()){
-                return Auth::guard('admin')->user()->api_token;
-            }
-            return null;
-        });
 
 		if(config('admin.articles')){
 			config(['admin.menu.admin-articles'=>'Articles']);
@@ -109,7 +101,7 @@ class AdminServiceProvider extends ServiceProvider
 		$this->loadRoutesFrom(__DIR__.'/routes/web.php');
 		$this->loadRoutesFrom(__DIR__.'/routes/hits.php');
 		$this->loadRoutesFrom(__DIR__.'/routes/api.php');
-		
+
 		$this->loadViewsFrom(__DIR__.'/../resources/views','admin');
 		$this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 

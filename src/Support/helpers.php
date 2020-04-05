@@ -1637,3 +1637,13 @@ if (!function_exists('break_string')) {
         return $string;
     }
 }
+
+
+if (!function_exists('api_token')) {
+    function api_token () {
+        if(\Auth::guard('admin')->check()){
+            return \Auth::guard('admin')->user()->api_token;
+        }
+        return null;
+    }
+}
