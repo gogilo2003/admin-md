@@ -41,4 +41,29 @@ class VideoController extends Controller
                 'video'=>$video
             ])->header('Content-Type','application/json');
     }
+
+    public function postFeature(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+        	'id'=>'required|exists:videos'
+        ]);
+
+        if ($validator->fails()) {
+        	$res = [
+        		'success'=>false,
+        		'message'=>'<h5>Validation error</h5>'.make_html_list($validator->errors()->all())
+        	];
+        	return response()->json($res);
+        }
+
+        $video = Video::find($request->id);
+        $video->featured = $video->featured ? 0 : 1 ;
+        $video->save();
+
+        return response([
+                'success'=>true,
+                'message'=>$video->featured ? 'Video has been featured' : 'Video has been un-featured',
+                'video'=>$video
+            ])->header('Content-Type','application/json');
+    }
 }

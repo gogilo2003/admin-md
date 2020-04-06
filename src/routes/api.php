@@ -6,6 +6,7 @@ Route::group(['middleware'=>'api','as'=>'api','prefix'=>'api','namespace'=>'Ogil
 		Route::group(['as'=>'-videos','prefix'=>'videos'],function(){
 			Route::post('',['as'=>'','uses'=>'VideoController@getVideos']);
 			Route::post('publish',['as'=>'-publish','uses'=>'VideoController@postPublish']);
+			Route::post('feature',['as'=>'-feature','uses'=>'VideoController@postFeature']);
 			Route::post('delete',['as'=>'-delete','uses'=>'VideoController@getDelete']);
 		});
 	});
