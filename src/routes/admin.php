@@ -246,10 +246,9 @@ Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'
 			if($setupkey = config('setup.key')){
 				if(Hash::check($key,$setupkey)){
 					Artisan::call('migrate',[
-						'--step'=>true,
-						'--package'=>'gogilo/admin'
+						'--step'=>true
 					]);
-					return Artisan::output();
+					return '<pre>'.Artisan::output().'</pre>';
 				}else{
 					return response('Page Not found',404);
 				}
