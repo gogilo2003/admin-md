@@ -83,11 +83,11 @@ class SettingsController extends Controller
     function migrate($key){
         if($setupkey = config('setup.key')){
             if(Hash::check($key,$setupkey)){
-                Artisan::call('vendor:publish',[
-                    '--force'=>true,
-                    '--tag'=>'admin-migrations'
-                ]);
-                $output = Artisan::output();
+                // Artisan::call('vendor:publish',[
+                //     '--force'=>true,
+                //     '--tag'=>'admin-migrations'
+                // ]);
+                // $output = Artisan::output();
 
                 Artisan::call('migrate',[
                     '--step'=>true

@@ -103,11 +103,11 @@ class AdminServiceProvider extends ServiceProvider
 		$this->loadRoutesFrom(__DIR__.'/routes/api.php');
 
 		$this->loadViewsFrom(__DIR__.'/../resources/views','admin');
-		// $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+		$this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-		$this->publishes([
-			__DIR__.'/../database/migrations' => database_path('migrations'),
-		], 'admin-migrations');
+		// $this->publishes([
+		// 	__DIR__.'/../database/migrations' => database_path('migrations'),
+		// ], 'admin-migrations');
 
 		$this->publishes([
 
