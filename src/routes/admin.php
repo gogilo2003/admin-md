@@ -1,6 +1,5 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Hash;
 
 Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'Ogilo\AdminMd\Http\Controllers'],function(){
 
@@ -242,24 +241,7 @@ Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'
 		Route::get('settings',['as'=>'-settings','uses'=>'SettingsController@getSettings']);
 		Route::post('settings',['as'=>'-settings','uses'=>'SettingsController@postSettings']);
 
-		Route::get('migrate/{key}',function($key){
-			if($setupkey = config('setup.key')){
-				if(Hash::check($key,$setupkey)){
-					Artisan::call('migrate',[
-						'--step'=>true
-					]);
-					return '<pre>'.Artisan::output().'</pre>';
-				}else{
-					return response('Page Not found',404);
-				}
-			}else{
-				if($key){
-					$fp = fopen(config_path('setup.php') , 'w');
-					fwrite($fp, '<?php return ' . var_export(['key'=>Hash::make($key)], true) . ';');
-					fclose($fp);
-				}
-			}
-		});
+		Route::get('migrate/{key}',['as'=>'-migrate','uses'=>'SettingsController@migrate']);
 	});
 
 });
