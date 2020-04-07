@@ -3,8 +3,6 @@ namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Artisan;
 use Ogilo\AdminMd\Models\ArticleCategory;
 
 use Validator;
@@ -80,32 +78,8 @@ class SettingsController extends Controller
                 ->with('global-success','Settings saved');
     }
 
-    function migrate($key){
-        if($setupkey = config('setup.key')){
-            $output = null;
-            if(Hash::check($key,$setupkey)){
-                // Artisan::call('vendor:publish',[
-                //     '--force'=>true,
-                //     '--tag'=>'admin-migrations'
-                // ]);
-                // $output = Artisan::output();
-
-                Artisan::call('migrate',[
-                    '--step'=>true
-                ]);
-                $output .= "\n\n". Artisan::output();
-
-                return '<pre>'.$output.'</pre>';
-            }else{
-                return response('Page Not found',404);
-            }
-        }else{
-            if($key){
-                $fp = fopen(config_path('setup.php') , 'w');
-                fwrite($fp, '<?php return ' . var_export(['key'=>Hash::make($key)], true) . ';');
-                fclose($fp);
-            }
-        }
+    public function getSetup()
+    {
+        return view('admin::setup.index');
     }
-
 }

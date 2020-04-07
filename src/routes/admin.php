@@ -240,8 +240,11 @@ Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'
 
 		Route::get('settings',['as'=>'-settings','uses'=>'SettingsController@getSettings']);
 		Route::post('settings',['as'=>'-settings','uses'=>'SettingsController@postSettings']);
-
-		Route::get('migrate/{key}',['as'=>'-migrate','uses'=>'SettingsController@migrate']);
+		
+		Route::group(['as'=>'-setup','prefix'=>'setup'],function(){
+			Route::get('',['as'=>'','uses'=>'SettingsController@getSetup']);
+		});
+		
 	});
 
 });

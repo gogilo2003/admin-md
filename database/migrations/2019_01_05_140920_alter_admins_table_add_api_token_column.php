@@ -14,10 +14,12 @@ class AlterAdminsTableAddApiTokenColumn extends Migration
     public function up()
     {
         Schema::table('admins', function ($table) {
-            $table->string('api_token', 80)->after('password')
-                                ->unique()
-                                ->nullable()
-                                ->default(null);
+            if(!Schema::hasColumn('admins','api_token')){
+                $table->string('api_token', 80)->after('password')
+                                    ->unique()
+                                    ->nullable()
+                                    ->default(null);
+            }
         });
     }
 
