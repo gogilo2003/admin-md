@@ -19,23 +19,23 @@
 		{!! $page->content !!}
 	</div>
 
-    @include('admin::web.inc.services')
+    @includeIf('admin::web.inc.services')
 
-    @include('admin::web.inc.profiles')
+    @includeIf('admin::web.inc.profiles')
 
-    @include('admin::web.inc.sermons')
+    @includeIf('admin::web.inc.sermons')
 
-    @include('admin::web.inc.projects')
+    @includeIf('admin::web.inc.projects')
 
-    @include('admin::web.inc.events')
+    @includeIf('admin::web.inc.events')
 
-    @include('admin::web.inc.gallery')
+    @includeIf('admin::web.inc.gallery')
 
-    @include('admin::web.inc.file')
+    @includeIf('admin::web.inc.file')
 
-    @include('admin::web.inc.blogs')
+    @includeIf('admin::web.inc.blogs')
 
-    @include('clients::web.inc.clients')
+    @includeIf('clients::web.inc.clients')
 
 @endsection
 

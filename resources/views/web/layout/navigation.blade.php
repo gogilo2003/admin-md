@@ -23,6 +23,7 @@
                 @endforeach
                 @yield('menu')
             </ul>
+            @if (Route::has('search'))
             <form class="form-inline mt-2 mt-md-0" action="{{ route('search') }}">
                 <div class="input-group mr-sm-2 my-2 my-sm-0 rounded-pill overflow-hidden border-light">
                     <input name="q" type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-search">
@@ -31,6 +32,8 @@
                     </div>
                 </div>
             </form>
+            @endif
+
         </div>
     </div>
 </nav>
