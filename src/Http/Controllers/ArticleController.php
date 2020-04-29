@@ -239,6 +239,23 @@ class ArticleController extends Controller
 		// 		->with('global-success','Article '.$name.' Deleted');
 	}
 
+	public function postFeature(Request $request)
+	{
+		// dd($request->all());
+
+		$article = Article::findOrFail($request->input('id'));
+		$article->featured = $article->featured ? 0 : 1 ;
+		$name = $article->title;
+		$article->save();
+
+		return response(["success"=>true,"message"=>"Article $name ".($article->featured ? "Featured" : "Un featured")." successfuly","featured"=>$article->featured])
+				->header('Content-Type','application/json');
+
+		// return redirect()
+		// 		->route('admin-articles')
+		// 		->with('global-success','Article '.$name.' Deleted');
+	}
+
 	public function postDelete(Request $request)
 	{
 		// dd($request->all());

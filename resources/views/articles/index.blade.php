@@ -47,6 +47,7 @@
 					<div class="btn-group">
 						<a href="{{route('admin-articles-edit', $article->id)}}" class="btn btn-primary btn-sm"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
 						<a href="javascript:" data-id="{{ $article->id }}" class="btn btn-primary btn-sm publishArticle"><span class="fa fa-arrow-{{ $article->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $article->published ? 'Un-publish' : 'Publish' }}</a>
+						<a href="javascript:" data-id="{{ $article->id }}" class="btn btn-primary btn-sm featureArticle"><span class="fa fa-arrow-{{ $article->featured ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $article->featured ? 'Un-feature' : 'Feature' }}</a>
 						<a href="javascript:" data-id="{{ $article->id }}" class="btn btn-danger btn-sm deleteArticle"><span class="fa fa-remove"></span>&nbsp;&nbsp; Delete</a>
 					</div>
 				</td>
@@ -142,7 +143,59 @@
                                     icon: 'not_interested'
                                 },
                                 {
-                                    type:'dangeer'
+                                    type:'danger'
+                                }
+                            );
+                        }
+
+                    });
+
+                } else {
+                    alert('Article publishing canceled by user');
+                }
+
+            })
+        })
+
+		document.querySelectorAll('a.featureArticle').forEach(function(item){
+            item.addEventListener('click',function(e){
+                answer = confirm("Are you sure you want to feature this article?");
+                let btn = this
+                if (answer) {
+
+                    $.ajax({
+                        url: '{{ route('admin-articles-feature') }}',
+                        type: 'POST',
+                        data: {
+                            id:$(this).data('id'),
+                            _token:'{{ csrf_token() }}'
+                        }
+                    }).then(function(xhr){
+                        // console.log(xhr);
+                        if (xhr.success) {
+                            btn.innerHTML = null
+                            let icon = document.createElement('i')
+                            icon.className = "fa fa-arrow-" + (xhr.featured ? 'down' : 'up')
+                            btn.appendChild(icon)
+                            let text = "  " + (xhr.featured ? 'Un-feature' : 'Feature')
+                            btn.appendChild(document.createTextNode(text))
+                            $.notify(
+                                {
+                                    message:xhr.message,
+                                    icon: 'check_circle'
+                                },
+                                {
+                                    type:'success'
+                                }
+                            );
+                        } else {
+                            $.notify(
+                                {
+                                    message:xhr.message,
+                                    icon: 'not_interested'
+                                },
+                                {
+                                    type:'danger'
                                 }
                             );
                         }

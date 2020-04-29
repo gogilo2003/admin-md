@@ -97,6 +97,7 @@ Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'
 			Route::get('edit/{id?}',['as'=>'-edit','uses'=>'ArticleController@getEdit']);
 			Route::post('edit',['as'=>'-edit-post','uses'=>'ArticleController@postEdit']);
 			Route::post('publish',['as'=>'-publish','uses'=>'ArticleController@postPublish']);
+			Route::post('feature',['as'=>'-feature','uses'=>'ArticleController@postFeature']);
 			Route::post('delete',['as'=>'-delete','uses'=>'ArticleController@postDelete']);
 		});
 
