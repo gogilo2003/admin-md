@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 */
 class Picture extends Model
 {
-	protected $appends = ['url','url_hd','url_thumbnails'];
+	protected $appends = ['url','url_hd','url_thumbnail'];
 	
 	public function link()
 	{
