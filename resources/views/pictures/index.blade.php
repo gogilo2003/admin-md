@@ -56,6 +56,7 @@
 					<div class="btn-group">
 						<a href="{{route('admin-pictures-edit',$picture->id)}}" class="btn btn-success btn-sm btn-round"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
 						<a href="javascript:publishPicture({{ $picture->id }})" class="btn btn-warning btn-sm btn-round"><span class="fa fa-arrow-{{ $picture->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $picture->published ? ' Unpublish' : 'Publish' }}</a>
+						<a href="javascript:featurePicture({{ $picture->id }})" class="btn btn-info btn-sm btn-round"><span class="fa fa-arrow-{{ $picture->featured ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $picture->featured ? ' Unfeature' : 'Feature' }}</a>
 						<a href="javascript:deletePicture({{ $picture->id }})" class="btn btn-danger btn-sm btn-round"><span class="fa fa-remove"></span>&nbsp;&nbsp; Delete</a>
 					</div>
 				</td>
@@ -135,6 +136,32 @@
 				})
 			}else{
 				alert("picture publish request was canceled by user")
+			}
+		}
+
+		var featurePicture = function (pID){
+			if(confirm("Do you want to feature the selected picture?")){
+				$.ajax({
+					url: '{{ route('admin-pictures-feature') }}',
+					type: 'post',
+					data: { id: pID, _token: '{{ csrf_token() }}' },
+					complete: function(xhr){
+						// console.log(xhr)
+						$.notify(
+                            {
+                                message:xhr.responseJSON.message
+                            },
+                            {
+                                type:'success'
+                            }
+                        );
+                        window.setTimeout(function() {
+                        	window.location = '{{ route('admin-pictures') }}'
+                        }, 10);
+					}
+				})
+			}else{
+				alert("picture feature request was canceled by user")
 			}
 		}
 

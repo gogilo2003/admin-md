@@ -207,4 +207,13 @@ class PictureController extends Controller
 		return response(["message"=>$picture->published ? "Picture published successfuly" : "Picture un-published successfuly"])->header('Content-Type','application/json');
 	}
 
+	public function postFeature(Request $request)
+	{
+		$picture = Picture::find($request->input('id'));
+		$picture->featured = !$picture->featured;
+		$picture->save();
+
+		return response(["message"=>$picture->featured ? "Picture featured successfuly" : "Picture un-featured successfuly"])->header('Content-Type','application/json');
+	}
+
 }

@@ -118,6 +118,7 @@ Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'
 			Route::post('edit',['as'=>'-edit-post','uses'=>'PictureController@postEdit']);
 			Route::post('delete',['as'=>'-delete','uses'=>'PictureController@postDelete']);
 			Route::post('publish',['as'=>'-publish','uses'=>'PictureController@postPublish']);
+			Route::post('feature',['as'=>'-feature','uses'=>'PictureController@postFeature']);
 		});
 
 		Route::group(['as'=>'-file_categories','prefix'=>'file_categories'],function(){
