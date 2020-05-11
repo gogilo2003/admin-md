@@ -127,7 +127,7 @@ class PagesController extends Controller
 
 		// $template = file_exists(resource_path('views/web/event.blade.php')) ? 'web.event' :'admin::web.event';
 
-		return view()->first(['web.event','event','admin::web.event'],compact('events', 'event','template','page'));
+		return view()->first(['web.event','event','admin::web.event'],compact('events', 'event','page'));
 	}
 
 	public function postEventGuest(Request $request)
