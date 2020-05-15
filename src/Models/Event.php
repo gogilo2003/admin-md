@@ -42,4 +42,9 @@ class Event extends Model
 		return $this->hasMany('Ogilo\AdminMd\Models\Guest');
 	}
 
+	public function schedules()
+	{
+		return $this->hasMany(EventSchedule::class);
+	}
+
 }

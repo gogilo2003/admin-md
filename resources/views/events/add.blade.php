@@ -96,28 +96,31 @@
 							{!! $errors->has('content') ? '<span class="text-danger">'.$errors->first('content').'</span>' : '' !!}
 						</div>
 					</div>
+					<div class="col-md-12">
+						<div class="row schedules">
+
+							<div class="col-md-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">
+											<h4 class="text-uppercase">Event Schedule</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-6 schedule-button pt-2" id="addScheduleModalButtonWrapper">
+								<button type="button" id="addScheduleModalButton" data-target="#scheduleModalLong" data-toggle="modal" class="btn btn-outline-primary rounded-0 btn-lg add-schedule"><i class="material-icons">add</i><br><br>Add Schedule</button>
+							</div>
+
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<input type="hidden" name="_token" value="{{csrf_token()}}">
-		<div class="text-right"><button type="submit" class="btn btn-primary"><span class="fa fa-save"></span>  Save</button></div>
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		<div class="text-right"><button type="submit" class="btn btn-primary"><span class="fa fa-save"></span> Save</button></div>
 	</form>
-
+	@include('admin::events.schedule')
 @stop
 
-@section('styles')
-	<style type="text/css">
-
-	</style>
-@stop
-@section('scripts_top')
-	<script type="text/javascript">
-
-	</script>
-@stop
-
-@section('scripts_bottom')
-	<script type="text/javascript">
-
-	</script>
-@stop

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\Event;
 use Ogilo\AdminMd\Models\EventCategory;
 use Ogilo\AdminMd\Models\Page;
+use Ogilo\AdminMd\Models\EventSchedule;
 
 use File;
 use Validator;
@@ -36,6 +37,7 @@ class EventController extends Controller
 
     public function postAdd(Request $request)
     {
+        // dd($request->all());
     	$cat = EventCategory::find($request->input('event_category'));
 
     	$validator = Validator::make($request->all(),[
@@ -87,9 +89,46 @@ class EventController extends Controller
 
     	$cat->events()->save($event);
 
+        if ($request->has('schedules')) {
+            foreach ($request->schedules as $item) {
+                $schedule = new EventSchedule;
+                $schedule->title = $item['title'];
+                $schedule->start_at = $item['start_at'];
+                $schedule->end_at = $item['end_at'];
+                $schedule->content = $item['content'];
+                $event->schedules()->save($schedule);
+            }
+        }
+
     	return redirect()
     			->route('admin-events')
     			->with('global-success','Event added');
+    }
+
+    public function deleteSchedule(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'id'=>'required|integer|exists:event_schedules'
+        ]);
+
+        if ($validator->fails()) {
+            $res = [
+                'success'=>false,
+                'message'=>'<h4>Validation error</h4>'.make_html_list($validator->errors()->all());
+            ];
+            return response()->json($res);
+        }
+
+        $schedule = EventSchedule::find($request->id);
+
+        $schedule->delete();
+
+        $res = [
+            'success'=>true,
+            'message'=>'Event schedule deleted'
+        ];
+        
+        return response()->json($res);
     }
 
     public function getEdit($id)
@@ -170,7 +209,7 @@ class EventController extends Controller
 
     	return redirect()
     			->route('admin-events')
-    			->with('global-success','Event added');
+    			->with('global-success','Event updated');
     }
 
     public function postDelete(Request $request)
