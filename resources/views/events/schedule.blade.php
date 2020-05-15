@@ -93,8 +93,6 @@
 
 			$('.schedules .schedule').remove()
 
-			console.log(schedules)
-
 			schedules.forEach(function(item,i){
 
 				let schedule = `<div class="col-md-6 schedule" id="schedule-${i}" data-id="${item.id}">
@@ -144,7 +142,8 @@
 				if(id){
 					let url = '{{ route('admin-events-schedules-delete') }}'
 					let data = {
-						id: schedules[i].id;
+						id: schedules[i].id,
+						_token: '{{ csrf_token() }}'
 					}
 					$.post(url,data).then(response=>{
 						if(response.success){

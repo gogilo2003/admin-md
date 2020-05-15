@@ -211,7 +211,7 @@ class EventController extends Controller
 
         if ($request->has('schedules')) {
             foreach ($request->schedules as $item) {
-                if($item['id']){
+                if(isset($item['id'])){
                     $schedule = EventSchedule::find($item['id']);
                     $schedule->title = $item['title'];
                     $schedule->start_at = $item['start_at'];
