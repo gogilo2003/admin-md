@@ -114,7 +114,7 @@ class EventController extends Controller
         if ($validator->fails()) {
             $res = [
                 'success'=>false,
-                'message'=>'<h4>Validation error</h4>'.make_html_list($validator->errors()->all());
+                'message'=>'<h4>Validation error</h4>'.make_html_list($validator->errors()->all())
             ];
             return response()->json($res);
         }
@@ -127,7 +127,7 @@ class EventController extends Controller
             'success'=>true,
             'message'=>'Event schedule deleted'
         ];
-        
+
         return response()->json($res);
     }
 
@@ -206,6 +206,29 @@ class EventController extends Controller
         $event->content = $request->input('content');
 
     	$cat->events()->save($event);
+
+        $cat->events()->save($event);
+
+        if ($request->has('schedules')) {
+            foreach ($request->schedules as $item) {
+                if($item['id']){
+                    $schedule = EventSchedule::find($item['id']);
+                    $schedule->title = $item['title'];
+                    $schedule->start_at = $item['start_at'];
+                    $schedule->end_at = $item['end_at'];
+                    $schedule->content = $item['content'];
+                    $schedule->save();
+                }else{
+                    $schedule = new EventSchedule;
+                    $schedule->title = $item['title'];
+                    $schedule->start_at = $item['start_at'];
+                    $schedule->end_at = $item['end_at'];
+                    $schedule->content = $item['content'];
+                    $event->schedules()->save($schedule);
+                }
+                
+            }
+        }
 
     	return redirect()
     			->route('admin-events')
