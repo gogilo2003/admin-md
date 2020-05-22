@@ -26,7 +26,6 @@
             'admin-profiles' => 'Profiles',
             'admin-sermons' => 'Sermons',
             'admin-events' => 'Events',
-            'admin-packages' => 'Packages',
             'admin-products' => 'Products',
         ),
 );

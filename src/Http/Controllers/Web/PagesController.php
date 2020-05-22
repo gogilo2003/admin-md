@@ -109,7 +109,7 @@ class PagesController extends Controller
 
 		// $template = file_exists(resource_path('views/web/profile.blade.php')) ? 'web.profile' :'admin::web.profile';
 
-		return view()->first(['web.profile','profile','admin::web.profile'],compact('profile','template','page'));
+		return view()->first(['web.profile','profile','admin::web.profile'],compact('profile','page'));
 	}
 
 	public function getEvent($event_name,$page_name=null)
