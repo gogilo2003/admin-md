@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
 
-    protected $appends = ['pages'];
+    protected $appends = ['pages','picture_url','thumbnail_url'];
     protected $dates = ['held_at'];
 
 	public function link()
@@ -45,6 +45,16 @@ class Event extends Model
 	public function schedules()
 	{
 		return $this->hasMany(EventSchedule::class);
+	}
+
+	public function getPictureUrlAttribute()
+	{
+		return asset('images/events/'.$this->picture);
+	}
+
+	public function getThumbnailUrlAttribute()
+	{
+		return asset('images/events/thumbnails/'.$this->picture);
 	}
 
 }
