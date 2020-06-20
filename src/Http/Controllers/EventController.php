@@ -268,5 +268,15 @@ class EventController extends Controller
                 ->header('Content-Type','application/json');
     }
 
+    public function postFeature(Request $request)
+    {
+        $event = Event::find($request->input('id'));
+        $event->featured = $event->featured ? 0 : 1;
+        $event->save();
+
+        return response(['message'=>$event->featured ? 'Event has been featured' : 'Event has been un-featured' ])
+                ->header('Content-Type','application/json');
+    }
+
 
 }

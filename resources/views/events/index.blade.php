@@ -35,6 +35,7 @@
 					<hr>
 					<div class="btn-group">
 						<a href="{{route('admin-events-edit',$event->id)}}" class="btn btn-primary btn-sm btn-round"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
+						<a data-id="{{ $event->id }}" href="javascript:void(0)" class="featureButton btn btn-info btn-sm btn-round"><span class="fa fa-arrow-{{ $event->featured ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $event->featured ? 'Un-Feature' : 'Feature' }}</a>
 						<a data-id="{{ $event->id }}" href="javascript:void(0)" class="publishButton btn btn-primary btn-sm btn-round"><span class="fa fa-arrow-{{ $event->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $event->published ? 'Un-Publish' : 'Publish' }}</a>
 						<a data-id="{{ $event->id }}" href="javascript:void(0)" class="deleteButton btn btn-danger btn-sm btn-round"><span class="fa fa-times"></span>&nbsp;&nbsp; Delete</a>
 					</div>
@@ -62,6 +63,29 @@
 				// alert($(this).data('id'))
 				$.ajax({
 					url: '{{ route('admin-events-delete') }}',
+					type: 'post',
+					data: {id: $(this).data('id'), '_token': '{{ csrf_token() }}'}
+				}).then(function(xhr){
+					// console.log(xhr)
+					$.notify(
+                            {
+                                message:xhr.message,
+                                icon: 'check_circle'
+                            },
+                            {
+                                type:'success',
+                                onClosed: function(){
+                                	window.location = '{{ route('admin-events') }}'
+                                }
+                            }
+                        );
+				})
+			})
+
+			$('.featureButton').click(function(){
+				// alert($(this).data('id'))
+				$.ajax({
+					url: '{{ route('admin-events-feature') }}',
 					type: 'post',
 					data: {id: $(this).data('id'), '_token': '{{ csrf_token() }}'}
 				}).then(function(xhr){

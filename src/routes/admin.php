@@ -224,6 +224,7 @@ Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'
 			Route::get('edit/{id?}',['as'=>'-edit','uses'=>'EventController@getEdit']);
 			Route::post('edit',['as'=>'-edit-post','uses'=>'EventController@postEdit']);
 			Route::post('publish',['as'=>'-publish','uses'=>'EventController@postPublish']);
+			Route::post('feature',['as'=>'-feature','uses'=>'EventController@postFeature']);
 			Route::post('delete',['as'=>'-delete','uses'=>'EventController@postDelete']);
 			Route::group(['prefix'=>'schedules','as'=>'-schedules'],function(){
 				Route::post('delete',['as'=>'-delete','uses'=>'EventController@deleteSchedule']);
