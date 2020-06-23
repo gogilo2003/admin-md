@@ -14,11 +14,6 @@ class EventSchedule extends Model
     // 	'end_at' => 'date:H:i:s'
     // ];
 
-	public function event()
-	{
-		return $this->belongsTo(Event::class);
-	}
-
 	public function event_speakers()
 	{
 		return $this->belongsToMany(EventSpeaker::class);

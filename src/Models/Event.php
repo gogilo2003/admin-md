@@ -44,7 +44,7 @@ class Event extends Model
 
 	public function schedules()
 	{
-		return $this->hasMany(EventSchedule::class);
+		return $this->hasManyThrough(EventSchedule::class, EventDay::class);
 	}
 
 	public function getPictureUrlAttribute()
