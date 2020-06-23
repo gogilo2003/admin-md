@@ -33,12 +33,18 @@
 					<p class="text-justify">{{ str_words($event->content) }}</p>
 					{{ $event->category->name }}
 					<hr>
-					<div class="btn-group">
-						<a href="{{route('admin-events-edit',$event->id)}}" class="btn btn-primary btn-sm btn-round"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
-						<a data-id="{{ $event->id }}" href="javascript:void(0)" class="featureButton btn btn-info btn-sm btn-round"><span class="fa fa-arrow-{{ $event->featured ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $event->featured ? 'Un-Feature' : 'Feature' }}</a>
-						<a data-id="{{ $event->id }}" href="javascript:void(0)" class="publishButton btn btn-primary btn-sm btn-round"><span class="fa fa-arrow-{{ $event->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $event->published ? 'Un-Publish' : 'Publish' }}</a>
-						<a data-id="{{ $event->id }}" href="javascript:void(0)" class="deleteButton btn btn-danger btn-sm btn-round"><span class="fa fa-times"></span>&nbsp;&nbsp; Delete</a>
-					</div>
+					<div class="drdpdown">
+                        <button class="btn btn-outline-primary btn-round dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">settings</i>
+                            Tasks
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a href="{{route('admin-events-edit',$event->id)}}" class="dropdown-item"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
+                            <a data-id="{{ $event->id }}" href="javascript:void(0)" class="dropdown-item featureButton"><span class="fa fa-arrow-{{ $event->featured ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $event->featured ? 'Un-Feature' : 'Feature' }}</a>
+                            <a data-id="{{ $event->id }}" href="javascript:void(0)" class="dropdown-item publishButton"><span class="fa fa-arrow-{{ $event->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $event->published ? 'Un-Publish' : 'Publish' }}</a>
+                            <a data-id="{{ $event->id }}" href="javascript:void(0)" class="dropdown-item deleteButton"><span class="fa fa-times"></span>&nbsp;&nbsp; Delete</a>
+                        </div>
+                    </div>
 				</div>
 			</div>
 		@endforeach

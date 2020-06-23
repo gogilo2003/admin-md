@@ -15,7 +15,7 @@ class CreateEventScheduleEventSpeakerTable extends Migration
     {
         Schema::create('event_schedule_event_speaker', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('event_speaker_id')->unsigned()->nullable();
+            $table->bigInteger('event_speaker_id')->unsigned()->nullable();
             $table->foreign('event_speaker_id')->references('id')->on('event_speakers');
             $table->integer('event_schedule_id')->unsigned()->nullable();
             $table->foreign('event_schedule_id')->references('id')->on('event_schedules');
