@@ -14,7 +14,7 @@ class AlterEventShedulesTableAddEventDayIdColumn extends Migration
     public function up()
     {
         Schema::table('event_schedules', function ($table) {
-            $table->unsignedBidInteger('event_day_id')->default(false);
+            $table->bigInteger('event_day_id')->unsigned()->nullable()->after('event_id');
             $table->foreign('event_day_id')->references('id')->on('event_days');
         });
     }

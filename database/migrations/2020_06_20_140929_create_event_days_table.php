@@ -17,7 +17,7 @@ class CreateEventDaysTable extends Migration
             $table->bigIncrements('id');
             $table->date('day');
             $table->string('title');
-            $table->integer('event_id')->nullable();
+            $table->integer('event_id')->unsigned();
             $table->foreign('event_id')->references('id')->on('events');
         });
     }

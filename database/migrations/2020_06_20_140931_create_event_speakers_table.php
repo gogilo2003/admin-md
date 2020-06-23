@@ -25,7 +25,7 @@ class CreateEventSpeakersTable extends Migration
             $table->string('linkedin')->nullable();
             $table->string('youtube')->nullable();
             $table->string('instagram')->nullable();
-            $table->integer('event_id')->nullable();
+            $table->integer('event_id')->unsigned()->nullable();
             $table->foreign('event_id')->references('id')->on('events');
         });
     }
