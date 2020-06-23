@@ -57,4 +57,14 @@ class Event extends Model
 		return asset('images/events/thumbnails/'.$this->picture);
 	}
 
+	public function event_speakers()
+	{
+		return $this->hasMany(EventSpeaker::class);
+	}
+
+	public function event_days()
+	{
+		return $this->hasMany(EventDay::class);
+	}
+
 }

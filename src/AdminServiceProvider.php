@@ -97,10 +97,10 @@ class AdminServiceProvider extends ServiceProvider
 		// print(config('app.name').' in boot()');
 		// require_once(__DIR__.'/Support/helpers.php');
 
-		$this->loadRoutesFrom(__DIR__.'/routes/admin.php');
-		$this->loadRoutesFrom(__DIR__.'/routes/web.php');
-		$this->loadRoutesFrom(__DIR__.'/routes/hits.php');
-		$this->loadRoutesFrom(__DIR__.'/routes/api.php');
+		$this->loadRoutesFrom(__DIR__.'/../routes/admin.php');
+		$this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+		$this->loadRoutesFrom(__DIR__.'/../routes/hits.php');
+		$this->loadRoutesFrom(__DIR__.'/../routes/api.php');
 
 		$this->loadViewsFrom(__DIR__.'/../resources/views','admin');
 		$this->loadMigrationsFrom(__DIR__.'/../database/migrations');

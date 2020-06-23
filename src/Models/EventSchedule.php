@@ -16,7 +16,17 @@ class EventSchedule extends Model
 
 	public function event()
 	{
-		return $this->BelongsTo(Event::class);
+		return $this->belongsTo(Event::class);
+	}
+
+	public function event_speakers()
+	{
+		return $this->belongsToMany(EventSpeaker::class);
+	}
+
+	public function event_day()
+	{
+		return $this->belongsTo(EventDay::class);
 	}
 
 }
