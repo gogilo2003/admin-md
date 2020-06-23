@@ -13,19 +13,12 @@ class CreateEventSpeakersTable extends Migration
      */
     public function up()
     {
-        Schema::table('event_speakers', function (Blueprint $table) {
+        Schema::table('event_schedule_event_speaker', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('name');
-            $table->date('photo')->nullable();
-            $table->date('description')->nullable();
-            $table->string('email')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('linkedin')->nullable();
-            $table->string('youtube')->nullable();
-            $table->integer('event_id')->nullable();
-            $table->foreign('event_id')->references('id')->on('events');
+            $table->integer('event_speaker_id')->nullable();
+            $table->foreign('event_speaker_id')->references('id')->on('event_speakers');
+            $table->integer('event_sschedule_id')->nullable();
+            $table->foreign('event_sschedule_id')->references('id')->on('event_sschedules');
         });
     }
 
@@ -36,8 +29,8 @@ class CreateEventSpeakersTable extends Migration
      */
     public function down()
     {
-        Schema::table('event_speakers', function (Blueprint $table) {
-            Schema::dropIfExists('event_speakers');
+        Schema::table('event_schedule_event_speaker', function (Blueprint $table) {
+            Schema::dropIfExists('event_schedule_event_speaker');
         });
     }
 }
