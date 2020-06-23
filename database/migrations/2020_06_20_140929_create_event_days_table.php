@@ -13,8 +13,8 @@ class CreateEventDaysTable extends Migration
      */
     public function up()
     {
-        Schema::table('event_days', function ($table) {
-            $table->id();
+        Schema::table('event_days', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->date('day');
             $table->string('title');
             $table->integer('event_id')->nullable();
