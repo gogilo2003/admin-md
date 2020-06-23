@@ -13,7 +13,7 @@ class CreateEventSpeakersTable extends Migration
      */
     public function up()
     {
-        Schema::table('event_speakers', function (Blueprint $table) {
+        Schema::create('event_speakers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('photo')->nullable();
@@ -37,8 +37,6 @@ class CreateEventSpeakersTable extends Migration
      */
     public function down()
     {
-        Schema::table('event_speakers', function (Blueprint $table) {
-            Schema::dropIfExists('event_speakers');
-        });
+        Schema::dropIfExists('event_speakers');
     }
 }
