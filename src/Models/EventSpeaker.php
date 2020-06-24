@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 */
 class EventSpeaker extends Model
 {
+    protected $touches = ['events','event_schedules'];
 
-    public function event()
+    public function events()
     {
-    	return $this->belongsTo(Event::class);
+    	return $this->belongsToMany(Event::class);
     }
 
     public function event_schedules()

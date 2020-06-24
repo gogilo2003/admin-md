@@ -2,17 +2,18 @@
 
 namespace Ogilo\AdminMd\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-
-use Ogilo\AdminMd\Models\Event;
-use Ogilo\AdminMd\Models\EventCategory;
-use Ogilo\AdminMd\Models\Page;
-use Ogilo\AdminMd\Models\EventSchedule;
-
-use File;
-use Validator;
 use Img;
+use File;
+
+use Validator;
+use Illuminate\Http\Request;
+use Ogilo\AdminMd\Models\Page;
+use Ogilo\AdminMd\Models\Event;
+
+use Ogilo\AdminMd\Models\EventDay;
+use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Models\EventCategory;
+use Ogilo\AdminMd\Models\EventSchedule;
 
 class EventController extends Controller
 {
@@ -23,6 +24,7 @@ class EventController extends Controller
 
     public function getEvents()
     {
+
     	$events = Event::with('category')->get();
         // dd($events->first()->category);
     	return view('admin::events.index',compact('events'));
@@ -61,6 +63,7 @@ class EventController extends Controller
         $event->title = $request->input('title');
         $event->leader = $request->input('leader');
         $event->held_at = $request->input('event_date');
+        $event->end_at = $request->input('end_date');
         $event->location = $request->input('location');
     	$event->content = $request->input('content');
 
@@ -89,15 +92,12 @@ class EventController extends Controller
 
     	$cat->events()->save($event);
 
-        if ($request->has('schedules')) {
-            foreach ($request->schedules as $item) {
-                $schedule = new EventSchedule;
-                $schedule->title = $item['title'];
-                $schedule->start_at = $item['start_at'];
-                $schedule->end_at = $item['end_at'];
-                $schedule->content = $item['content'];
-                $event->schedules()->save($schedule);
-            }
+        foreach (get_event_days($event->held_at,$event->end_at) as $key => $dt) {
+            $day = new EventDay();
+            $day->day = $dt;
+            $day->title = "Day ".($key+1);
+            $day->event_id = $event->id;
+            $day->save();
         }
 
     	return redirect()
@@ -202,32 +202,24 @@ class EventController extends Controller
         $event->title = $request->input('title');
         $event->leader = $request->input('leader');
         $event->held_at = $request->input('event_date');
+        $event->end_at = $request->input('end_date');
         $event->location = $request->input('location');
         $event->content = $request->input('content');
 
     	$cat->events()->save($event);
 
-        $cat->events()->save($event);
+        $event->event_days()->whereNotBetween('day',[$event->held_at,$event->end_at])->delete();
 
-        if ($request->has('schedules')) {
-            foreach ($request->schedules as $item) {
-                if(isset($item['id'])){
-                    $schedule = EventSchedule::find($item['id']);
-                    $schedule->title = $item['title'];
-                    $schedule->start_at = $item['start_at'];
-                    $schedule->end_at = $item['end_at'];
-                    $schedule->content = $item['content'];
-                    $schedule->save();
-                }else{
-                    $schedule = new EventSchedule;
-                    $schedule->title = $item['title'];
-                    $schedule->start_at = $item['start_at'];
-                    $schedule->end_at = $item['end_at'];
-                    $schedule->content = $item['content'];
-                    $event->schedules()->save($schedule);
-                }
-                
+        foreach (get_event_days($event->held_at,$event->end_at) as $key => $dt) {
+            $day = EventDay::whereDate('day',$dt)->where('event_id',$event->id)->first();
+
+            if(!$day){
+                $day =new EventDay();
             }
+            $day->day = $dt;
+            $day->title = "Day ".($key+1);
+            $day->event_id = $event->id;
+            $day->save();
         }
 
     	return redirect()

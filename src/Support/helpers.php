@@ -1464,6 +1464,15 @@ if (! function_exists('str_ordinal')) {
 }
 
 if(! function_exists('clean_isdn')){
+    /**
+     * clean_isdn
+     *
+     * Correct phone number to standard iso format
+     *
+     * @param string $phone_number
+     *
+     * @return string
+     */
     function clean_isdn($phone_number){
     	$isdn = str_replace('-','',$phone_number);
     	$isdn = str_replace('+2540','',$isdn);
@@ -1645,5 +1654,34 @@ if (!function_exists('api_token')) {
             return \Auth::guard('admin')->user()->api_token;
         }
         return null;
+    }
+}
+
+
+if (!function_exists('get_event_days')) {
+    /**
+     * Generate Event Days based on a date range
+     *
+     * @param date $start
+     * @param date $end
+     *
+     * @return array
+     */
+    function get_event_days($start, $end)
+    {
+        $i = 1;
+        $interval = \date_interval_create_from_date_string('1 day');
+        $days = [];
+
+        if($start === $end)
+            $days[]=$start;
+        else
+            do  {
+                $days[] = clone $start;
+                $start->add($interval);
+            } while ($start <= $end);
+
+
+        return $days;
     }
 }

@@ -40,29 +40,40 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a href="{{route('admin-events-edit',$event->id)}}" class="dropdown-item"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
+                            <a href="#" data-event="{{ $event->id }}" class="dropdown-item" data-toggle="modal" data-target="#speakersModal">
+                                <i class="material-icons">person_outline</i>&nbsp;&nbsp;
+                                Event Speakers
+                            </a>
+                            <a href="#" data-event="{{ $event->id }}" class="dropdown-item" data-toggle="modal" data-target="#speakersModal">
+                                <i class="material-icons">schedule</i>&nbsp;&nbsp;
+                                Event Schedules
+                            </a>
                             <a data-id="{{ $event->id }}" href="javascript:void(0)" class="dropdown-item featureButton"><span class="fa fa-arrow-{{ $event->featured ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $event->featured ? 'Un-Feature' : 'Feature' }}</a>
                             <a data-id="{{ $event->id }}" href="javascript:void(0)" class="dropdown-item publishButton"><span class="fa fa-arrow-{{ $event->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $event->published ? 'Un-Publish' : 'Publish' }}</a>
-                            <a data-id="{{ $event->id }}" href="javascript:void(0)" class="dropdown-item deleteButton"><span class="fa fa-times"></span>&nbsp;&nbsp; Delete</a>
+
+                            <a data-id="{{ $event->id }}" href="javascript:void(0)" class="dropdown-item deleteButton text-danger"><span class="fa fa-times"></span>&nbsp;&nbsp; Delete</a>
                         </div>
                     </div>
 				</div>
 			</div>
 		@endforeach
-	</div>
+    </div>
+    @include('admin::events.speakers')
+    @include('admin::events.schedule')
 @stop
 
-@section('styles')
+@push('styles')
 	<style type="text/css">
 
 	</style>
-@stop
-@section('scripts_top')
+@endpush
+@push('scripts_top')
 	<script type="text/javascript">
 
 	</script>
-@stop
+@endpush
 
-@section('scripts_bottom')
+@push('scripts_bottom')
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('.deleteButton').click(function(){
@@ -136,4 +147,4 @@
 		});
 
 	</script>
-@stop
+@endpush

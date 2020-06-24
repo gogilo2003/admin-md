@@ -75,11 +75,18 @@
 							{!! $errors->has('leader') ? '<span class="text-danger">'.$errors->first('leader').'</span>' : '' !!}
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-6">
+					<div class="col-md-3 col-lg-3">
 						<div class="form-group{!! $errors->has('event_date') ? ' has-error':'' !!}">
-							<label for="event_date">Event Date</label>
+							<label for="event_date">Start Date</label>
 							<input type="text" class="form-control datetimepicker" id="event_date" name="event_date" placeholder="Enter event date"{!! ((old('event_date')) ? ' value="'.old('event_date').'"' : ' value="'.$event->held_at.'"') !!}>
 							{!! $errors->has('event_date') ? '<span class="text-danger">'.$errors->first('event_date').'</span>' : '' !!}
+						</div>
+					</div>
+					<div class="col-md-3 col-lg-3">
+						<div class="form-group{!! $errors->has('end_date') ? ' has-error':'' !!}">
+							<label for="end_date">End Date</label>
+							<input type="text" class="form-control datetimepicker" id="end_date" name="end_date" placeholder="Enter event date"{!! ((old('end_date')) ? ' value="'.old('end_date').'"' : ' value="'.$event->end_at.'"') !!}>
+							{!! $errors->has('end_date') ? '<span class="text-danger">'.$errors->first('end_date').'</span>' : '' !!}
 						</div>
 					</div>
 					<div class="col-md-6 col-lg-6">
@@ -96,25 +103,7 @@
 							{!! $errors->has('content') ? '<span class="text-danger">'.$errors->first('content').'</span>' : '' !!}
 						</div>
 					</div>
-					<div class="col-md-12">
-						<div class="row schedules">
 
-							<div class="col-md-12">
-								<div class="card">
-									<div class="card-header">
-										<div class="card-title">
-											<h4 class="text-uppercase">Event Schedule</h4>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="col-md-6 schedule-button pt-2" id="addScheduleModalButtonWrapper">
-								<button type="button" id="addScheduleModalButton" data-target="#scheduleModalLong" data-toggle="modal" class="btn btn-outline-primary rounded-0 btn-lg add-schedule"><i class="material-icons">add</i><br><br>Add Schedule</button>
-							</div>
-
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -123,6 +112,6 @@
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<div class="text-right"><button type="submit" class="btn btn-primary"><span class="fa fa-save"></span> Save</button></div>
 	</form>
-	@include('admin::events.schedule')
+
 @stop
 

@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class EventDay extends Model
 {
 
+    protected $touches = ['event'];
+    protected $dates = ['day'];
+
     public function event()
     {
     	return $this->belongsTo(Event::class);

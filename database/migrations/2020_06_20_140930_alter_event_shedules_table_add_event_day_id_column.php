@@ -15,7 +15,9 @@ class AlterEventShedulesTableAddEventDayIdColumn extends Migration
     {
         Schema::table('event_schedules', function ($table) {
             $table->bigInteger('event_day_id')->unsigned()->nullable()->after('event_id');
-            $table->foreign('event_day_id')->references('id')->on('event_days');
+            $table->foreign('event_day_id')->references('id')->on('event_days')->onDelete('cascade');
+            $table->dropForeign(['event_id']);
+            $table->dropColumn('event_id');
         });
     }
 
@@ -27,6 +29,9 @@ class AlterEventShedulesTableAddEventDayIdColumn extends Migration
     public function down()
     {
         Schema::table('event_schedules', function (Blueprint $table) {
+            $table->integer('event_id')->unsigned()->nullable()->after('content');
+            $table->foreign('event_id')->references('id')->on('events');
+            $table->dropForeign(['event_day_id']);
             $table->dropColumn('event_day_id');
         });
     }

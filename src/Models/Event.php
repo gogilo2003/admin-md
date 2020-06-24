@@ -10,7 +10,8 @@ class Event extends Model
 {
 
     protected $appends = ['pages','picture_url','thumbnail_url'];
-    protected $dates = ['held_at'];
+    protected $dates = ['held_at','end_at'];
+    protected $touches = ['event_speakers'];
 
 	public function link()
 	{
@@ -59,7 +60,7 @@ class Event extends Model
 
 	public function event_speakers()
 	{
-		return $this->hasMany(EventSpeaker::class);
+		return $this->belongsToMany(EventSpeaker::class);
 	}
 
 	public function event_days()

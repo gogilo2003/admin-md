@@ -231,26 +231,26 @@ Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'
 			});
 		});
 
-		Route::group(['middleware'=>'auth:admin','as'=>'-products','prefix'=>'products'],function(){
-            Route::get('',['uses'=>'ProductController@getProducts']);
-            Route::get('add',['as'=>'-add','uses'=>'ProductController@getAdd']);
-            Route::post('add',['as'=>'-add','uses'=>'ProductController@postAdd']);
-            Route::get('edit/{id?}',['as'=>'-edit','uses'=>'ProductController@getEdit']);
-            Route::post('edit',['as'=>'-edit-post','uses'=>'ProductController@postEdit']);
-            Route::get('pictures/{id?}',['as'=>'-pictures','uses'=>'ProductController@getPictures']);
-            Route::post('pictures',['as'=>'-pictures-post','uses'=>'ProductController@postPictures']);
-            Route::post('pages',['as'=>'-pages','uses'=>'ProductController@postPages']);
-            Route::post('publish',['as'=>'-publish','uses'=>'ProductController@postPublish']);
-            Route::post('delete',['as'=>'-delete','uses'=>'ProductController@postDelete']);
-        });
+		// Route::group(['middleware'=>'auth:admin','as'=>'-products','prefix'=>'products'],function(){
+        //     Route::get('',['uses'=>'ProductController@getProducts']);
+        //     Route::get('add',['as'=>'-add','uses'=>'ProductController@getAdd']);
+        //     Route::post('add',['as'=>'-add','uses'=>'ProductController@postAdd']);
+        //     Route::get('edit/{id?}',['as'=>'-edit','uses'=>'ProductController@getEdit']);
+        //     Route::post('edit',['as'=>'-edit-post','uses'=>'ProductController@postEdit']);
+        //     Route::get('pictures/{id?}',['as'=>'-pictures','uses'=>'ProductController@getPictures']);
+        //     Route::post('pictures',['as'=>'-pictures-post','uses'=>'ProductController@postPictures']);
+        //     Route::post('pages',['as'=>'-pages','uses'=>'ProductController@postPages']);
+        //     Route::post('publish',['as'=>'-publish','uses'=>'ProductController@postPublish']);
+        //     Route::post('delete',['as'=>'-delete','uses'=>'ProductController@postDelete']);
+        // });
 
 		Route::get('settings',['as'=>'-settings','uses'=>'SettingsController@getSettings']);
 		Route::post('settings',['as'=>'-settings','uses'=>'SettingsController@postSettings']);
-		
+
 		Route::group(['as'=>'-setup','prefix'=>'setup'],function(){
 			Route::get('',['as'=>'','uses'=>'SettingsController@getSetup']);
 		});
-		
+
 	});
 
 });
