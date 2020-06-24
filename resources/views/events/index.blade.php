@@ -44,7 +44,7 @@
                                 <i class="material-icons">person_outline</i>&nbsp;&nbsp;
                                 Event Speakers
                             </a>
-                            <a href="#" data-event="{{ $event->id }}" class="dropdown-item" data-toggle="modal" data-target="#speakersModal">
+                            <a href="#" data-event="{{ $event->id }}" class="dropdown-item" data-toggle="modal" data-target="#shedulesModal">
                                 <i class="material-icons">schedule</i>&nbsp;&nbsp;
                                 Event Schedules
                             </a>

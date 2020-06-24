@@ -20,6 +20,12 @@ Route::group(['middleware'=>'api','as'=>'api','prefix'=>'api','namespace'=>'Ogil
                 Route::post('edit',['as'=>'-edit','uses'=>'EventSpeakerController@postEdit']);
                 Route::post('delete',['as'=>'-delete','uses'=>'EventSpeakerController@getDelete']);
             });
+            Route::group(['as'=>'-days','prefix'=>'days'],function(){
+                Route::post('',['as'=>'','uses'=>'EventDayController@getEventDays']);
+                Route::post('add',['as'=>'-add','uses'=>'EventDayController@postAdd']);
+                Route::post('edit',['as'=>'-edit','uses'=>'EventDayController@postEdit']);
+                Route::post('delete',['as'=>'-delete','uses'=>'EventDayController@getDelete']);
+            });
             Route::group(['as'=>'-schedules','prefix'=>'schedules'],function(){
                 Route::post('',['as'=>'','uses'=>'EventScheduleController@getEventSchedules']);
                 Route::post('add',['as'=>'-add','uses'=>'EventScheduleController@postAdd']);
