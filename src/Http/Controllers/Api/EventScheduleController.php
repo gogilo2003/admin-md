@@ -4,12 +4,12 @@ namespace Ogilo\AdminMd\Http\Controllers\Api;
 
 use File;
 use Validator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Ogilo\AdminMd\Models\Page;
-
-use Ogilo\AdminMd\Models\Event;
+use Ogilo\AdminMd\Models\EventDay;
 use App\Http\Controllers\Controller;
-use Ogilo\AdminMd\Models\EventSpeaker;
+use Ogilo\AdminMd\Models\EventSchedule;
 
 /**
 *
@@ -17,10 +17,10 @@ use Ogilo\AdminMd\Models\EventSpeaker;
 class EventScheduleController extends Controller
 {
 
-    public function getEventSponsors(Request $request)
+    public function getEventSchedules(Request $request)
     {
         $validator = Validator::make($request->all(),[
-        	'id'=>'required|exists:events'
+        	'day_id'=>'required|exists:event_days,id'
         ]);
 
         if ($validator->fails()) {
@@ -31,14 +31,14 @@ class EventScheduleController extends Controller
         	return response()->json($res);
         }
 
-        $event = Event::with('event_speakers')->find($request->id);
+        $day = EventDay::with('event_schedules')->find($request->day_id);
 
-        $speakers = $event->event_speakers;
+        $schedules = $day->event_schedules;
 
-        return response([
+        return response()->json([
                 'success'=>true,
-                'speakers'=>$speakers
-            ])->header('Content-Type','application/json');
+                'schedules'=>$schedules
+            ]);
     }
 
     public function postAdd(Request $request)
@@ -46,10 +46,11 @@ class EventScheduleController extends Controller
         // return response()->json($request->all());
 
         $validator = Validator::make($request->all(),[
-            'id'=>'required|exists:events',
-            'name'=>'required',
-            'email'=>'nullable|email',
-            'photo'=>'nullable|image',
+            'day_id'=>'required|exists:event_days,id',
+            'title'=>'required',
+            'start_at'=>'required',
+            'end_at'=>'required',
+            'content'=>'required',
         ]);
 
         if ($validator->fails()) {
@@ -61,34 +62,45 @@ class EventScheduleController extends Controller
         	return response()->json($res);
         }
 
-        $speaker = new EventSpeaker();
-        if($request->hasFile('photo')){
-            $photo = $request->photo;
-            $dir = public_path('images/events/speakers');
-            if(!\file_exists($dir)){
-                \mkdir($dir,0777,TRUE);
-            }
-            $filename = time().'.'.$photo->getClientOriginalExtension();
-            $photo->move($dir,$filename);
-            $speaker->photo = $filename;
+        // $schedule = new EventSchedule();
+
+        // $schedule->title = $request->title;
+        // $schedule->start_at = $request->start_at;
+        // $schedule->end_at = $request->end_at;
+        // $schedule->content = $request->content;
+        // $schedule->event_day_id = $request->day_id;
+        // $schedule->save();
+
+        // $day = EventDay::find($request->day_id);
+
+        // $day->event_schedules()->save($schedule);
+
+        $id = DB::table('event_schedules')->insertGetId(
+            [
+                'title' => $request->title,
+                'start_at' => $request->start_at,
+                'end_at' => $request->end_at,
+                'content' => $request->content,
+                'event_day_id' => $request->day_id,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ]
+        );
+
+        $schedule = EventSchedule::find($id);
+
+        $speakers = collect($request->speakers)->map(function($id){
+            return (int)$id;
+        });
+
+        if(count($request->speakers)){
+            $schedule->event_speakers()->sync($speakers->toArray());
         }
-
-        $speaker->name = $request->name;
-        $speaker->email = $request->email;
-        $speaker->phone = clean_isdn($request->phone);
-        $speaker->email = $request->email;
-        $speaker->facebook = $request->facebook;
-        $speaker->twitter = $request->twitter;
-        $speaker->twitter = $request->twitter;
-        $speaker->twitter = $request->twitter;
-        $speaker->save();
-
-        $speaker->events()->attach($request->id);
 
         return response()->json([
                 'success'=>true,
-                'message'=>'Event Speaker has been added',
-                'speaker'=>$speaker
+                'message'=>'Event Schedule has been added',
+                'schedule'=>$schedule
             ]);
     }
 
@@ -97,11 +109,12 @@ class EventScheduleController extends Controller
         // return response()->json($request->all());
 
         $validator = Validator::make($request->all(),[
-            'id'=>'required|exists:event_speakers',
-            'event_id'=>'required|exists:events,id',
-            'name'=>'required',
-            'email'=>'nullable|email',
-            'photo'=>'nullable|image',
+            'id'=>'required|exists:event_schedules',
+            'day_id'=>'required|exists:event_days,id',
+            'title'=>'required',
+            'start_at'=>'required',
+            'end_at'=>'required',
+            'content'=>'required',
         ]);
 
         if ($validator->fails()) {
@@ -113,39 +126,27 @@ class EventScheduleController extends Controller
         	return response()->json($res);
         }
 
-        $speaker = EventSpeaker::find($request->id);
-        if($request->hasFile('photo')){
-            $photo = $request->photo;
-            $dir = public_path('images/events/speakers');
-            if(!\file_exists($dir)){
-                \mkdir($dir,0777,TRUE);
-            }
-            $filename = time().'.'.$photo->getClientOriginalExtension();
-            $photo->move($dir,$filename);
-            $speaker->photo = $filename;
-        }
+        $schedule = EventSchedule::find($request->id);
+        $schedule->title = $request->title;
+        $schedule->start_at = $request->start_at;
+        $schedule->end_at = $request->end_at;
+        $schedule->content = $request->content;
+        $schedule->day_id = $request->day_id;
+        $schedule->content = $request->content;
 
-        $speaker->name = $request->name;
-        $speaker->email = $request->email;
-        $speaker->phone = clean_isdn($request->phone);
-        $speaker->email = $request->email;
-        $speaker->facebook = $request->facebook;
-        $speaker->twitter = $request->twitter;
-        $speaker->twitter = $request->twitter;
-        $speaker->twitter = $request->twitter;
-        $speaker->save();
+        $schedule->save();
 
         return response()->json([
                 'success'=>true,
-                'message'=>'Event Speaker has been updated',
-                'speaker'=>$speaker
+                'message'=>'Event schedule has been updated',
+                'schedule'=>$schedule
             ]);
     }
 
     public function postDelete(Request $request)
     {
         $validator = Validator::make($request->all(),[
-        	'id'=>'required|exists:event_speakers'
+        	'id'=>'required|exists:event_schedules'
         ]);
 
         if ($validator->fails()) {
@@ -156,15 +157,14 @@ class EventScheduleController extends Controller
         	return response()->json($res);
         }
 
-        $speaker = EventSpeaker::find($request->id);
-        $speaker->events()->detach();
-        $speaker->event_schedules()->detach();
-        $speaker->delete();
+        $schedule = EventSchedule::find($request->id);
+        $schedule->event_speakers()->detach();
+        $schedule->delete();
 
         return response([
                 'success'=>true,
                 'message'=>'Event Speaker has been deleted',
-                'speaker'=>$speaker
+                'schedule'=>$schedule
             ])->header('Content-Type','application/json');
     }
 }
