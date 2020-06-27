@@ -66,7 +66,10 @@ class PagesController extends Controller
 			return view()->first([$page_name,'web.'.$page_name,'admin::web.'.$page_name,'admin::web.home'],compact('page'));
 
 		}else{
-			return view('welcome');
+            $page = new Page();
+            $page->title="Missing page/template";
+            $page->title="<h1>This page has not been created</h1><p>The page you are looking for has not been created. You can go to admin and add a page with the name <code>$page_name</code> and then proceed to templates and create a template in resources/views or resources/views/web folder named <code>$page_name.blade.php</code></p>";
+			return view('welcome',[$page]);
 		}
 	}
 

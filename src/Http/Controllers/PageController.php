@@ -84,7 +84,8 @@ class PageController extends Controller
 
 		$page->save();
 
-		// $id = $page_id;
+        // generate template
+        $template = "";
 
 		$page->link()->save($link);
 
@@ -172,7 +173,7 @@ class PageController extends Controller
 		if ($page->title_image && file_exists($dir.$page->title_image)) {
 			unlink($dir.$page->title_image);
 		}
-		
+
 		$name = $page->name;
 		$page->delete();
 

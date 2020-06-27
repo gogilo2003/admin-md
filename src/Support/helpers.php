@@ -1685,3 +1685,21 @@ if (!function_exists('get_event_days')) {
         return $days;
     }
 }
+
+if (!file_exists('stub_path')) {
+    function stub_path($path=null)
+    {
+        $stub_path = file_exists(app_path('stubs')) ? app_path('stubs') : realpath(__DIR__.'/../../stubs');
+        $stub_path .= $path ? "/$path" : '';
+        return $stub_path;
+    }
+}
+
+if (!file_exists('package_path')) {
+    function package_path($path=null)
+    {
+        $package_path = realpath(__DIR__.'/../../');
+        $package_path .= $path ? "/$path" : '';
+        return $package_path;
+    }
+}
