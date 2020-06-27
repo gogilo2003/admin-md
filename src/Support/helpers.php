@@ -1689,7 +1689,7 @@ if (!function_exists('get_event_days')) {
 if (!file_exists('stub_path')) {
     function stub_path($path=null)
     {
-        $stub_path = file_exists(app_path('stubs')) ? app_path('stubs') : realpath(__DIR__.'/../../stubs');
+        $stub_path = file_exists(base_path('stubs')) ? base_path('stubs') : realpath(__DIR__.'/../../stubs');
         $stub_path .= $path ? "/$path" : '';
         return $stub_path;
     }

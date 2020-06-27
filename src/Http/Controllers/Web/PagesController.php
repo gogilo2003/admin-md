@@ -68,8 +68,9 @@ class PagesController extends Controller
 		}else{
             $page = new Page();
             $page->title="Missing page/template";
-            $page->title="<h1>This page has not been created</h1><p>The page you are looking for has not been created. You can go to admin and add a page with the name <code>$page_name</code> and then proceed to templates and create a template in resources/views or resources/views/web folder named <code>$page_name.blade.php</code></p>";
-			return view('welcome',[$page]);
+            $page->content="<div class=\"container\"><h1>This page has not been created</h1><p>The page you are looking for has not been created. You can go to admin and add a page with the name <code>$page_name</code> and then proceed to templates and create a template in <code>".\resource_path('views')."</code> or <code>".\resource_path('views/web')."</code> folder named <code>$page_name.blade.php</code></p></div>";
+
+			return view('welcome',compact('page'));
 		}
 	}
 

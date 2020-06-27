@@ -5,6 +5,7 @@ namespace Ogilo\AdminMd;
 use Illuminate\Support\ServiceProvider;
 use Ogilo\AdminMd\Console\InstallCommand;
 use Ogilo\AdminMd\Console\UpdateCommand;
+use Ogilo\AdminMd\Console\MakePageCommand;
 use Illuminate\Support\Facades\Blade;
 
 use Auth;
@@ -91,7 +92,8 @@ class AdminServiceProvider extends ServiceProvider
 		if ($this->app->runningInConsole()) {
 			$this->commands([
 					InstallCommand::class,
-					UpdateCommand::class
+					UpdateCommand::class,
+					MakePageCommand::class,
 				]);
 		}
 		// print(config('app.name').' in boot()');
@@ -166,6 +168,10 @@ class AdminServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/views'=>resource_path('views/vendor/admin'),
         ],'admin-views');
+
+        $this->publishes([
+            __DIR__.'/../stubs'=>base_path('stubs'),
+        ],'admin-stubs');
 
         $this->publishes([
             __DIR__.'/../resources/views/web/inc'=>resource_path('views/vendor/admin/web/inc'),
