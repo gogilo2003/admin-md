@@ -140,10 +140,10 @@
             }
             $.post(url,data).then(response=>{
                 console.log(response)
-                if (response.sucess) {
+                if (response.success) {
                     $('#addScheduleModel').modal('hide')
                 } else {
-
+                    $.notify({message:response.message},{type:'danger',z_index:9999})
                 }
             })
         })

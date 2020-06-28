@@ -62,19 +62,6 @@ class EventScheduleController extends Controller
         	return response()->json($res);
         }
 
-        // $schedule = new EventSchedule();
-
-        // $schedule->title = $request->title;
-        // $schedule->start_at = $request->start_at;
-        // $schedule->end_at = $request->end_at;
-        // $schedule->content = $request->content;
-        // $schedule->event_day_id = $request->day_id;
-        // $schedule->save();
-
-        // $day = EventDay::find($request->day_id);
-
-        // $day->event_schedules()->save($schedule);
-
         $id = DB::table('event_schedules')->insertGetId(
             [
                 'title' => $request->title,
@@ -92,9 +79,10 @@ class EventScheduleController extends Controller
         $speakers = collect($request->speakers)->map(function($id){
             return (int)$id;
         });
-
-        if(count($request->speakers)){
-            $schedule->event_speakers()->sync($speakers->toArray());
+        if($request->has('speakers')){
+            if(count($request->speakers)){
+                $schedule->event_speakers()->sync($speakers->toArray());
+            }
         }
 
         return response()->json([
