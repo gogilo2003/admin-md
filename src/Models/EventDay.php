@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class EventDay extends Model
 {
 
-    protected $touches = ['event'];
+    // protected $touches = ['event'];
     protected $dates = ['day'];
 
     public function event()

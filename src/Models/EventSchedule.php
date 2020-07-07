@@ -13,7 +13,7 @@ class EventSchedule extends Model
     // 	'start_at' => 'date:H:i:s',
     // 	'end_at' => 'date:H:i:s'
     // ];
-    protected $touches = ['event_speakers','event_day'];
+    // protected $touches = ['event_speakers','event_day'];
 
 	public function event_speakers()
 	{

@@ -82,10 +82,15 @@
     <script>
         let day_id;
         let DAYS = [];
+        let DAYINDEX = 0;
         $('#addScheduleModel').on('show.bs.modal',event=>{
             var button = $(event.relatedTarget);
 
             let url = '{{ route('api-admin-events-speakers') }}'
+
+            DAYINDEX = button.data('index')
+
+            console.log(DAYS[DAYINDEX])
 
             let data = {
                 api_token: '{{ api_token() }}',
@@ -226,34 +231,14 @@
                         `
                         table.appendChild(thead)
                         let tbody = document.createElement('tbody')
+                        tbody.setAttribute('id','day-tbody-'+day.id)
                         day.event_schedules.forEach((schedule,key)=>{
-                            let tr = document.createElement('tr')
-
-                            let c1 = document.createElement('td')
-                            let c2 = document.createElement('td')
-                            let c3 = document.createElement('td')
-                            let c4 = document.createElement('td')
-                            let c5 = document.createElement('td')
-
-                            c1.appendChild(document.createTextNode(1+key))
-                            c2.appendChild(document.createTextNode(schedule.start_at + '-' + schedule.end_at))
-                            c3.appendChild(document.createTextNode(schedule.title))
-                            let strSpeakers = ""
-                            schedule.event_speakers.forEach((speaker,key)=>{
-                                strSpeakers += speaker.name + ', '
-                            })
-                            c4.appendChild(document.createTextNode(strSpeakers))
-
-                            tr.appendChild(c1)
-                            tr.appendChild(c2)
-                            tr.appendChild(c3)
-                            tr.appendChild(c4)
-                            tr.appendChild(c5)
-                            tbody.appendChild(tr)
+                            addScheduleRow(tbody,schedule,key)
                         })
                         let addButton = document.createElement('button')
                         addButton.className="btn btn-outline-primary rounded-pill"
                         addButton.setAttribute('type','button')
+                        addButton.setAttribute('data-index',key)
                         let addIcon = document.createElement('span')
                         addIcon.className = 'material-icons'
                         addIcon.appendChild(document.createTextNode('add'))
@@ -284,5 +269,31 @@
         $(function () {
             $('#myTab li:last-child a').tab('show')
         })
+
+        addScheduleRow = (tbody,schedule,key)=>{
+            let tr = document.createElement('tr')
+
+            let c1 = document.createElement('td')
+            let c2 = document.createElement('td')
+            let c3 = document.createElement('td')
+            let c4 = document.createElement('td')
+            let c5 = document.createElement('td')
+
+            c1.appendChild(document.createTextNode(1+key))
+            c2.appendChild(document.createTextNode(schedule.start_at + '-' + schedule.end_at))
+            c3.appendChild(document.createTextNode(schedule.title))
+            let strSpeakers = ""
+            schedule.event_speakers.forEach((speaker,key)=>{
+                strSpeakers += speaker.name + ', '
+            })
+            c4.appendChild(document.createTextNode(strSpeakers))
+
+            tr.appendChild(c1)
+            tr.appendChild(c2)
+            tr.appendChild(c3)
+            tr.appendChild(c4)
+            tr.appendChild(c5)
+            tbody.appendChild(tr)
+        }
     </script>
 @endpush

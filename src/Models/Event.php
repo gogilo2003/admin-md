@@ -11,7 +11,7 @@ class Event extends Model
 
     protected $appends = ['pages','picture_url','thumbnail_url'];
     protected $dates = ['held_at','end_at'];
-    protected $touches = ['event_speakers'];
+    // protected $touches = ['event_speakers'];
 
 	public function link()
 	{
@@ -43,10 +43,10 @@ class Event extends Model
 		return $this->hasMany('Ogilo\AdminMd\Models\Guest');
 	}
 
-	public function schedules()
-	{
-		return $this->hasManyThrough(EventSchedule::class, EventDay::class);
-	}
+	// public function schedules()
+	// {
+	// 	return $this->hasManyThrough('Ogilo\AdminMd\Models\EventSchedule', 'Ogilo\AdminMd\Models\EventDay');
+	// }
 
 	public function getPictureUrlAttribute()
 	{
@@ -60,12 +60,12 @@ class Event extends Model
 
 	public function event_speakers()
 	{
-		return $this->belongsToMany(EventSpeaker::class);
+		return $this->belongsToMany('Ogilo\AdminMd\Models\EventSpeaker');
 	}
 
 	public function event_days()
 	{
-		return $this->hasMany(EventDay::class);
+		return $this->hasMany('Ogilo\AdminMd\Models\EventDay');
 	}
 
 }

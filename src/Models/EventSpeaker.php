@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 */
 class EventSpeaker extends Model
 {
-    protected $touches = ['events','event_schedules'];
+    // protected $touches = ['events','event_schedules'];
 
     public function events()
     {
-    	return $this->belongsToMany(Event::class);
+    	return $this->belongsToMany('Ogilo\AdminMd\Models\Event');
     }
 
     public function event_schedules()
     {
-    	return $this->belongsToMany(EventSchedule::class);
+    	return $this->belongsToMany('Ogilo\AdminMd\Models\EventSchedule');
     }
 
 }
