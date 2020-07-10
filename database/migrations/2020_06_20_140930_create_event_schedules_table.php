@@ -14,6 +14,7 @@ class CreateEventSchedulesTable extends Migration
     public function up()
     {
         Schema::create('event_schedules', function (Blueprint $table) {
+            Schema::disableForeignKeyConstraints();
             $table->increments('id');
             $table->time('start_at');
             $table->time('end_at');
@@ -23,6 +24,7 @@ class CreateEventSchedulesTable extends Migration
             $table->foreign('event_day_id')->references('id')->on('event_days');
             $table->boolean('published')->default(false);
             $table->timestamps();
+            Schema::enableForeignKeyConstraints();
         });
     }
 
