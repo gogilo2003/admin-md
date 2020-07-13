@@ -192,22 +192,22 @@ Tip 2: you can also add an image using data-image tag-->
     @if (file_exists(public_path(config('admin.path_prefix').'vendor/admin/js/admin.js')))
         <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/admin.js') }}"></script>
     @endif
-    
+
     <script type="text/javascript">
     @if(Session::has('global-info'))
-    {!!"$.notify( { message: '".Session::get('global-info')."',icon: 'info_outline'}, {type: 'info'})"!!}
+    {!!"$.notify( { message: '".Session::get('global-info')."',icon: 'info_outline'}, {type: 'info', timer: 10000})"!!}
     @endif
 
     @if(Session::has('global-success'))
-    {!!"$.notify( { message: '".Session::get('global-success')."',icon: 'check_circle'}, {type: 'success'})"!!}
+    {!!"$.notify( { message: '".Session::get('global-success')."',icon: 'check_circle'}, {type: 'success', timer: 10000})"!!}
     @endif
 
     @if(Session::has('global-warning'))
-    {!!"$.notify( { message: '".Session::get('global-warning')."',icon: 'error_outline'}, {type: 'warning'})"!!}
+    {!!"$.notify( { message: '".Session::get('global-warning')."',icon: 'error_outline'}, {type: 'warning', timer: 10000})"!!}
     @endif
 
     @if(Session::has('global-danger'))
-    {!!"$.notify( { message: '".Session::get('global-danger')."',icon: 'not_interested'}, {type: 'danger'})"!!}
+    {!!"$.notify( { message: '".Session::get('global-danger')."',icon: 'not_interested'}, {type: 'danger', timer: 10000})"!!}
     @endif
     </script>
     @stack('body_scripts')
