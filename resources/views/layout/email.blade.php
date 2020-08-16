@@ -540,7 +540,7 @@
                             <span class="subheading">
                                 @yield('title')
                             </span>
-                            <h2>KENYA RAPID DEPLOYMENT CAPABILITY</h2>
+                            <h2>{{ config('app.name') }}</h2>
                         </div>
                     </td>
                 </tr><!-- end: tr -->
@@ -549,7 +549,7 @@
             <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
                 style="margin: auto;"><tr>
                     <td class="bg_dark" style="text-align: center; padding-top: 20px;">
-                        <p style="color: #fff">KENYA RAPID DEPLOYMENT CAPABILITY(KRDC)</p>
+                        <p style="color: #fff">{{ config('app.name') }}</p>
                     </td>
                 </tr>
             </table>
