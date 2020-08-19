@@ -299,6 +299,31 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/vendor/admin/scss/admin.scss', 'public/vendor/admin/css');
 ```
 
+## SETUP
+Admin CMS is now equiped with a quick tool for webmasters to generate the sitemap of the website quickly and effeciently
+use the url [site_url]/admin/setup
+
+Click Grenerate Sitemap and one will be quickly generated for you on the website public_path
+
+You also have the alternative of making using console by running the command
+```
+php artisan sitemap:generate
+```
+You can schedule the generation of the sitemap at regular intervals using laravel's task scheduler
+
+```
+// app/Console/Kernel.php
+protected function schedule(Schedule $schedule)
+{
+    ...
+    $schedule->command('sitemap:generate')->daily();
+    ...
+}
+```
+
+Happy websiting
+
+
 By George Ogilo
 info@gogilo.com
 https://www.gogilo.com

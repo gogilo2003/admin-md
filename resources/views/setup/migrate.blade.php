@@ -34,11 +34,15 @@
 				api_token: '{{ api_token() }}'
 			}
 			$.post(url,data).then(function(response){
-				$('#setup_results').html('<pre>'+response.migration+'</pre>')
+				let pre = document.createElement('pre')
+                pre.innerText = response.migration
+                let results = document.getElementById('setup_results')
+                // results.innerHTML = null
+				results.appendChild(pre)
 			})
 			$('#migrateDialog').modal('hide')
 		})
 	})
 </script>
-	
+
 @endpush

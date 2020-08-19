@@ -36,7 +36,9 @@
 			$.post(url,data).then(function(response){
                 let pre = document.createElement('pre')
                 pre.innerText = response.sitemap
-				document.getElementById('setup_results').appendChild(pre)
+                let results = document.getElementById('setup_results')
+                // results.innerHTML = null
+				results.appendChild(pre)
 			})
 			$('#sitemapDialog').modal('hide')
 		})
