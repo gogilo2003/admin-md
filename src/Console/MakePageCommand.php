@@ -69,7 +69,7 @@ class MakePageCommand extends Command
             $this->error($e->getMessage());
         }
 
-        // $this->comment($newFileContent);
+        $this->comment('Page template ['.$destPath.'] created');
         $this->comment("\n");
     }
 }
