@@ -37,7 +37,7 @@
 				let pre = document.createElement('pre')
                 pre.innerText = response.migration
                 let results = document.getElementById('setup_results')
-                // results.innerHTML = null
+                results.innerHTML = null
 				results.appendChild(pre)
 			})
 			$('#migrateDialog').modal('hide')

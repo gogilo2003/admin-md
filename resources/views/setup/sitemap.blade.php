@@ -37,7 +37,7 @@
                 let pre = document.createElement('pre')
                 pre.innerText = response.sitemap
                 let results = document.getElementById('setup_results')
-                // results.innerHTML = null
+                results.innerHTML = null
 				results.appendChild(pre)
 			})
 			$('#sitemapDialog').modal('hide')
