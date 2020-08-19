@@ -59,7 +59,7 @@
         <div class="form-check">
             <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" name="page">
-                Generate and Coresponding page template?
+                Generate Coresponding page and template?
                 <span class="form-check-sign">
                     <span class="check"></span>
                 </span>

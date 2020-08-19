@@ -68,7 +68,16 @@
 						<label for="title">Title</label>
 						<input type="text" class="form-control" id="title" name="title" placeholder="Enter value"{!! ((old('title')) ? ' value="'.old('title').'"' : '') !!}>
 						{!! $errors->has('title') ? '<span class="text-danger">'.$errors->first('title').'</span>' : '' !!}
-					</div>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="template">
+                            Generate Coresponding template?
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
 
 					<div class="col-sm-12 col-md-12 col-lg-12">
 						<textarea name="content" class="tinymce" cols="30" rows="14">{!! ((old('content')) ? old('content') : '') !!}</textarea>

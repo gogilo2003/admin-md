@@ -10,6 +10,7 @@ use Ogilo\AdminMd\Models\Link;
 use Validator;
 use File;
 use Img;
+use Artisan;
 
 /**
 *
@@ -58,8 +59,6 @@ class PageController extends Controller
 
 		$link = $request->has('link') ? Link::find($request->input('link')) : Link::first();
 
-		// dd($link);
-
 		if ($request->hasFile('title_image')) {
 			$title_image = $request->file('title_image');
 			if ($title_image->isValid()) {
@@ -85,7 +84,13 @@ class PageController extends Controller
 		$page->save();
 
         // generate template
-        $template = "";
+        if($request->has('template')){
+
+            Artisan::call('admin:make-page',[
+                "name"=>$page->name
+            ]);
+
+        }
 
 		$page->link()->save($link);
 
