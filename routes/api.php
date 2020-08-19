@@ -36,14 +36,16 @@ Route::group(['middleware'=>'api','as'=>'api','prefix'=>'api','namespace'=>'Ogil
 
 		Route::group(['as'=>'-setup','prefix'=>'setup'],function(){
 			Route::post('migrate',['as'=>'-migrate','uses'=>'SettingsController@postMigrate']);
+			Route::post('sitemap',['as'=>'-sitemap','uses'=>'SettingsController@postSitemap']);
 		});
 	});
 
-	Route::group(['as'=>'-admin','prefix'=>'admin'],function(){
-		Route::group(['as'=>'-setup','prefix'=>'setup'],function(){
-			Route::post('migrate',['as'=>'-migrate','uses'=>'SettingsController@postMigrate']);
-		});
-	});
+	// Route::group(['as'=>'-admin','prefix'=>'admin'],function(){
+	// 	Route::group(['as'=>'-setup','prefix'=>'setup'],function(){
+	// 		Route::post('migrate',['as'=>'-migrate','uses'=>'SettingsController@postMigrate']);
+	// 		Route::post('sitemap',['as'=>'-sitemap','uses'=>'SettingsController@postSitemap']);
+	// 	});
+	// });
 
 
 });

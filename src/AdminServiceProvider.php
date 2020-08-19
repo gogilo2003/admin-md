@@ -14,11 +14,6 @@ use Ogilo\AdminMd\Console\MakePageCommand;
 */
 class AdminServiceProvider extends ServiceProvider
 {
-
-	protected $commands = [
-		'Ogilo\AdminMd\Console\InstallComand'
-    ];
-
 	function register()
 	{
 
@@ -89,14 +84,14 @@ class AdminServiceProvider extends ServiceProvider
 			config(['admin.menu.admin-products'=>null]);
 		}
 
-		if ($this->app->runningInConsole()) {
+		// if ($this->app->runningInConsole()) {
 			$this->commands([
 					InstallCommand::class,
 					UpdateCommand::class,
 					MakePageCommand::class,
 					GenerateSitemap::class,
 				]);
-		}
+		// }
 		// print(config('app.name').' in boot()');
 		// require_once(__DIR__.'/Support/helpers.php');
 

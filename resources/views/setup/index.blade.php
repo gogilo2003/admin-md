@@ -21,25 +21,11 @@
 @section('content')
     <div>
         <a href="#" class="btn btn-primary rounded-pill" data-toggle="modal" data-target="#migrateDialog"><span class="fa fa-cogs"></span>&nbsp;&nbsp; Run Migration</a>
+        <a href="#" class="btn btn-primary rounded-pill" data-toggle="modal" data-target="#sitemapDialog"><span class="fa fa-cogs"></span>&nbsp;&nbsp; Generate Sitemap</a>
     </div>
     <hr>
     <div id="setup_results"></div>
     @include('admin::setup.migrate')
+    @include('admin::setup.sitemap')
 @endsection
 
-@section('styles')
-    <style type="text/css">
-
-    </style>
-@endsection
-@section('scripts_top')
-    <script type="text/javascript">
-
-    </script>
-@endsection
-
-@section('scripts_bottom')
-    <script type="text/javascript">
-        
-    </script>
-@endsection

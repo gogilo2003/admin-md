@@ -28,8 +28,12 @@ class GenerateSitemap extends Command
      */
     public function handle()
     {
+        Command::info('Started generating sitemap for '.config('app.url'));
         // modify this to your own needs
         SitemapGenerator::create(config('app.url'))
             ->writeToFile(public_path('sitemap.xml'));
+
+        Command::info('Sitemap generated successfuly');
+        Command::comment(\file_get_contents(public_path('sitemap.xml')));
     }
 }
