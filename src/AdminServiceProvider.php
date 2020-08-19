@@ -2,13 +2,13 @@
 
 namespace Ogilo\AdminMd;
 
-use Illuminate\Support\ServiceProvider;
-use Ogilo\AdminMd\Console\InstallCommand;
-use Ogilo\AdminMd\Console\UpdateCommand;
-use Ogilo\AdminMd\Console\MakePageCommand;
-use Illuminate\Support\Facades\Blade;
-
 use Auth;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
+use Ogilo\AdminMd\Console\UpdateCommand;
+use Ogilo\AdminMd\Console\InstallCommand;
+use Ogilo\AdminMd\Console\GenerateSitemap;
+use Ogilo\AdminMd\Console\MakePageCommand;
 /**
 *
 */
@@ -94,6 +94,7 @@ class AdminServiceProvider extends ServiceProvider
 					InstallCommand::class,
 					UpdateCommand::class,
 					MakePageCommand::class,
+					GenerateSitemap::class,
 				]);
 		}
 		// print(config('app.name').' in boot()');
