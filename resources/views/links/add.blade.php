@@ -54,7 +54,17 @@
 				<option value="{{ $menu->id }}">{{ $menu->caption }}</option>
 				@endforeach
 			</select>
-		</div>
+        </div>
+
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="page">
+                Generate and Coresponding page template?
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
 
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<button type="submit" class="btn btn-primary"><span class="fa fa-floppy-o"></span>  Save</button>

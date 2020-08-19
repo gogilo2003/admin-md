@@ -1,17 +1,20 @@
-<?php 
+<?php
 
 namespace Ogilo\AdminMd\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Ogilo\AdminMd\Models\Link;
-use Ogilo\AdminMd\Models\Menu;
-
-use Validator;
 use File;
+use Validator;
+use Artisan;
+
+use Illuminate\Http\Request;
+use Ogilo\AdminMd\Models\Link;
+
+use Ogilo\AdminMd\Models\Menu;
+use Ogilo\AdminMd\Models\Page;
+use App\Http\Controllers\Controller;
 
 /**
-* 
+*
 */
 class LinkController extends Controller
 {
@@ -33,8 +36,6 @@ class LinkController extends Controller
 
 	public function postAdd(Request $request)
 	{
-		// $links = $request->all();//implode(',', $request->input('links'));
-		// dd($links);
 		$validator = Validator::make($request->all(),[
 				'name'=>'required|unique:links|alphanum',
 				'caption'=>'required'
@@ -55,10 +56,24 @@ class LinkController extends Controller
 		$link->caption 	= $request->input('caption');
 		$link->icon 	= $request->input('icon');
 		$link->url 		= $request->input('url');
-		
+
 		$menu = $request->has('menu') ? Menu::find($request->input('menu')) : Menu::first();
 
-		$menu->links()->save($link);
+        $menu->links()->save($link);
+
+        if($request->has('page')){
+            $page_name = $request->url ?? $request->name;
+            $page = new Page();
+            $page->name 	= $page_name;
+            $page->title 	= $request->input('caption');
+            $page->content 	= '<p>'.$request->input('caption').'...</p>';
+            $page->save();
+            $page->link()->save($link);
+
+            Artisan::call('admin:make-page',[
+                "name"=>$page_name
+            ]);
+        }
 
 		return redirect()
 				->route('admin-links')
@@ -118,7 +133,7 @@ class LinkController extends Controller
 
 	public function postOrder(Request $request)
 	{
-		
+
 		foreach ($request->rows as $key => $row) {
 			$link = Link::find($row['id']);
 			$link->order = $row['order'];
