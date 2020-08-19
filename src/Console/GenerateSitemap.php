@@ -34,6 +34,6 @@ class GenerateSitemap extends Command
             ->writeToFile(public_path('sitemap.xml'));
 
         Command::info('Sitemap generated successfuly');
-        Command::comment(\file_get_contents(public_path('sitemap.xml')));
+        // Command::comment(\file_get_contents(public_path('sitemap.xml')));
     }
 }
