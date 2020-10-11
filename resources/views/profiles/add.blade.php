@@ -149,7 +149,7 @@
                     <div class="col-md-12 col-lg-12">
                         <div class="form-group{!! $errors->has('details') ? ' has-error':'' !!}">
                             <label for="details">Details</label>
-                            <textarea rows="5" class="form-control" id="details" name="details" placeholder="Enter details">{!! ((old('details')) ? old('details') : '') !!}</textarea>
+                            <textarea rows="5" class="form-control tinymce" id="details" name="details" placeholder="Enter details">{!! ((old('details')) ? old('details') : '') !!}</textarea>
                             {!! $errors->has('details') ? '<span class="text-danger">'.$errors->first('details').'</span>' : '' !!}
                         </div>
                     </div>
