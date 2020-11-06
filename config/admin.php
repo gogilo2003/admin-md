@@ -28,4 +28,7 @@
             'admin-events' => 'Events',
             'admin-products' => 'Products',
         ),
+    "tinymce"=>array(
+        "api_key"=>"v4uxu1pglmx0mf94x5qsivt1la3maqrv5kv479byzsdbomot"
+    ),
 );

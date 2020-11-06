@@ -40,7 +40,7 @@
     <!--<link href="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/demo/demo.css') }}" rel="stylesheet" />-->
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/moment.min.js') }}"></script>
     <!--<script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/tinymce.min.js') }}"></script>-->
-    <script src="https://cdn.tiny.cloud/1/v4uxu1pglmx0mf94x5qsivt1la3maqrv5kv479byzsdbomot/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/{{ config("admin.tinymce.api_key") }}/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <style type="text/css">
         textarea.mce-textbox {
             height: 100% !important;
