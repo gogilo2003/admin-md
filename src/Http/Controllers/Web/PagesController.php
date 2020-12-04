@@ -204,7 +204,7 @@ class PagesController extends Controller
         $data = $request->except('_token');
         // return (new WebFeedback($data))->render();
         try {
-            Mail::to(config('admin.contact'))->send(new WebFeedback($data));
+            Mail::send(new WebFeedback($data));
             return response(['success'=>true,'message'=>'Email sent successfully!'])->header('Content-Type','application/json');
         } catch (\Exception $e) {
             return response(['success'=>false,'message'=>'Email Could not be sent due to a server problem. Please check back later','details'=>$e->getMessage()])->header('Content-Type','application/json');

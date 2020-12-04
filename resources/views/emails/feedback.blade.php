@@ -57,7 +57,7 @@
 </tr><!-- end: tr -->
 <tr>
     <td class="bg_white email-section">
-        <div class="heading-section" style="text-align: justify; padding: 0 30px;">
+        <div class="heading-section" style="text-align: justify; padding: 0 15px;">
             <p>{{ $data->comments }}</p>
         </div>
     </td>

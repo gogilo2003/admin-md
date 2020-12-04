@@ -29,6 +29,10 @@ class WebFeedback extends Mailable
      */
     public function build()
     {
-        return $this->view('admin::emails.feedback');
+        // dd($this->data);
+        return $this->subject($this->data->subject ?? "Website Feedback")
+                    ->from(["address"=>$this->data->email,"name"=>$this->data->name])
+                    ->to(config('admin.contact'))
+                    ->view('admin::emails.feedback');
     }
 }
