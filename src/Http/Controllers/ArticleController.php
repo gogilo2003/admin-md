@@ -65,7 +65,7 @@ class ArticleController extends Controller
             $cropdetails = json_decode($request->input('image_cropdetails'));
             $image->crop((int)$cropdetails->width, (int)$cropdetails->height, (int)$cropdetails->x, (int)$cropdetails->y)->resize(640,480);
 
-			$filename = time().'.jpg';
+			$filename = time().'.'.$picture->guessClientExtension();
 			$image->save($dir.$filename);
 			$image->destroy();
 
@@ -166,9 +166,18 @@ class ArticleController extends Controller
 				mkdir($dir,0755,true);
 			}
 
-			$filename = $article->picture->filename ? $article->picture->filename : time().'.jpg';
+			if ($article->picture->filename && file_exists($dir.$article->picture->filename)) {
+				unlink($dir.$article->picture->filename);
+			}
+
+			// $filename = $article->picture->filename ? $article->picture->filename : time().'.jpg';
+			$filename = time().'.'.$picture->guessClientExtension();
 			$image->save($dir.$filename);
 			$image->destroy();
+
+			if ($article->picture->filename && file_exists($dir.'160x160/'.$article->picture->filename)) {
+				unlink($dir.'160x160/'.$article->picture->filename);
+			}
 
 			if (!file_exists($dir.'160x160/')) {
 				mkdir($dir.'160x160/',0755,true);
@@ -179,6 +188,11 @@ class ArticleController extends Controller
 			$square->save($dir.'160x160/'.$filename);
 			$square->destroy();
 
+			if ($article->picture->filename && file_exists($dir.'512x512/'.$article->picture->filename)) {
+				unlink($dir.'512x512/'.$article->picture->filename);
+			}
+
+
             if (!file_exists($dir.'512x512/')) {
 				mkdir($dir.'512x512/',0755,true);
 			}
@@ -188,6 +202,11 @@ class ArticleController extends Controller
 			$square_hd->save($dir.'512x512/'.$filename);
 			$square_hd->destroy();
 
+			if ($article->picture->filename && file_exists($dir.'480x480/'.$article->picture->filename)) {
+				unlink($dir.'480x480/'.$article->picture->filename);
+			}
+
+
 			if (!file_exists($dir.'480x240/')) {
 				mkdir($dir.'480x240/',0755,true);
 			}
@@ -196,6 +215,10 @@ class ArticleController extends Controller
 			$rectangle->fit(480,240);
 			$rectangle->save($dir.'480x240/'.$filename);
 			$rectangle->destroy();
+
+			if ($article->picture->filename && file_exists($dir.'originals/'.$article->picture->filename)) {
+				unlink($dir.'originals/'.$article->picture->filename);
+			}
 
 			if (!file_exists($dir.'originals/')) {
 				mkdir($dir.'originals/',0755,true);
