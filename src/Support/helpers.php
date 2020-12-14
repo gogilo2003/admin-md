@@ -1770,3 +1770,12 @@ if (!function_exists('number2words')) {
         return trim(implode(' ', $words));
     }
 }
+
+if (!function_exists('get_profiles')) {
+    function get_profiles($order=['name','ASC'])
+    {
+        $profiles = \Ogilo\AdminMd\Models\Profile::where('published',1)->orderBy($order[0],$order[1])->get();
+
+        return $profiles;
+    }
+}
