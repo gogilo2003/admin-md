@@ -110,6 +110,29 @@
                     );
             })
         })
+
+        $('.featureButton').click(function(){
+            // alert($(this).data('id'))
+            $.ajax({
+                url: '{{ route('admin-events-feature') }}',
+                type: 'post',
+                data: {id: $(this).data('id'), '_token': '{{ csrf_token() }}'}
+            }).then(function(xhr){
+                // console.log(xhr)
+                $.notify(
+                        {
+                            message:xhr.message,
+                            icon: 'check_circle'
+                        },
+                        {
+                            type:'success',
+                            onClosed: function(){
+                                window.location = '{{ route('admin-events') }}'
+                            }
+                        }
+                    );
+            })
+        })
     });
 
 </script>
