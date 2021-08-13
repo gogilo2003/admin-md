@@ -35,12 +35,12 @@
     <!--<link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/css/bootstrap-datetimepicker.min.css') }}">-->
     <!--<link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/css/file-input.css') }}">-->
     <link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/iconmoon/linea-icon.css') }}">
-    <link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/cropper/cropper.min.css') }}">
+    <link rel="stylesheet" href="{{ asset(config('admin.path_prefix').'vendor/admin/css/cropper.min.css') }}">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <!--<link href="{{ asset(config('admin.path_prefix').'vendor/admin/material-dashboard-master/assets/demo/demo.css') }}" rel="stylesheet" />-->
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/moment.min.js') }}"></script>
-    <!--<script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/tinymce.min.js') }}"></script>-->
-    <script src="https://cdn.tiny.cloud/1/{{ config("admin.tinymce.api_key") }}/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/tinymce.min.js') }}"></script>
+    {{-- <script src="https://cdn.tiny.cloud/1/{{ config("admin.tinymce.api_key") }}/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
     <style type="text/css">
         textarea.mce-textbox {
             height: 100% !important;
@@ -188,7 +188,7 @@ Tip 2: you can also add an image using data-image tag-->
     <!--<script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/bootstrap-datetimepicker.min.js') }}"></script>-->
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/bootstrap3-typeahead.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/file-input.js') }}"></script>
-    <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/cropper/cropper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/cropper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/main.js') }}"></script>
     @if (file_exists(public_path(config('admin.path_prefix').'vendor/admin/js/admin.js')))
         <script type="text/javascript" src="{{ asset(config('admin.path_prefix').'vendor/admin/js/admin.js') }}"></script>

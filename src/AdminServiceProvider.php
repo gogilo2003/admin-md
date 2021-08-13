@@ -115,8 +115,11 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__.'/../public/material-design-icons' => public_path('vendor/admin/material-design-icons'),
 			__DIR__.'/../public/iconmoon' => public_path('vendor/admin/iconmoon'),
 			__DIR__.'/../public/slick' => public_path('vendor/admin/slick'),
+			__DIR__.'/../public/images' => public_path('vendor/admin/images'),
+			__DIR__.'/../public/themes' => public_path('vendor/admin/themes'),
+			__DIR__.'/../public/fonts' => public_path('vendor/admin/fonts'),
         ],'admin-assets');
-
+/* 
 		$this->publishes([
 			__DIR__.'/../public/node_modules/bootstrap-notify/bootstrap-notify.min.js' => public_path('vendor/admin/js/bootstrap-notify.min.js'),
 			__DIR__.'/../public/node_modules/moment/min/moment.min.js' => public_path('vendor/admin/js/moment.min.js'),
@@ -138,14 +141,12 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.js'=>public_path('vendor/admin/cropper/cropper.min.js'),
 			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.css'=>public_path('vendor/admin/cropper/cropper.min.css'),
 			__DIR__.'/../public/node_modules/popper.js/dist/popper.min.js'=>public_path('vendor/admin/js/popper.min.js'),
-		],'node_modules');
+		],'node_modules'); */
 
 		$this->publishes([
 			__DIR__.'/../public/material-dashboard-master/assets/img'=>public_path('vendor/admin/material-dashboard-master/assets/img'),
 			__DIR__.'/../public/material-dashboard-master/assets/css'=>public_path('vendor/admin/material-dashboard-master/assets/css'),
 			__DIR__.'/../public/material-dashboard-master/assets/js'=>public_path('vendor/admin/material-dashboard-master/assets/js'),
-			__DIR__.'/../public/material-dashboard-master/node_modules/chart.js/dist/Chart.min.js'=>public_path('vendor/admin/material-dashboard-master/assets/js/plugins/Chart.min.js'),
-			__DIR__.'/../public/material-dashboard-master/node_modules/chart.js/dist/Chart.min.css'=>public_path('vendor/admin/material-dashboard-master/assets/css/Chart.min.css'),
         ],'md-public');
 
         $this->publishes([
