@@ -43,7 +43,7 @@ class UpdateCommand extends Command
         // $res = bower_install();
         // $this->comment($res);
 
-        $res = node_modules_install();
+        // $res = node_modules_install();
         // $this->comment($res);
 
         $this->call('migrate');
@@ -68,7 +68,7 @@ class UpdateCommand extends Command
         $this->call('vendor:publish', ['--tag'=>'stopwords', '--force']);
         $this->comment('stopwords Published');
 
-        clean_directories();
+        // clean_directories();
 
         /**
          * Update hits table

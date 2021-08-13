@@ -42,7 +42,7 @@ class InstallCommand extends Command
         // $res = bower_install();
         // $this->comment(var_export($res,TRUE));
 
-        $res = node_modules_install();
+        // $res = node_modules_install();
         // $this->comment(var_export($res,TRUE));
 
         $this->call('migrate');
@@ -53,6 +53,6 @@ class InstallCommand extends Command
         $this->call('vendor:publish', ['--tag'=>'vue-resources', '--force']);
         $this->call('vendor:publish', ['--tag'=>'stopwords', '--force']);
 
-        clean_directories();
+        // clean_directories();
     }
 }
