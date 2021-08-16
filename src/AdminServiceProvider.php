@@ -37,6 +37,12 @@ class AdminServiceProvider extends ServiceProvider
 			config(['admin.menu.admin-articles'=>null]);
 		}
 
+		if(config('admin.blogs')){
+			config(['admin.menu.admin-blogs'=>'Blogs']);
+		}else{
+			config(['admin.menu.admin-blogs'=>null]);
+		}
+
 		if(config('admin.pictures')){
 			config(['admin.menu.admin-pictures'=>'Pictures']);
 		}else{

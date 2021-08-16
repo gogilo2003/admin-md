@@ -21,15 +21,17 @@ class BlogController extends Controller
 		$this->middleware('auth:admin');
 	}
 
-	public function getArticles()
+	public function getBlogs()
 	{
 		$cat = ArticleCategory::where('name', 'blog')
 			->orWhere('name', 'blogs')
 			->with(['articles' => function ($query) {
 				return $query->orderBy('id', 'DESC')->get();
-			}])->first();
-		$articles = $cat ? $cat->articles : [];
-		return view('admin::blogs.index', compact('articles'));
+			},'articles.comments'])->first();
+
+		$blogs = $cat ? $cat->articles : [];
+
+		return view('admin::blogs.index', compact('blogs'));
 	}
 
 	public function getAdd()
@@ -125,6 +127,12 @@ class BlogController extends Controller
 		return redirect()
 			->route('admin-blogs')
 			->with('global-success', 'Blog added');
+	}
+
+	public function getView($id)
+	{
+		$blog = Article::with('comments')->findOrFail($id);
+		return view('admin::blogs.view', compact('blog'));
 	}
 
 	public function getEdit($id)

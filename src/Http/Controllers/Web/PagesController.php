@@ -77,7 +77,9 @@ class PagesController extends Controller
 	public function getArticle($article_name,$page_name=null)
 	{
 
-		$article = Article::with('category.pages')->where('name','=',$article_name)->first() ;
+		$article = Article::with(['category.pages','comments'=>function($query){
+			return $query->where('published',1)->get();
+		}])->where('name','=',$article_name)->first() ;
 
 		$page = $page_name ? Page::with('link')->where('name','=',$page_name)->first() : $article->category->pages->first();
 

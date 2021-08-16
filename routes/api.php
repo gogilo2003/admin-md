@@ -34,6 +34,12 @@ Route::group(['middleware'=>'api','as'=>'api','prefix'=>'api','namespace'=>'Ogil
             });
 		});
 
+		Route::group(['as'=>'-comments','prefix'=>'comments'],function(){
+			Route::post('approve',['as'=>'-approve','uses'=>'CommentController@approve']);
+			Route::post('reply',['as'=>'-reply','uses'=>'CommentController@reply']);
+			Route::post('delete',['as'=>'-delete','uses'=>'CommentController@delete']);
+		});
+
 		Route::group(['as'=>'-setup','prefix'=>'setup'],function(){
 			Route::post('migrate',['as'=>'-migrate','uses'=>'SettingsController@postMigrate']);
 			Route::post('sitemap',['as'=>'-sitemap','uses'=>'SettingsController@postSitemap']);

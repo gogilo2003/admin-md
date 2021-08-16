@@ -101,6 +101,18 @@ Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'
 			Route::post('delete',['as'=>'-delete','uses'=>'ArticleController@postDelete']);
 		});
 
+		Route::group(['as'=>'-blogs','prefix'=>'blogs'],function(){
+			Route::get('',['uses'=>'BlogController@getBlogs']);
+			Route::get('add',['as'=>'-add','uses'=>'BlogController@getAdd']);
+			Route::post('add',['as'=>'-add','uses'=>'BlogController@postAdd']);
+			Route::get('edit/{id?}',['as'=>'-edit','uses'=>'BlogController@getEdit']);
+			Route::get('view/{id?}',['as'=>'-view','uses'=>'BlogController@getView']);
+			Route::post('edit',['as'=>'-edit-post','uses'=>'BlogController@postEdit']);
+			Route::post('publish',['as'=>'-publish','uses'=>'BlogController@postPublish']);
+			Route::post('feature',['as'=>'-feature','uses'=>'BlogController@postFeature']);
+			Route::post('delete',['as'=>'-delete','uses'=>'BlogController@postDelete']);
+		});
+
 		Route::group(['as'=>'-picture_categories','prefix'=>'picture_categories'],function(){
 			Route::get('',['uses'=>'PictureCategoryController@getPictureCategories']);
 			Route::get('add',['as'=>'-add','uses'=>'PictureCategoryController@getAdd']);

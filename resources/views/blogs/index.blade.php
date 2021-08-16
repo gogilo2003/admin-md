@@ -2,27 +2,26 @@
 
 @section('title')
 	@parent
-	Articles
+	Blogs
 @endsection
 
 @section('page_title')
-	<i class="fa fa-files-o"></i> Articles
+	<i class="fa fa-files-o"></i> Blogs
 @endsection
 
 @section('breadcrumbs')
 	@parent
-	<li><a href="{{ route('admin-article_categories') }}"><i class="fa fa-list-alt"></i> Article Categories</a></li>
-	<li class="active"><span><i class="fa fa-files-o"></i> Articles</span></li>
+	<li class="active"><span><i class="fa fa-files-o"></i> Blogs</span></li>
 @endsection
 
 @section('sidebar')
 	@parent
-	@include('admin::articles.sidebar')
+	@include('admin::blogs.sidebar')
 @endsection
 
 @section('content')
 	<div>
-	<a href="{{route('admin-articles-add')}}" class="btn btn-primary btn-sm"><span class="fa fa-plus"></span>&nbsp;&nbsp; New Article</a>
+	<a href="{{route('admin-blogs-add')}}" class="btn btn-primary btn-sm"><span class="fa fa-plus"></span>&nbsp;&nbsp; New Blog</a>
 	<a href="{{route('admin-pages')}}" class="btn btn-primary btn-sm"><span class="fa fa-file-o"></span>&nbsp;&nbsp; Pages</a>
 	</div>
 	<hr>
@@ -32,23 +31,24 @@
 				<th></th>
 				<th>Name</th>
 				<th>Title</th>
-				<th>Category</th>
+				<th>Comments</th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
-			@foreach ($articles as $article)
+			@foreach ($blogs as $blog)
 			<tr>
-				<td>{{ $article->id }}</td>
-				<td>{{ $article->name }}</td>
-				<td>{{ $article->title }}</td>
-				<td>{{ $article->category ? $article->category->name : '&nbsp;' }}</td>
+				<td>{{ $blog->id }}</td>
+				<td>{{ $blog->name }}</td>
+				<td>{{ $blog->title }}</td>
+				<td>{{ $blog->comments->count() }}</td>
 				<td>
 					<div class="btn-group">
-						<a href="{{route('admin-articles-edit', $article->id)}}" class="btn btn-primary btn-sm"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
-						<a href="javascript:" data-id="{{ $article->id }}" class="btn btn-primary btn-sm publishArticle"><span class="fa fa-arrow-{{ $article->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $article->published ? 'Un-publish' : 'Publish' }}</a>
-						<a href="javascript:" data-id="{{ $article->id }}" class="btn btn-primary btn-sm featureArticle"><span class="fa fa-arrow-{{ $article->featured ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $article->featured ? 'Un-feature' : 'Feature' }}</a>
-						<a href="javascript:" data-id="{{ $article->id }}" class="btn btn-danger btn-sm deleteArticle"><span class="fa fa-remove"></span>&nbsp;&nbsp; Delete</a>
+						<a href="{{route('admin-blogs-edit', $blog->id)}}" class="btn btn-primary btn-sm"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
+						<a href="{{route('admin-blogs-view', $blog->id)}}" class="btn btn-primary btn-sm"><span class="fa fa-list"></span>&nbsp;&nbsp; View</a>
+						<a href="javascript:" data-id="{{ $blog->id }}" class="btn btn-primary btn-sm publishArticle"><span class="fa fa-arrow-{{ $blog->published ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $blog->published ? 'Un-publish' : 'Publish' }}</a>
+						<a href="javascript:" data-id="{{ $blog->id }}" class="btn btn-primary btn-sm featureArticle"><span class="fa fa-arrow-{{ $blog->featured ? 'down' : 'up' }}"></span>&nbsp;&nbsp; {{ $blog->featured ? 'Un-feature' : 'Feature' }}</a>
+						<a href="javascript:" data-id="{{ $blog->id }}" class="btn btn-danger btn-sm deleteArticle"><span class="fa fa-remove"></span>&nbsp;&nbsp; Delete</a>
 					</div>
 				</td>
 			</tr>
@@ -74,12 +74,12 @@
 	jQuery(document).ready(function($) {
 
 		$('a.deleteArticle').click(function(){
-			answer = confirm("Are you sure you want to delete this article?");
+			answer = confirm("Are you sure you want to delete this blog?");
 
 			if (answer) {
 
 				$.ajax({
-					url: '{{ route('admin-articles-delete') }}',
+					url: '{{ route('admin-blogs-delete') }}',
 					type: 'POST',
 					data: {
 						id:$(this).data('id'),
@@ -96,23 +96,23 @@
                                 type:'success'
                             }
                         );
-					// window.location = '{{ route('admin-articles') }}';
+					// window.location = '{{ route('admin-blogs') }}';
 				});
 
 			} else {
-				alert('Article deletion canceled by article');
+				alert('Article deletion canceled by blog');
 			}
 
 		});
 
 		document.querySelectorAll('a.publishArticle').forEach(function(item){
             item.addEventListener('click',function(e){
-                answer = confirm("Are you sure you want to publish this article?");
+                answer = confirm("Are you sure you want to publish this blog?");
                 let btn = this
                 if (answer) {
 
                     $.ajax({
-                        url: '{{ route('admin-articles-publish') }}',
+                        url: '{{ route('admin-blogs-publish') }}',
                         type: 'POST',
                         data: {
                             id:$(this).data('id'),
@@ -159,12 +159,12 @@
 
 		document.querySelectorAll('a.featureArticle').forEach(function(item){
             item.addEventListener('click',function(e){
-                answer = confirm("Are you sure you want to feature this article?");
+                answer = confirm("Are you sure you want to feature this blog?");
                 let btn = this
                 if (answer) {
 
                     $.ajax({
-                        url: '{{ route('admin-articles-feature') }}',
+                        url: '{{ route('admin-blogs-feature') }}',
                         type: 'POST',
                         data: {
                             id:$(this).data('id'),

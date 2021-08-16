@@ -1,42 +1,31 @@
 @extends('admin::layout.main')
 
 @section('title')
-	New Article
+	New Blog
 @stop
 
 @section('page_title')
-	<i class="fa fa-plus-circle"></i> New Article
+	<i class="fa fa-plus-circle"></i> New Blog
 @stop
 
 @section('breadcrumbs')
 	@parent
 	<li>
-		<a href="{{ route('admin-article_categories') }}"><i class="fa fa-list-alt"></i> Article Categories</a>
+		<a href="{{ route('admin-blogs') }}"><i class="fa fa-files-o"></i> Blogs</a>
 	</li>
-	<li>
-		<a href="{{ route('admin-articles') }}"><i class="fa fa-files-o"></i> Articles</a>
-	</li>
-	<li class="active"><span><i class="fa fa-plus-circle"></i> New Article</span></li>
+	<li class="active"><span><i class="fa fa-plus-circle"></i> New Blog</span></li>
 @stop
 
 @section('sidebar')
 	@parent
-	@include('admin::articles.sidebar')
+	@include('admin::blogs.sidebar')
 @stop
 
 @section('content')
-	<form method="post" action="{{route('admin-articles-add')}}" article="form" accept-charset="UTF-8" enctype="multipart/form-data">
+	<form method="post" action="{{route('admin-blogs-add')}}" article="form" accept-charset="UTF-8" enctype="multipart/form-data">
 
 		<div class="row">
 			<div class="col-md-5 col-lg-3">
-				<div class="form-group">
-					<label for="category">Category</label>
-					<select class="form-control selectpicker" id="category" name="category" data-live-search="true" data-size="5" data-style="btn btn-link">
-						@foreach(Ogilo\AdminMd\Models\ArticleCategory::all() as $category)
-						<option value="{{ $category->id }}">{{ $category->name }}</option>
-						@endforeach
-					</select>
-                </div>
 
 				<div class="form-group">
 					<label for="icon">Icon</label>

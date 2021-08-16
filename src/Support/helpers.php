@@ -1,9 +1,22 @@
 <?php
 
 use Illuminate\Support\Str;
-
+use Ogilo\AdminMd\Models\ArticleCategory;
 use Ogilo\AdminMd\Models\Hit;
 use Ogilo\AdminMd\Models\Menu;
+
+if (!function_exists('get_blogs')) {
+	function get_blogs()
+	{
+		$cat = ArticleCategory::where('name','blog')
+			->orWhere('name','blogs')
+			->with(['articles'=>function($query){
+				return $query->where('published',1)->get();
+			}])->first();
+
+		return $cat ? $cat->articles : [];
+	}
+}
 
 function current_path_name()
 {

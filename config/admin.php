@@ -4,6 +4,7 @@
     'links' => false,
     'pages' => false,
     'articles' => true,
+    'blogs' => true,
     'pictures' => true,
     'videos' => true,
     'files' => true,

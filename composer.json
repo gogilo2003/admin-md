@@ -3,7 +3,7 @@
     "description": "Material Dasboard themed CMS for Laravel",
     "keywords": ["Material Dasboard themed CMS for Laravel", "cms", "laravel-cms", "content management system", "bootstrap"],
     "require": {
-        "laravel/framework": ">=5.2"
+        "laravel/framework": "^8.54"
     },
     "license": "MIT",
     "authors": [{
