@@ -27,7 +27,7 @@ class BlogController extends Controller
 			->orWhere('name', 'blogs')
 			->with(['articles' => function ($query) {
 				return $query->orderBy('id', 'DESC')->get();
-			},'articles.comments'])->first();
+			}, 'articles.comments'])->first();
 
 		$blogs = $cat ? $cat->articles : [];
 
@@ -131,7 +131,11 @@ class BlogController extends Controller
 
 	public function getView($id)
 	{
-		$blog = Article::with('comments')->findOrFail($id);
+		$blog = Article::with(['comments' => function ($query) {
+			return $query->where('parent_comment_id', null)
+				->orderBy('created_at', 'DESC')
+				->get();
+		}])->findOrFail($id);
 		return view('admin::blogs.view', compact('blog'));
 	}
 

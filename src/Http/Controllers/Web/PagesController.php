@@ -2,23 +2,24 @@
 
 namespace Ogilo\AdminMd\Http\Controllers\Web;
 
-use Illuminate\Http\Request;
-
-use App\Http\Controllers\Controller;
-use Ogilo\AdminMd\Models\Page;
-use Ogilo\AdminMd\Models\Article;
-use Ogilo\AdminMd\Models\Sermon;
-use Ogilo\AdminMd\Models\Profile;
-use Ogilo\TourPackage\Models\Package;
-use Ogilo\AdminMd\Models\Event;
-use Ogilo\AdminMd\Models\Guest;
-use Ogilo\AdminMd\Models\Comment;
-use Ogilo\AdminMd\Models\File;
-
-use Validator;
 use Mail;
 
+use Validator;
+use Illuminate\Http\Request;
+use Ogilo\AdminMd\Models\File;
+use Ogilo\AdminMd\Models\Page;
+use Ogilo\AdminMd\Models\Event;
+use Ogilo\AdminMd\Models\Guest;
+use Ogilo\AdminMd\Models\Sermon;
+use Ogilo\AdminMd\Models\Article;
+use Ogilo\AdminMd\Models\Comment;
+use Ogilo\AdminMd\Models\Profile;
+
 use Ogilo\AdminMd\Mail\WebFeedback;
+use App\Http\Controllers\Controller;
+
+use Ogilo\AdminMd\Models\CommentUser;
+use Ogilo\TourPackage\Models\Package;
 
 /**
 *
@@ -78,7 +79,7 @@ class PagesController extends Controller
 	{
 
 		$article = Article::with(['category.pages','comments'=>function($query){
-			return $query->where('published',1)->get();
+			return $query->where('published',1)->where('parent_comment_id',null)->orderBy('created_at','DESC')->get();
 		}])->where('name','=',$article_name)->first() ;
 
 		$page = $page_name ? Page::with('link')->where('name','=',$page_name)->first() : $article->category->pages->first();
@@ -185,12 +186,20 @@ class PagesController extends Controller
 					->with('error','Some fields failed validation. Please check and try again');
 		}
 
+		$user = CommentUser::where('email',$request->email)->first();
+
+        if(!$user){
+            $user = new CommentUser();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->website = $request->website;
+            $user->save();
+        }
+
 		$comment = new Comment;
 
 		$comment->article_id = $request->input('article_id');
-		$comment->name = $request->input('name');
-		$comment->email = $request->input('email');
-		$comment->website = $request->input('website');
+		$comment->user_id = $user->id;
 		$comment->message = $request->input('message');
 
 		$comment->save();

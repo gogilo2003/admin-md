@@ -9,6 +9,7 @@ Route::group(['middleware'=>'api','as'=>'api','prefix'=>'api','namespace'=>'Ogil
 			Route::post('feature',['as'=>'-feature','uses'=>'VideoController@postFeature']);
 			Route::post('delete',['as'=>'-delete','uses'=>'VideoController@getDelete']);
 		});
+
 		Route::group(['as'=>'-events','prefix'=>'events'],function(){
 			Route::post('',['as'=>'','uses'=>'EventController@getEvents']);
 			Route::post('publish',['as'=>'-publish','uses'=>'EventController@postPublish']);
@@ -44,6 +45,11 @@ Route::group(['middleware'=>'api','as'=>'api','prefix'=>'api','namespace'=>'Ogil
 			Route::post('migrate',['as'=>'-migrate','uses'=>'SettingsController@postMigrate']);
 			Route::post('sitemap',['as'=>'-sitemap','uses'=>'SettingsController@postSitemap']);
 		});
+	});
+
+	Route::group(['as'=>'-comments','prefix'=>'comments'],function(){
+		Route::post('reply',['as'=>'-reply','uses'=>'CommentController@reply']);
+		Route::post('comment',['as'=>'-comment','uses'=>'CommentController@comment']);
 	});
 
 	// Route::group(['as'=>'-admin','prefix'=>'admin'],function(){

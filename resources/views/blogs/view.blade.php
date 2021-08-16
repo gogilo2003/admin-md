@@ -33,22 +33,37 @@
             <hr>
             <h3 class="text-uppercase">Comments</h3>
             @foreach ($blog->comments as $comment)
+                @include('admin::blogs.inc.comment',['comment'=>$comment])
+            @endforeach
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModal" aria-hidden="true"
+        data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
                 <div class="card">
+                    {{-- <div class="modal-header card-header card-header-primary">
+                        <h5 class="modal-title">Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div> --}}
                     <div class="card-body">
-                        <h4 class="card-title text-uppercase">{{ $comment->name }}</h4>
-                        <p class="category mb-2 text-muted">({{ $comment->email }})</p>
-
-                        <p class="card-text">{{ $comment->message }}</p>
-
-                        <button class="btn btn-primary btn-round btn-sm approveButton"
-                            comment_id="{{ $comment->id }}">{{ $comment->published ? 'Disapprove' : 'Approve' }}</button>
-                        <button class="btn btn-primary btn-round btn-sm replyButton"
-                            comment_id="{{ $comment->id }}">Reply</button>
-                        <button class="btn btn-primary btn-round btn-sm deleteButton"
-                            comment_id="{{ $comment->id }}">Delete</button>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputReply">Reply</label>
+                                <textarea class="form-control" id="inputReply" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-warning btn-round" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary btn-round" id="replyButton">Reply</button>
                     </div>
                 </div>
-            @endforeach
+            </div>
         </div>
     </div>
 @stop
@@ -102,27 +117,73 @@
             item.addEventListener('click', e => {
                 let button = e.target;
                 let id = button.getAttribute('comment_id')
-                $.post('{{ route('api-admin-comments-delete') }}', {
-                    id,
-                    api_token: '{{ api_token() }}'
-                }).then(response => {
-                    if (response.success) {
-                        
-                        $.notify({
-                            message: response.message,
-                            icon: 'check_circle'
-                        }, {
-                            type: 'success'
-                        });
-                    } else {
-                        $.notify({
-                            message: response.message,
-                            icon: 'check_circle'
-                        }, {
-                            type: 'danger'
-                        });
-                    }
-                })
+                if (confirm("You are about to delete a comment. Are you sure?")) {
+                    $.post('{{ route('api-admin-comments-delete') }}', {
+                        id,
+                        api_token: '{{ api_token() }}'
+                    }).then(response => {
+                        if (response.success) {
+                            let card = document.getElementById('commentCard' + id)
+                            card.remove()
+                            $.notify({
+                                message: response.message,
+                                icon: 'check_circle'
+                            }, {
+                                type: 'success'
+                            });
+                        } else {
+                            $.notify({
+                                message: response.message,
+                                icon: 'check_circle'
+                            }, {
+                                type: 'danger'
+                            });
+                        }
+                    })
+                }
+            })
+        })
+
+        let reply = {
+            id: null,
+            name: '{{ request()->user()->name }}',
+            email: '{{ request()->user()->email }}',
+            reply: null,
+            api_token: '{{ api_token() }}',
+            article_id: '{{ $blog->id }}'
+        }
+
+        $('#replyModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var id = button.data('comment_id') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            reply.id = id
+            // modal.find('.modal-title').text('New message to ' + id)
+            // modal.find('.modal-body span').val(id)
+        })
+
+        document.getElementById('replyButton').addEventListener('click', e => {
+            reply.reply = document.getElementById('inputReply').value
+            $.post('{{ route('api-admin-comments-reply') }}', reply).then(response => {
+                if (response.success) {
+                    // let card = document.getElementById('commentCard' + id)
+                    
+                    $.notify({
+                        message: response.message,
+                        icon: 'check_circle'
+                    }, {
+                        type: 'success'
+                    });
+                } else {
+                    $.notify({
+                        message: response.message,
+                        icon: 'check_circle'
+                    }, {
+                        type: 'danger'
+                    });
+                }
             })
         })
     </script>

@@ -18,7 +18,7 @@ class CreateCommentUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('website')->nullable();
-            $table->string('aveter')->nullable();
+            $table->string('avatar')->nullable()->default('https://bootdey.com/img/Content/avatar/avatar1.png');
             $table->timestamps();
         });
     }

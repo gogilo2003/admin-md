@@ -3,6 +3,7 @@
 namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
 * Hit model
 */
@@ -10,7 +11,7 @@ class Comment extends Model
 {
 	
 	public function replies() {
-		return $this->hasMany(Comment::class, 'parent_id');
+		return $this->hasMany(Comment::class, 'parent_comment_id');
 	}
 
 	public function article()

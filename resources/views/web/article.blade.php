@@ -1,7 +1,7 @@
 @extends('admin::web.layout.main')
 
 @section('title')
-	{{ $page->title }}
+    {{ $page->title }}
 @endsection
 
 @section('breadcrumbs')
@@ -17,71 +17,51 @@
 @endsection
 
 @section('content')
-<section class="mt-5 py-5 clearfix">
-    <div class="container">
-        <h3 class="text-center text-uppercase">{{ $article->title }}</h3>
-        <img class="mr-5 mb-5 w-50 float-md-left" src="{{ $article->picture->url }}" alt="">
-        {!! $article->content !!}
-        @if($article->category->name == 'blog' or $article->category->name == 'blogs')
-        <div class="be-comment-block">
-            <form class="form-block" method="POST" action="{{ route('post-comment') }}">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                        <div class="form-group fl_icon">
-                            <div class="icon"><i class="fa fa-user"></i></div>
-                            <input class="form-input" type="text" placeholder="Your name" name="name">
+    <section class="mt-5 py-5 clearfix">
+        <div class="container">
+            <h3 class="text-center text-uppercase">{{ $article->title }}</h3>
+            <img class="mr-5 mb-5 w-50 float-md-left" src="{{ $article->picture->url }}" alt="">
+            {!! $article->content !!}
+            @if ($article->category->name == 'blog' or $article->category->name == 'blogs')
+                <div class="be-comment-block">
+                    <form class="form-block" method="POST" action="{{ route('post-comment') }}">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group fl_icon">
+                                    <div class="icon"><i class="fa fa-user"></i></div>
+                                    <input class="form-input" type="text" placeholder="Your name" name="name">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 fl_icon">
+                                <div class="form-group fl_icon">
+                                    <div class="icon"><i class="fa fa-envelope-o"></i></div>
+                                    <input class="form-input" type="text" placeholder="Your email" name="email">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-input" required="" placeholder="Your text" rows="3"
+                                        name="message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12">
+                                <input type="hidden" name="article_id" value="{{ $article->id }}">
+                                @csrf
+                                <button class="btn btn-primary pull-right">submit</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 fl_icon">
-                        <div class="form-group fl_icon">
-                            <div class="icon"><i class="fa fa-envelope-o"></i></div>
-                            <input class="form-input" type="text" placeholder="Your email" name="email">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-md-12">
-                        <div class="form-group">
-                            <textarea class="form-input" required="" placeholder="Your text"
-                                rows="3" name="message"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12">
-                        <input type="hidden" name="article_id" value="{{ $article->id }}">
-                        @csrf
-                        <button  class="btn btn-primary pull-right">submit</button>
-                    </div>
+                    </form>
+                    <hr>
+                    <h1 class="comments-title">Comments ({{ $article->comments->count() }})</h1>
+                    <hr>
+                    @foreach ($article->comments as $comment)
+                        @include('admin::web.inc.comment',['comment'=>$comment])
+                    @endforeach
+
                 </div>
-            </form>
-            <hr>
-            <h1 class="comments-title">Comments ({{ $article->comments->count() }})</h1>
-            <hr>
-            @foreach ($article->comments as $comment)
-            <div class="be-comment">
-
-                <div class="be-img-comment">
-                    <a href="#">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
-                    </a>
-                </div>
-                <div class="be-comment-content">
-
-                    <span class="be-comment-name">
-                        <a href="#">{{ $comment->name }}</a>
-                    </span>
-                    <span class="be-comment-time">
-                        <i class="fa fa-clock-o"></i>
-                        {{-- May 27, 2015 at 3:14am --}}
-                        {{ $comment->created_at->format('M j, Y \a\t g:ia') }}
-                    </span>
-
-                    <p class="be-comment-text">{{ $comment->message }}</p>
-                </div>
-            </div>
-            @endforeach
-
+            @endif
         </div>
-        @endif
-    </div>
-</section>
+    </section>
 
 @endsection
 
@@ -89,9 +69,9 @@
 @push('styles')
     <style>
         /* body {
-                        margin-top: 20px;
-                        background-color: #e9ebee;
-                    } */
+                            margin-top: 20px;
+                            background-color: #e9ebee;
+                        } */
 
         .be-comment-block {
             margin-bottom: 50px !important;
@@ -211,13 +191,13 @@
 @endpush
 
 @section('scripts_top')
-	<script type="text/javascript">
+    <script type="text/javascript">
 
-	</script>
+    </script>
 @endsection
 
 @section('scripts_bottom')
-	<script type="text/javascript">
+    <script type="text/javascript">
 
-	</script>
+    </script>
 @endsection
