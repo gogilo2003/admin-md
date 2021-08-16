@@ -5,6 +5,8 @@ use Ogilo\AdminMd\Models\Hit;
 use Ogilo\AdminMd\Models\Menu;
 use Ogilo\AdminMd\Models\Article;
 use Ogilo\AdminMd\Models\ArticleCategory;
+use Ogilo\AdminMd\Models\Picture;
+use Ogilo\AdminMd\Models\PictureCategory;
 
 if (!function_exists('get_blogs')) {
 	function get_blogs($paginate = null)
@@ -18,13 +20,36 @@ if (!function_exists('get_blogs')) {
 		$blog = null;
 
 		if ($paginate) {
-			$blogs = $cat ? Article::where('article_category_id', $cat->id)->paginate($paginate) : [];
+			$blogs = $cat ? Article::where('article_category_id', $cat->id)->where('published',1)->paginate($paginate) : [];
 		} else {
-			$blogs = $cat ? Article::where('article_category_id', $cat->id)->get() : [];
+			$blogs = $cat ? Article::where('article_category_id', $cat->id)->where('published',1)->get() : [];
 		}
 		return $blogs;
 	}
 }
+
+if (!function_exists('get_gallery_pictures')) {
+	function get_gallery_pictures($paginate = null)
+	{
+		$cat = PictureCategory::where('name', 'photo-gallery')
+			->orWhere('name', 'gallery')
+			->with(['pictures' => function ($query) {
+				return $query->where('published', 1)
+					->orderBy('created_at', 'DESC')
+					->get();
+			}])->first();
+
+		$photo = null;
+
+		if ($paginate) {
+			$photos = $cat ? Picture::where('picture_category_id', $cat->id)->paginate($paginate) : [];
+		} else {
+			$photos = $cat ? Picture::where('picture_category_id', $cat->id)->get() : [];
+		}
+		return $photos;
+	}
+}
+
 
 function current_path_name()
 {

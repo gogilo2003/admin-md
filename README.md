@@ -9,6 +9,7 @@ It is very simple to setup and use. One will only need to create a theme for the
 ### Through Composer
 ```
 composer require gogilo/admin
+
 ```
 
 #### Or
@@ -24,6 +25,11 @@ You can also update your composer.json as follows
 then run
 ```
 composer update
+```
+
+### Install required packages
+```
+composer require intervention/image intervention/imagecache doctrine/dbal laravel/helpers php-ffmpeg/php-ffmpeg spatie/laravel-searchable spatie/laravel-sitemap -W
 ```
 
 ### Add service provider to the list of providers

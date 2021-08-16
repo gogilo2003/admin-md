@@ -1,7 +1,7 @@
 @extends('admin::web.layout.main')
 
 @section('title')
-	Profile
+	Gallery
 @endsection
 
 @section('sidebar_left')
@@ -11,11 +11,7 @@
 @section('content')
 	<div class="container py-5">
 		<div class="row no-gutters">
-            @php
-                $cat = $page->picture_categories('name','photo-gallery')->first();
-                $pictures = $cat ? $cat->pictures : [];
-            @endphp
-            @if($cat)
+            @if($pictures = get_gallery_pictures())
 			@foreach ($pictures as $picture)
                 <div class="col-md-4">
                     <img class="img-fluid w-100" src="{{ asset(config('admin.path_prefix').'images/pictures/thumbnails/'.$picture->name) }}" alt="">
