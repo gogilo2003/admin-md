@@ -25,6 +25,7 @@
 	<form method="post" action="{{route('admin-blogs-add')}}" article="form" accept-charset="UTF-8" enctype="multipart/form-data">
 
 		<div class="row">
+
 			<div class="col-md-5 col-lg-3">
 
 				<div class="form-group">
@@ -54,6 +55,7 @@
 
             </div>
 			<div class="col-md-7 col-lg-9">
+
 				<div class="form-group{!! $errors->has('title') ? ' has-error':'' !!}">
 					<label for="title">Title</label>
 					<input type="text" class="form-control" id="title" name="title" placeholder="Enter title"{!! ((old('title')) ? ' value="'.old('title').'"' : '') !!}>
@@ -65,7 +67,9 @@
 					{!! $errors->has('content') ? '<br><span class="text-danger">'.$errors->first('content').'</span>' : '' !!}
 					<textarea class="form-control tinymce" rows="13" id="content" name="content" placeholder="Enter content">{!! ((old('content')) ? old('content') : '') !!}</textarea>
 				</div>
+
 			</div>
+            
         </div>
         <hr>
         <div class="offset-md-5 offset-lg-3">
