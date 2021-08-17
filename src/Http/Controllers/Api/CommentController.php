@@ -11,21 +11,32 @@ use Ogilo\AdminMd\Models\CommentUser;
 
 class CommentController extends Controller
 {
-    function __construct(){
+    function __construct()
+    {
         $this->page = new \Ogilo\AdminMd\Models\Page;
+    }
+
+    public function index($id, $published = null)
+    {
+        if ($published) {
+            $comments = Comment::where('article_id', $id)->where('published', 1)->get();
+            return $comments ?? [];
+        }
+        $comments = Comment::where('article_id', $id)->get();
+        return $comments ?? [];
     }
 
     public function approve(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'id'=>'required|integer|exists:comments'
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|integer|exists:comments'
         ]);
 
         if ($validator->fails()) {
             $res = [
-                'success'=>false,
-                'message'=>'Validation error',
-                'errors'=>$validator->errors()->all()
+                'success' => false,
+                'message' => 'Validation error',
+                'errors' => $validator->errors()->all()
             ];
             return response()->json($res);
         }
@@ -35,23 +46,23 @@ class CommentController extends Controller
         $comment->save();
 
         return response()->json([
-            'success'=>true,
-            'message'=>'Comment '.($comment->published ? 'Approved': 'Disapproved'),
-            'comment'=>$comment
+            'success' => true,
+            'message' => 'Comment ' . ($comment->published ? 'Approved' : 'Disapproved'),
+            'comment' => $comment
         ]);
     }
 
     public function delete(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'id'=>'required|integer|exists:comments'
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|integer|exists:comments'
         ]);
 
         if ($validator->fails()) {
             $res = [
-                'success'=>false,
-                'message'=>'Validation error',
-                'errors'=>$validator->errors()->all()
+                'success' => false,
+                'message' => 'Validation error',
+                'errors' => $validator->errors()->all()
             ];
             return response()->json($res);
         }
@@ -60,32 +71,32 @@ class CommentController extends Controller
         $comment->delete();
 
         return response()->json([
-            'success'=>true,
-            'message'=>'Comment deleted'
+            'success' => true,
+            'message' => 'Comment deleted'
         ]);
     }
 
     public function reply(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'id'=>'required|integer|exists:comments',
-            'reply'=>'required',
-            'email'=>'required|email',
-            'name'=>'required'
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|integer|exists:comments',
+            'reply' => 'required',
+            'email' => 'required|email',
+            'name' => 'required'
         ]);
 
         if ($validator->fails()) {
             $res = [
-                'success'=>false,
-                'message'=>'Validation error',
-                'errors'=>$validator->errors()->all()
+                'success' => false,
+                'message' => 'Validation error',
+                'errors' => $validator->errors()->all()
             ];
             return response()->json($res);
         }
 
-        $user = CommentUser::where('email',$request->email)->first();
+        $user = CommentUser::where('email', $request->email)->first();
 
-        if(!$user){
+        if (!$user) {
             $user = new CommentUser();
             $user->name = $request->name;
             $user->email = $request->email;
@@ -101,31 +112,31 @@ class CommentController extends Controller
         $comment->save();
 
         return response()->json([
-            'success'=>true,
-            'message'=>'Reply posted'
+            'success' => true,
+            'message' => 'Reply posted'
         ]);
     }
 
     public function comment(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'name'=>'required',
-            'email'=>'required|email',
-            'comment'=>'required'
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'comment' => 'required'
         ]);
 
         if ($validator->fails()) {
             $res = [
-                'success'=>false,
-                'message'=>'Validation error',
-                'errors'=>$validator->errors()->all()
+                'success' => false,
+                'message' => 'Validation error',
+                'errors' => $validator->errors()->all()
             ];
             return response()->json($res);
         }
 
-        $user = CommentUser::where('email',$request->email)->first();
+        $user = CommentUser::where('email', $request->email)->first();
 
-        if(!$user){
+        if (!$user) {
             $user = new CommentUser();
             $user->name = $request->name;
             $user->email = $request->email;
@@ -139,8 +150,8 @@ class CommentController extends Controller
         $comment->save();
 
         return response()->json([
-            'success'=>true,
-            'message'=>'Comment posted'
+            'success' => true,
+            'message' => 'Comment posted'
         ]);
     }
 }

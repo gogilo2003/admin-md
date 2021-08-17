@@ -48,6 +48,7 @@ Route::group(['middleware'=>'api','as'=>'api','prefix'=>'api','namespace'=>'Ogil
 	});
 
 	Route::group(['as'=>'-comments','prefix'=>'comments'],function(){
+		Route::post('{id}/{published?}',['as'=>'-reply','uses'=>'CommentController@index']);
 		Route::post('reply',['as'=>'-reply','uses'=>'CommentController@reply']);
 		Route::post('comment',['as'=>'-comment','uses'=>'CommentController@comment']);
 	});
