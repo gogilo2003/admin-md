@@ -131,6 +131,7 @@ class CommentController extends Controller
     public function comment(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'id' => 'required|integer|exists:articles',
             'name' => 'required',
             'email' => 'required|email',
             'comment' => 'required'
@@ -158,6 +159,7 @@ class CommentController extends Controller
         $comment = new Comment;
         $comment->message = $request->comment;
         $comment->user_id = $user->id;
+        $comment->article_id = $request->id;
         $comment->save();
         $comment->load('user');
 
