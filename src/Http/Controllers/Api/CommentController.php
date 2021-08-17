@@ -141,7 +141,7 @@ class CommentController extends Controller
             $res = [
                 'success' => false,
                 'message' => 'Validation error',
-                'errors' => $validator->errors()->all()
+                'errors' => $validator->errors()
             ];
             return response()->json($res);
         }
