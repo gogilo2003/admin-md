@@ -22,14 +22,14 @@ class CommentController extends Controller
             $comments = Comment::where('article_id', $id)
                 ->where('published', 1)
                 ->where('parent_comment_id', null)
-                ->with(['replies.replies.replies'])
+                ->with(['user','replies.replies.replies'])
                 ->orderBy('created_at', 'DESC')
                 ->get();
             return $comments ?? [];
         }
         $comments = Comment::where('article_id', $id)
             ->where('parent_comment_id', null)
-            ->with(['replies.replies.replies'])
+            ->with(['user','replies.replies.replies'])
             ->orderBy('created_at', 'DESC')
             ->get();
         return $comments ?? [];
