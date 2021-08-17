@@ -19,10 +19,19 @@ class CommentController extends Controller
     public function index($id, $published = null)
     {
         if ($published) {
-            $comments = Comment::where('article_id', $id)->where('published', 1)->get();
+            $comments = Comment::where('article_id', $id)
+                ->where('published', 1)
+                ->where('parent_comment_id', null)
+                ->with(['replies.replies.replies'])
+                ->orderBy('created_at', 'DESC')
+                ->get();
             return $comments ?? [];
         }
-        $comments = Comment::where('article_id', $id)->get();
+        $comments = Comment::where('article_id', $id)
+            ->where('parent_comment_id', null)
+            ->with(['replies.replies.replies'])
+            ->orderBy('created_at', 'DESC')
+            ->get();
         return $comments ?? [];
     }
 
