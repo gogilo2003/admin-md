@@ -25,7 +25,7 @@ class BlogController extends Controller
 	{
 		$cat = ArticleCategory::where('name', 'blog')
 			->orWhere('name', 'blogs')
-			->with(['articles' => function ($query) {
+			->with(['articles.comments','articles' => function ($query) {
 				return $query->orderBy('id', 'DESC')->get();
 			}, 'articles.comments'])->first();
 
