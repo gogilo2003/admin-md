@@ -89,6 +89,7 @@ class CommentController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'id' => 'required|integer|exists:comments',
+            'article_id' => 'required|integer|exists:articles,id',
             'reply' => 'required',
             'email' => 'required|email',
             'name' => 'required'
