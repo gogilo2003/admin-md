@@ -29,11 +29,17 @@
 	<hr>
 	<form method="post" action="{{route('admin-pictures-add')}}" role="form" accept-charset="UTF-8" enctype="multipart/form-data">
 		<div class="row">
+
 			<div class="col-sm-12 col-md-8 col-lg-8">
+				
                 <div class="row">
+
                     <div class="col-md-4">
-                        <div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
+						
+                        <div class="form-group{!! $errors->has('name') ? ' has-error' : '' !!}">
+
                             <label for="name">Thumbnail</label>
+
                             <div>
                                 <img id="thumbnail_preview" class="image_preview" src="{{ asset(config('admin.path_prefix').'vendor/admin/img/placeholder.png') }}" class="img-responsive img-fluid" alt="Preview">
                             </div>
@@ -46,11 +52,13 @@
                                 name="name"
                                 class="form-control"
                                 >
+
                         </div>
 
                         <a href="JavaScript:" id="load_image" class="btn btn-round btn-primary btn-block"><i class="material-icons">search</i> Browse</a>
 
                     </div>
+
                     <div class="col-md-8">
                         <div class="form-group{!! $errors->has('name') ? ' has-error':'' !!}">
                             <label for="name">Picture</label>
@@ -60,9 +68,11 @@
 
                         </div>
                     </div>
+
                     <div class="col-md-12">
                         {!! $errors->has('name') ? '<span class="text-danger">'.$errors->first('name').'</span>' : ''!!}
                     </div>
+
                 </div>
 
 

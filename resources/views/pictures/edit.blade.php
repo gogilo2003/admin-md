@@ -174,6 +174,14 @@
 				data = $('#image_preview').cropper('getData')
 				$('input#image_cropdetails').val(JSON.stringify(data))
 			})
+
+			$('#image_preview').on('ready',function(){
+				let data = $('#thumbnail_preview').cropper('getData')
+                $('input#thumbnail_cropdetails').val(JSON.stringify(data))
+
+				data = $('#image_preview').cropper('getData')
+				$('input#image_cropdetails').val(JSON.stringify(data))
+			})
 		})
 	</script>
 @stop
