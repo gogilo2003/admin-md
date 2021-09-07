@@ -14,11 +14,11 @@ class AlterAdminsTableAddApiTokenColumn extends Migration
     public function up()
     {
         Schema::table('admins', function ($table) {
-            if(!Schema::hasColumn('admins','api_token')){
+            if (!Schema::hasColumn('admins', 'api_token')) {
                 $table->string('api_token', 80)->after('password')
-                                    ->unique()
-                                    ->nullable()
-                                    ->default(null);
+                    ->unique()
+                    ->nullable()
+                    ->default(null);
             }
         });
     }
@@ -31,7 +31,9 @@ class AlterAdminsTableAddApiTokenColumn extends Migration
     public function down()
     {
         Schema::table('admins', function (Blueprint $table) {
-            $table->dropColumn('api_token');
+            if (!Schema::hasColumn('admins', 'api_token')) {
+                $table->dropColumn('api_token');
+            }
         });
     }
 }
