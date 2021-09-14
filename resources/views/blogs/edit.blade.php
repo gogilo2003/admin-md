@@ -25,7 +25,7 @@
 @stop
 
 @section('content')
-	<form method="post" action="{{route('admin-articles-edit-post')}}" article="form" accept-charset="UTF-8" enctype="multipart/form-data">
+	<form method="post" action="{{route('admin-blogs-edit-post')}}" article="form" accept-charset="UTF-8" enctype="multipart/form-data">
 
 		<div class="row">
 			<div class="col-md-5 col-lg-3">
