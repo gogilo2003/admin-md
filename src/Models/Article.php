@@ -3,6 +3,7 @@
 namespace Ogilo\AdminMd\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Ogilo\AdminMd\Support\Picture;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
@@ -53,7 +54,10 @@ class Article extends Model implements Searchable
         return new Picture(asset('images/articles'), $value);
     }
 
-    public function author()
+    /**
+     * Get the author that owns the Article.
+     */
+    public function author(): BelongsTo
     {
         return $this->belongsTo(Author::class, 'author_id', 'id');
     }
