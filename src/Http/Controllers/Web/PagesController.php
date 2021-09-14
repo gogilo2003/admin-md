@@ -72,7 +72,7 @@ class PagesController extends Controller
             return $query->where('published', 1)->where('parent_comment_id', null)->orderBy('created_at', 'DESC')->get();
         }])->where('name', '=', $article_name)->first();
 
-        $author = Author::with('articles')->find(1);
+        $author = Author::with('articles')->find($article->author_id);
         $article->author = $author;
 
         $page = $page_name ? Page::with('link')->where('name', '=', $page_name)->first() : ($article->category->pages->first() ?? Page::get()->first());
