@@ -13,8 +13,13 @@ class AlterArticlesTableChangeAuthor extends Migration
      */
     public function up()
     {
+        if (!Schema::hasColumn('articles', 'author')) {
+            Schema::table('articles', function (Blueprint $table) {
+                $table->dropColumn('author');
+            });
+        }
         Schema::table('articles', function (Blueprint $table) {
-            $table->unsignedBigInteger('author_id');
+            $table->unsignedBigInteger('author_id')->after('title')->nullable();
             $table->foreign('author_id')->references('id')->on('authors');
         });
     }
@@ -29,6 +34,12 @@ class AlterArticlesTableChangeAuthor extends Migration
         Schema::table('articles', function (Blueprint $table) {
             $table->dropForeign(['author_id']);
             $table->dropColumn('author_id');
+
+            if (!Schema::hasColumn('articles', 'author')) {
+                Schema::table('articles', function (Blueprint $table) {
+                    $table->string('author')->nullable();
+                });
+            }
         });
     }
 }

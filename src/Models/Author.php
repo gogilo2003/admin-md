@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * Hit model.
  */
-class CommentUser extends Model
+class Author extends Model
 {
+    protected $table = 'authors';
+
     /**
      * Get all of the articles for the Author.
      */
     public function articles(): HasMany
     {
-        return $this->hasMany(Article::class);
+        return $this->hasMany(Article::class, 'author_id', 'id');
     }
 }

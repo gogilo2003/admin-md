@@ -55,6 +55,6 @@ class Article extends Model implements Searchable
 
     public function author()
     {
-        return $this->belongsTo(Author::class);
+        return $this->belongsTo(Author::class, 'author_id', 'id');
     }
 }
