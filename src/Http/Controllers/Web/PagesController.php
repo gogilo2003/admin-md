@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Mail;
 use Ogilo\AdminMd\Mail\WebFeedback;
 use Ogilo\AdminMd\Models\Article;
-use Ogilo\AdminMd\Models\Author;
 use Ogilo\AdminMd\Models\Comment;
 use Ogilo\AdminMd\Models\CommentUser;
 use Ogilo\AdminMd\Models\Event;
@@ -71,10 +70,6 @@ class PagesController extends Controller
         $article = Article::with(['author', 'category.pages', 'comments' => function ($query) {
             return $query->where('published', 1)->where('parent_comment_id', null)->orderBy('created_at', 'DESC')->get();
         }])->where('name', '=', $article_name)->first();
-
-        $author = Author::with('articles')->find($article->author_id);
-        $article->author = $author;
-
         $page = $page_name ? Page::with('link')->where('name', '=', $page_name)->first() : ($article->category->pages->first() ?? Page::get()->first());
 
         // $template = file_exists(resource_path('views/web/article.blade.php')) ? 'web.article' :'admin::web.article';
