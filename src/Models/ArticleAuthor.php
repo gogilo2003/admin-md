@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * Hit model.
  */
-class Author extends Model
+class ArticleAuthor extends Model
 {
     protected $table = 'authors';
 

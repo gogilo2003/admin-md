@@ -57,8 +57,8 @@ class Article extends Model implements Searchable
     /**
      * Get the author that owns the Article.
      */
-    public function author(): BelongsTo
+    public function article_author(): BelongsTo
     {
-        return $this->belongsTo(Author::class, 'author_id', 'id');
+        return $this->belongsTo(ArticleAuthor::class, 'author_id', 'id');
     }
 }
