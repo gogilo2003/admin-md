@@ -19,7 +19,7 @@
 @section('content')
     <section class="mt-5 py-5 clearfix">
         <div class="container">
-            <h3 class="text-center text-uppercase">{{ $article->title }}</h3>
+            <h3 class="text-center text-uppercase">{{ $article->title }}<br><small>{{ $article->author ? $article->author->name : '' }}</small></h3>
             <img class="mr-5 mb-5 w-50 float-md-left" src="{{ $article->picture->url }}" alt="">
             {!! $article->content !!}
             @if ($article->category->name == 'blog' or $article->category->name == 'blogs')

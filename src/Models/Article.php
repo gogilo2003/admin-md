@@ -55,6 +55,16 @@ class Article extends Model implements Searchable
 
     public function getAuthorAttribute($value)
     {
-        return json_decode($value);
+        if ($value) {
+            $json = json_decode($value, false);
+
+            if (\json_last_error()) {
+                return \json_last_error_msg();
+            }
+
+            return $json;
+        }
+
+        return null;
     }
 }
