@@ -1,13 +1,10 @@
 <?php
 
-use Ogilo\AdminMd\Models\Comment;
-use Illuminate\Support\Facades\DB;
-use Ogilo\AdminMd\Models\CommentUser;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class AlterarticlesTableChangeAuthor extends Migration
+class AlterArticlesTableChangeAuthor extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +14,8 @@ class AlterarticlesTableChangeAuthor extends Migration
     public function up()
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->json('author')->change();
+            $table->unsignedBigInteger('author_id');
+            $table->foreign('author_id')->references('id')->on('authors');
         });
     }
 
@@ -28,8 +26,9 @@ class AlterarticlesTableChangeAuthor extends Migration
      */
     public function down()
     {
-        Schema::table('articles',function(Blueprint $table){
-            $table->string('author')->change();
+        Schema::table('articles', function (Blueprint $table) {
+            $table->dropForeign(['author_id']);
+            $table->dropColumn('author_id');
         });
     }
 }

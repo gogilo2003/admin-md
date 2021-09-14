@@ -53,18 +53,8 @@ class Article extends Model implements Searchable
         return new Picture(asset('images/articles'), $value);
     }
 
-    public function getAuthorAttribute($value)
+    public function author()
     {
-        if ($value) {
-            $json = json_decode($value, false);
-
-            if (\json_last_error()) {
-                return \json_last_error_msg();
-            }
-
-            return $json;
-        }
-
-        return null;
+        return $this->belongsTo(Author::class);
     }
 }
