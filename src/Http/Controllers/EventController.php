@@ -231,6 +231,8 @@ class EventController extends Controller
     {
         $event = Event::find($request->input('id'));
 
+        $dir = public_path('images/events/');
+
         $old_picture = $dir.$event->picture;
 
         if (file_exists($old_picture)) {
