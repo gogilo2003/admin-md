@@ -5,11 +5,12 @@ namespace Ogilo\AdminMd\Http\Controllers;
 use Img;
 use File;
 
+use Exception;
 use Validator;
 use Illuminate\Http\Request;
 use Ogilo\AdminMd\Models\Page;
-use Ogilo\AdminMd\Models\Event;
 
+use Ogilo\AdminMd\Models\Event;
 use Ogilo\AdminMd\Models\EventDay;
 use App\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\EventCategory;
@@ -236,14 +237,22 @@ class EventController extends Controller
         $old_picture = $dir.$event->picture;
 
         if (file_exists($old_picture)) {
-            chmod($old_picture,0777);
-            unlink($old_picture);
+            try{
+                chmod($old_picture,0777);
+            }catch(Exception $e){
+                
+            }
+            try{unlink($old_picture);}catch(Exception $e){}
         }
         $old_picture = $dir.'thumbnails/'.$event->picture;
 
         if (file_exists($old_picture)) {
-            chmod($old_picture,0777);
-            unlink($old_picture);
+            try{
+                chmod($old_picture,0777);
+            }catch(Exception $e){
+                
+            }
+            try{unlink($old_picture);}catch(Exception $e){}
         }
 
         $event->delete();
