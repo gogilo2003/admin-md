@@ -1632,6 +1632,7 @@ if (!function_exists('stop_words')) {
 if (!function_exists('keywords')) {
 	function keywords($str)
 	{
+		$str = strip_tags($str);
 		$min_word_length = 3;
 		$avoid = ['the', 'to', 'i', 'am', 'is', 'are', 'he', 'she', 'a', 'an', 'and', 'here', 'there', 'can', 'could', 'were', 'has', 'have', 'had', 'been', 'welcome', 'of', 'home', '&nbsp;', '&ldquo;', 'words', 'into', 'this', 'there'];
 		$strip_arr = [",", ".", ";", ":", "\"", "'", "“", "”", "(", ")", "!", "?"];
