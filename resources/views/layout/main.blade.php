@@ -37,7 +37,8 @@
         href="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/css/material-dashboard.css?v=2.1.1') }}"
         rel="stylesheet" />
 
-    <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/bootstrap-datetimepicker.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/bootstrap-datetimepicker.min.css') }}">
     <!--<link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/file-input.css') }}">-->
     <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/iconmoon/linea-icon.css') }}">
     <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/cropper.min.css') }}">
@@ -88,7 +89,7 @@ Tip 2: you can also add an image using data-image tag-->
             @include('admin::layout.navbar')
             <!-- End Navbar -->
             <div class="content">
-                <div class="container-fluid">
+                <div class="container-fluid" id="app">
                     @if (is_current_path('admin-dashboard') || is_current_path('admin-profile') || is_current_path('admin-login'))
                         @yield('content')
                     @else
