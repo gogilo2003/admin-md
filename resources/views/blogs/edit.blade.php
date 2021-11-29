@@ -1,11 +1,11 @@
 @extends('admin::layout.main')
 
 @section('title')
-	Edit Article
+	Edit Blog
 @stop
 
 @section('page_title')
-	<i class="fa fa-pencil"></i> Edit Article
+	<i class="fa fa-pencil"></i> Edit Blog
 @stop
 
 @section('breadcrumbs')
@@ -29,14 +29,6 @@
 
 		<div class="row">
 			<div class="col-md-5 col-lg-3">
-				<div class="form-group">
-					<label for="category">Category</label>
-					<select class="selectpicker form-control" id="category" name="category" data-live-search="true" data-size="5" data-style="btn btn-link">
-						@foreach(Ogilo\AdminMd\Models\ArticleCategory::all() as $category)
-						<option value="{{ $category->id }}" {{ old('category') ? (old('category') === $category->id ? 'selected' : '' ) : ( $article->article_category_id === $category->id ? 'selected' : '' ) }}>{{ $category->name }}</option>
-						@endforeach
-					</select>
-				</div>
 				<div class="form-group">
 					<label for="icon">Icon</label>
 					<select class="selectpicker form-control" id="icon" name="icon" data-live-search="true" data-size="5" data-style="btn btn-link">
@@ -68,6 +60,16 @@
 					<label for="title">Title</label>
 					<input type="text" class="form-control" id="title" name="title" placeholder="Enter title"{!! ((old('title')) ? ' value="'.old('title').'"' : ' value="'.$article->title.'"') !!}>
 					{!! $errors->has('title') ? '<span class="text-danger">'.$errors->first('title').'</span>' : '' !!}
+				</div>
+				<div class="form-group">
+					<label for="icon">Author</label>
+					<select class="selectpicker form-control" id="icon" name="author" data-live-search="true" data-size="5" data-style="btn btn-link">
+
+						@foreach (get_authors() as $author)
+							<option value="{{ $author->id }}" {{ old('author') ? (old('author') == $author->id ? 'selected' : '' ) : ( $article->author_id == $author->id ? 'selected' : '' ) }}>{{ $author->name }}</option>
+						@endforeach
+
+					</select>
 				</div>
 				<div class="form-group{!! $errors->has('content') ? ' has-error':'' !!}">
 					<label for="content" class="d-block pb-5">Content</label>
@@ -126,3 +128,4 @@
     })
 	</script>
 @stop
+

@@ -4,8 +4,8 @@ use Illuminate\Support\Str;
 use Ogilo\AdminMd\Models\Hit;
 use Ogilo\AdminMd\Models\Menu;
 use Ogilo\AdminMd\Models\Article;
-use Ogilo\AdminMd\Models\ArticleCategory;
 use Ogilo\AdminMd\Models\Picture;
+use Ogilo\AdminMd\Models\ArticleCategory;
 use Ogilo\AdminMd\Models\PictureCategory;
 
 if (!function_exists('get_blogs')) {
@@ -1844,5 +1844,12 @@ if (!function_exists('get_profiles')) {
 		$profiles = \Ogilo\AdminMd\Models\Profile::where('published', 1)->orderBy($order[0], $order[1])->get();
 
 		return $profiles;
+	}
+}
+
+if (!function_exists('get_authors')) {
+	function get_authors()
+	{
+		return  \Ogilo\AdminMd\Models\ArticleAuthor::get();
 	}
 }

@@ -43,6 +43,7 @@ class BlogController extends Controller
 	{
 		// dd($request->all());
 		$validator = Validator::make($request->all(), [
+			'author'	=> 'required|integer|exists:authors,id',
 			'title'		=> 'required|unique:articles,title,null,id,article_category_id,' . $request->input('category'),
 			'content'	=> 'required',
 			'category'	=> 'integer',
@@ -118,6 +119,7 @@ class BlogController extends Controller
 		$article->title 	= $request->input('title');
 		$article->icon 		= $request->input('icon');
 		$article->content 	= $request->input('content');
+		$article->author_id 	= $request->input('author');
 
 		$category 	= ArticleCategory::where('name', 'blog')
 			->orWhere('name', 'blogs')->first();
@@ -153,6 +155,7 @@ class BlogController extends Controller
 
 		$validator = Validator::make($request->all(), [
 			'id'		=> 'required|integer',
+			'author'	=> 'required|integer|exists:authors,id',
 			'title'		=> 'required|unique:articles,title,' . $id . ',id,article_category_id,' . $request->input('category'),
 			'content'	=> 'required',
 			'picture'	=> 'image',
@@ -251,12 +254,13 @@ class BlogController extends Controller
 		$article->title 				= $request->input('title');
 		$article->icon 					= $request->input('icon');
 		$article->content 				= $request->input('content');
+		$article->author_id 				= $request->input('author');
 		// $article->article_category_id 	= $request->input('category');
 
 		$article->save();
 
 		return redirect()
-			->route('admin-articles')
+			->route('admin-blogs')
 			->with('global-success', 'Article ' . $article->name . ' Updated');
 	}
 

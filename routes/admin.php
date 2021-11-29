@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use Ogilo\AdminMd\Http\Controllers\BlogController;
 
 Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'Ogilo\AdminMd\Http\Controllers'],function(){
 
@@ -102,15 +103,15 @@ Route::group(['middleware'=>'web','as'=>'admin','prefix'=>'admin','namespace'=>'
 		});
 
 		Route::group(['as'=>'-blogs','prefix'=>'blogs'],function(){
-			Route::get('',['uses'=>'BlogController@getBlogs']);
-			Route::get('add',['as'=>'-add','uses'=>'BlogController@getAdd']);
-			Route::post('add',['as'=>'-add','uses'=>'BlogController@postAdd']);
-			Route::get('edit/{id?}',['as'=>'-edit','uses'=>'BlogController@getEdit']);
-			Route::get('view/{id?}',['as'=>'-view','uses'=>'BlogController@getView']);
-			Route::post('edit',['as'=>'-edit-post','uses'=>'BlogController@postEdit']);
-			Route::post('publish',['as'=>'-publish','uses'=>'BlogController@postPublish']);
-			Route::post('feature',['as'=>'-feature','uses'=>'BlogController@postFeature']);
-			Route::post('delete',['as'=>'-delete','uses'=>'BlogController@postDelete']);
+			Route::get('',[BlogController::class,'getBlogs']);
+			Route::get('add',[BlogController::class,'getAdd'])->name('-add');
+			Route::post('add',[BlogController::class,'postAdd'])->name('-add');
+			Route::get('edit/{id?}',[BlogController::class,'getEdit'])->name('-edit');
+			Route::get('view/{id?}',[BlogController::class,'getView'])->name('-view');
+			Route::post('edit',[BlogController::class,'postEdit'])->name('-edit-post');
+			Route::post('publish',[BlogController::class,'postPublish'])->name('-publish');
+			Route::post('feature',[BlogController::class,'postFeature'])->name('-feature');
+			Route::post('delete',[BlogController::class,'postDelete'])->name('-delete');
 		});
 
 		Route::group(['as'=>'-picture_categories','prefix'=>'picture_categories'],function(){

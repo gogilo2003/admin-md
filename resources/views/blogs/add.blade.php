@@ -62,11 +62,16 @@
 					{!! $errors->has('title') ? '<span class="text-danger">'.$errors->first('title').'</span>' : '' !!}
                 </div>
 
-				<div class="form-group{!! $errors->has('author') ? ' has-error':'' !!}">
-					<label for="author">Title</label>
-					<input type="text" class="form-control" id="author" name="author" placeholder="Enter author"{!! ((old('author')) ? ' value="'.old('author').'"' : '') !!}>
-					{!! $errors->has('author') ? '<span class="text-danger">'.$errors->first('author').'</span>' : '' !!}
-                </div>
+				<div class="form-group">
+					<label for="icon">Author</label>
+					<select class="selectpicker form-control" id="icon" name="author" data-live-search="true" data-size="5" data-style="btn btn-link">
+
+						@foreach (get_authors() as $author)
+							<option value="{{ $author->id }}" {{ old('author') ? (old('author') == $author->id ? 'selected' : '' ) : ( $article->author_id == $author->id ? 'selected' : '' ) }}>{{ $author->name }}</option>
+						@endforeach
+
+					</select>
+				</div>
 
 				<div class="form-group{!! $errors->has('content') ? ' has-error':'' !!}">
                     <label for="content" class="d-block w-100 mb-1 clearfix">Content</label>
