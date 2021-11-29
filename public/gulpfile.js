@@ -236,6 +236,7 @@ gulp.task('img', gulp.series('img-bootstrap-fileinput', 'img-datatables'))
 gulp.task('themes', gulp.series('themes-bootstrap-fileinput'))
 gulp.task('fonts', gulp.series('fonts-font-awesome'))
 gulp.task('copy', gulp.series('js', 'css', 'img', 'themes', 'fonts'))
+gulp.task('default', gulp.series('js','css','themes','fonts','copy'))
 
 gulp.task('watch', function() {
     gulp.watch(Paths.SCSS, ['compile-scss']);

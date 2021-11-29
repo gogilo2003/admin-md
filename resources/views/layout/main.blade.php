@@ -37,7 +37,7 @@
         href="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/css/material-dashboard.css?v=2.1.1') }}"
         rel="stylesheet" />
 
-    <!--<link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/bootstrap-datetimepicker.min.css') }}">-->
+    <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/bootstrap-datetimepicker.min.css') }}">
     <!--<link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/file-input.css') }}">-->
     <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/iconmoon/linea-icon.css') }}">
     <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/cropper.min.css') }}">
