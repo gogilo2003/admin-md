@@ -105,6 +105,9 @@ Tip 2: you can also add an image using data-image tag-->
                     @endif
 
                 </div>
+                <div class="container-fluid">
+                    <input type="text" id="datetimepicker">
+                </div>
             </div>
             <footer class="footer">
                 <div class="container-fluid">
@@ -170,6 +173,9 @@ Tip 2: you can also add an image using data-image tag-->
     <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/moment.min.js') }}">
     </script>
+    <!-- Plugin for the bootstrap  -->
+    <script src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap.min.js') }}">
+    </script>
     <!--  Plugin for Sweet Alert -->
     <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/sweetalert2.js') }}">
@@ -186,16 +192,14 @@ Tip 2: you can also add an image using data-image tag-->
     <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-selectpicker.js') }}">
     </script>
-    <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-    <script
-        src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-datetimepicker.min.js') }}">
-    </script>
+
     <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
     <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/jquery.dataTables.min.js') }}">
-    </script>
-    <script
-        src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/dataTables.bootstrap4.min.js') }}">
+        < /!--> <
+        script
+        src =
+            "{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/dataTables.bootstrap4.min.js') }}" >
     </script>
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
     <script
@@ -256,11 +260,14 @@ Tip 2: you can also add an image using data-image tag-->
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/cropper.min.js') }}">
     </script>
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/main.js') }}"></script>
-    @if (file_exists(public_path(config('admin.path_prefix').'vendor/admin/js/admin.js')))
+
+    {{-- @if (file_exists(public_path(config('admin.path_prefix').'vendor/admin/js/admin.js')))
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/admin.js') }}"></script>
-    @endif
+    @endif --}}
 
     <script type="text/javascript">
+        $('.datetimepicker').datetimepicker();
+
         @if (Session::has('global-info'))
             {!! "$.notify( { message: '" . Session::get('global-info') . "',icon: 'info_outline'}, {type: 'info', timer: 10000})" !!}
         @endif
