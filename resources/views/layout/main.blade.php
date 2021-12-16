@@ -38,14 +38,14 @@
         rel="stylesheet" />
 
     <link rel="stylesheet"
-        href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/bootstrap-datetimepicker.min.css') }}">
+        href="{{ asset(config('admin.path_prefix') . 'vendor/admin/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
     <!--<link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/file-input.css') }}">-->
     <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/iconmoon/linea-icon.css') }}">
     <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/cropper.min.css') }}">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <!--<link href="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/demo/demo.css') }}" rel="stylesheet" />-->
-    <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/moment.min.js') }}">
-    </script>
+    {{-- <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/moment.min.js') }}">
+    </script> --}}
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/tinymce.min.js') }}">
     </script>
     {{-- <script src="https://cdn.tiny.cloud/1/{{ config("admin.tinymce.api_key") }}/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
@@ -66,6 +66,7 @@
 </head>
 
 <body class="">
+
     <div class="wrapper " id="app">
         <div class="sidebar" data-color="purple" data-background-color="green"
             data-image="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/img/sidebar-1.jpg') }}">
@@ -89,6 +90,13 @@ Tip 2: you can also add an image using data-image tag-->
             @include('admin::layout.navbar')
             <!-- End Navbar -->
             <div class="content">
+                <form>
+                    <div class="container-fluid">
+
+                    </div>
+                    <button>Send</button>
+                </form>
+
                 <div class="container-fluid" id="app">
                     @if (is_current_path('admin-dashboard') || is_current_path('admin-profile') || is_current_path('admin-login'))
                         @yield('content')
@@ -104,9 +112,6 @@ Tip 2: you can also add an image using data-image tag-->
                         </div>
                     @endif
 
-                </div>
-                <div class="container-fluid">
-                    <input type="text" id="datetimepicker">
                 </div>
             </div>
             <footer class="footer">
@@ -251,23 +256,23 @@ Tip 2: you can also add an image using data-image tag-->
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap.file-input.js') }}"></script> --}}
     <script type="text/javascript"
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap-hover-dropdown.min.js') }}"></script>
-    <script type="text/javascript"
-        src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap-datetimepicker.min.js') }}"></script>
+
     <script type="text/javascript"
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap3-typeahead.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/file-input.js') }}">
     </script>
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/cropper.min.js') }}">
     </script>
+    <script type="text/javascript"
+        src="{{ asset(config('admin.path_prefix') . 'vendor/admin/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}">
+    </script>
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/main.js') }}"></script>
 
-    {{-- @if (file_exists(public_path(config('admin.path_prefix').'vendor/admin/js/admin.js')))
+    @if (file_exists(public_path(config('admin.path_prefix').'vendor/admin/js/admin.js')))
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/admin.js') }}"></script>
-    @endif --}}
+    @endif
 
     <script type="text/javascript">
-        $('.datetimepicker').datetimepicker();
-
         @if (Session::has('global-info'))
             {!! "$.notify( { message: '" . Session::get('global-info') . "',icon: 'info_outline'}, {type: 'info', timer: 10000})" !!}
         @endif

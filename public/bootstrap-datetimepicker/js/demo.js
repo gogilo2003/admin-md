@@ -1,5 +1,5 @@
-(function($){
-    $(function(){
+(function ($) {
+    $(function () {
         $('#id_0').datetimepicker({
             "allowInputToggle": true,
             "showClose": true,

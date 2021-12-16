@@ -123,6 +123,7 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__ . '/../public/images' => public_path('vendor/admin/images'),
 			__DIR__ . '/../public/themes' => public_path('vendor/admin/themes'),
 			__DIR__ . '/../public/fonts' => public_path('vendor/admin/fonts'),
+			__DIR__ . '/../public/bootstrap-datetimepicker' => public_path('vendor/admin/bootstrap-datetimepicker'),
 		], 'admin-assets');
 		/* 
 		$this->publishes([
@@ -178,7 +179,7 @@ class AdminServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__ . '/../resources/views/web/inc' => resource_path('views/vendor/admin/web/inc'),
 			__DIR__ . '/../resources/views/web/layout' => resource_path('views/vendor/admin/web/layout'),
-		],'web-layout');
+		], 'web-layout');
 
 		$this->publishes([
 			__DIR__ . '/../resources/views/web/article.blade.php' => resource_path('views/web/article.blade.php'),

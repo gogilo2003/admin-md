@@ -5,9 +5,9 @@
  */
 
 // import './bootstrap';
-window.route = require('./route');
+// window.route = require('./route');
 // window.Vue = require('vue');
-import store from './store'
+// import store from './store'
 import Vue from 'vue'
 import axios from 'axios'
 
@@ -24,13 +24,19 @@ function studle_case(str) {
 const req = require.context('./components/', true, /\.(js|vue)$/i);
 req.keys().map(key => {
     const value = key.match(/\w+/)[0];
-    const component = require('./components/'+value);
+    const component = require('./components/' + value);
     const name = studle_case(value)
 
     return Vue.component(name, component)
 });
 
+
 new Vue({
     el: '#app',
-    store
+    methods: {
+        dobOnChange(e) {
+            console.log(e);
+            console.log('change')
+        }
+    }
 });
