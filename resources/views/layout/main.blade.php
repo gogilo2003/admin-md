@@ -224,8 +224,6 @@ Tip 2: you can also add an image using data-image tag-->
     <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/nouislider.min.js') }}">
     </script>
-    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>-->
     <!-- Library for adding dinamically elements -->
     <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/arrive.min.js') }}">
@@ -248,10 +246,6 @@ Tip 2: you can also add an image using data-image tag-->
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript"
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap-notify.min.js') }}"></script>
-    {{-- <script type="text/javascript"
-        src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap-select.min.js') }}"></script> --}}
-    {{-- <script type="text/javascript"
-        src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap.file-input.js') }}"></script> --}}
     <script type="text/javascript"
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap-hover-dropdown.min.js') }}"></script>
 
