@@ -7,12 +7,12 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 // require('jquery')
-// try {
-//     window.$ = window.jQuery = require('jquery');
+try {
+    window.$ = window.jQuery = require('jquery');
 
-//     // require('moment');
-//     // require('bootstrap');
-// } catch (e) { }
+    require('moment');
+    require('bootstrap');
+} catch (e) { }
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -54,4 +54,9 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+const tempusDominus = require('@eonasdan/tempus-dominus')
+
+document.getElementById('datetimepicker2').value = "Welcome"
+new tempusDominus.TempusDominus(document.getElementById('datetimepicker2'))
 

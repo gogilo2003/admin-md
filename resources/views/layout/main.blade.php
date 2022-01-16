@@ -37,8 +37,8 @@
         href="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/css/material-dashboard.css?v=2.1.1') }}"
         rel="stylesheet" />
 
-    <link rel="stylesheet"
-        href="{{ asset(config('admin.path_prefix') . 'vendor/admin/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
+    {{-- <link rel="stylesheet"
+        href="{{ asset(config('admin.path_prefix') . 'vendor/admin/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}"> --}}
     <!--<link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/file-input.css') }}">-->
     <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/iconmoon/linea-icon.css') }}">
     <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/cropper.min.css') }}">
@@ -90,12 +90,10 @@ Tip 2: you can also add an image using data-image tag-->
             @include('admin::layout.navbar')
             <!-- End Navbar -->
             <div class="content">
-                <form>
-                    <div class="container-fluid">
-
-                    </div>
-                    <button>Send</button>
-                </form>
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="datetimepicker2" id="datetimepicker2"
+                        aria-describedby="helpId" placeholder="Date">
+                </div>
 
                 <div class="container-fluid" id="app">
                     @if (is_current_path('admin-dashboard') || is_current_path('admin-profile') || is_current_path('admin-login'))
@@ -263,9 +261,9 @@ Tip 2: you can also add an image using data-image tag-->
     </script>
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/cropper.min.js') }}">
     </script>
-    <script type="text/javascript"
+    {{-- <script type="text/javascript"
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}">
-    </script>
+    </script> --}}
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/main.js') }}"></script>
 
     @if (file_exists(public_path(config('admin.path_prefix').'vendor/admin/js/admin.js')))
