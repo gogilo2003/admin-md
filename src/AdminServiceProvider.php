@@ -124,37 +124,7 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__ . '/../public/themes' => public_path('vendor/admin/themes'),
 			__DIR__ . '/../public/fonts' => public_path('vendor/admin/fonts'),
 			__DIR__ . '/../public/webfonts' => public_path('vendor/admin/webfonts'),
-			__DIR__ . '/../public/bootstrap-datetimepicker' => public_path('vendor/admin/bootstrap-datetimepicker'),
 		], 'admin-assets');
-		/* 
-		$this->publishes([
-			__DIR__.'/../public/node_modules/bootstrap-notify/bootstrap-notify.min.js' => public_path('vendor/admin/js/bootstrap-notify.min.js'),
-			__DIR__.'/../public/node_modules/moment/min/moment.min.js' => public_path('vendor/admin/js/moment.min.js'),
-			__DIR__.'/../public/node_modules/bootstrap-3-typeahead/bootstrap3-typeahead.js' => public_path('vendor/admin/js/bootstrap3-typeahead.min.js'),
-			__DIR__.'/../public/node_modules/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js' => public_path('vendor/admin/js/bootstrap-hover-dropdown.min.js'),
-			// __DIR__.'/../public/node_modules/tinymce/tinymce.min.js' => public_path('vendor/admin/js/tinymce.min.js'),
-			// __DIR__.'/../public/node_modules/tinymce/themes' => public_path('vendor/admin/js/themes'),
-			// __DIR__.'/../public/node_modules/tinymce/skins' => public_path('vendor/admin/js/skins'),
-			// __DIR__.'/../public/node_modules/tinymce/plugins' => public_path('vendor/admin/js/plugins'),
-			__DIR__.'/../public/node_modules/bootstrap/dist/js' => public_path('vendor/admin/js'),
-			__DIR__.'/../public/node_modules/jquery/dist' => public_path('vendor/admin/js'),
-			__DIR__.'/../public/node_modules/font-awesome/fonts' => public_path('vendor/admin/fonts'),
-            __DIR__.'/../public/node_modules/font-awesome/css/font-awesome.min.css' => public_path('vendor/admin/css/font-awesome.min.css'),
-			__DIR__.'/../public/node_modules/datatables/media/css' => public_path('vendor/admin/css'),
-			__DIR__.'/../public/node_modules/datatables/media/images' => public_path('vendor/admin/images'),
-			__DIR__.'/../public/node_modules/datatables/media/js' => public_path('vendor/admin/js'),
-			__DIR__.'/../public/node_modules/bootstrap-select/dist/css' => public_path('vendor/admin/css'),
-			__DIR__.'/../public/node_modules/bootstrap-select/dist/js' => public_path('vendor/admin/js'),
-			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.js'=>public_path('vendor/admin/cropper/cropper.min.js'),
-			__DIR__.'/../public/node_modules/cropper/dist/cropper.min.css'=>public_path('vendor/admin/cropper/cropper.min.css'),
-			__DIR__.'/../public/node_modules/popper.js/dist/popper.min.js'=>public_path('vendor/admin/js/popper.min.js'),
-		],'node_modules'); */
-
-		$this->publishes([
-			__DIR__ . '/../public/material-dashboard-master/assets/img' => public_path('vendor/admin/material-dashboard-master/assets/img'),
-			__DIR__ . '/../public/material-dashboard-master/assets/css' => public_path('vendor/admin/material-dashboard-master/assets/css'),
-			__DIR__ . '/../public/material-dashboard-master/assets/js' => public_path('vendor/admin/material-dashboard-master/assets/js'),
-		], 'md-public');
 
 		$this->publishes([
 			__DIR__ . '/../config/admin.php' => config_path('admin.php')
@@ -163,11 +133,6 @@ class AdminServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__ . '/../public/stopwords.txt' => public_path('stopwords.txt')
 		], 'stopwords');
-
-		$this->publishes([
-			__DIR__ . '/../resources/assets/js' => resource_path('assets/vendor/admin/js'),
-			__DIR__ . '/../resources/assets/scss' => resource_path('assets/vendor/admin/scss')
-		], 'vue-resources');
 
 		$this->publishes([
 			__DIR__ . '/../resources/views' => resource_path('views/vendor/admin'),
