@@ -124,6 +124,9 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__ . '/../public/themes' => public_path('vendor/admin/themes'),
 			__DIR__ . '/../public/fonts' => public_path('vendor/admin/fonts'),
 			__DIR__ . '/../public/webfonts' => public_path('vendor/admin/webfonts'),
+			__DIR__ . '/../public/material-dashboard-master/assets/img' => public_path('vendor/admin/material-dashboard-master/assets/img'),
+			__DIR__ . '/../public/material-dashboard-master/assets/css' => public_path('vendor/admin/material-dashboard-master/assets/css'),
+			__DIR__ . '/../public/material-dashboard-master/assets/js' => public_path('vendor/admin/material-dashboard-master/assets/js'),
 		], 'admin-assets');
 
 		$this->publishes([
@@ -133,6 +136,11 @@ class AdminServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__ . '/../public/stopwords.txt' => public_path('stopwords.txt')
 		], 'stopwords');
+
+		$this->publishes([
+			__DIR__ . '/../resources/assets/js' => resource_path('assets/vendor/admin/js'),
+			__DIR__ . '/../resources/assets/scss' => resource_path('assets/vendor/admin/scss')
+		], 'vue-resources');
 
 		$this->publishes([
 			__DIR__ . '/../resources/views' => resource_path('views/vendor/admin'),

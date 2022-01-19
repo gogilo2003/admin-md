@@ -113,31 +113,31 @@ Tip 2: you can also add an image using data-image tag-->
                     <nav class="float-left">
                         <ul>
                             <li>
-                                <a href="https://www.gogilo.com" class="btn btn-round btn-fab btn-danger">
+                                <a href="https://www.micartech.co.ke" class="btn btn-round btn-fab btn-danger">
                                     <i class="material-icons">http</i>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://wa.me/254735388704" class="btn btn-fab btn-success btn-round"
                                     target="_NEW">
-                                    <i class="fa fa-whatsapp"></i>
+                                    <i class="fab fa-whatsapp"></i>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://web.facebook.com/ogilogeorge"
                                     class="btn btn-fab btn-facebook btn-round" target="_NEW">
-                                    <i class="fa fa-facebook"></i>
+                                    <i class="fab fa-facebook-f"></i>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://twitter.com/GeorgeOgilo" class="btn btn-fab btn-twitter btn-round"
                                     target="_NEW">
-                                    <i class="fa fa-twitter"></i>
+                                    <i class="fab fa-twitter"></i>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://www.gogilo.com" class="btn btn-fab btn-danger btn-round" target="_NEW">
-                                    <i class="fa fa-book"></i>
+                                    <i class="fas fa-book"></i>
                                 </a>
                             </li>
                         </ul>
@@ -155,9 +155,9 @@ Tip 2: you can also add an image using data-image tag-->
         let images_upload_url = '{{ route('admin-images_upload_url') }}'
     </script>
     <!--   Core JS Files   -->
-    <script
+    {{-- <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/core/jquery.min.js') }}">
-    </script>
+    </script> --}}
     <script src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/jquery-ui.min.js') }}"></script>
     <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/core/popper.min.js') }}">
@@ -169,12 +169,12 @@ Tip 2: you can also add an image using data-image tag-->
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/perfect-scrollbar.jquery.min.js') }}">
     </script>
     <!-- Plugin for the momentJs  -->
-    <script
+    {{-- <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/moment.min.js') }}">
-    </script>
+    </script> --}}
     <!-- Plugin for the bootstrap  -->
-    <script src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap.min.js') }}">
-    </script>
+    {{-- <script src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap.min.js') }}">
+    </script> --}}
     <!--  Plugin for Sweet Alert -->
     <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/sweetalert2.js') }}">
