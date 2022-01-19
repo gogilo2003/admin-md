@@ -28,7 +28,7 @@
     <title>@yield('title')</title>
     <!--     Fonts and icons     -->
     <!--<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />-->
-    <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/all.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-design-icons/material-icons.css') }}">
     <!-- CSS Files -->
@@ -36,6 +36,7 @@
     <link
         href="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/css/material-dashboard.css?v=2.1.1') }}"
         rel="stylesheet" />
+    <link href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/admin.css') }}" rel="stylesheet" />
 
     {{-- <link rel="stylesheet"
         href="{{ asset(config('admin.path_prefix') . 'vendor/admin/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}"> --}}
@@ -43,7 +44,7 @@
     <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/iconmoon/linea-icon.css') }}">
     <link rel="stylesheet" href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/cropper.min.css') }}">
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <!--<link href="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/demo/demo.css') }}" rel="stylesheet" />-->
+    {{-- <!--<link href="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/demo/demo.css') }}" rel="stylesheet" />--> --}}
     {{-- <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/moment.min.js') }}">
     </script> --}}
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/tinymce.min.js') }}">
@@ -90,11 +91,6 @@ Tip 2: you can also add an image using data-image tag-->
             @include('admin::layout.navbar')
             <!-- End Navbar -->
             <div class="content">
-                <div class="mb-3">
-                    <input type="text" class="form-control" name="datetimepicker2" id="datetimepicker2"
-                        aria-describedby="helpId" placeholder="Date">
-                </div>
-
                 <div class="container-fluid" id="app">
                     @if (is_current_path('admin-dashboard') || is_current_path('admin-profile') || is_current_path('admin-login'))
                         @yield('content')
@@ -192,18 +188,17 @@ Tip 2: you can also add an image using data-image tag-->
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/jquery.bootstrap-wizard.js') }}">
     </script>
     <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-    <script
+    {{-- <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-selectpicker.js') }}">
-    </script>
+    </script> --}}
 
     <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-    <script
+    {{-- <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/jquery.dataTables.min.js') }}">
-        < /!--> <
-        script
-        src =
-            "{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/dataTables.bootstrap4.min.js') }}" >
-    </script>
+    </script> --}}
+    {{-- <script
+        src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/dataTables.bootstrap4.min.js') }}">
+    </script> --}}
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
     <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-tagsinput.js') }}">
@@ -235,30 +230,33 @@ Tip 2: you can also add an image using data-image tag-->
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/chartist.min.js') }}">
     </script>
     <!--  Notifications Plugin    -->
-    <script
+    {{-- <script
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/bootstrap-notify.js') }}">
-    </script>
+    </script> --}}
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script type="text/javascript"
-        src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/material-dashboard.js?v=2.1.1') }}">
-    </script>
-    <script type="text/javascript"
-        src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/jquery.dataTables.min.js') }}"></script>
-    <script type="text/javascript"
-        src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap-notify.min.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/material-dashboard.js?v=2.1.1') }}"> </script> --}}
+    {{-- <script type="text/javascript"
+        src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/jquery.dataTables.min.js') }}">
+    </script> --}}
+
+    {{-- <script type="text/javascript"
+        src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap-notify.min.js') }}"></script> --}}
+
     <script type="text/javascript"
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap-hover-dropdown.min.js') }}"></script>
 
     <script type="text/javascript"
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap3-typeahead.min.js') }}"></script>
+
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/file-input.js') }}">
     </script>
+
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/cropper.min.js') }}">
     </script>
     {{-- <script type="text/javascript"
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}">
     </script> --}}
-    <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/main.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/main.js') }}"></script> --}}
 
     @if (file_exists(public_path(config('admin.path_prefix').'vendor/admin/js/admin.js')))
     <script type="text/javascript" src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/admin.js') }}"></script>

@@ -41,3 +41,5 @@ function studle_case(str) {
 //         }
 //     }
 // });
+
+// import "@fortawesome/fontawesome-free/css/all.css"

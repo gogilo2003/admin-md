@@ -1,0 +1,18 @@
+// @import url('@fortawesome/fontawesome-free');
+@import url('@eonasdan/tempus-dominus');
+
+.tempus-dominus-widget .date-container-decades div:not(.no-highlight).active,
+.tempus-dominus-widget .date-container-years div:not(.no-highlight).active,
+.tempus-dominus-widget .date-container-months div:not(.no-highlight).active,
+.tempus-dominus-widget .date-container-days div:not(.no-highlight).active,
+.tempus-dominus-widget .time-container-clock div:not(.no-highlight).active,
+.tempus-dominus-widget .time-container-hour div:not(.no-highlight).active,
+.tempus-dominus-widget .time-container-minute div:not(.no-highlight).active,
+.tempus-dominus-widget .time-container-second div:not(.no-highlight).active {
+    background: linear-gradient(60deg, #9ccc65, #7cb342);
+}
+
+.tempus-dominus-widget button {
+    background-color: #7cb342;
+    border-color: #7cb342;
+}

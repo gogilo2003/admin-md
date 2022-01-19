@@ -123,6 +123,7 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__ . '/../public/images' => public_path('vendor/admin/images'),
 			__DIR__ . '/../public/themes' => public_path('vendor/admin/themes'),
 			__DIR__ . '/../public/fonts' => public_path('vendor/admin/fonts'),
+			__DIR__ . '/../public/webfonts' => public_path('vendor/admin/webfonts'),
 			__DIR__ . '/../public/bootstrap-datetimepicker' => public_path('vendor/admin/bootstrap-datetimepicker'),
 		], 'admin-assets');
 		/* 

@@ -6,7 +6,7 @@ window._ = require('lodash');
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
-// require('jquery')
+require('jquery')
 try {
     window.$ = window.jQuery = require('jquery');
 
@@ -54,9 +54,34 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
-
+const moment = require('moment')
 const tempusDominus = require('@eonasdan/tempus-dominus')
 
-document.getElementById('datetimepicker2').value = "Welcome"
-new tempusDominus.TempusDominus(document.getElementById('datetimepicker2'))
+document.querySelectorAll('.datetimepicker').forEach(item => {
+    new tempusDominus.TempusDominus(item, {
+        hooks: {
+            inputFormat: (context, date) => { return moment(date).format('YYYY-MM-DD HH:mm:ss') },
+        },
+        display: { sideBySide: true }
+    })
+})
 
+document.querySelectorAll('.timepicker').forEach(item => {
+    new tempusDominus.TempusDominus(item, {
+        localization: { locale: 'en' },
+        hooks: {
+            inputFormat: (context, date) => { return moment(date).format('LT') }
+        }
+    })
+})
+document.querySelectorAll('.datepicker').forEach(item => {
+    new tempusDominus.TempusDominus(item, {
+        hooks: {
+            inputFormat: (context, date) => { return moment(date).format('YYYY-MM-DD') }
+        }
+    })
+})
+
+require('bootstrap-select')
+require('datatables')
+require('bootstrap-notify')
