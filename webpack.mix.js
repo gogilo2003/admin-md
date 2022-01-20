@@ -18,5 +18,5 @@ mix.js('resources/assets/js/admin.js', 'public/js')
     //     //
     // ])
     .after(() => {
-        exec('php /home/ogilo/Desktop/Tests/laravel/artisan vendor:publish --force --tag=admin-assets', (res, stdout, stderr) => { console.log(stdout); });
+        exec('php /var/www/laravel/artisan vendor:publish --force --tag=admin-assets', (res, stdout, stderr) => { console.log(stdout); });
     })

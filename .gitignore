@@ -24,5 +24,6 @@ public/package-lock.json
 public/material-dashboard-master/node_modules
 public/material-dashboard-master/package-lock.json
 composer.lock
+package-lock.json
 
 /vendor

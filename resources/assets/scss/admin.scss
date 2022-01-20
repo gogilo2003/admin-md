@@ -16,3 +16,14 @@
     background-color: #7cb342;
     border-color: #7cb342;
 }
+
+.tempus-dominus-widget .date-container-decades div:not(.no-highlight).today::before,
+.tempus-dominus-widget .date-container-years div:not(.no-highlight).today::before,
+.tempus-dominus-widget .date-container-months div:not(.no-highlight).today::before,
+.tempus-dominus-widget .date-container-days div:not(.no-highlight).today::before,
+.tempus-dominus-widget .time-container-clock div:not(.no-highlight).today::before,
+.tempus-dominus-widget .time-container-hour div:not(.no-highlight).today::before,
+.tempus-dominus-widget .time-container-minute div:not(.no-highlight).today::before,
+.tempus-dominus-widget .time-container-second div:not(.no-highlight).today::before {
+    border-bottom-color: #7cb342;
+}

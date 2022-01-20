@@ -6,13 +6,18 @@ window._ = require('lodash');
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
-require('jquery')
+// require('jquery')
 try {
     window.$ = window.jQuery = require('jquery');
+    require('jquery-ui')
 
     require('moment');
+    require('popper.js/dist/popper.js');
     require('bootstrap');
-} catch (e) { }
+
+} catch (e) {
+    console.log(e.getMessage())
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -83,5 +88,24 @@ document.querySelectorAll('.datepicker').forEach(item => {
 })
 
 require('bootstrap-select')
-require('datatables')
+$('.selectpicker').selectpicker({
+    size: 5
+})
+require('datatables.net-bs4')
 require('bootstrap-notify')
+// require('../../../public/material-dashboard-master/assets/js/core/bootstrap-material-design.min.js')
+require('jquery-validation')
+require('sweetalert2')
+require('perfect-scrollbar')
+require('twitter-bootstrap-wizard')
+require('bootstrap-tagsinput')
+require('jasny-bootstrap')
+require('@foxythemes/jvectormap')
+require('nouislider')
+require('arrive')
+require('chartist')
+require('../../../public/js/file-input.js')
+require('bootstrap-hover-dropdown')
+require('cropper')
+
+$('.dropdown-toggle').dropdownHover();
