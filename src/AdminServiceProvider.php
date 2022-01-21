@@ -129,6 +129,7 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__ . '/../public/themes' => public_path('vendor/admin/themes'),
 			__DIR__ . '/../public/fonts' => public_path('vendor/admin/fonts'),
 			__DIR__ . '/../public/webfonts' => public_path('vendor/admin/webfonts'),
+			__DIR__ . '/../public/bootstrap-fileinput' => public_path('images/vendor/bootstrap-fileinput'),
 			__DIR__ . '/../public/material-dashboard-master/assets/img' => public_path('vendor/admin/material-dashboard-master/assets/img'),
 			__DIR__ . '/../public/material-dashboard-master/assets/css' => public_path('vendor/admin/material-dashboard-master/assets/css'),
 			__DIR__ . '/../public/material-dashboard-master/assets/js' => public_path('vendor/admin/material-dashboard-master/assets/js'),

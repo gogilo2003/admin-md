@@ -25,35 +25,22 @@
     <form method="post" action="{{ route('admin-profiles-add') }}" role="form" accept-charset="UTF-8"
         enctype="multipart/form-data">
         <div class="row">
-            {{-- <div class="col-md-4 col-lg-4">
+            <div class="col-md-4 col-lg-4">
 
-                <div class="form-group{!! $errors->has('picture') ? ' has-error':'' !!}">
+                <div class="form-group{!! $errors->has('picture') ? ' has-error' : '' !!}">
                     <label for="picture">Picture</label>
-                    {!! $errors->has('picture') ? '<span class="text-danger">'.$errors->first('picture').'</span>' : ''!!}
-                    <img id="picture_preview" class="picture_preview w-100 h100" src="{{ asset(config('admin.path_prefix').'vendor/admin/img/placeholder.png') }}" alt="Preview">
+                    {!! $errors->has('picture') ? '<span class="text-danger">' . $errors->first('picture') . '</span>' : '' !!}
+                    <img id="picture_preview" class="picture_preview w-100 h100"
+                        src="{{ asset(config('admin.path_prefix') . 'vendor/admin/img/placeholder.png') }}" alt="Preview">
 
-                    <input
-                        data-filename-placement="inside"
-                        title="Select a picture to upload"
-                        type="file"
-                        id="picture"
-                        name="picture"
-                        class="form-control"
-                        >
+                    <input data-filename-placement="inside" title="Select a picture to upload" type="file" id="picture"
+                        name="picture" class="form-control">
                 </div>
 
-                <a href="JavaScript:" id="load_picture" class="btn btn-round btn-outline-info btn-block"><i class="material-icons">search</i> Browse</a>
-            </div> --}}
-            <div class="col-md-4 text-center">
-                <div class="kv-avatar">
-                    <div class="file-loading">
-                        <input id="profile-picture" name="avatar-1" type="file" required theme-name="fa">
-                    </div>
-                </div>
-                <div class="kv-avatar-hint">
-                    <small>Select file < 1500 KB</small>
-                </div>
+                <a href="JavaScript:" id="load_picture" class="btn btn-round btn-outline-info btn-block"><i
+                        class="material-icons">search</i> Browse</a>
             </div>
+
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-4 col-lg-4">

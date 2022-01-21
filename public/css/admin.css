@@ -1665,3 +1665,13 @@ textarea.mce-textbox {
   font-family: monospace;
   font-weight: normal;
 }
+
+.file-zoom-dialog .modal-dialog .modal-content {
+  background-color: #fff;
+}
+.file-zoom-dialog .modal-dialog .modal-content .floating-buttons {
+  background-color: rgba(124, 179, 66, 0.8);
+}
+.file-zoom-dialog .modal-dialog .modal-content .modal-header {
+  background: linear-gradient(60deg, #9ccc65, #7cb342);
+}

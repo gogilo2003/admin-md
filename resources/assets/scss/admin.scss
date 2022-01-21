@@ -63,3 +63,19 @@ textarea.mce-textbox {
     font-family: monospace;
     font-weight: normal;
 }
+
+.file-zoom-dialog {
+    .modal-dialog {
+        .modal-content {
+            background-color: #fff;
+
+            .floating-buttons {
+                background-color: rgba($color: #7cb342, $alpha: .8);
+            }
+
+            .modal-header {
+                background: linear-gradient(60deg, #9ccc65, #7cb342);
+            }
+        }
+    }
+}
