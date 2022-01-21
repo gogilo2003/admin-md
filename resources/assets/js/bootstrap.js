@@ -104,8 +104,9 @@ require('@foxythemes/jvectormap')
 require('nouislider')
 require('arrive')
 require('chartist')
-require('../../../public/js/file-input.js')
+require('bootstrap-fileinput')
+require('bootstrap-fileinput/themes/fas/theme')
 require('bootstrap-hover-dropdown')
 require('cropper')
+require('tinymce')
 
-$('.dropdown-toggle').dropdownHover();

@@ -42,4 +42,51 @@ function studle_case(str) {
 //     }
 // });
 
-// import "@fortawesome/fontawesome-free/css/all.css"
+$('.dropdown-toggle').dropdownHover();
+
+tinymce.init({
+    plugins: 'code link image lists table paste preview print anchor fullscreen',
+    selector: ".tinymce",
+    toolbar: 'styleselect | bold italic underline strikethrough removeformat | alignleft aligncenter alignright alignjustify lists | cut copy paste | bullist numlist | outdent indent blockquote | subscript superscript | undo redo | link unlink image table| code print preview fullscreen',
+    menubar: false,
+    allow_conditional_comments: false,
+    content_css: contentCSS,
+    images_upload_handler: function (blobInfo, success, failure) {
+        var xhr, formData;
+
+        xhr = new XMLHttpRequest();
+        xhr.withCredentials = false;
+        xhr.open('POST', images_upload_url);
+
+        xhr.onload = function () {
+            var json;
+
+            if (xhr.status != 200) {
+                failure('HTTP Error: ' + xhr.status);
+                return;
+            }
+
+            json = JSON.parse(xhr.responseText);
+
+            if (!json || typeof json.location != 'string') {
+                failure('Invalid JSON: ' + xhr.responseText);
+                return;
+            }
+
+            success(json.location);
+        };
+
+        formData = new FormData();
+        formData.append('file', blobInfo.blob(), blobInfo.filename());
+        let token = document.head.querySelector('meta[name="csrf-token"]');
+
+        if (token) {
+            formData.append('_token', token.content);
+        } else {
+            console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+        }
+        xhr.send(formData);
+    }
+});
+
+$("#profile-picture").fileinput({ 'showUpload': false, 'previewFileType': 'any', 'theme': 'fas' });

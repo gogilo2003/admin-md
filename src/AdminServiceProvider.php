@@ -25,6 +25,11 @@ class AdminServiceProvider extends ServiceProvider
 		if (file_exists($file)) {
 			require_once($file);
 		}
+
+		$this->mergeConfigFrom(
+			__DIR__ . '/../config/admin.php',
+			'admin'
+		);
 	}
 
 	public function boot()

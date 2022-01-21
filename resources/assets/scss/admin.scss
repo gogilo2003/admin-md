@@ -1,5 +1,7 @@
+// @import url('../css/material-dashboard/material-dashboard.css?v=2.1.0');
 // @import url('@fortawesome/fontawesome-free');
 @import url('@eonasdan/tempus-dominus');
+@import url('bootstrap-fileinput');
 
 .tempus-dominus-widget .date-container-decades div:not(.no-highlight).active,
 .tempus-dominus-widget .date-container-years div:not(.no-highlight).active,
@@ -26,4 +28,38 @@
 .tempus-dominus-widget .time-container-minute div:not(.no-highlight).today::before,
 .tempus-dominus-widget .time-container-second div:not(.no-highlight).today::before {
     border-bottom-color: #7cb342;
+}
+
+textarea.mce-textbox {
+    height: 100% !important;
+}
+
+.mce-edit-area {
+    padding: 5px !important;
+}
+
+@import url('bootstrap-fileinput');
+
+.kv-avatar .krajee-default.file-preview-frame,
+.kv-avatar .krajee-default.file-preview-frame:hover {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+
+.kv-avatar {
+    display: inline-block;
+}
+
+.kv-avatar .file-input {
+    display: table-cell;
+    width: 213px;
+}
+
+.kv-reqd {
+    color: red;
+    font-family: monospace;
+    font-weight: normal;
 }
