@@ -118,18 +118,15 @@ class AdminServiceProvider extends ServiceProvider
 		// ], 'admin-migrations');
 
 		$this->publishes([
-
 			__DIR__ . '/../public/css' => public_path('vendor/admin/css'),
 			__DIR__ . '/../public/img' => public_path('vendor/admin/img'),
 			__DIR__ . '/../public/js' => public_path('vendor/admin/js'),
-			__DIR__ . '/../public/material-design-icons' => public_path('vendor/admin/material-design-icons'),
+			__DIR__ . '/../fonts' => public_path('fonts'),
+			__DIR__ . '/../images' => public_path('images'),
 			__DIR__ . '/../public/iconmoon' => public_path('vendor/admin/iconmoon'),
 			__DIR__ . '/../public/slick' => public_path('vendor/admin/slick'),
 			__DIR__ . '/../public/images' => public_path('vendor/admin/images'),
-			__DIR__ . '/../public/themes' => public_path('vendor/admin/themes'),
-			__DIR__ . '/../public/fonts' => public_path('vendor/admin/fonts'),
-			__DIR__ . '/../public/webfonts' => public_path('vendor/admin/webfonts'),
-			__DIR__ . '/../public/bootstrap-fileinput' => public_path('images/vendor/bootstrap-fileinput'),
+			// __DIR__ . '/../public/themes' => public_path('vendor/admin/themes'),
 			__DIR__ . '/../public/material-dashboard-master/assets/img' => public_path('vendor/admin/material-dashboard-master/assets/img'),
 			__DIR__ . '/../public/material-dashboard-master/assets/css' => public_path('vendor/admin/material-dashboard-master/assets/css'),
 			__DIR__ . '/../public/material-dashboard-master/assets/js' => public_path('vendor/admin/material-dashboard-master/assets/js'),

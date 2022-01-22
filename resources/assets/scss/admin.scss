@@ -79,3 +79,61 @@ textarea.mce-textbox {
         }
     }
 }
+
+body,
+
+
+
+
+
+
+
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4 {
+    font-family: 'Montserrat',
+        sans-serif;
+}
+
+.modal-content {
+    border-radius: 0px;
+}
+
+.dropdown-menu li a {
+    padding: 15px;
+}
+
+.navbar {
+    margin-bottom: 15px;
+}
+
+.alert {
+    min-width: 360px;
+
+    .close {
+        margin-top: 1rem;
+    }
+
+    span,
+    .alert-heading {
+        display: inline-block;
+    }
+
+    .alert-heading {
+        margin-left: 0.5rem;
+    }
+
+    p {
+        margin-left: 1.5rem
+    }
+}

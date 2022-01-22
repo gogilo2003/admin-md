@@ -92,13 +92,13 @@ $('.selectpicker').selectpicker({
     size: 5
 })
 require('datatables.net-bs4')
-require('bootstrap-notify')
+require('bootstrap4-notify')
 // require('../../../public/material-dashboard-master/assets/js/core/bootstrap-material-design.min.js')
 require('jquery-validation')
 require('sweetalert2')
 require('perfect-scrollbar')
 require('twitter-bootstrap-wizard')
-require('bootstrap-tagsinput')
+require('bootstrap-tagsinput-2021')
 require('jasny-bootstrap')
 require('@foxythemes/jvectormap')
 require('nouislider')
@@ -109,4 +109,10 @@ require('bootstrap-fileinput/themes/fas/theme')
 require('bootstrap-hover-dropdown')
 require('cropper')
 require('tinymce')
+require('bootstrap-typeahead')
 
+import 'material-icons/iconfont/material-icons.css';
+import '@fortawesome/fontawesome-free/css/all.css'
+import 'icomoon/style.css'
+import 'cropper/dist/cropper.css'
+import '@fontsource/montserrat'

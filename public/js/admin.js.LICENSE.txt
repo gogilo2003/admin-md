@@ -12,6 +12,22 @@
  */
 
 /*!
+ * Cropper v4.1.0
+ * https://fengyuanchen.github.io/cropper
+ *
+ * Copyright 2014-present Chen Fengyuan
+ * Released under the MIT license
+ *
+ * Date: 2019-10-12T07:43:51.850Z
+ */
+
+/*!
+ * Jasny Bootstrap v4.0.0 (http://jasny.github.io/bootstrap)
+ * Copyright 2012-2019 Arnold Daniels
+ * Licensed under  ()
+ */
+
+/*!
  * Sizzle CSS Selector Engine v2.3.6
  * https://sizzlejs.com/
  *
@@ -20,6 +36,30 @@
  * https://js.foundation/
  *
  * Date: 2021-02-16
+ */
+
+/*!
+ * bootstrap-fileinput v5.2.7
+ * http://plugins.krajee.com/file-input
+ *
+ * Author: Kartik Visweswaran
+ * Copyright: 2014 - 2021, Kartik Visweswaran, Krajee.com
+ *
+ * Licensed under the BSD-3-Clause
+ * https://github.com/kartik-v/bootstrap-fileinput/blob/master/LICENSE.md
+ */
+
+/*!
+ * bootstrap-fileinput v5.2.7
+ * http://plugins.krajee.com/file-input
+ *
+ * Font Awesome 5 icon theme configuration for bootstrap-fileinput. Requires font awesome 5 assets to be loaded.
+ *
+ * Author: Kartik Visweswaran
+ * Copyright: 2014 - 2021, Kartik Visweswaran, Krajee.com
+ *
+ * Licensed under the BSD-3-Clause
+ * https://github.com/kartik-v/bootstrap-fileinput/blob/master/LICENSE.md
  */
 
 /*!
@@ -36,8 +76,36 @@
  * Date: 2021-03-02T17:08Z
  */
 
-/*! DataTables 1.10.18
- * ©2008-2018 SpryMedia Ltd - datatables.net/license
+/*!
+ * jQuery UI Widget 1.13.0
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ */
+
+/*!
+ * jQuery Validation Plugin v1.19.3
+ *
+ * https://jqueryvalidation.org/
+ *
+ * Copyright (c) 2021 Jörn Zaefferer
+ * Released under the MIT license
+ */
+
+/*!
+ * perfect-scrollbar v1.5.3
+ * Copyright 2021 Hyunje Jun, MDBootstrap and Contributors
+ * Licensed under MIT
+ */
+
+/*! DataTables 1.11.3
+ * ©2008-2021 SpryMedia Ltd - datatables.net/license
+ */
+
+/*! DataTables Bootstrap 4 integration
+ * ©2011-2017 SpryMedia Ltd - datatables.net/license
  */
 
 /**
