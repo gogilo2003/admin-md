@@ -11,6 +11,7 @@
     "require": {
         "laravel/framework": ">=7.0",
         "spatie/laravel-searchable": "^1.11",
+        "spatie/laravel-sitemap": "^6.0",
         "intervention/image": "^2.7",
         "intervention/imagecache": "^2.5"
     },

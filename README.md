@@ -104,6 +104,10 @@ remember for api too
     'hash' => false,
 ],
 ```
+Add the login route to the routes/web.php
+```
+Route::get('admin/login',[Ogilo\AdminMd\Http\Controllers\AuthController::class,'getLogin'])->name('login);
+```
 ### Extending Admin
 You can easily add more items to the admin section of the CMS by creating your iwn custom content type and providing links to the content type you have created. It can either be in your application by adding a couple of Controllers, Models and Views.
 #### Routes
