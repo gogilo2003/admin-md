@@ -1,17 +1,28 @@
 {
     "name": "gogilo/admin-md",
     "description": "Material Dasboard themed CMS for Laravel",
-    "keywords": ["Material Dasboard themed CMS for Laravel", "cms", "laravel-cms", "content management system", "bootstrap"],
+    "keywords": [
+        "Material Dasboard themed CMS for Laravel",
+        "cms",
+        "laravel-cms",
+        "content management system",
+        "bootstrap"
+    ],
     "require": {
-        "laravel/framework": "^8.54"
+        "laravel/framework": "^7.*|^8.54",
+        "spatie/laravel-searchable":
     },
     "license": "MIT",
-    "authors": [{
-        "name": "Ogilo G. D. Ouma",
-        "email": "gogilo2003@hotmail.com"
-    }],
+    "authors": [
+        {
+            "name": "Ogilo G. D. Ouma",
+            "email": "gogilo2003@hotmail.com"
+        }
+    ],
     "autoload": {
-        "psr-4": { "Ogilo\\AdminMd\\": "src/" }
+        "psr-4": {
+            "Ogilo\\AdminMd\\": "src/"
+        }
     },
     "extra": {
         "laravel": {
