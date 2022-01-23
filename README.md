@@ -96,7 +96,14 @@ To the list of your guards, add
     'provider' => 'admins',
 ],
 ```
-
+remember for api too
+```
+'api' => [
+    'driver' => 'token',
+    'provider' => 'admins',
+    'hash' => false,
+],
+```
 ### Extending Admin
 You can easily add more items to the admin section of the CMS by creating your iwn custom content type and providing links to the content type you have created. It can either be in your application by adding a couple of Controllers, Models and Views.
 #### Routes
