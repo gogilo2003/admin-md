@@ -42,8 +42,10 @@ function studle_case(str) {
 //     }
 // });
 
+// Dropdown menu on hover initialing
 $('.dropdown-toggle').dropdownHover();
 
+// TinyMCE initializing
 tinymce.init({
     plugins: 'code link image lists table paste preview print anchor fullscreen',
     selector: ".tinymce",
@@ -89,4 +91,36 @@ tinymce.init({
     }
 });
 
-$("#profile-picture").fileinput({ 'showUpload': false, 'previewFileType': 'any', 'theme': 'fas' });
+// File input
+// $("#profile-picture").fileinput({ 'showUpload': false, 'previewFileType': 'any', 'theme': 'fas' });
+
+// Datepicker initializing
+document.querySelectorAll('.datetimepicker').forEach(item => {
+    new tempusDominus.TempusDominus(item, {
+        hooks: {
+            inputFormat: (context, date) => { return moment(date).format('YYYY-MM-DD HH:mm:ss') },
+        },
+        display: { sideBySide: true }
+    })
+})
+
+document.querySelectorAll('.timepicker').forEach(item => {
+    new tempusDominus.TempusDominus(item, {
+        localization: { locale: 'en' },
+        hooks: {
+            inputFormat: (context, date) => { return moment(date).format('LT') }
+        }
+    })
+})
+document.querySelectorAll('.datepicker').forEach(item => {
+    new tempusDominus.TempusDominus(item, {
+        hooks: {
+            inputFormat: (context, date) => { return moment(date).format('YYYY-MM-DD') }
+        }
+    })
+})
+
+// Selectpicker initializing
+$('.selectpicker').selectpicker({
+    size: 5
+})

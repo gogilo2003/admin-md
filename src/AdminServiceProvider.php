@@ -3,18 +3,16 @@
 namespace Ogilo\AdminMd;
 
 use Illuminate\Support\ServiceProvider;
-use Ogilo\AdminMd\Console\UpdateCommand;
-use Ogilo\AdminMd\Console\InstallCommand;
 use Ogilo\AdminMd\Console\GenerateSitemap;
+use Ogilo\AdminMd\Console\InstallCommand;
 use Ogilo\AdminMd\Console\MakePageCommand;
+use Ogilo\AdminMd\Console\UpdateCommand;
 
 /**
  *
  */
-class AdminServiceProvider extends ServiceProvider
-{
-	function register()
-	{
+class AdminServiceProvider extends ServiceProvider {
+	function register() {
 
 		// print(config('app.name').' in register()');
 		$this->app->bind('admin', function ($app) {
@@ -23,7 +21,7 @@ class AdminServiceProvider extends ServiceProvider
 
 		$file = __DIR__ . '/Support/helpers.php';
 		if (file_exists($file)) {
-			require_once($file);
+			require_once $file;
 		}
 
 		$this->mergeConfigFrom(
@@ -32,8 +30,7 @@ class AdminServiceProvider extends ServiceProvider
 		);
 	}
 
-	public function boot()
-	{
+	public function boot() {
 
 		if (config('admin.articles')) {
 			config(['admin.menu.admin-articles' => 'Articles']);
@@ -94,16 +91,14 @@ class AdminServiceProvider extends ServiceProvider
 			config(['admin.menu.admin-products' => null]);
 		}
 
-		// if ($this->app->runningInConsole()) {
-		$this->commands([
-			InstallCommand::class,
-			UpdateCommand::class,
-			MakePageCommand::class,
-			GenerateSitemap::class,
-		]);
-		// }
-		// print(config('app.name').' in boot()');
-		// require_once(__DIR__.'/Support/helpers.php');
+		if ($this->app->runningInConsole()) {
+			$this->commands([
+				InstallCommand::class,
+				UpdateCommand::class,
+				MakePageCommand::class,
+				GenerateSitemap::class,
+			]);
+		}
 
 		$this->loadRoutesFrom(__DIR__ . '/../routes/admin.php');
 		$this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
@@ -123,26 +118,23 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__ . '/../public/js' => public_path('vendor/admin/js'),
 			__DIR__ . '/../fonts' => public_path('fonts'),
 			__DIR__ . '/../images' => public_path('images'),
-			__DIR__ . '/../public/iconmoon' => public_path('vendor/admin/iconmoon'),
-			__DIR__ . '/../public/slick' => public_path('vendor/admin/slick'),
 			__DIR__ . '/../public/images' => public_path('vendor/admin/images'),
-			// __DIR__ . '/../public/themes' => public_path('vendor/admin/themes'),
-			__DIR__ . '/../public/material-dashboard-master/assets/img' => public_path('vendor/admin/material-dashboard-master/assets/img'),
-			__DIR__ . '/../public/material-dashboard-master/assets/css' => public_path('vendor/admin/material-dashboard-master/assets/css'),
-			__DIR__ . '/../public/material-dashboard-master/assets/js' => public_path('vendor/admin/material-dashboard-master/assets/js'),
+			// __DIR__ . '/../public/material-dashboard-master/assets/img' => public_path('vendor/admin/material-dashboard-master/assets/img'),
+			// __DIR__ . '/../public/material-dashboard-master/assets/css' => public_path('vendor/admin/material-dashboard-master/assets/css'),
+			// __DIR__ . '/../public/material-dashboard-master/assets/js' => public_path('vendor/admin/material-dashboard-master/assets/js'),
 		], 'admin-assets');
 
 		$this->publishes([
-			__DIR__ . '/../config/admin.php' => config_path('admin.php')
+			__DIR__ . '/../config/admin.php' => config_path('admin.php'),
 		], 'admin-config');
 
 		$this->publishes([
-			__DIR__ . '/../public/stopwords.txt' => public_path('stopwords.txt')
+			__DIR__ . '/../public/stopwords.txt' => public_path('stopwords.txt'),
 		], 'stopwords');
 
 		$this->publishes([
 			__DIR__ . '/../resources/assets/js' => resource_path('assets/vendor/admin/js'),
-			__DIR__ . '/../resources/assets/scss' => resource_path('assets/vendor/admin/scss')
+			__DIR__ . '/../resources/assets/scss' => resource_path('assets/vendor/admin/scss'),
 		], 'vue-resources');
 
 		$this->publishes([

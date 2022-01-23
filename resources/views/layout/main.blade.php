@@ -28,9 +28,9 @@
     <title>@yield('title')</title>
 
     <!-- CSS Files -->
-    <link
+    {{-- <link
         href="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/css/material-dashboard.css') }}"
-        rel="stylesheet" />
+        rel="stylesheet" /> --}}
     <link href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/admin.css') }}" rel="stylesheet" />
 
     @stack('styles')

@@ -7,14 +7,17 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 // require('jquery')
+
 try {
+
     window.$ = window.jQuery = require('jquery');
+
     require('jquery-ui')
 
     require('moment');
-    require('popper.js/dist/popper.js');
-    require('bootstrap');
 
+    require('bootstrap')
+    
 } catch (e) {
     console.log(e.getMessage())
 }
@@ -62,38 +65,9 @@ if (token) {
 const moment = require('moment')
 const tempusDominus = require('@eonasdan/tempus-dominus')
 
-document.querySelectorAll('.datetimepicker').forEach(item => {
-    new tempusDominus.TempusDominus(item, {
-        hooks: {
-            inputFormat: (context, date) => { return moment(date).format('YYYY-MM-DD HH:mm:ss') },
-        },
-        display: { sideBySide: true }
-    })
-})
-
-document.querySelectorAll('.timepicker').forEach(item => {
-    new tempusDominus.TempusDominus(item, {
-        localization: { locale: 'en' },
-        hooks: {
-            inputFormat: (context, date) => { return moment(date).format('LT') }
-        }
-    })
-})
-document.querySelectorAll('.datepicker').forEach(item => {
-    new tempusDominus.TempusDominus(item, {
-        hooks: {
-            inputFormat: (context, date) => { return moment(date).format('YYYY-MM-DD') }
-        }
-    })
-})
-
 require('bootstrap-select')
-$('.selectpicker').selectpicker({
-    size: 5
-})
 require('datatables.net-bs4')
 require('bootstrap4-notify')
-// require('../../../public/material-dashboard-master/assets/js/core/bootstrap-material-design.min.js')
 require('jquery-validation')
 require('sweetalert2')
 require('perfect-scrollbar')
@@ -110,9 +84,11 @@ require('bootstrap-hover-dropdown')
 require('cropper')
 require('tinymce')
 require('bootstrap-typeahead')
+// require('../material-dashboard-master/assets/js/core/bootstrap-material-design.min.js')
 
 import 'material-icons/iconfont/material-icons.css';
 import '@fortawesome/fontawesome-free/css/all.css'
 import 'icomoon/style.css'
 import 'cropper/dist/cropper.css'
 import '@fontsource/montserrat'
+import '../material-dashboard-master/assets/css/material-dashboard.css'
