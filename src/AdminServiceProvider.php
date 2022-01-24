@@ -11,8 +11,10 @@ use Ogilo\AdminMd\Console\UpdateCommand;
 /**
  *
  */
-class AdminServiceProvider extends ServiceProvider {
-	function register() {
+class AdminServiceProvider extends ServiceProvider
+{
+	function register()
+	{
 
 		// print(config('app.name').' in register()');
 		$this->app->bind('admin', function ($app) {
@@ -30,7 +32,8 @@ class AdminServiceProvider extends ServiceProvider {
 		);
 	}
 
-	public function boot() {
+	public function boot()
+	{
 
 		if (config('admin.articles')) {
 			config(['admin.menu.admin-articles' => 'Articles']);
@@ -95,10 +98,13 @@ class AdminServiceProvider extends ServiceProvider {
 			$this->commands([
 				InstallCommand::class,
 				UpdateCommand::class,
-				MakePageCommand::class,
-				GenerateSitemap::class,
 			]);
 		}
+
+		$this->commands([
+			MakePageCommand::class,
+			GenerateSitemap::class,
+		]);
 
 		$this->loadRoutesFrom(__DIR__ . '/../routes/admin.php');
 		$this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
