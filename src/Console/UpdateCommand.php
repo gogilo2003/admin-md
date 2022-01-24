@@ -56,16 +56,15 @@ class UpdateCommand extends Command
             } catch (Exception $e) {
                 Command::error($e->getMessage());
             }
-
         }
 
-        $this->call('vendor:publish', ['--tag'=>'admin-assets', '--force']);
+        $this->call('vendor:publish', ['--tag' => 'admin-assets', '--force']);
         $this->comment('Admin Assets Published');
-        $this->call('vendor:publish', ['--tag'=>'node_modules', '--force']);
-        $this->comment('Node Modules Published');
-        $this->call('vendor:publish', ['--tag'=>'md-public', '--force']);
-        $this->comment('md-public Published');
-        $this->call('vendor:publish', ['--tag'=>'stopwords', '--force']);
+        // $this->call('vendor:publish', ['--tag'=>'node_modules', '--force']);
+        // $this->comment('Node Modules Published');
+        // $this->call('vendor:publish', ['--tag'=>'md-public', '--force']);
+        // $this->comment('md-public Published');
+        $this->call('vendor:publish', ['--tag' => 'stopwords', '--force']);
         $this->comment('stopwords Published');
 
         // clean_directories();
@@ -73,8 +72,8 @@ class UpdateCommand extends Command
         /**
          * Update hits table
          * add browsers column and platforms column
-        */
-        $this->comment('Updating hits new columns'."\n");
+         */
+        $this->comment('Updating hits new columns' . "\n");
 
         $hits = Hit::all();
         $bar = $this->output->createProgressBar(count($hits));

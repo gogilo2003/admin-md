@@ -138,10 +138,10 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__ . '/../public/stopwords.txt' => public_path('stopwords.txt'),
 		], 'stopwords');
 
-		$this->publishes([
-			__DIR__ . '/../resources/assets/js' => resource_path('assets/vendor/admin/js'),
-			__DIR__ . '/../resources/assets/scss' => resource_path('assets/vendor/admin/scss'),
-		], 'vue-resources');
+		// $this->publishes([
+		// 	__DIR__ . '/../resources/assets/js' => resource_path('assets/vendor/admin/js'),
+		// 	__DIR__ . '/../resources/assets/scss' => resource_path('assets/vendor/admin/scss'),
+		// ], 'vue-resources');
 
 		$this->publishes([
 			__DIR__ . '/../resources/views' => resource_path('views/vendor/admin'),

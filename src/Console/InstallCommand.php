@@ -47,11 +47,11 @@ class InstallCommand extends Command
 
         $this->call('migrate');
 
-        $this->call('vendor:publish', ['--tag'=>'node_modules', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'md-public', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'admin-assets', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'vue-resources', '--force']);
-        $this->call('vendor:publish', ['--tag'=>'stopwords', '--force']);
+        // $this->call('vendor:publish', ['--tag'=>'node_modules', '--force']);
+        // $this->call('vendor:publish', ['--tag'=>'md-public', '--force']);
+        $this->call('vendor:publish', ['--tag' => 'admin-assets', '--force']);
+        // $this->call('vendor:publish', ['--tag'=>'vue-resources', '--force']);
+        $this->call('vendor:publish', ['--tag' => 'stopwords', '--force']);
 
         // clean_directories();
     }
