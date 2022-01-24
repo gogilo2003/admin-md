@@ -13,8 +13,7 @@
         "spatie/laravel-searchable": "^1.0",
         "spatie/laravel-sitemap": "^4.0|^5.0|^6.0",
         "intervention/image": "^2.7",
-        "intervention/imagecache": "^2.5",
-        "php-ffmpeg/php-ffmpeg": "^0.19.0"
+        "intervention/imagecache": "^2.5"
     },
     "license": "MIT",
     "authors": [
