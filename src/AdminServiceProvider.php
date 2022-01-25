@@ -125,6 +125,7 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__ . '/../fonts' => public_path('fonts'),
 			__DIR__ . '/../images' => public_path('images'),
 			__DIR__ . '/../public/images' => public_path('vendor/admin/images'),
+			__DIR__ . '/../node_modules/tinymce/themes' => public_path('vendor/admin/js'),
 			// __DIR__ . '/../public/material-dashboard-master/assets/img' => public_path('vendor/admin/material-dashboard-master/assets/img'),
 			// __DIR__ . '/../public/material-dashboard-master/assets/css' => public_path('vendor/admin/material-dashboard-master/assets/css'),
 			// __DIR__ . '/../public/material-dashboard-master/assets/js' => public_path('vendor/admin/material-dashboard-master/assets/js'),
