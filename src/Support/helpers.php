@@ -20,9 +20,9 @@ if (!function_exists('get_blogs')) {
 		$blog = null;
 
 		if ($paginate) {
-			$blogs = $cat ? Article::where('article_category_id', $cat->id)->where('published',1)->paginate($paginate) : [];
+			$blogs = $cat ? Article::where('article_category_id', $cat->id)->where('published', 1)->paginate($paginate) : [];
 		} else {
-			$blogs = $cat ? Article::where('article_category_id', $cat->id)->where('published',1)->get() : [];
+			$blogs = $cat ? Article::where('article_category_id', $cat->id)->where('published', 1)->get() : [];
 		}
 		return $blogs;
 	}
@@ -1195,6 +1195,9 @@ function get_icons()
 		"icon-weather_wind_W" => "weather_wind_W",
 		"icon-weather_wind" => "weather_wind",
 		"icon-weather_windgust" => "weather_windgust",
+		'fas fa-bolt' => "Bolt",
+		'flaticon-slider' => "flaticon-slider",
+		'fas fa-lightbulb' => 'Light Bulb'
 	);
 }
 
