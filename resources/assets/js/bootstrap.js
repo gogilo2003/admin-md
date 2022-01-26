@@ -62,8 +62,6 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
-const moment = require('moment')
-const tempusDominus = require('@eonasdan/tempus-dominus')
 
 require('bootstrap-select')
 require('datatables.net-bs4')

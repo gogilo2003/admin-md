@@ -93,7 +93,8 @@ tinymce.init({
 
 // File input
 // $("#profile-picture").fileinput({ 'showUpload': false, 'previewFileType': 'any', 'theme': 'fas' });
-
+const moment = require('moment')
+const tempusDominus = require('@eonasdan/tempus-dominus')
 // Datepicker initializing
 document.querySelectorAll('.datetimepicker').forEach(item => {
     new tempusDominus.TempusDominus(item, {
