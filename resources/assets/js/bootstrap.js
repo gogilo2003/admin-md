@@ -17,9 +17,9 @@ try {
     require('moment');
 
     require('bootstrap')
-    
+
 } catch (e) {
-    console.log(e.getMessage())
+    console.log(e)
 }
 
 /**
@@ -82,6 +82,7 @@ require('bootstrap-hover-dropdown')
 require('cropper')
 require('tinymce')
 require('bootstrap-typeahead')
+require('jquery-sortable')
 // require('../material-dashboard-master/assets/js/core/bootstrap-material-design.min.js')
 
 import 'material-icons/iconfont/material-icons.css';
