@@ -14,6 +14,7 @@ const { exec } = require('child_process');
 mix.js('resources/assets/js/admin.js', 'public/js')
     .vue()
     .sass('resources/assets/scss/admin.scss', 'public/css')
+    .sass('resources/assets/scss/print.scss', 'public/css')
     // .postCss('resources/assets/css/admin.css', 'public/css', [
     //     //
     // ])
