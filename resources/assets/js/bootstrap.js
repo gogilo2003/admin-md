@@ -83,7 +83,8 @@ require('cropper')
 require('tinymce')
 require('bootstrap-typeahead')
 require('jquery-sortable')
-// require('../material-dashboard-master/assets/js/core/bootstrap-material-design.min.js')
+require('@popperjs/core')
+require('../material-dashboard-master/assets/js/core/bootstrap-material-design.min.js')
 
 import 'material-icons/iconfont/material-icons.css';
 import '@fortawesome/fontawesome-free/css/all.css'
