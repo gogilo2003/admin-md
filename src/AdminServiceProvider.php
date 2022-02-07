@@ -127,7 +127,7 @@ class AdminServiceProvider extends ServiceProvider
 			__DIR__ . '/../public/images' => public_path('vendor/admin/images'),
 			// __DIR__ . '/../public/material-dashboard-master/assets/img' => public_path('vendor/admin/material-dashboard-master/assets/img'),
 			// __DIR__ . '/../public/material-dashboard-master/assets/css' => public_path('vendor/admin/material-dashboard-master/assets/css'),
-			__DIR__ . '/../resources/assets/material-dashboard-master/assets/js' => public_path('vendor/admin/material-dashboard-master/assets/js'),
+			// __DIR__ . '/../resources/assets/material-dashboard-master/assets/js' => public_path('vendor/admin/material-dashboard-master/assets/js'),
 		], 'admin-assets');
 
 		$this->publishes([
