@@ -16,6 +16,8 @@ try {
 
     require('moment');
 
+    window.Popper = require('popper.js/dist/umd/popper.js');
+
     require('bootstrap')
 
 } catch (e) {
@@ -83,8 +85,9 @@ require('cropper')
 require('tinymce')
 require('bootstrap-typeahead')
 require('jquery-sortable')
-require('@popperjs/core')
 require('../material-dashboard-master/assets/js/core/bootstrap-material-design.min.js')
+require('../material-dashboard-master/assets/js/material-dashboard.js')
+
 
 import 'material-icons/iconfont/material-icons.css';
 import '@fortawesome/fontawesome-free/css/all.css'

@@ -29,7 +29,7 @@
         "datatables.net-bs4": "^1.11.3",
         "icomoon": "^1.0.0",
         "jasny-bootstrap": "^4.0.0",
-        "jquery": "^3.6.0",
+        "jquery": "^3.2.1",
         "jquery-sortable": "^0.9.13",
         "jquery-ui": "^1.13.0",
         "jquery-validation": "^1.19.3",
@@ -39,22 +39,22 @@
         "nouislider": "^15.5.0",
         "perfect-scrollbar": "^1.5.5",
         "popper.js": "^1.16.1",
+        "resolve-url-loader": "^4.0.0",
         "slick-carousel": "^1.8.1",
         "sweetalert2": "^11.3.6",
         "tinymce": "^5.10.2",
         "twitter-bootstrap-wizard": "^1.2.0",
         "typeface-montserrat": "^1.1.13",
-        "vue": "^2.6.14"
+        "vue": "^2.6.14",
+        "vue-loader": "^15.9.8"
     },
     "devDependencies": {
         "axios": "^0.21",
         "laravel-mix": "^6.0.41",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
-        "resolve-url-loader": "^4.0.0",
         "sass": "^1.38.0",
         "sass-loader": "^12.1.0",
-        "vue-loader": "^15.9.8",
         "vue-template-compiler": "^2.6.14"
     }
 }
