@@ -15,9 +15,10 @@ mix.js('resources/assets/js/admin.js', 'public/js')
     .vue()
     .sass('resources/assets/scss/admin.scss', 'public/css')
     .sass('resources/assets/scss/print.scss', 'public/css')
+    .sass('resources/assets/scss/font-awesome.min.scss', 'public/css')
     // .postCss('resources/assets/css/admin.css', 'public/css', [
     //     //
     // ])
     .after(() => {
-        exec('php /var/www/laravel/artisan vendor:publish --force --tag=admin-assets', (res, stdout, stderr) => { console.log(stdout); });
+        exec('php ../../../artisan vendor:publish --force --tag=admin-assets', (res, stdout, stderr) => { console.log(stdout); });
     })
