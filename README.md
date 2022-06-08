@@ -79,7 +79,7 @@ This Commands will install all frontend components, create the neccesary databas
 ```
 php artisan admin:install
 ```
-After every update of gogilo/admin, it's neccesary to run the admin:update command as this will fix any database structure changes, any theme changes and also any perform any neccesary cleanup/houskeeping.
+After every update of gogilo/admin, it's neccesary to run the admin:update command as this will fix any database structure changes, any theme changes and also perform neccesary cleanup/houskeeping.
 
 ```
 php artisan admin:update
