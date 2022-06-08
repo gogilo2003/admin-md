@@ -50,9 +50,16 @@ in case the function is not already in your exceptions handler class, you can ju
 
 
 ```
+/**
+* Convert an authentication exception into a response.
+*
+* @param  \Illuminate\Http\Request  $request
+* @param  \Illuminate\Auth\AuthenticationException  $exception
+* @return \Symfony\Component\HttpFoundation\Response
+*/
 protected function unauthenticated($request, \Illuminate\Auth\AuthenticationException $exception)
 {
-    if(is_admin_path()){
+    if (is_admin_path()) {
         return redirect()->guest('admin/login');
     }
 
