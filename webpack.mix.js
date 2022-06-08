@@ -16,6 +16,8 @@ mix.js('resources/assets/js/admin.js', 'public/js')
     .sass('resources/assets/scss/admin.scss', 'public/css')
     .sass('resources/assets/scss/print.scss', 'public/css')
     .sass('resources/assets/scss/font-awesome.min.scss', 'public/css')
+    .sass('resources/assets/scss/font-awesome-5-base64.scss', 'public/css')
+    .sass('resources/assets/scss/font-awesome-4-base64.scss', 'public/css')
     // .postCss('resources/assets/css/admin.css', 'public/css', [
     //     //
     // ])

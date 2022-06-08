@@ -14,6 +14,7 @@
         "@fontsource/montserrat": "^4.5.2",
         "@fortawesome/fontawesome-free": "^5.15.4",
         "@foxythemes/jvectormap": "^1.0.0",
+        "@jsweb/font-awesome-base64": "^2.3.3",
         "@popperjs/core": "^2.11.2",
         "arrive": "^2.4.1",
         "bootstrap": "^4.6.1",

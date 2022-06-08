@@ -1,6 +1,8 @@
 {
     "/public/js/admin.js": "/public/js/admin.js",
     "/public/css/admin.css": "/public/css/admin.css",
+    "/public/css/font-awesome-5-base64.css": "/public/css/font-awesome-5-base64.css",
     "/public/css/font-awesome.min.css": "/public/css/font-awesome.min.css",
-    "/public/css/print.css": "/public/css/print.css"
+    "/public/css/print.css": "/public/css/print.css",
+    "/public/css/font-awesome-4-base64.css": "/public/css/font-awesome-4-base64.css"
 }
