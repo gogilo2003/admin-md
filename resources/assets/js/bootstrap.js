@@ -70,7 +70,8 @@ require('datatables.net-bs4')
 require('bootstrap4-notify')
 require('jquery-validation')
 require('sweetalert2')
-require('perfect-scrollbar')
+import perfectScrollbar from 'perfect-scrollbar'
+window.PerfectScrollbar = perfectScrollbar
 require('twitter-bootstrap-wizard')
 require('bootstrap-tagsinput-2021')
 require('jasny-bootstrap')
@@ -94,3 +95,4 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import 'icomoon/style.css'
 import 'cropper/dist/cropper.css'
 import '@fontsource/montserrat'
+
