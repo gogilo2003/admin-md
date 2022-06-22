@@ -59,52 +59,49 @@
             </div>
         </div>
     </div>
-
-
 @endsection
 
 @section('styles')
     <!--
-        <style type="text/css">
-         .Chart {
-          background: #212733;
-          border-radius: 15px;
-          box-shadow: 0px 2px 15px rgba(25, 25, 25, 0.27);
-          margin: 25px 0;
-         }
+            <style type="text/css">
+             .Chart {
+              background: #212733;
+              border-radius: 15px;
+              box-shadow: 0px 2px 15px rgba(25, 25, 25, 0.27);
+              margin: 25px 0;
+             }
 
-         .Chart h2 {
-          margin-top: 0;
-          padding: 15px 0;
-          color: rgba(255, 0, 0, 0.5);
-          border-bottom: 1px solid #323d54;
-         }
-        </style>
-        -->
-    <link rel="stylesheet"
-        href="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/css/Chart.min.css') }}">
+             .Chart h2 {
+              margin-top: 0;
+              padding: 15px 0;
+              color: rgba(255, 0, 0, 0.5);
+              border-bottom: 1px solid #323d54;
+             }
+            </style>
+            -->
+    {{-- <link rel="stylesheet"
+        href="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/css/Chart.min.css') }}"> --}}
 @endsection
 
 @section('scripts_top')
-
     <script type="text/javascript">
         // tinymce.init({selector:'textarea',menubar:false});
     </script>
 @endsection
 
 @push('scripts_bottom')
-    <script type="text/javascript"
+    {{-- <script type="text/javascript"
         src="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/js/plugins/Chart.min.js') }}">
-    </script>
+    </script> --}}
 
     <!--
-        <script>
-            $(document).ready(function() {
-                // Javascript method's body can be found in assets/js/demos.js
-                md.initDashboardPageCharts();
-            });
-        </script>
-        -->
+            <script>
+                $(document).ready(function() {
+                    // Javascript method's body can be found in assets/js/demos.js
+                    md.initDashboardPageCharts();
+                });
+            </script>
+            -->
 
     <script type="text/javascript">
         $(document).ready(function() {

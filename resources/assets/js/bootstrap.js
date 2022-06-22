@@ -96,3 +96,7 @@ import 'icomoon/style.css'
 import 'cropper/dist/cropper.css'
 import '@fontsource/montserrat'
 
+import Chart from 'chart.js/auto';
+
+window.Chart = Chart;
+
