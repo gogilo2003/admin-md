@@ -13,7 +13,7 @@ class FixRouteCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'admin:route';
+    protected $signature = 'admin:fix_route';
 
     /**
      * The console command description.
@@ -39,44 +39,31 @@ class FixRouteCommand extends Command
      */
     public function handle()
     {
-        $replacement = <<<EOD
 
-    /**
-    * Convert an authentication exception into a response.
-    *
-    * @param  \Illuminate\Http\Request  \$request
-    * @param  \Illuminate\Auth\AuthenticationException  \$exception
-    * @return \Symfony\Component\HttpFoundation\Response
-    */
-    protected function unauthenticated(\$request, \Illuminate\Auth\AuthenticationException \$exception)
-    {
-        if (is_admin_path()) {
-            return redirect()->guest('admin/login');
-        }
-
-        if (\$request->expectsJson()) {
-            return response()->json(['error' => 'Unauthenticated.'], 401);
-        }
-
-        return redirect()->guest('login');
-    }
-}
-EOD;
         $path = base_path('routes/web.php');
         $subject = file_get_contents($path);
-        // $output_array = [];
 
-        // preg_match('/function\ unauthenticated/', $subject, $output_array);
+        $needle = "Route::get('/', function () {
+    return view('welcome');
+});";
 
-        // if (count($output_array)) {
-        //     $this->info('Exeption handler already fixed!');
-        // } else {
-        //     $this->comment('Preparing to fix exception handler');
-        //     $subject = preg_replace('/[\}]$/', $replacement, $subject);
-        //     file_put_contents($path, $subject);
-        //     $this->info('Exception handler fixed');
-        // }
+        $replace = "// Route::get('/', function () {
+//     return view('welcome');
+// });";
 
-        $this->info($subject);
+        if (str_contains($subject, $needle)) {
+            $subject = \Illuminate\Support\Str::replaceLast($needle, $replace, $subject);
+            file_put_contents($path, $subject);
+            $this->info('Welcome route commented');
+        }
+
+        $needle = "Route::get('admin/login', [Ogilo\AdminMd\Http\Controllers\AuthController::class, 'getLogin'])->name('login');";
+
+        if (!str_contains($subject, $needle)) {
+            $subject .= "\n" . $needle;
+            file_put_contents($path, $subject);
+            $this->info('Login route added');
+        }
+        $this->info('Route fixing complete');
     }
 }

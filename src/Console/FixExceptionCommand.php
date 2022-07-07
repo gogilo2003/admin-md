@@ -13,7 +13,7 @@ class FixExceptionCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'admin:exception';
+    protected $signature = 'admin:fix_exception';
 
     /**
      * The console command description.
