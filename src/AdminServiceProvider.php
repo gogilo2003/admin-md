@@ -3,10 +3,12 @@
 namespace Ogilo\AdminMd;
 
 use Illuminate\Support\ServiceProvider;
-use Ogilo\AdminMd\Console\GenerateSitemap;
-use Ogilo\AdminMd\Console\InstallCommand;
-use Ogilo\AdminMd\Console\MakePageCommand;
 use Ogilo\AdminMd\Console\UpdateCommand;
+use Ogilo\AdminMd\Console\InstallCommand;
+use Ogilo\AdminMd\Console\FixRouteCommand;
+use Ogilo\AdminMd\Console\GenerateSitemap;
+use Ogilo\AdminMd\Console\MakePageCommand;
+use Ogilo\AdminMd\Console\FixExceptionCommand;
 
 /**
  *
@@ -98,6 +100,8 @@ class AdminServiceProvider extends ServiceProvider
             $this->commands([
                 InstallCommand::class,
                 UpdateCommand::class,
+                FixExceptionCommand::class,
+                FixRouteCommand::class,
             ]);
         }
 

@@ -110,7 +110,7 @@ Tip 2: you can also add an image using data-image tag-->
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.gogilo.com" class="btn btn-fab btn-danger btn-round"
+                                <a href="https://www.gogilo.micartech.co.ke" class="btn btn-fab btn-danger btn-round"
                                     target="_NEW">
                                     <i class="fas fa-book"></i>
                                 </a>
