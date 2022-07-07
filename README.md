@@ -50,26 +50,8 @@ if(is_admin_path()){
 
 in case the function is not already in your exceptions handler class, you can just add the function below to overide the inherited function.
 
-```php
-/**
-* Convert an authentication exception into a response.
-*
-* @param  \Illuminate\Http\Request  $request
-* @param  \Illuminate\Auth\AuthenticationException  $exception
-* @return \Symfony\Component\HttpFoundation\Response
-*/
-protected function unauthenticated($request, \Illuminate\Auth\AuthenticationException $exception)
-{
-    if (is_admin_path()) {
-        return redirect()->guest('admin/login');
-    }
-
-    if ($request->expectsJson()) {
-        return response()->json(['error' => 'Unauthenticated.'], 401);
-    }
-
-    return redirect()->guest('login');
-}
+```bash
+php artisan admin:fix_exception
 ```
 
 ### Install or Update
@@ -123,7 +105,7 @@ remember for api too
 Add the login route to the routes/web.php
 
 ```php
-Route::get('admin/login',[Ogilo\AdminMd\Http\Controllers\AuthController::class,'getLogin'])->name('login');
+php artisan admin:fix_route
 ```
 
 ### Extending Admin
