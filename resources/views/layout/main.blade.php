@@ -110,7 +110,8 @@ Tip 2: you can also add an image using data-image tag-->
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.gogilo.com" class="btn btn-fab btn-danger btn-round" target="_NEW">
+                                <a href="https://www.gogilo.com" class="btn btn-fab btn-danger btn-round"
+                                    target="_NEW">
                                     <i class="fas fa-book"></i>
                                 </a>
                             </li>
@@ -124,6 +125,7 @@ Tip 2: you can also add an image using data-image tag-->
             </footer>
         </div>
     </div>
+    @stack('scripts_above')
     <script type="text/javascript">
         var contentCSS = "{{ config('admin.content_css') }}"
         let images_upload_url = '{{ route('admin-images_upload_url') }}'
