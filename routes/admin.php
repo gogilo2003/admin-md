@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Ogilo\AdminMd\Http\Controllers\BlogController;
+use Ogilo\AdminMd\Http\Controllers\ProfileController;
 
 Route::group(['middleware' => 'web', 'as' => 'admin', 'prefix' => 'admin', 'namespace' => 'Ogilo\AdminMd\Http\Controllers'], function () {
 
@@ -204,6 +205,7 @@ Route::group(['middleware' => 'web', 'as' => 'admin', 'prefix' => 'admin', 'name
             Route::post('edit', ['as' => '-edit-post', 'uses' => 'ProfileController@postEdit']);
             Route::get('positions', ['as' => '-positions', 'uses' => 'ProfileController@getPositions']);
             Route::post('publish', ['as' => '-publish', 'uses' => 'ProfileController@postPublish']);
+            Route::post('feature', [ProfileController::class, 'postFeature'])->name('-feature');
             Route::post('delete', ['as' => '-delete', 'uses' => 'ProfileController@postDelete']);
         });
 
