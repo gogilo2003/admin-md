@@ -15,6 +15,7 @@
     'events' => false,
     'products' => false,
     'branches' => false,
+    'packages' => true,
     'contact' => NULL,
     'content_css' => NULL,
     'menu' =>

@@ -11,7 +11,7 @@
 @section('breadcrumbs')
     @parent
     <li>
-        <a href="{{ route('admin-blogs') }}"><i class="fa fa-files-o"></i> Blog</a>
+        <a href="{{ route('admin-blogs') }}"><i class="fas fa-copy"></i> Blog</a>
     </li>
     <li class="active"><span><i class="fa fa-pencil"></i> Edit Blog ({{ $blog->title }})</span></li>
 @stop
@@ -33,7 +33,7 @@
             <hr>
             <h3 class="text-uppercase">Comments</h3>
             @foreach ($blog->comments as $comment)
-                @include('admin::blogs.inc.comment',['comment'=>$comment])
+                @include('admin::blogs.inc.comment', ['comment' => $comment])
             @endforeach
         </div>
     </div>
@@ -74,9 +74,7 @@
     </style>
 @stop
 @section('scripts_top')
-    <script type="text/javascript">
-
-    </script>
+    <script type="text/javascript"></script>
 @stop
 
 @section('scripts_bottom')
@@ -169,7 +167,7 @@
             $.post('{{ route('api-admin-comments-reply') }}', reply).then(response => {
                 if (response.success) {
                     // let card = document.getElementById('commentCard' + id)
-                    
+
                     $.notify({
                         message: response.message,
                         icon: 'check_circle'

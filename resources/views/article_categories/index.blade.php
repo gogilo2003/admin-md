@@ -41,26 +41,26 @@
 					<td>
 						<div class="btn-group">
 							<a href="{{ route('admin-article_categories-edit',$article_category->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Edit</a>
-							<button data-pages="{{ json_encode($article_category->pageIds()) }}" data-id="{{ $article_category->id }}" class="btn btn-info btn-sm" data-toggle="modal" href='#pagesModal'><i class="fa fa-file-o"></i>&nbsp;Pages</button>
+							<button data-pages="{{ json_encode($article_category->pageIds()) }}" data-id="{{ $article_category->id }}" class="btn btn-info btn-sm" data-toggle="modal" href='#pagesModal'><i class="fas fa-copy"></i>&nbsp;Pages</button>
 						</div>
-						
+
 					</td>
 				</tr>
 			@endforeach
 		</tbody>
 	</table>
 	@include('admin::article_categories.pages_modal')
-	
+
 @stop
 
 @section('styles')
 	<style type="text/css">
-		
+
 	</style>
 @stop
 @section('scripts_top')
 	<script type="text/javascript">
-		
+
 	</script>
 @stop
 

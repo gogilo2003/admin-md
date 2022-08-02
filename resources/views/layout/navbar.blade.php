@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-primary navbar-absolute fixed-top ">
 	<div class="container-fluid">
 		<div class="navbar-wrapper">
-			{!! Auth::guard('admin')->check() ? '<a class="navbar-brand" href="'. url('admin') .'">'.config('app.short_name','<i class="material-icons">dashboard</i>') .'</a>' : '' !!} 
+			{!! Auth::guard('admin')->check() ? '<a class="navbar-brand" href="'. url('admin') .'">'.config('app.short_name','<i class="material-icons">dashboard</i>') .'</a>' : '' !!}
 		</div>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +14,7 @@
 			@if(auth()->check())
 			<ul class="navbar-nav">
 				<!-- <li class="active"><a href="{{ url('admin') }}"><i class="fa fa-dashboard"></i>&nbsp;Dashboard <span class="sr-only">(current)</span></a></li> -->
-				{{-- <li><a href="{{ route('admin-pages') }}"><i class="fa fa-file-o"></i>&nbsp;Pages</a></li> --}}
+				{{-- <li><a href="{{ route('admin-pages') }}"><i class="fas fa-copy"></i>&nbsp;Pages</a></li> --}}
 				@if (config('admin.menus'))
 					<li class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -63,17 +63,17 @@
 							@endforeach
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="{{ route('admin-pages-add') }}">
-								<i class="fa fa-plus-circle"></i>&nbsp; 
+								<i class="fa fa-plus-circle"></i>&nbsp;
 								Create a New Page
 							</a>
 						</div>
 					</li>
 				@endif
-				
+
 				@if(config('admin.menu'))
 					@foreach (config('admin.menu') as $key => $menu)
 						@if($menu)
-						
+
 							@if (is_array($menu))
 								@if (isset($menu['caption']))
 									<li class="nav-item dropdown">
@@ -116,7 +116,7 @@
 										@endif
 									@endforeach
 								@endif
-								
+
 							@else
 								<li class="nav-item">
 									<a class="nav-link" href="{{ route($key) }}">
@@ -127,7 +127,7 @@
 						@endif
 					@endforeach
 				@endif
-				<!-- 
+				<!--
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Dropdown link
@@ -163,13 +163,13 @@
 			<ul class="navbar-nav">
 				<li>
 					<a href="{{ route('admin-login') }}">
-						<i class="fa fa-exclamation-circle"></i> 
+						<i class="fa fa-exclamation-circle"></i>
 						You need to loginfirst
 					</a>
 				</li>
 			</ul>
 			@endif
-			
+
 		</div>
 	</div>
 </nav>

@@ -13,7 +13,7 @@
 	<li>
 		<a href="{{ route('admin-file_categories') }}"><i class="fa fa-folder-open-o"></i> File Categories</a>
 	</li>
-	<li class="active"><span><i class="fa fa-file-o"></i> Files</span></li>
+	<li class="active"><span><i class="fas fa-copy"></i> Files</span></li>
 @stop
 
 @section('sidebar')

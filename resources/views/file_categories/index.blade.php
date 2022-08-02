@@ -36,7 +36,7 @@
 				@endif
 				<p>
 					<a href="{{route('admin-file_categories-edit',$category->id)}}" class="btn btn-primary btn-round"><span class="fa fa-edit"></span>&nbsp;&nbsp; Edit</a>
-					<a data-id="{{ $category->id }}" data-pages="{{ json_encode($category->pageIds() )  }}" class="btn btn-info btn-round" data-toggle="modal" href='#pagesModal'><i class="fa fa-file-o"></i> Pages</a>
+					<a data-id="{{ $category->id }}" data-pages="{{ json_encode($category->pageIds() )  }}" class="btn btn-info btn-round" data-toggle="modal" href='#pagesModal'><i class="fas fa-copy"></i> Pages</a>
 				</p>
 			</div>
 		</div>

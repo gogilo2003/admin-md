@@ -14,7 +14,7 @@
 		<a href="{{ route('admin-file_categories') }}"><i class="fa fa-folder-open-o"></i> File Categories</a>
 	</li>
 	<li>
-		<a href="{{ route('admin-files') }}"><i class="fa fa-file-o"></i> Files</a>
+		<a href="{{ route('admin-files') }}"><i class="fas fa-copy"></i> Files</a>
 	</li>
 	<li class="active"><span><i class="fa fa-plus"></i> New File</span></li>
 @stop
