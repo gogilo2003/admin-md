@@ -1,10 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Ogilo\AdminMd\Http\Controllers\Api\TagController;
 use Ogilo\AdminMd\Http\Controllers\Api\LinkController;
 
 Route::group(['middleware' => 'api', 'as' => 'api', 'prefix' => 'api', 'namespace' => 'Ogilo\AdminMd\Http\Controllers\Api'], function () {
 
-    Route::group(['middleware' => 'auth:api', 'as' => '-admin', 'prefix' => 'admin'], function () {
+    Route::group(['as' => '-admin', 'prefix' => 'admin'], function () {
 
         Route::group(['as' => '-links', 'prefix' => 'links'], function () {
             Route::post('in_menu', [LinkController::class, 'inMenu'])->name('-in_menu');
@@ -52,7 +54,21 @@ Route::group(['middleware' => 'api', 'as' => 'api', 'prefix' => 'api', 'namespac
             Route::post('migrate', ['as' => '-migrate', 'uses' => 'SettingsController@postMigrate']);
             Route::post('sitemap', ['as' => '-sitemap', 'uses' => 'SettingsController@postSitemap']);
         });
+
+        Route::name('-tags')->prefix('tags')->group(function () {
+            Route::get('', [TagController::class, 'index']);
+            Route::post('', [TagController::class, 'store'])->name('-store');
+            Route::patch('', [TagController::class, 'update'])->name('-update');
+            Route::delete('', [TagController::class, 'delete'])->name('-delete');
+        });
     });
+
+
+    Route::post('/tokens/create', function (\Illuminate\Http\Request $request) {
+        $token = $request->user()->createToken($request->token_name);
+
+        return ['token' => $token->plainTextToken];
+    })->middleware('auth:admin');
 
     Route::group(['as' => '-comments', 'prefix' => 'comments'], function () {
         Route::get('{id}/{published?}', ['as' => '', 'uses' => 'CommentController@index']);

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Ogilo\AdminMd\Http\Controllers\TagController;
 use Ogilo\AdminMd\Http\Controllers\BlogController;
 use Ogilo\AdminMd\Http\Controllers\ProfileController;
 
@@ -258,6 +259,10 @@ Route::group(['middleware' => 'web', 'as' => 'admin', 'prefix' => 'admin', 'name
             Route::post('pages', ['as' => '-pages', 'uses' => 'ProductController@postPages']);
             Route::post('publish', ['as' => '-publish', 'uses' => 'ProductController@postPublish']);
             Route::post('delete', ['as' => '-delete', 'uses' => 'ProductController@postDelete']);
+        });
+
+        Route::name('-tags')->prefix('tags')->group(function () {
+            Route::get('', [TagController::class, 'index']);
         });
 
         Route::get('settings', ['as' => '-settings', 'uses' => 'SettingsController@getSettings']);

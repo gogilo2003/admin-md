@@ -13,15 +13,14 @@
         <li class="breadcrumb-item"><a href="{{ url($page->name) }}">{{ $page->title }}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ $article->title }}</li>
     @endif
-
 @endsection
 
 @section('content')
     <section class="mt-5 py-5 clearfix">
-
-        @dump($article->article_author)
         <div class="container">
-            <h3 class="text-center text-uppercase">{{ $article->title }}<br><small>{{ $article->article_author ? $article->article_author->name : '' }}</small></h3>
+            <h3 class="text-center text-uppercase">
+                {{ $article->title }}<br><small>{{ $article->article_author ? $article->article_author->name : '' }}</small>
+            </h3>
             <img class="mr-5 mb-5 w-50 float-md-left" src="{{ $article->picture->url }}" alt="">
             {!! $article->content !!}
             @if ($article->category->name == 'blog' or $article->category->name == 'blogs')
@@ -42,8 +41,7 @@
                             </div>
                             <div class="col-xs-12 col-md-12">
                                 <div class="form-group">
-                                    <textarea class="form-input" required="" placeholder="Your text" rows="3"
-                                        name="message"></textarea>
+                                    <textarea class="form-input" required="" placeholder="Your text" rows="3" name="message"></textarea>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12">
@@ -57,11 +55,17 @@
                     <h1 class="comments-title">Comments ({{ $article->comments->count() }})</h1>
                     <hr>
                     @foreach ($article->comments as $comment)
-                        @include('admin::web.inc.comment',['comment'=>$comment])
+                        @include('admin::web.inc.comment', ['comment' => $comment])
                     @endforeach
 
                 </div>
             @endif
+            <div>
+                <strong>Tags:</strong>
+                @foreach ($article->tags as $tag)
+                    {{ $tag }},
+                @endforeach
+            </div>
         </div>
     </section>
 
@@ -71,9 +75,9 @@
 @push('styles')
     <style>
         /* body {
-                            margin-top: 20px;
-                            background-color: #e9ebee;
-                        } */
+                                                margin-top: 20px;
+                                                background-color: #e9ebee;
+                                            } */
 
         .be-comment-block {
             margin-bottom: 50px !important;
@@ -188,18 +192,13 @@
             width: 100%;
             padding: 10px 20px;
         }
-
     </style>
 @endpush
 
 @section('scripts_top')
-    <script type="text/javascript">
-
-    </script>
+    <script type="text/javascript"></script>
 @endsection
 
 @section('scripts_bottom')
-    <script type="text/javascript">
-
-    </script>
+    <script type="text/javascript"></script>
 @endsection

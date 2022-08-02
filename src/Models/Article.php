@@ -2,11 +2,12 @@
 
 namespace Ogilo\AdminMd\Models;
 
+use Spatie\Searchable\Searchable;
+use Ogilo\AdminMd\Support\Picture;
+use Spatie\Searchable\SearchResult;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Ogilo\AdminMd\Support\Picture;
-use Spatie\Searchable\Searchable;
-use Spatie\Searchable\SearchResult;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Hit model.
@@ -60,5 +61,15 @@ class Article extends Model implements Searchable
     public function article_author(): BelongsTo
     {
         return $this->belongsTo(ArticleAuthor::class, 'author_id', 'id');
+    }
+
+    /**
+     * The tags that belong to the Article
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'article_tag', 'article_id', 'tag_id');
     }
 }

@@ -9,12 +9,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script type="text/javascript">
         window.Laravel = {!! json_encode([
-    'csrfToken' => csrf_token(),
-    'baseUrl' => url('/'),
-    'routes' => collect(\Route::getRoutes())->mapWithKeys(function ($route) {
-        return [$route->getName() => $route->uri()];
-    }),
-]) !!};
+            'csrfToken' => csrf_token(),
+            'apiToken' => api_token(),
+            'baseUrl' => url('/'),
+            'routes' => collect(\Route::getRoutes())->mapWithKeys(function ($route) {
+                return [$route->getName() => $route->uri()];
+            }),
+        ]) !!};
     </script>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
@@ -49,7 +50,17 @@
 Tip 2: you can also add an image using data-image tag-->
             <div class="logo">
                 <a href="{{ url('/') }}" class="simple-text logo-normal">
-                    <img src="{!! file_exists(public_path('favicon.png')) ? asset(config('admin.path_prefix') . 'favicon.png') : (file_exists(public_path('logo.png')) ? asset(config('admin.path_prefix') . 'logo.png') : file_exists(public_path('images/favicon.png') ? url('images/favicon.png') : (file_exists('images/logo.png') ? url('images/logo.png') : ''))) !!}" alt="" class="img-fluid" style="max-width: 5em">
+                    <img src="{!! file_exists(public_path('favicon.png'))
+                        ? asset(config('admin.path_prefix') . 'favicon.png')
+                        : (file_exists(public_path('logo.png'))
+                            ? asset(config('admin.path_prefix') . 'logo.png')
+                            : file_exists(
+                                public_path('images/favicon.png')
+                                    ? url('images/favicon.png')
+                                    : (file_exists('images/logo.png')
+                                        ? url('images/logo.png')
+                                        : ''),
+                            )) !!}" alt="" class="img-fluid" style="max-width: 5em">
                 </a>
             </div>
             <div class="sidebar-wrapper">

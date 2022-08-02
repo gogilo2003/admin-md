@@ -2,12 +2,13 @@
 
 namespace Ogilo\AdminMd\Models;
 
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -29,7 +30,7 @@ class Admin extends Authenticatable
 
     public function role()
     {
-        return $this->belongsTo('Ogilo\AdminMd\Models\AdminRole','admin_role_id','id');
+        return $this->belongsTo('Ogilo\AdminMd\Models\AdminRole', 'admin_role_id', 'id');
     }
 
     public function articles()
@@ -66,5 +67,4 @@ class Admin extends Authenticatable
     {
         return ($this->admin_role_id == $role_id);
     }
-
 }
