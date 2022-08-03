@@ -6,7 +6,7 @@ use Ogilo\AdminMd\Http\Controllers\Api\LinkController;
 
 Route::group(['middleware' => 'api', 'as' => 'api', 'prefix' => 'api', 'namespace' => 'Ogilo\AdminMd\Http\Controllers\Api'], function () {
 
-    Route::group(['as' => '-admin', 'prefix' => 'admin'], function () {
+    Route::middleware('auth:sanctum')->group(['as' => '-admin', 'prefix' => 'admin'], function () {
 
         Route::group(['as' => '-links', 'prefix' => 'links'], function () {
             Route::post('in_menu', [LinkController::class, 'inMenu'])->name('-in_menu');
@@ -56,9 +56,9 @@ Route::group(['middleware' => 'api', 'as' => 'api', 'prefix' => 'api', 'namespac
         });
 
         Route::name('-tags')->prefix('tags')->group(function () {
-            Route::get('', [TagController::class, 'index']);
+            Route::get('{id?}', [TagController::class, 'index']);
             Route::post('', [TagController::class, 'store'])->name('-store');
-            Route::patch('', [TagController::class, 'update'])->name('-update');
+            Route::patch('{id}', [TagController::class, 'update'])->name('-update');
             Route::delete('', [TagController::class, 'delete'])->name('-delete');
         });
     });
