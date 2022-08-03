@@ -18,14 +18,23 @@ class CreateArticleTagTable extends Migration
             $table->unsignedInteger('article_id');
             $table->unsignedBigInteger('tag_id');
             $table->timestamps();
-            $table->foreign('article_id')
-                ->references('id')
-                ->on('articles')
-                ->onDelete('cascade');
-            $table->foreign('tag_id')
-                ->references('id')
-                ->on('tags')
-                ->onDelete('cascade');
+            try {
+                $table->foreign('article_id')
+                    ->references('id')
+                    ->on('articles')
+                    ->onDelete('cascade');
+            } catch (Throwable $th) {
+                // throw th
+            }
+
+            try {
+                $table->foreign('tag_id')
+                    ->references('id')
+                    ->on('tags')
+                    ->onDelete('cascade');
+            } catch (Throwable $th) {
+                //throw $th;
+            }
         });
     }
 
