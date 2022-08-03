@@ -44,7 +44,7 @@ function studle_case(str) {
 
 // Dropdown menu on hover initialing
 $('.dropdown-toggle').dropdownHover();
-console.log(contentCSS)
+
 // TinyMCE initializing
 tinymce.init({
     plugins: 'code link image lists table paste preview print anchor fullscreen',

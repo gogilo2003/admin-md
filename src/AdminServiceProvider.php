@@ -38,7 +38,18 @@ class AdminServiceProvider extends ServiceProvider
     {
 
         if (config('admin.articles')) {
-            config(['admin.menu.admin-articles' => 'Articles']);
+            config([
+                'admin.menu.admin-articles' => [
+                    'caption' => 'Articles',
+                    'submenu' => [
+                        'admin-articles' => 'Articles',
+                        'admin-articles-add' => 'New Article',
+                        'admin-article_categories' => 'Categories',
+                        'admin-article_categories-add' => 'New Category',
+                        'admin-tags' => 'Tags',
+                    ],
+                ]
+            ]);
         } else {
             config(['admin.menu.admin-articles' => null]);
         }

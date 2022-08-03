@@ -263,6 +263,7 @@ Route::group(['middleware' => 'web', 'as' => 'admin', 'prefix' => 'admin', 'name
 
         Route::name('-tags')->prefix('tags')->group(function () {
             Route::get('', [TagController::class, 'index']);
+            Route::post('', [TagController::class, 'tag'])->name('-tag');
         });
 
         Route::get('settings', ['as' => '-settings', 'uses' => 'SettingsController@getSettings']);
