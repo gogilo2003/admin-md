@@ -3,15 +3,12 @@
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-
-use Validator;
-use Auth;
-use Hash;
-use Str;
-
-use Ogilo\AdminMd\Models\AdminRole;
 use Ogilo\AdminMd\Models\Admin;
+use Ogilo\AdminMd\Models\AdminRole;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -57,7 +54,7 @@ class AuthController extends Controller
         if (Auth::guard('admin')->attempt($admin)) {
 
             $user = Auth::guard('admin')->user();
-            $user->createToken('token');
+            // $user->createToken('token');
 
             return redirect()
                 ->intended('admin')
