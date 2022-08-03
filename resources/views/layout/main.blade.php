@@ -44,7 +44,7 @@
 <body class="">
 
     <div class="wrapper " id="app">
-        <div class="sidebar" data-color="purple" data-background-color="green"
+        <div class="sidebar" data-color="purple" data-background-color="azure"
             data-image="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-dashboard-master/assets/img/sidebar-1.jpg') }}">
             <!-- Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 Tip 2: you can also add an image using data-image tag-->
