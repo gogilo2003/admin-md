@@ -18,24 +18,29 @@ class CreateArticleTagTable extends Migration
             $table->unsignedInteger('article_id');
             $table->unsignedBigInteger('tag_id');
             $table->timestamps();
-            try {
+        });
+
+        try {
+            Schema::table('article_tag', function (Blueprint $table) {
                 $table->foreign('article_id')
                     ->references('id')
                     ->on('articles')
                     ->onDelete('cascade');
-            } catch (Throwable $th) {
-                // throw th
-            }
+            });
+        } catch (Throwable $th) {
+            // throw th
+        }
 
-            try {
+        try {
+            Schema::table('article_tag', function (Blueprint $table) {
                 $table->foreign('tag_id')
                     ->references('id')
                     ->on('tags')
                     ->onDelete('cascade');
-            } catch (Throwable $th) {
-                //throw $th;
-            }
-        });
+            });
+        } catch (Throwable $th) {
+            //throw $th;
+        }
     }
 
     /**
