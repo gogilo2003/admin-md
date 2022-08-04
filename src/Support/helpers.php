@@ -1855,6 +1855,6 @@ if (!function_exists('get_profiles')) {
 if (!function_exists('get_authors')) {
     function get_authors()
     {
-        return  \Ogilo\AdminMd\Models\ArticleAuthor::get();
+        return  \Ogilo\AdminMd\Models\Author::get();
     }
 }
