@@ -70,6 +70,41 @@ After every update of gogilo/admin, it's neccesary to run the admin:update comma
 php artisan admin:update
 ```
 
+### Configure sanctum
+
+Configure sanctum for spa api authentication
+
+1. in the app/Http/Kernel.php file uncomment ```EnsureFrontendRequestsAreStateful::class``` middleware
+
+```'api' => [
+    \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+    'throttle:api',
+    \Illuminate\Routing\Middleware\SubstituteBindings::class,
+],
+```
+
+2. in the config/sanctum.php file change the
+
+```'guard' => ['web'],```
+
+to
+
+```'guard' => ['admin'],```
+
+3. in the config/cors.php file change the line
+
+```'supports_credentials' => false,```
+
+to
+
+```'supports_credentials' => true,```
+
+4. update your .env file with the following 
+
+```SANCTUM_STATEFUL_DOMAINS=api.exmple.com
+SESSION_DOMAIN=.example.com
+```
+
 ### Guards and Auth Providers
 
 Update the config/auth.php file to include the admins provider and admin guard
@@ -193,7 +228,7 @@ function boot(){
 
 **NOTE:** Each submenu must have a caption and submenu keys. The caption will be the caption of the menu while submenu cantains route caption key value pairs for all the items in the submenu.
 
-To add a devider in the sub menu. just add a dash key value pair item 
+To add a devider in the sub menu. just add a dash key value pair item
 
 ```php
 '-'=>'-'
@@ -390,5 +425,5 @@ Happy websiting
 
 By George Ogilo
 info@gogilo.com
-https://www.gogilo.com
+<https://www.gogilo.com>
 +254711347184/+254735388704
