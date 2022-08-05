@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Ogilo\AdminMd\Http\Controllers\Api\TagController;
 use Ogilo\AdminMd\Http\Controllers\Api\LinkController;
+use Ogilo\AdminMd\Http\Controllers\Api\AuthorController;
 
 Route::middleware('api')
     ->name('api')
@@ -65,7 +66,15 @@ Route::middleware('api')
                     Route::delete('', [TagController::class, 'delete'])->name('-delete');
                     Route::post('', [TagController::class, 'tag'])->name('-tag');
                 });
+
+                Route::name('-authors')->prefix('authors')->group(function () {
+                    Route::get('{id?}', [AuthorController::class, 'index']);
+                    Route::post('', [AuthorController::class, 'store'])->name('-store');
+                    Route::patch('{id}', [AuthorController::class, 'update'])->name('-update');
+                    Route::delete('{id}', [AuthorController::class, 'delete'])->name('-delete');
+                });
             });
+
             Route::middleware('guest')->group(function () {
                 Route::post('login', LoginController::class)->name('-login');
             });

@@ -22,14 +22,14 @@ class CommentController extends Controller
             $comments = Comment::where('article_id', $id)
                 ->where('published', 1)
                 ->where('parent_comment_id', null)
-                ->with(['user','replies.user','replies.replies.user','replies.replies.replies.user'])
+                ->with(['user', 'replies.user', 'replies.replies.user', 'replies.replies.replies.user'])
                 ->orderBy('created_at', 'DESC')
                 ->get();
             return $comments ?? [];
         }
         $comments = Comment::where('article_id', $id)
             ->where('parent_comment_id', null)
-            ->with(['user','replies.user','replies.replies.user','replies.replies.replies.user'])
+            ->with(['user', 'replies.user', 'replies.replies.user', 'replies.replies.replies.user'])
             ->orderBy('created_at', 'DESC')
             ->get();
         return $comments ?? [];
@@ -125,7 +125,7 @@ class CommentController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Reply posted',
-            'reply'=>$comment
+            'reply' => $comment
         ]);
     }
 
@@ -167,7 +167,7 @@ class CommentController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Comment posted',
-            'comment'=>$comment
+            'comment' => $comment
         ]);
     }
 }

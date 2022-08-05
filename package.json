@@ -48,7 +48,9 @@
         "sweetalert2": "^11.3.6",
         "tinymce": "^5.10.2",
         "twitter-bootstrap-wizard": "^1.2.0",
-        "typeface-montserrat": "^1.1.13"
+        "typeface-montserrat": "^1.1.13",
+        "vue-cropperjs": "^5.0.0",
+        "vue-good-table": "^2.21.11"
     },
     "devDependencies": {
         "@vue/compiler-sfc": "^3.2.37",

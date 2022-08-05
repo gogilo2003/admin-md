@@ -16,7 +16,8 @@
         "intervention/image": "^2.7",
         "intervention/imagecache": "^2.5",
         "doctrine/dbal": "^3.0",
-        "gogilo/laravel-api-response-helpers": "^1.0"
+        "gogilo/laravel-api-response-helpers": "^1.0",
+        "lasserafn/php-initial-avatar-generator": "^4.2"
     },
     "license": "MIT",
     "authors": [

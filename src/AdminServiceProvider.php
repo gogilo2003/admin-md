@@ -47,6 +47,7 @@ class AdminServiceProvider extends ServiceProvider
                         'admin-article_categories' => 'Categories',
                         'admin-article_categories-add' => 'New Category',
                         'admin-tags' => 'Tags',
+                        'admin-authors' => 'Authors',
                     ],
                 ]
             ]);

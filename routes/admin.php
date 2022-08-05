@@ -266,6 +266,12 @@ Route::group(['middleware' => 'web', 'as' => 'admin', 'prefix' => 'admin', 'name
             Route::post('', [TagController::class, 'tag'])->name('-tag');
         });
 
+        Route::name('-authors')->prefix('authors')->group(function () {
+            Route::get('', function () {
+                return view('admin::authors.index');
+            });
+        });
+
         Route::get('settings', ['as' => '-settings', 'uses' => 'SettingsController@getSettings']);
         Route::post('settings', ['as' => '-settings-post', 'uses' => 'SettingsController@postSettings']);
 
