@@ -17,7 +17,7 @@
         "@jsweb/font-awesome-base64": "^2.3.3",
         "@popperjs/core": "^2.11.2",
         "arrive": "^2.4.1",
-        "bootstrap": "^4.6.1",
+        "bootstrap": "^4.6.2",
         "bootstrap-fileinput": "^5.2.7",
         "bootstrap-hover-dropdown": "^2.2.1",
         "bootstrap-scss": "^5.1.0",
@@ -28,7 +28,7 @@
         "chart.js": "^3.8.0",
         "chartist": "^0.11.4",
         "cropper": "^4.1.0",
-        "datatables.net-bs4": "^1.11.3",
+        "datatables.net-bs4": "^1.12.1",
         "font-awesome": "^4.7.0",
         "icomoon": "^1.0.0",
         "jasny-bootstrap": "^4.0.0",
@@ -50,7 +50,8 @@
         "twitter-bootstrap-wizard": "^1.2.0",
         "typeface-montserrat": "^1.1.13",
         "vue-cropperjs": "^5.0.0",
-        "vue-good-table": "^2.21.11"
+        "vue-good-table-next": "^0.2.1",
+        "vue3-easy-data-table": "^1.4.12"
     },
     "devDependencies": {
         "@vue/compiler-sfc": "^3.2.37",

@@ -11,10 +11,10 @@ class AuthorResource extends JsonResource
         return [
             "id" => $this->id,
             "name" => $this->name,
-            "avatar" => $this->avatar,
             "phone" => $this->phone,
             "email" => $this->email,
             "details" => $this->details,
+            "avatar" => $this->avatar,
         ];
         // return parent::toArray($request);
     }

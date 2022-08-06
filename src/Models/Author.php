@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use LasseRafn\InitialAvatarGenerator\InitialAvatar;
+use Throwable;
 
 /**
  * Hit model.
@@ -26,7 +27,13 @@ class Author extends Model
     public function getAvatarAttribute($value)
     {
         if ($value) {
-            return Image::make(Storage::get($value))->encode('data-url')->encoded;
+            // return Storage::path($value);
+            try {
+                return Image::make(Storage::path($value))
+                    ->resize(48, 48)
+                    ->encode('data-url')->encoded;
+            } catch (Throwable $th) {
+            }
         }
 
         $avatar = new InitialAvatar();

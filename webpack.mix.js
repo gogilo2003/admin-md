@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 const { exec } = require('child_process');
 mix.js('resources/assets/js/admin.js', 'public/js')
     .js('resources/assets/js/tags.js', 'public/js')
+    .js('resources/assets/js/authors.js', 'public/js')
     .vue()
     .sass('resources/assets/scss/web.scss', 'public/css')
     .sass('resources/assets/scss/admin.scss', 'public/css')

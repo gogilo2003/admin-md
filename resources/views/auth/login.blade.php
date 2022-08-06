@@ -18,7 +18,9 @@
 
 @section('content')
     <div class="loader-wrap">
-        <div class="loader">Processing! <br>please wait...</div>
+        <div class="loader">
+            <img src="{{ asset('images/loader.gif') }}" alt="">
+        </div>
     </div>
     <div class="row" style="min-height: 50vh; display: flex; justify-content: center; align-items: center">
         <div class="col-sm-6 col-md-6 col-lg-6">
@@ -64,11 +66,15 @@
             text-align: center;
             height: 128px;
             width: 128px;
-            background-color: #fff;
+            /* background-color: #fff; */
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 50%
+        }
+
+        .loader-wrap .loader img {
+            width: 100%;
         }
     </style>
 @stop

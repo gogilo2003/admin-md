@@ -60,7 +60,7 @@ class AuthorController extends Controller
         $author = new Author();
 
         $author->name = $request->name;
-        $author->avatar = $request->hasFile('avatar') ? $request->avatar->store() : null;
+        $author->avatar = $request->hasFile('avatar') ? $request->avatar->store('public/avatars') : null;
         $author->phone = $request->phone;
         $author->email = $request->email;
         $author->details = $request->details;
@@ -82,14 +82,15 @@ class AuthorController extends Controller
      */
     public function update(Request $request, int $id)
     {
+        // return response()->json($request->all());
+
         $request->merge(['id' => $id]);
 
         $validator = Validator::make($request->all(), [
             'id' => 'required|integer|exists:authors,id',
-            'name' => 'required',
             'avatar' => 'nullable|image',
             'phone' => 'nullable|unique:authors,phone,' . $id,
-            'email' => 'nullable|unique:authors,email|email,' . $id,
+            'email' => 'nullable|email|unique:authors,email,' . $id,
         ]);
 
         if ($validator->fails()) {
@@ -98,11 +99,11 @@ class AuthorController extends Controller
 
         $author = Author::find($id);
 
-        $author->name = $request->name;
-        $author->avatar = $request->hasFile('avatar') ? $request->avatar->store() : null;
-        $author->phone = $request->phone;
-        $author->email = $request->email;
-        $author->details = $request->details;
+        $author->name = $request->name ?? $author->name;
+        $author->avatar = $request->hasFile('avatar') ? $request->avatar->store('public/avatars') : $author->getRawOriginal('avatar');
+        $author->phone = $request->phone ?? $author->phone;
+        $author->email = $request->email ?? $author->email;
+        $author->details = $request->details ?? $author->details;
 
         $author->save();
 
