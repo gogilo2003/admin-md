@@ -52,6 +52,7 @@ tinymce.init({
     toolbar: 'styleselect | bold italic underline strikethrough removeformat | alignleft aligncenter alignright alignjustify lists | cut copy paste | bullist numlist | outdent indent blockquote | subscript superscript | undo redo | link unlink image table| code print preview fullscreen',
     menubar: false,
     allow_conditional_comments: false,
+    extended_valid_elements: 'span',
     content_css: contentCSS,
     images_upload_handler: function (blobInfo, success, failure) {
         var xhr, formData;
