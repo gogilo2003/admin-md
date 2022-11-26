@@ -75,7 +75,15 @@ class PagesController extends Controller
 
         // $template = file_exists(resource_path('views/web/article.blade.php')) ? 'web.article' :'admin::web.article';
 
-        return view()->first(['web.article', 'article', 'admin::web.article'], compact('article', 'page'));
+        return view()->first([
+            'web.article.' . $article->category->name,
+            'article.' . $article->category->name,
+            'web.article.article',
+            'article.article',
+            'admin::web.article',
+            'web.article',
+            'article'
+        ], compact('article', 'page'));
     }
 
     public function getSermon($sermon_name, $page_name = null)
