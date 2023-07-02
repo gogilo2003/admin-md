@@ -17,17 +17,13 @@
 @stop
 
 @section('content')
-    <div class="loader-wrap">
-        <div class="loader">
-            {{-- <img src="{{ asset('vendor/admin/images/loader.gif') }}" alt=""> --}}
-            <div class="loadingio-eclipse">
-                <div class="ldio-rpinwye8j0b">
-                    <div>
-                    </div>
-                </div>
-            </div>
+    <div class="loader-body" v-show="show">
+        <div class="center">
+            <div class="ring"></div>
+            <span>loading...</span>
         </div>
     </div>
+
     <div class="row" style="min-height: 50vh; display: flex; justify-content: center; align-items: center">
         <div class="col-sm-6 col-md-6 col-lg-6">
             <form id="loginForm" method="post" action="{{ route('admin-login') }}" role="form" accept-charset="UTF-8"
@@ -54,80 +50,78 @@
 
 @section('styles')
     <style type="text/css">
-        .loader-wrap {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+        .loader-body {
+            margin: 0;
+            padding: 0;
+            font-family: montserrat;
             background: rgba(0, 0, 0, 0.75);
-            z-index: 1030;
+            display: block;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
             display: none;
-            justify-content: center;
-            align-items: center;
         }
 
-        .loader-wrap .loader {
-            color: #333;
-            text-align: center;
-            height: 128px;
-            width: 128px;
-            /* background-color: #fff; */
+        .loader-body .center {
             display: flex;
+            text-align: center;
             justify-content: center;
             align-items: center;
-            border-radius: 50%
+            min-height: 100vh;
         }
 
-        .loader-wrap .loader img {
+        .loader-body .center .ring {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            animation: ring 2s linear infinite;
+
+        }
+
+        .loader-body .center .ring::before {
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 0;
+            height: 100%;
             width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
         }
 
-        @keyframes ldio-rpinwye8j0b {
+
+        .loader-body .center span {
+            color: #737373;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 200px;
+            font-weight: 600 !important;
+            animation: text 3s ease-in-out infinite;
+        }
+
+        @keyframes ring {
             0% {
-                transform: rotate(0deg)
+                transform: rotate(0deg);
+                box-shadow: 1px 5px 2px #e62300;
             }
 
             50% {
-                transform: rotate(180deg)
+                transform: rotate(180deg);
+                box-shadow: 1px 5px 2px #7cb342;
             }
 
             100% {
-                transform: rotate(360deg)
+                transform: rotate(360deg);
+                box-shadow: 1px 5px 2px #0456C8;
             }
         }
 
-        .ldio-rpinwye8j0b div {
-            position: absolute;
-            animation: ldio-rpinwye8j0b 1s linear infinite;
-            width: 160px;
-            height: 160px;
-            top: 20px;
-            left: 20px;
-            border-radius: 50%;
-            box-shadow: 0 4px 0 0 #4eff03;
-            transform-origin: 80px 82px;
-        }
-
-        .loadingio-eclipse {
-            width: 200px;
-            height: 200px;
-            display: inline-block;
-            overflow: hidden;
-        }
-
-        .ldio-rpinwye8j0b {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform: translateZ(0) scale(1);
-            backface-visibility: hidden;
-            transform-origin: 0 0;
-            /* see note above */
-        }
-
-        .ldio-rpinwye8j0b div {
-            box-sizing: content-box;
+        @keyframes text {
+            50% {
+                color: rgba(0, 0, 0, 0.75);
+            }
         }
     </style>
 @stop
@@ -142,11 +136,11 @@
         var loginForm = document.getElementById('loginForm')
         var emailInput = document.getElementById('emailInput')
         var passwordInput = document.getElementById('passwordInput')
-        var loader = document.querySelector('.loader-wrap')
+        var loader = document.querySelector('.loader-body')
 
         loginButton.addEventListener('click', function(e) {
             e.preventDefault();
-            loader.style.display = 'flex'
+            loader.style.display = 'block'
 
             axios.get('/sanctum/csrf-cookie').then(response => {
                 // Login...
