@@ -1,8 +1,8 @@
 {
     "name": "gogilo/admin-md",
-    "description": "Material Dasboard themed CMS for Laravel",
+    "description": "Material Dashboard themed CMS for Laravel",
     "keywords": [
-        "Material Dasboard themed CMS for Laravel",
+        "Material Dashboard themed CMS for Laravel",
         "cms",
         "laravel-cms",
         "content management system",
