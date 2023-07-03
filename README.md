@@ -40,7 +40,7 @@ Ogilo\AdminMd\AdminServiceProvider::class,
 
 ### Handling guest access to the admin routes
 
-To ensure the user is directed to the correct login page why trying to access the admin page, modify the unauthenticated() function inthe app/Exceptions/Handler.php by adding
+To ensure the user is directed to the correct login page why trying to access the admin page, modify the unauthenticated() function in the app/Exceptions/Handler.php by adding
 
 ```php
 if(is_admin_path()){
@@ -56,15 +56,15 @@ php artisan admin:fix_exception
 
 ### Install or Update
 
-run artisan admin:intsal/admin:update command to create all the neccesary tables for the CMS including all roles and user tables as well as publish all required resources;
+run artisan admin:install/admin:update command to create all the necessary tables for the CMS including all roles and user tables as well as publish all required resources;
 
-This Commands will install all frontend components, create the neccesary database structure(perform migrations) and publish neccesary recsources for the package.
+This Commands will install all frontend components, create the necessary database structure(perform migrations) and publish necessary resources for the package.
 
 ```bash
 php artisan admin:install
 ```
 
-After every update of gogilo/admin, it's neccesary to run the admin:update command as this will fix any database structure changes, any theme changes and also perform neccesary cleanup/houskeeping.
+After every update of gogilo/admin, it's necessary to run the admin:update command as this will fix any database structure changes, any theme changes and also perform necessary cleanup/housekeeping.
 
 ```bash
 php artisan admin:update

@@ -11,7 +11,7 @@ Route::middleware('api')
     ->namespace('Ogilo\AdminMd\Http\Controllers\Api')
     ->group(function () {
         Route::group(['as' => '-admin', 'prefix' => 'admin'], function () {
-            Route::middleware(['auth:api'])->group(function () {
+            Route::middleware(['auth:sanctum'])->group(function () {
                 Route::group(['as' => '-links', 'prefix' => 'links'], function () {
                     Route::post('in_menu', [LinkController::class, 'inMenu'])->name('-in_menu');
                 });
