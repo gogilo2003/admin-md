@@ -68,7 +68,7 @@
 
                         @foreach (get_authors() as $author)
                             <option value="{{ $author->id }}"
-                                {{ old('author') ? (old('author') == $author->id ? 'selected' : '') : ($article->author_id == $author->id ? 'selected' : '') }}>
+                                {{ old('author') ? (old('author') == $author->id ? 'selected' : '') : '' }}>
                                 {{ $author->name }}</option>
                         @endforeach
 
