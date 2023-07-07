@@ -84,6 +84,8 @@ onMounted(() => {
     let access_token = localStorage.getItem('admin_access_token');
     axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`
 
+    console.log(access_token);
+
     axios.get(`/api/admin/tags`, { api_token: window.Laravel.apiToken }).then(response => {
         tags.value = response.data.data
     }).catch(error => {
