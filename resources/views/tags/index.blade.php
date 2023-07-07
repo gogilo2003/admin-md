@@ -24,6 +24,7 @@
 @endsection
 
 @section('styles')
+    <link rel="stylesheet" href="/vendor/admin/css/tailwind.css">
     <style type="text/css">
 
     </style>
