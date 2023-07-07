@@ -9,7 +9,7 @@ use Ogilo\AdminMd\Models\ProjectCategory;
 use Ogilo\AdminMd\Models\Page;
 
 use Illuminate\Support\Facades\Validator;
-use Img;
+use Intervention\Image\Facades\Image;
 
 /**
  *
@@ -56,7 +56,7 @@ class ProjectController extends Controller
 		if ($request->hasFile('picture')) {
 			$picture = $request->file('picture');
 
-			$image = Img::make($picture->getRealPath());
+			$image = Image::make($picture->getRealPath());
 
 			$dir = public_path('images/projects/');
 			if (!file_exists($dir)) {
@@ -71,7 +71,7 @@ class ProjectController extends Controller
 				mkdir($dir . '160x160/', 0755, true);
 			}
 
-			$square = Img::make($picture->getRealPath());
+			$square = Image::make($picture->getRealPath());
 			$square->fit(160, 160);
 			$square->save($dir . '160x160/' . $filename);
 			$square->destroy();
@@ -80,7 +80,7 @@ class ProjectController extends Controller
 				mkdir($dir . '480x240/', 0755, true);
 			}
 
-			$rectangle 	= Img::make($picture->getRealPath());
+			$rectangle 	= Image::make($picture->getRealPath());
 			$rectangle->fit(480, 240);
 			$rectangle->save($dir . '480x240/' . $filename);
 			$rectangle->destroy();
@@ -137,7 +137,7 @@ class ProjectController extends Controller
 
 			$picture = $request->file('picture');
 
-			$image = Img::make($picture->getRealPath());
+			$image = Image::make($picture->getRealPath());
 
 			$dir = public_path('images/projects/');
 			if (!file_exists($dir)) {
@@ -152,7 +152,7 @@ class ProjectController extends Controller
 				mkdir($dir . '160x160/', 0755, true);
 			}
 
-			$square = Img::make($picture->getRealPath());
+			$square = Image::make($picture->getRealPath());
 			$square->fit(160, 160);
 			$square->save($dir . '160x160/' . $filename);
 			$square->destroy();
@@ -161,7 +161,7 @@ class ProjectController extends Controller
 				mkdir($dir . '480x240/', 0755, true);
 			}
 
-			$rectangle 	= Img::make($picture->getRealPath());
+			$rectangle 	= Image::make($picture->getRealPath());
 			$rectangle->fit(480, 240);
 			$rectangle->save($dir . '480x240/' . $filename);
 			$rectangle->destroy();

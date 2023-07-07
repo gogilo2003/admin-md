@@ -9,7 +9,7 @@ use Ogilo\AdminMd\Models\Link;
 
 use Illuminate\Support\Facades\Validator;
 use File;
-use Img;
+use Intervention\Image\Facades\Image;
 use Artisan;
 
 /**
@@ -69,7 +69,7 @@ class PageController extends Controller
 				if (!file_exists($dir)) {
 					mkdir($dir, 0755, TRUE);
 				}
-				$image = Img::make($title_image->getRealPath());
+				$image = Image::make($title_image->getRealPath());
 
 				$img = json_decode($request->input('image_cropdetails'));
 				$image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
@@ -148,7 +148,7 @@ class PageController extends Controller
 					mkdir($dir, 0755, TRUE);
 				}
 
-				$image = Img::make($title_image->getRealPath());
+				$image = Image::make($title_image->getRealPath());
 
 				$img = json_decode($request->input('image_cropdetails'));
 				$image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);

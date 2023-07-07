@@ -7,7 +7,7 @@ use Ogilo\AdminMd\Models\Admin;
 use Ogilo\AdminMd\Models\Page;
 use Illuminate\Http\Request;
 
-use Img;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -43,7 +43,7 @@ class HomeController extends Controller
 				if (!file_exists($dir)) {
 					mkdir($dir, 0755, TRUE);
 				}
-				$image = Img::make($file->getRealPath());
+				$image = Image::make($file->getRealPath());
 				$filename = time() . '.' . $file->guessClientExtension();
 				$image->save($dir . $filename);
 				// $photo = $image->encode('data-url')->encoded;

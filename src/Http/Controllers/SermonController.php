@@ -7,7 +7,7 @@ use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\Sermon;
 
 use Illuminate\Support\Facades\Validator;
-use Img;
+use Intervention\Image\Facades\Image;
 
 /**
  * Sermons Controller
@@ -51,7 +51,7 @@ class SermonController extends Controller
 			$file = $request->file('picture');
 
 			if ($file->isValid()) {
-				$image = Img::make($file->getRealPath());
+				$image = Image::make($file->getRealPath());
 
 				$dir = public_path('images/sermons/');
 				if (!file_exists($dir)) {
@@ -60,7 +60,7 @@ class SermonController extends Controller
 				$filename = time() . '.jpg';
 				$image->save($dir . $filename);
 
-				$thumbnail = Img::make($file->getRealPath());
+				$thumbnail = Image::make($file->getRealPath());
 				$dir = public_path('images/sermons/thumbnails/');
 				if (!file_exists($dir)) {
 					mkdir($dir, 0755, TRUE);
@@ -108,7 +108,7 @@ class SermonController extends Controller
 			$file = $request->file('picture');
 
 			if ($file->isValid()) {
-				$image = Img::make($file->getRealPath());
+				$image = Image::make($file->getRealPath());
 
 				$dir = public_path('images/sermons/');
 				if (!file_exists($dir)) {
@@ -117,7 +117,7 @@ class SermonController extends Controller
 				$filename = time() . '.jpg';
 				$image->save($dir . $filename);
 
-				$thumbnail = Img::make($file->getRealPath());
+				$thumbnail = Image::make($file->getRealPath());
 				$dir = public_path('images/sermons/thumbnails/');
 				if (!file_exists($dir)) {
 					mkdir($dir, 0755, TRUE);
@@ -255,7 +255,7 @@ class SermonController extends Controller
 			$file = $request->file('picture');
 
 			if ($file->isValid()) {
-				$image = Img::make($file->getRealPath());
+				$image = Image::make($file->getRealPath());
 
 				$dir = public_path('images/sermons/');
 				if (!file_exists($dir)) {
@@ -266,7 +266,7 @@ class SermonController extends Controller
 					unlink($dir . $sermon->picture);
 				$image->save($dir . $filename);
 
-				$thumbnail = Img::make($file->getRealPath());
+				$thumbnail = Image::make($file->getRealPath());
 				$dir = public_path('images/sermons/thumbnails/');
 				if (!file_exists($dir)) {
 					mkdir($dir, 0755, TRUE);

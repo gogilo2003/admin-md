@@ -9,7 +9,7 @@ use Ogilo\AdminMd\Models\ArticleCategory;
 use Ogilo\AdminMd\Models\Page;
 
 use Illuminate\Support\Facades\Validator;
-use Img;
+use Intervention\Image\Facades\Image;
 
 /**
  *
@@ -60,7 +60,7 @@ class ArticleController extends Controller
 				mkdir($dir, 0755, true);
 			}
 
-			$image = Img::make($picture->getRealPath());
+			$image = Image::make($picture->getRealPath());
 
 			$cropdetails = json_decode($request->input('image_cropdetails'));
 			$image->crop((int)$cropdetails->width, (int)$cropdetails->height, (int)$cropdetails->x, (int)$cropdetails->y)->resize(640, 480);
@@ -73,7 +73,7 @@ class ArticleController extends Controller
 				mkdir($dir . '160x160/', 0755, true);
 			}
 
-			$square = Img::make($picture->getRealPath());
+			$square = Image::make($picture->getRealPath());
 			$square->fit(160, 160);
 			$square->save($dir . '160x160/' . $filename);
 			$square->destroy();
@@ -82,7 +82,7 @@ class ArticleController extends Controller
 				mkdir($dir . '512x512/', 0755, true);
 			}
 
-			$square_hd = Img::make($picture->getRealPath());
+			$square_hd = Image::make($picture->getRealPath());
 			$square_hd->fit(512, 512);
 			$square_hd->save($dir . '512x512/' . $filename);
 			$square_hd->destroy();
@@ -91,7 +91,7 @@ class ArticleController extends Controller
 				mkdir($dir . '480x240/', 0755, true);
 			}
 
-			$rectangle 	= Img::make($picture->getRealPath());
+			$rectangle 	= Image::make($picture->getRealPath());
 			$rectangle->fit(480, 240);
 			$rectangle->save($dir . '480x240/' . $filename);
 			$rectangle->destroy();
@@ -100,7 +100,7 @@ class ArticleController extends Controller
 				mkdir($dir . 'originals/', 0755, true);
 			}
 
-			$original 	= Img::make($picture->getRealPath());
+			$original 	= Image::make($picture->getRealPath());
 			$original->save($dir . 'originals/' . $filename);
 			$original->destroy();
 
@@ -155,7 +155,7 @@ class ArticleController extends Controller
 
 			$picture = $request->file('picture');
 
-			$image = Img::make($picture->getRealPath());
+			$image = Image::make($picture->getRealPath());
 
 			$cropdetails = json_decode($request->input('image_cropdetails'));
 			$image->crop((int)$cropdetails->width, (int)$cropdetails->height, (int)$cropdetails->x, (int)$cropdetails->y)->resize(640, 480);
@@ -182,7 +182,7 @@ class ArticleController extends Controller
 				mkdir($dir . '160x160/', 0755, true);
 			}
 
-			$square = Img::make($picture->getRealPath());
+			$square = Image::make($picture->getRealPath());
 			$square->fit(160, 160);
 			$square->save($dir . '160x160/' . $filename);
 			$square->destroy();
@@ -196,7 +196,7 @@ class ArticleController extends Controller
 				mkdir($dir . '512x512/', 0755, true);
 			}
 
-			$square_hd = Img::make($picture->getRealPath());
+			$square_hd = Image::make($picture->getRealPath());
 			$square_hd->fit(512, 512);
 			$square_hd->save($dir . '512x512/' . $filename);
 			$square_hd->destroy();
@@ -210,7 +210,7 @@ class ArticleController extends Controller
 				mkdir($dir . '480x240/', 0755, true);
 			}
 
-			$rectangle 	= Img::make($picture->getRealPath());
+			$rectangle 	= Image::make($picture->getRealPath());
 			$rectangle->fit(480, 240);
 			$rectangle->save($dir . '480x240/' . $filename);
 			$rectangle->destroy();
@@ -223,7 +223,7 @@ class ArticleController extends Controller
 				mkdir($dir . 'originals/', 0755, true);
 			}
 
-			$original 	= Img::make($picture->getRealPath());
+			$original 	= Image::make($picture->getRealPath());
 			$original->save($dir . 'originals/' . $filename);
 			$original->destroy();
 

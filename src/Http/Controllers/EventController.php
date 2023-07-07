@@ -2,7 +2,7 @@
 
 namespace Ogilo\AdminMd\Http\Controllers;
 
-use Img;
+use Intervention\Image\Facades\Image;
 use File;
 
 use Exception;
@@ -69,7 +69,7 @@ class EventController extends Controller
         $event->content = $request->input('content');
 
         if ($request->hasFile('picture')) {
-            $image = Img::make($request->file('picture')->getRealPath());
+            $image = Image::make($request->file('picture')->getRealPath());
 
             $dir = public_path('images/events/');
 
@@ -188,7 +188,7 @@ class EventController extends Controller
                 unlink($old_picture);
             }
 
-            $image = Img::make($request->file('picture')->getRealPath());
+            $image = Image::make($request->file('picture')->getRealPath());
             $image->save($dir . $filename);
 
             $image->fit(160, 160);

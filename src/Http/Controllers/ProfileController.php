@@ -7,7 +7,7 @@ use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\Profile;
 
 use Illuminate\Support\Facades\Validator;
-use Img;
+use Intervention\Image\Facades\Image;
 
 /**
  * ProfileController
@@ -61,7 +61,7 @@ class ProfileController extends Controller
         $profile->details  = $request->input('details');
 
         if ($request->hasFile('picture')) {
-            $image = Img::make($request->file('picture')->getRealPath());
+            $image = Image::make($request->file('picture')->getRealPath());
             // $image->fit(359, 244);
             $img = json_decode($request->input('image_cropdetails'));
             $image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
@@ -127,7 +127,7 @@ class ProfileController extends Controller
         $profile->details  = $request->input('details');
 
         if ($request->hasFile('picture')) {
-            $image = Img::make($request->file('picture')->getRealPath());
+            $image = Image::make($request->file('picture')->getRealPath());
             // $image->fit(359, 244);
             $img = json_decode($request->input('image_cropdetails'));
             $image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
