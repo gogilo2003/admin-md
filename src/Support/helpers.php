@@ -20,9 +20,9 @@ if (!function_exists('get_blogs')) {
         $blog = null;
 
         if ($paginate) {
-            $blogs = $cat ? Article::where('article_category_id', $cat->id)->where('published', 1)->paginate($paginate) : [];
+            $blogs = $cat ? Article::where('article_category_id', $cat->id)->where('published', 1)->orderBy('created_at', 'DESC')->paginate($paginate) : [];
         } else {
-            $blogs = $cat ? Article::where('article_category_id', $cat->id)->where('published', 1)->get() : [];
+            $blogs = $cat ? Article::where('article_category_id', $cat->id)->where('published', 1)->orderBy('created_at', 'DESC')->get() : [];
         }
         return $blogs;
     }
