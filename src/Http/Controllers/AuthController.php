@@ -54,11 +54,22 @@ class AuthController extends Controller
         if (Auth::guard('admin')->attempt($admin)) {
 
             $user = Auth::guard('admin')->user();
-            // $user->createToken('token');
 
-            return redirect()
-                ->intended('admin')
-                ->with('global-success', 'Authentication Succesful');
+            $token = $user->createToken('token');
+
+            $user->api_token = \Illuminate\Support\Str::random(32);
+            $user->save();
+
+            return response()->json([
+                "success" => true,
+                "message" => 'Authentication Successful',
+                "token" => $token->plainTextToken
+            ]);
+
+            // return redirect()
+            //     ->intended('admin')
+            //     ->with('global-success', 'Authentication Successful')
+            //     ->with('token', $token);
         }
 
         return redirect()

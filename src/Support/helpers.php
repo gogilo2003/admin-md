@@ -1736,10 +1736,11 @@ if (!function_exists('break_string')) {
 if (!function_exists('api_token')) {
     function api_token()
     {
-        if (\Auth::guard('admin')->check()) {
-            $user = \Auth::guard('admin')->user();
+        if (auth()->guard('admin')->check()) {
+            $user = auth()->guard('admin')->user();
             $token = $user->currentAccessToken();
             $access_token = $token ? $token->plainTextToken : null;
+            return $access_token;
         }
         return null;
     }

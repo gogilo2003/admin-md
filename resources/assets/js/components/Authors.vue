@@ -23,8 +23,8 @@
         </EasyDataTable>
 
         <!-- Modal -->
-        <div class="modal fade" id="authorModalDialog" tabindex="-1" role="dialog"
-            aria-labelledby="authorModalDialogHelp" aria-hidden="true" data-backdrop="static">
+        <div class="modal fade" id="authorModalDialog" tabindex="-1" role="dialog" aria-labelledby="authorModalDialogHelp"
+            aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="card">
@@ -85,7 +85,6 @@
         </div>
 
     </div>
-
 </template>
 
 <script setup>
@@ -225,6 +224,8 @@ const setImage = (e) => {
 }
 
 onMounted(() => {
+    let access_token = localStorage.getItem('admin_access_token');
+    axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`
     axios.get('/api/admin/authors').then(response => {
         items.value = response.data.data
     })

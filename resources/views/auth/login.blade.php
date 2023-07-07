@@ -146,9 +146,11 @@
                 // Login...
                 axios.post('/admin/login', {
                     email: emailInput.value,
-                    password: passwordInput.value
+                    password: passwordInput.value,
+                    _token: "{{ csrf_token() }}"
                 }).then(response => {
                     loader.style.display = 'none'
+                    localStorage.setItem('admin_access_token', response.data.token)
                     window.location = "/admin"
                 }).catch(error => {
                     console.log(error);
