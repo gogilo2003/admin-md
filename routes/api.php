@@ -64,7 +64,7 @@ Route::middleware('api')
                     Route::post('', [TagController::class, 'store'])->name('-store');
                     Route::patch('{id}', [TagController::class, 'update'])->name('-update');
                     Route::delete('', [TagController::class, 'delete'])->name('-delete');
-                    Route::post('', [TagController::class, 'tag'])->name('-tag');
+                    Route::post('tag', [TagController::class, 'tag'])->name('-tag');
                 });
 
                 Route::name('-authors')->prefix('authors')->group(function () {

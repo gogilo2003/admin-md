@@ -119,4 +119,9 @@ class TagController extends Controller
 
         return $this->deleteSuccess();
     }
+
+    function tag(Request $request)
+    {
+        return response()->json($request->all());
+    }
 }
