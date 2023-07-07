@@ -1,16 +1,16 @@
-<?php 
+<?php
 
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\FileCategory;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 /**
-* 
-*/
+ *
+ */
 class FileCategoryController extends Controller
 {
 	public function __construct()
@@ -21,7 +21,7 @@ class FileCategoryController extends Controller
 	public function getFileCategories()
 	{
 		$file_categories = FileCategory::all();
-		return view('admin::file_categories.index',compact('file_categories'));
+		return view('admin::file_categories.index', compact('file_categories'));
 	}
 
 	public function getAdd()
@@ -31,17 +31,17 @@ class FileCategoryController extends Controller
 
 	public function postAdd(Request $request)
 	{
-		$validator = Validator::make($request->all(),[
-				'title' => 'required|unique:file_categories,title',
-				'max_size'=>'integer',
-			]);
+		$validator = Validator::make($request->all(), [
+			'title' => 'required|unique:file_categories,title',
+			'max_size' => 'integer',
+		]);
 
-		if($validator->fails()){
+		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withErrors($validator)
-					->withInput()
-					->with('global-warning','Some fields failed validation. Please check and try again');
+				->back()
+				->withErrors($validator)
+				->withInput()
+				->with('global-warning', 'Some fields failed validation. Please check and try again');
 		}
 
 		$file_category = new FileCategory;
@@ -53,31 +53,31 @@ class FileCategoryController extends Controller
 		$file_category->description = $request->input('description');
 
 		$file_category->save();
-		
+
 		return redirect()
-				->route('admin-file_categories')
-				->with('global-success','File Category Created Successfully');
+			->route('admin-file_categories')
+			->with('global-success', 'File Category Created Successfully');
 	}
 
 	public function getEdit($id)
 	{
 		$file_category = FileCategory::find($id);
-		return view('admin::file_categories.edit',compact('file_category'));
+		return view('admin::file_categories.edit', compact('file_category'));
 	}
 
 	public function postEdit(Request $request)
 	{
-		$validator = Validator::make($request->all(),[
-				'title' => 'required|unique:file_categories,title,'.$request->input('id'),
-				'max_size'=>'integer',
-			]);
+		$validator = Validator::make($request->all(), [
+			'title' => 'required|unique:file_categories,title,' . $request->input('id'),
+			'max_size' => 'integer',
+		]);
 
-		if($validator->fails()){
+		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withErrors($validator)
-					->withInput()
-					->with('global-warning','Some fields failed validation. Please check and try again');
+				->back()
+				->withErrors($validator)
+				->withInput()
+				->with('global-warning', 'Some fields failed validation. Please check and try again');
 		}
 
 		$file_category = FileCategory::find($request->input('id'));
@@ -89,10 +89,10 @@ class FileCategoryController extends Controller
 		$file_category->description = $request->input('description');
 
 		$file_category->save();
-		
+
 		return redirect()
-				->route('admin-file_categories')
-				->with('global-success','File category updated');
+			->route('admin-file_categories')
+			->with('global-success', 'File category updated');
 	}
 
 	public function postPages(Request $request)
@@ -101,10 +101,10 @@ class FileCategoryController extends Controller
 		$cat = FileCategory::find($request->input('id'));
 		$cat->pages() ? $cat->pages()->detach($cat->pageIds()) : '';
 		$cat->pages()->attach($request->input('pages'));
-		
+
 		return redirect()
-				->back()
-				->with('global-success','Pages related to '.$cat->title.' updated successfuly');
+			->back()
+			->with('global-success', 'Pages related to ' . $cat->title . ' updated successfully');
 	}
 
 	public function postDelete(Request $request)
@@ -112,10 +112,8 @@ class FileCategoryController extends Controller
 		// dd($request->all());
 		$cat = FileCategory::find($request->input('id'));
 		$cat->delete();
-		
-		return response(['message'=>'File Category deleted'])
-				->back('Content-Type','application/json');
-	}
-	
 
+		return response(['message' => 'File Category deleted'])
+			->back('Content-Type', 'application/json');
+	}
 }

@@ -5,7 +5,7 @@ namespace Ogilo\AdminMd\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use Ogilo\AdminMd\Models\Tag;
 use Ogilo\ApiResponseHelpers;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Api\Controller;
 use Illuminate\Support\Facades\Validator;
 use Ogilo\AdminMd\Http\Resources\TagResource;
 

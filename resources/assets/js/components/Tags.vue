@@ -24,7 +24,7 @@
             <div class="tag" v-for="tag in tags" :key="tag.id">
                 <div class="details">
                     <div class="name">{{ tag.name }}</div>
-                    <div class="desciption">{{ tag.description }}</div>
+                    <div class="description">{{ tag.description }}</div>
                 </div>
                 <div class="tasks">
                     <button class="btn btn-primary btn-link btn-fab" @click="editTag(tag)">

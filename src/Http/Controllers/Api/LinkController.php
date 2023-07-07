@@ -2,10 +2,10 @@
 
 namespace Ogilo\AdminMd\Http\Controllers\Api;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Ogilo\AdminMd\Models\Link;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Api\Controller;
 use Ogilo\AdminMd\Http\Resources\LinkResource;
 
 class LinkController extends Controller

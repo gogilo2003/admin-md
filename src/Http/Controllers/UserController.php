@@ -1,18 +1,18 @@
-<?php 
+<?php
 
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\Admin;
 use Ogilo\AdminMd\Models\AdminRole;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use File;
 
 /**
-* 
-*/
+ *
+ */
 class UserController extends Controller
 {
 	public function __construct()
@@ -23,7 +23,7 @@ class UserController extends Controller
 	public function getUsers()
 	{
 		$users = Admin::all();
-		return view('admin::users.index',compact('users'));
+		return view('admin::users.index', compact('users'));
 	}
 
 	public function getAdd()
@@ -35,63 +35,63 @@ class UserController extends Controller
 	{
 		// $users = $request->all();//implode(',', $request->input('users'));
 		// dd($users);
-		$validator = Validator::make($request->all(),[
-				'name'=>'required|unique:admins',
-				'email'=>'required|email|unique:admins',
-				'role'=>'required|integer',
-			],[
-				'users.required'=>'You must select at least one user'
-			]);
+		$validator = Validator::make($request->all(), [
+			'name' => 'required|unique:admins',
+			'email' => 'required|email|unique:admins',
+			'role' => 'required|integer',
+		], [
+			'users.required' => 'You must select at least one user'
+		]);
 
 		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withInput()
-					->withErrors($validator)
-					->with('global-warning','Some fields failed validation, please check and try again');
+				->back()
+				->withInput()
+				->withErrors($validator)
+				->with('global-warning', 'Some fields failed validation, please check and try again');
 		}
 
 		$user = new Admin;
 		$user->name = $request->input('name');
 		$user->email = $request->input('email');
 		$password = str_random(6);
-		File::append(storage_path('users.txt'),"\n\r".$user->email."\t".$password);
+		File::append(storage_path('users.txt'), "\n\r" . $user->email . "\t" . $password);
 		$user->password = bcrypt($password);
-		
+
 
 		$role = AdminRole::find($request->input('role'));
 
 		$role->admins()->save($user);
 
 		return redirect()
-				->route('admin-users')
-				->with('global-success','Admin added');
+			->route('admin-users')
+			->with('global-success', 'Admin added');
 	}
 
 	public function getEdit($id)
 	{
 		$user = Admin::findOrFail($id);
-		return view('admin::users.edit',compact('user'));
+		return view('admin::users.edit', compact('user'));
 	}
 
 	public function postEdit(Request $request)
 	{
 		$id = $request->input('id');
 
-		$validator = Validator::make($request->all(),[
-				'name'=>'required|unique:admins,name,'.$id,
-				'email'=>'required|email|unique:admins,email,'.$id,
-				'role'=>'required|integer',
-			],[
-				'users.required'=>'You must select at least one user'
-			]);
+		$validator = Validator::make($request->all(), [
+			'name' => 'required|unique:admins,name,' . $id,
+			'email' => 'required|email|unique:admins,email,' . $id,
+			'role' => 'required|integer',
+		], [
+			'users.required' => 'You must select at least one user'
+		]);
 
 		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withInput()
-					->withErrors($validator)
-					->with('global-warning','Some fields failed validation, please check and try again');
+				->back()
+				->withInput()
+				->withErrors($validator)
+				->with('global-warning', 'Some fields failed validation, please check and try again');
 		}
 
 		$user = Admin::findOrFail($id);
@@ -100,8 +100,8 @@ class UserController extends Controller
 		$user->save();
 
 		return redirect()
-				->route('admin-users')
-				->with('global-success','Admin '.$user->name.' Updated');
+			->route('admin-users')
+			->with('global-success', 'Admin ' . $user->name . ' Updated');
 	}
 
 	public function postDelete(Request $request)
@@ -137,12 +137,11 @@ class UserController extends Controller
 		$user = Admin::findOrFail($request->input('id'));
 		$password = str_random(6);
 		$user->password = bcrypt($password);
-		File::append(storage_path('users.txt'),"\n\r".$user->email."\t".$password);
+		File::append(storage_path('users.txt'), "\n\r" . $user->email . "\t" . $password);
 		$user->save();
 
 		/*return redirect()
 				->route('admin-users')
 				->with('global-success','Admin '.$name.' Deleted');*/
 	}
-
 }

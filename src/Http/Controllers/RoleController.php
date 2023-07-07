@@ -1,16 +1,16 @@
-<?php 
+<?php
 
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\AdminRole;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 /**
-* 
-*/
+ *
+ */
 class RoleController extends Controller
 {
 	public function __construct()
@@ -21,7 +21,7 @@ class RoleController extends Controller
 	public function getRoles()
 	{
 		$roles = AdminRole::all();
-		return view('admin::roles.index',compact('roles'));
+		return view('admin::roles.index', compact('roles'));
 	}
 
 	public function getAdd()
@@ -33,19 +33,19 @@ class RoleController extends Controller
 	{
 		// $roles = $request->all();//implode(',', $request->input('roles'));
 		// dd($roles);
-		$validator = Validator::make($request->all(),[
-				'name'=>'required|unique:admin_roles',
-				'roles'=>'required',
-			],[
-				'roles.required'=>'You must select at least one role'
-			]);
+		$validator = Validator::make($request->all(), [
+			'name' => 'required|unique:admin_roles',
+			'roles' => 'required',
+		], [
+			'roles.required' => 'You must select at least one role'
+		]);
 
 		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withInput()
-					->withErrors($validator)
-					->with('global-warning','Some fields failed validation, please check and try again');
+				->back()
+				->withInput()
+				->withErrors($validator)
+				->with('global-warning', 'Some fields failed validation, please check and try again');
 		}
 
 		$role = new AdminRole;
@@ -55,33 +55,33 @@ class RoleController extends Controller
 		$role->save();
 
 		return redirect()
-				->route('admin-roles')
-				->with('global-success','Role added');
+			->route('admin-roles')
+			->with('global-success', 'Role added');
 	}
 
 	public function getEdit($id)
 	{
 		$role = AdminRole::findOrFail($id);
-		return view('admin::roles.edit',compact('role'));
+		return view('admin::roles.edit', compact('role'));
 	}
 
 	public function postEdit(Request $request)
 	{
 		$id = $request->input('id');
 
-		$validator = Validator::make($request->all(),[
-				'name'=>'required|unique:admin_roles,name,'.$id,
-				'roles'=>'required',
-			],[
-				'roles.required'=>'You must select at least one role'
-			]);
+		$validator = Validator::make($request->all(), [
+			'name' => 'required|unique:admin_roles,name,' . $id,
+			'roles' => 'required',
+		], [
+			'roles.required' => 'You must select at least one role'
+		]);
 
 		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withInput()
-					->withErrors($validator)
-					->with('global-warning','Some fields failed validation, please check and try again');
+				->back()
+				->withInput()
+				->withErrors($validator)
+				->with('global-warning', 'Some fields failed validation, please check and try again');
 		}
 
 		$role = AdminRole::findOrFail($id);
@@ -91,8 +91,8 @@ class RoleController extends Controller
 		$role->save();
 
 		return redirect()
-				->route('admin-roles')
-				->with('global-success','Role '.$role->name.' Updated');
+			->route('admin-roles')
+			->with('global-success', 'Role ' . $role->name . ' Updated');
 	}
 
 	public function postDelete(Request $request)
@@ -107,5 +107,4 @@ class RoleController extends Controller
 				->route('admin-roles')
 				->with('global-success','Role '.$name.' Deleted');*/
 	}
-
 }

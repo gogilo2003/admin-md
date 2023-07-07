@@ -3,12 +3,12 @@
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\Article;
 use Ogilo\AdminMd\Models\ArticleCategory;
 use Ogilo\AdminMd\Models\Page;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use Img;
 
 /**
@@ -25,7 +25,7 @@ class BlogController extends Controller
 	{
 		$cat = ArticleCategory::where('name', 'blog')
 			->orWhere('name', 'blogs')
-			->with(['articles.comments','articles' => function ($query) {
+			->with(['articles.comments', 'articles' => function ($query) {
 				return $query->orderBy('id', 'DESC')->get();
 			}, 'articles.comments'])->first();
 
@@ -273,7 +273,7 @@ class BlogController extends Controller
 		$name = $article->title;
 		$article->save();
 
-		return response(["success" => true, "message" => "Article $name " . ($article->published ? "Published" : "Un published") . " successfuly", "published" => $article->published])
+		return response(["success" => true, "message" => "Article $name " . ($article->published ? "Published" : "Un published") . " successfully", "published" => $article->published])
 			->header('Content-Type', 'application/json');
 
 		// return redirect()
@@ -290,7 +290,7 @@ class BlogController extends Controller
 		$name = $article->title;
 		$article->save();
 
-		return response(["success" => true, "message" => "Article $name " . ($article->featured ? "Featured" : "Un featured") . " successfuly", "featured" => $article->featured])
+		return response(["success" => true, "message" => "Article $name " . ($article->featured ? "Featured" : "Un featured") . " successfully", "featured" => $article->featured])
 			->header('Content-Type', 'application/json');
 
 		// return redirect()

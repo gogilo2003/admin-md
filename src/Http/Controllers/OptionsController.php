@@ -1,17 +1,18 @@
-<?php 
+<?php
 
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\ArticleCategory;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 /**
-* 
-*/
-class OptionsController extends Controller{
+ *
+ */
+class OptionsController extends Controller
+{
 
 	public function getOptions()
 	{
@@ -20,13 +21,12 @@ class OptionsController extends Controller{
 
 	public function getAdd()
 	{
-		return('admin::options.add');
+		return ('admin::options.add');
 	}
 
 	public function postAdd(Request $request)
 	{
 		return redirect()
-				->with('global-success','Option added');
+			->with('global-success', 'Option added');
 	}
-
 }

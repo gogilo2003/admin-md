@@ -3,20 +3,18 @@
 namespace Ogilo\AdminMd\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use Ogilo\ApiResponseHelpers;
 use Ogilo\AdminMd\Models\Author;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Ogilo\AdminMd\Http\Resources\AuthorResource;
+use Ogilo\AdminMd\Http\Controllers\Api\Controller;
 
 class AuthorController extends Controller
 {
-    use ApiResponseHelpers;
 
     /**
      * List authors
      *
-     * Fetch a list of authors and return a JsonRespons collection of the authors
+     * Fetch a list of authors and return a JsonResponse collection of the authors
      *
      * @param int $id
      *

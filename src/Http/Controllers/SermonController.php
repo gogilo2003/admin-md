@@ -1,26 +1,27 @@
-<?php 
+<?php
 
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\Sermon;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use Img;
 
 /**
-* Sermons Controller
-*/
-class SermonController extends Controller {
+ * Sermons Controller
+ */
+class SermonController extends Controller
+{
 
 	/**
 	 * List Sermons
 	 */
-	public function getSermons($value='')
+	public function getSermons($value = '')
 	{
 		$sermons = Sermon::all();
-		return view('admin::sermons.index',compact('sermons'));
+		return view('admin::sermons.index', compact('sermons'));
 	}
 
 	public function getAdd()
@@ -31,17 +32,17 @@ class SermonController extends Controller {
 
 	public function postAdd(Request $request)
 	{
-		$validator = Validator::make($request->all(),[
-				'title'=>'required|unique:sermons,title',
-				'picture'=>'required|image',
-			]);
+		$validator = Validator::make($request->all(), [
+			'title' => 'required|unique:sermons,title',
+			'picture' => 'required|image',
+		]);
 
-		if($validator->fails()){
+		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withErrors($validator)
-					->withInput()
-					->with('global-warning','Some fields failed validation. Please check and try again');
+				->back()
+				->withErrors($validator)
+				->withInput()
+				->with('global-warning', 'Some fields failed validation. Please check and try again');
 		}
 
 		$sermon = new Sermon;
@@ -54,18 +55,18 @@ class SermonController extends Controller {
 
 				$dir = public_path('images/sermons/');
 				if (!file_exists($dir)) {
-					mkdir($dir,0755,TRUE);
+					mkdir($dir, 0755, TRUE);
 				}
-				$filename = time().'.jpg';
-				$image->save($dir.$filename);
+				$filename = time() . '.jpg';
+				$image->save($dir . $filename);
 
 				$thumbnail = Img::make($file->getRealPath());
 				$dir = public_path('images/sermons/thumbnails/');
 				if (!file_exists($dir)) {
-					mkdir($dir,0755,TRUE);
+					mkdir($dir, 0755, TRUE);
 				}
-				$thumbnail->fit(256,256);
-				$thumbnail->save($dir.$filename);
+				$thumbnail->fit(256, 256);
+				$thumbnail->save($dir . $filename);
 
 				$sermon->picture = $filename;
 			}
@@ -82,24 +83,23 @@ class SermonController extends Controller {
 		$sermon->pages()->attach($request->input('pages'));
 
 		return redirect()
-				->route('admin-sermons')
-				->with('global-success','Sermon successfuly created');
-
+			->route('admin-sermons')
+			->with('global-success', 'Sermon successfully created');
 	}
 
 	public function postPicture(Request $request)
 	{
-		$validator = Validator::make($request->all(),[
-				'id'=>'bail|required',
-				'picture'=>'required|image',
-			]);
+		$validator = Validator::make($request->all(), [
+			'id' => 'bail|required',
+			'picture' => 'required|image',
+		]);
 
-		if($validator->fails()){
+		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withErrors($validator)
-					->withInput()
-					->with('global-warning','Some fields failed validation. Please check and try again');
+				->back()
+				->withErrors($validator)
+				->withInput()
+				->with('global-warning', 'Some fields failed validation. Please check and try again');
 		}
 
 		$sermon = Sermon::find($request->input('id'));
@@ -112,18 +112,18 @@ class SermonController extends Controller {
 
 				$dir = public_path('images/sermons/');
 				if (!file_exists($dir)) {
-					mkdir($dir,0755,TRUE);
+					mkdir($dir, 0755, TRUE);
 				}
-				$filename = time().'.jpg';
-				$image->save($dir.$filename);
+				$filename = time() . '.jpg';
+				$image->save($dir . $filename);
 
 				$thumbnail = Img::make($file->getRealPath());
 				$dir = public_path('images/sermons/thumbnails/');
 				if (!file_exists($dir)) {
-					mkdir($dir,0755,TRUE);
+					mkdir($dir, 0755, TRUE);
 				}
-				$thumbnail->fit(256,256);
-				$thumbnail->save($dir.$filename);
+				$thumbnail->fit(256, 256);
+				$thumbnail->save($dir . $filename);
 
 				$sermon->picture = $filename;
 			}
@@ -132,27 +132,26 @@ class SermonController extends Controller {
 		$sermon->save();
 
 		return redirect()
-				->back()
-				->with('global-success','Audio file for sermon uploaded');
-
+			->back()
+			->with('global-success', 'Audio file for sermon uploaded');
 	}
 
 	public function postAudio(Request $request)
 	{
 		// dd($request->file('audio')->clientExtension());
-		$validator = Validator::make($request->all(),[
-				'id'=>'bail|required',
-				'audio'=>'required'// |mimes:mpga,wav',
-			],[
-				//'audio.mimetypes'=>'This is not a valid audo file',
-			]);
+		$validator = Validator::make($request->all(), [
+			'id' => 'bail|required',
+			'audio' => 'required' // |mimes:mpga,wav',
+		], [
+			//'audio.mimetypes'=>'This is not a valid audo file',
+		]);
 
-		if($validator->fails()){
+		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withErrors($validator)
-					->withInput()
-					->with('global-warning','Some fields failed validation. Please check and try again');
+				->back()
+				->withErrors($validator)
+				->withInput()
+				->with('global-warning', 'Some fields failed validation. Please check and try again');
 		}
 
 		$sermon = Sermon::find($request->input('id'));
@@ -161,42 +160,42 @@ class SermonController extends Controller {
 
 		$dir = public_path('audio/sermons/');
 		if (!file_exists($dir)) {
-			mkdir($dir,0755,TRUE);
+			mkdir($dir, 0755, TRUE);
 		}
 
-		if (file_exists($old = public_path('audio/sermons/'.$sermon->audio))) {
-			if(!is_dir($old))
+		if (file_exists($old = public_path('audio/sermons/' . $sermon->audio))) {
+			if (!is_dir($old))
 				unlink($old);
 		}
 
-		$filename = time().'.'.$file->clientExtension();
+		$filename = time() . '.' . $file->clientExtension();
 
-		$file->move($dir,$filename);
+		$file->move($dir, $filename);
 
 		$sermon->audio = $filename;
 
 		$sermon->save();
 
 		return redirect()
-				->back()
-				->with('global-success','Audio file for sermon uploaded');
+			->back()
+			->with('global-success', 'Audio file for sermon uploaded');
 	}
 
 	public function postVideo(Request $request)
 	{
-		$validator = Validator::make($request->all(),[
-				'id'=>'bail|required',
-				'video'=>'required|mimetypes:video/avi,video/mkv,video/mp4',
-			],[
-				'video.mimetypes'=>'This is not a valid video clip',
-			]);
+		$validator = Validator::make($request->all(), [
+			'id' => 'bail|required',
+			'video' => 'required|mimetypes:video/avi,video/mkv,video/mp4',
+		], [
+			'video.mimetypes' => 'This is not a valid video clip',
+		]);
 
-		if($validator->fails()){
+		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withErrors($validator)
-					->withInput()
-					->with('global-warning','Some fields failed validation. Please check and try again');
+				->back()
+				->withErrors($validator)
+				->withInput()
+				->with('global-warning', 'Some fields failed validation. Please check and try again');
 		}
 
 		$sermon = Sermon::find($request->input('id'));
@@ -207,47 +206,47 @@ class SermonController extends Controller {
 
 		$dir = public_path('video/sermons/');
 		if (!file_exists($dir)) {
-			mkdir($dir,0755,TRUE);
+			mkdir($dir, 0755, TRUE);
 		}
 
-		if (file_exists($old = public_path('video/sermons/'.$sermon->video))) {
-			if(!is_dir($old))
+		if (file_exists($old = public_path('video/sermons/' . $sermon->video))) {
+			if (!is_dir($old))
 				unlink($old);
 		}
 
-		$filename = time().'.'.$file->clientExtension();
+		$filename = time() . '.' . $file->clientExtension();
 
-		$file->move($dir,$filename);
+		$file->move($dir, $filename);
 
 		$sermon->video = $filename;
 
 		$sermon->save();
 
 		return redirect()
-				->back()
-				->with('global-success','Video clip uploaded');
+			->back()
+			->with('global-success', 'Video clip uploaded');
 	}
 
 	public function getEdit($id)
 	{
 		$sermon = Sermon::find($id);
-		return view('admin::sermons.edit',compact('sermon'));
+		return view('admin::sermons.edit', compact('sermon'));
 	}
 
 	public function postEdit(Request $request)
 	{
-		$validator = Validator::make($request->all(),[
-				'id' 		=> 'bail|required|integer',
-				'title'		=>'required|unique:sermons,title,'.$request->input('id'),
-				'picture'	=>'image',
-			]);
+		$validator = Validator::make($request->all(), [
+			'id' 		=> 'bail|required|integer',
+			'title'		=> 'required|unique:sermons,title,' . $request->input('id'),
+			'picture'	=> 'image',
+		]);
 
-		if($validator->fails()){
+		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withErrors($validator)
-					->withInput()
-					->with('global-warning','Some fields failed validation. Please check and try again');
+				->back()
+				->withErrors($validator)
+				->withInput()
+				->with('global-warning', 'Some fields failed validation. Please check and try again');
 		}
 
 		$sermon = Sermon::find($request->input('id'));
@@ -260,24 +259,24 @@ class SermonController extends Controller {
 
 				$dir = public_path('images/sermons/');
 				if (!file_exists($dir)) {
-					mkdir($dir,0755,TRUE);
+					mkdir($dir, 0755, TRUE);
 				}
-				$filename = time().'.jpg';
-				if(file_exists($dir.$sermon->picture))
-					unlink($dir.$sermon->picture);
-				$image->save($dir.$filename);
+				$filename = time() . '.jpg';
+				if (file_exists($dir . $sermon->picture))
+					unlink($dir . $sermon->picture);
+				$image->save($dir . $filename);
 
 				$thumbnail = Img::make($file->getRealPath());
 				$dir = public_path('images/sermons/thumbnails/');
 				if (!file_exists($dir)) {
-					mkdir($dir,0755,TRUE);
+					mkdir($dir, 0755, TRUE);
 				}
 
-				if( file_exists($dir.$sermon->picture) )
-					unlink($dir.$sermon->picture);
+				if (file_exists($dir . $sermon->picture))
+					unlink($dir . $sermon->picture);
 
-				$thumbnail->fit(256,256);
-				$thumbnail->save($dir.$filename);
+				$thumbnail->fit(256, 256);
+				$thumbnail->save($dir . $filename);
 
 				$sermon->picture = $filename;
 			}
@@ -295,8 +294,8 @@ class SermonController extends Controller {
 		$sermon->pages()->attach($request->input('pages'));
 
 		return redirect()
-				->route('admin-sermons')
-				->with('global-success','Sermon successfuly updated');
+			->route('admin-sermons')
+			->with('global-success', 'Sermon successfully updated');
 	}
 
 	public function postPublish(Request $request)
@@ -305,7 +304,7 @@ class SermonController extends Controller {
 		$sermon->published = !$sermon->published;
 		$sermon->save();
 
-		return response(['message'=>$sermon->published ? 'Sermon has been publisjed' : 'Sermon has been un-published'])
-				->header('Content-Type','application/json');
+		return response(['message' => $sermon->published ? 'Sermon has been publisjed' : 'Sermon has been un-published'])
+			->header('Content-Type', 'application/json');
 	}
 }

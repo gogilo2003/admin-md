@@ -1,16 +1,16 @@
-<?php 
+<?php
 
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\ProjectCategory;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 /**
-* 
-*/
+ *
+ */
 class ProjectCategoryController extends Controller
 {
 	public function __construct()
@@ -21,7 +21,7 @@ class ProjectCategoryController extends Controller
 	public function getProjectCategories()
 	{
 		$project_categories = ProjectCategory::all();
-		return view('admin::project_categories.index',compact('project_categories'));
+		return view('admin::project_categories.index', compact('project_categories'));
 	}
 
 	public function getAdd()
@@ -31,16 +31,16 @@ class ProjectCategoryController extends Controller
 
 	public function postAdd(Request $request)
 	{
-		$validator = Validator::make($request->all(),[
-				'title'=>'required|unique:project_categories,title',
-			]);
+		$validator = Validator::make($request->all(), [
+			'title' => 'required|unique:project_categories,title',
+		]);
 
-		if($validator->fails()){
+		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withErrors($validator)
-					->withInput()
-					->with('global-warning','Some fields failed validation. Please check and try again');
+				->back()
+				->withErrors($validator)
+				->withInput()
+				->with('global-warning', 'Some fields failed validation. Please check and try again');
 		}
 
 		$project_category = new ProjectCategory;
@@ -50,31 +50,31 @@ class ProjectCategoryController extends Controller
 		$project_category->description 	= $request->input('description');
 
 		$project_category->save();
-		
+
 		return redirect()
-				->route('admin-project_categories')
-				->with('global-success','Project Category Created Successfully');
+			->route('admin-project_categories')
+			->with('global-success', 'Project Category Created Successfully');
 	}
 
 	public function getEdit($id)
 	{
 		$project_category = ProjectCategory::find($id);
-		return view('admin::project_categories.edit',compact('project_category'));
+		return view('admin::project_categories.edit', compact('project_category'));
 	}
 
 	public function postEdit(Request $request)
 	{
-		$validator = Validator::make($request->all(),[
-				'id'=>'required|integer',
-				'title' => 'required|unique:project_categories,title,'.$request->input('id'),
-			]);
+		$validator = Validator::make($request->all(), [
+			'id' => 'required|integer',
+			'title' => 'required|unique:project_categories,title,' . $request->input('id'),
+		]);
 
-		if($validator->fails()){
+		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withErrors($validator)
-					->withInput()
-					->with('global-warning','Some fields failed validation. Please check and try again');
+				->back()
+				->withErrors($validator)
+				->withInput()
+				->with('global-warning', 'Some fields failed validation. Please check and try again');
 		}
 
 		$project_category = ProjectCategory::find($request->input('id'));
@@ -84,11 +84,10 @@ class ProjectCategoryController extends Controller
 		$project_category->description  = $request->input('description');
 
 		$project_category->save();
-		
+
 		return redirect()
-				->route('admin-project_categories')
-				->with('global-success','Project category updated');
-		
+			->route('admin-project_categories')
+			->with('global-success', 'Project category updated');
 	}
 
 	public function postPages(Request $request)
@@ -97,10 +96,10 @@ class ProjectCategoryController extends Controller
 		$cat = ProjectCategory::find($request->input('id'));
 		$cat->pages()->detach($cat->pageIds());
 		$cat->pages()->attach($request->input('pages'));
-		
+
 		return redirect()
-				->back()
-				->with('global-success','Pages related to '.$cat->name.' updated successfuly');
+			->back()
+			->with('global-success', 'Pages related to ' . $cat->name . ' updated successfully');
 	}
 
 	public function postDelete(Request $request)
@@ -108,9 +107,8 @@ class ProjectCategoryController extends Controller
 		// return response($request->all())->header('Content-Type','application/json');
 		$cat = ProjectCategory::find($request->input('id'));
 		$cat->delete();
-		
-		return redirect(['message'=>'Project category deleted successfuly'])
-				->header('Content-Type','application/json');
-	}
 
+		return redirect(['message' => 'Project category deleted successfully'])
+			->header('Content-Type', 'application/json');
+	}
 }

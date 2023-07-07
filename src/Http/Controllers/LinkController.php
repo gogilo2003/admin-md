@@ -3,7 +3,7 @@
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use File;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use Artisan;
 
 use Illuminate\Http\Request;
@@ -11,11 +11,11 @@ use Ogilo\AdminMd\Models\Link;
 
 use Ogilo\AdminMd\Models\Menu;
 use Ogilo\AdminMd\Models\Page;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 
 /**
-*
-*/
+ *
+ */
 class LinkController extends Controller
 {
 	public function __construct()
@@ -25,8 +25,8 @@ class LinkController extends Controller
 
 	public function getLinks()
 	{
-		$links = Link::orderBy('order','ASC')->get();
-		return view('admin::links.index',compact('links'));
+		$links = Link::orderBy('order', 'ASC')->get();
+		return view('admin::links.index', compact('links'));
 	}
 
 	public function getAdd()
@@ -36,19 +36,19 @@ class LinkController extends Controller
 
 	public function postAdd(Request $request)
 	{
-		$validator = Validator::make($request->all(),[
-				'name'=>'required|unique:links|alphanum',
-				'caption'=>'required'
-			],[
-				'name.alphanum'=>'Only letters and numbers are allowed'
-			]);
+		$validator = Validator::make($request->all(), [
+			'name' => 'required|unique:links|alphanum',
+			'caption' => 'required'
+		], [
+			'name.alphanum' => 'Only letters and numbers are allowed'
+		]);
 
 		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withInput()
-					->withErrors($validator)
-					->with('global-warning','Some fields failed validation, please check and try again');
+				->back()
+				->withInput()
+				->withErrors($validator)
+				->with('global-warning', 'Some fields failed validation, please check and try again');
 		}
 
 		$link = new Link;
@@ -59,50 +59,50 @@ class LinkController extends Controller
 
 		$menu = $request->has('menu') ? Menu::find($request->input('menu')) : Menu::first();
 
-        $menu->links()->save($link);
+		$menu->links()->save($link);
 
-        if($request->has('page')){
-            $page_name = $request->url ?? $request->name;
-            $page = new Page();
-            $page->name 	= $page_name;
-            $page->title 	= $request->input('caption');
-            $page->content 	= '<p>'.$request->input('caption').'...</p>';
-            $page->save();
-            $page->link()->save($link);
+		if ($request->has('page')) {
+			$page_name = $request->url ?? $request->name;
+			$page = new Page();
+			$page->name 	= $page_name;
+			$page->title 	= $request->input('caption');
+			$page->content 	= '<p>' . $request->input('caption') . '...</p>';
+			$page->save();
+			$page->link()->save($link);
 
-            Artisan::call('admin:make-page',[
-                "name"=>$page_name
-            ]);
-        }
+			Artisan::call('admin:make-page', [
+				"name" => $page_name
+			]);
+		}
 
 		return redirect()
-				->route('admin-links')
-				->with('global-success','Link added');
+			->route('admin-links')
+			->with('global-success', 'Link added');
 	}
 
 	public function getEdit($id)
 	{
 		$link = Link::findOrFail($id);
-		return view('admin::links.edit',compact('link'));
+		return view('admin::links.edit', compact('link'));
 	}
 
 	public function postEdit(Request $request)
 	{
 		$id = $request->input('id');
 
-		$validator = Validator::make($request->all(),[
-				'name'=>'required|alphanum|unique:pages,name,'.$id,
-				'caption'=>'required'
-			],[
-				'name.alphanum'=>'Only letters and numbers are allowed'
-			]);
+		$validator = Validator::make($request->all(), [
+			'name' => 'required|alphanum|unique:pages,name,' . $id,
+			'caption' => 'required'
+		], [
+			'name.alphanum' => 'Only letters and numbers are allowed'
+		]);
 
 		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withInput()
-					->withErrors($validator)
-					->with('global-warning','Some fields failed validation, please check and try again');
+				->back()
+				->withInput()
+				->withErrors($validator)
+				->with('global-warning', 'Some fields failed validation, please check and try again');
 		}
 
 		$link = Link::findOrFail($id);
@@ -114,8 +114,8 @@ class LinkController extends Controller
 		$link->save();
 
 		return redirect()
-				->route('admin-links')
-				->with('global-success','Link '.$link->name.' Updated');
+			->route('admin-links')
+			->with('global-success', 'Link ' . $link->name . ' Updated');
 	}
 
 	public function postDelete(Request $request)
@@ -140,8 +140,6 @@ class LinkController extends Controller
 			$link->save();
 		}
 
-		return response(['success'=>true,'msg'=>'Links order updated'])->header('Content-Type','application/json');
-
+		return response(['success' => true, 'msg' => 'Links order updated'])->header('Content-Type', 'application/json');
 	}
-
 }

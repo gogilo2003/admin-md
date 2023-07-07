@@ -3,18 +3,18 @@
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\Page;
 use Ogilo\AdminMd\Models\Link;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use File;
 use Img;
 use Artisan;
 
 /**
-*
-*/
+ *
+ */
 class PageController extends Controller
 {
 	public function __construct()
@@ -25,7 +25,7 @@ class PageController extends Controller
 	public function getPages()
 	{
 		$pages = Page::all();
-		return view('admin::pages.index',compact('pages'));
+		return view('admin::pages.index', compact('pages'));
 	}
 
 	public function getAdd()
@@ -37,19 +37,19 @@ class PageController extends Controller
 	{
 		// $pages = $request->all();//implode(',', $request->input('pages'));
 		// dd($pages);
-		$validator = Validator::make($request->all(),[
-				'name'=>'required|unique:pages|alphanum',
-				'title'=>'required'
-			],[
-				'name.alphanum'=>'Only letters and numbers are allowed'
-			]);
+		$validator = Validator::make($request->all(), [
+			'name' => 'required|unique:pages|alphanum',
+			'title' => 'required'
+		], [
+			'name.alphanum' => 'Only letters and numbers are allowed'
+		]);
 
 		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withInput()
-					->withErrors($validator)
-					->with('global-warning','Some fields failed validation, please check and try again');
+				->back()
+				->withInput()
+				->withErrors($validator)
+				->with('global-warning', 'Some fields failed validation, please check and try again');
 		}
 
 		$page = new Page;
@@ -63,18 +63,18 @@ class PageController extends Controller
 			$title_image = $request->file('title_image');
 			if ($title_image->isValid()) {
 
-				$dir = public_path( 'images/pages/');
-				$filename = time().'.jpg';
+				$dir = public_path('images/pages/');
+				$filename = time() . '.jpg';
 
 				if (!file_exists($dir)) {
 					mkdir($dir, 0755, TRUE);
 				}
 				$image = Img::make($title_image->getRealPath());
 
-		        $img = json_decode($request->input('image_cropdetails'));
-		        $image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
+				$img = json_decode($request->input('image_cropdetails'));
+				$image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
 
-				$image->save($dir.$filename);
+				$image->save($dir . $filename);
 				$image->destroy();
 
 				$page->title_image = $filename;
@@ -83,26 +83,25 @@ class PageController extends Controller
 
 		$page->save();
 
-        // generate template
-        if($request->has('template')){
+		// generate template
+		if ($request->has('template')) {
 
-            Artisan::call('admin:make-page',[
-                "name"=>$page->name
-            ]);
-
-        }
+			Artisan::call('admin:make-page', [
+				"name" => $page->name
+			]);
+		}
 
 		$page->link()->save($link);
 
 		return redirect()
-				->route('admin-pages')
-				->with('global-success','Page added');
+			->route('admin-pages')
+			->with('global-success', 'Page added');
 	}
 
 	public function getEdit($id)
 	{
 		$page = Page::findOrFail($id);
-		return view('admin::pages.edit',compact('page'));
+		return view('admin::pages.edit', compact('page'));
 	}
 
 	public function postEdit(Request $request)
@@ -113,20 +112,20 @@ class PageController extends Controller
 		// print '</pre>';
 		// die;
 
-		$validator = Validator::make($request->all(),[
-				'name'=>'required|alphanum|unique:pages,name,'.$id,
-				'title'=>'required',
-				'title_image'=>'image'
-			],[
-				'name.alphanum'=>'Only letters and numbers are allowed'
-			]);
+		$validator = Validator::make($request->all(), [
+			'name' => 'required|alphanum|unique:pages,name,' . $id,
+			'title' => 'required',
+			'title_image' => 'image'
+		], [
+			'name.alphanum' => 'Only letters and numbers are allowed'
+		]);
 
 		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withInput()
-					->withErrors($validator)
-					->with('global-warning','Some fields failed validation, please check and try again');
+				->back()
+				->withInput()
+				->withErrors($validator)
+				->with('global-warning', 'Some fields failed validation, please check and try again');
 		}
 
 		$page = Page::findOrFail($id);
@@ -138,11 +137,11 @@ class PageController extends Controller
 			$title_image = $request->file('title_image');
 			if ($title_image->isValid()) {
 
-				$dir = public_path( 'images/pages/');
-				$filename = time().'.jpg';
+				$dir = public_path('images/pages/');
+				$filename = time() . '.jpg';
 
-				if ($page->title_image && file_exists($dir.$page->title_image)) {
-					unlink($dir.$page->title_image);
+				if ($page->title_image && file_exists($dir . $page->title_image)) {
+					unlink($dir . $page->title_image);
 				}
 
 				if (!file_exists($dir)) {
@@ -152,9 +151,9 @@ class PageController extends Controller
 				$image = Img::make($title_image->getRealPath());
 
 				$img = json_decode($request->input('image_cropdetails'));
-		        $image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
+				$image->crop((int) $img->width, (int) $img->height, (int) $img->x, (int) $img->y);
 
-				$image->save($dir.$filename);
+				$image->save($dir . $filename);
 				$image->destroy();
 
 				$page->title_image = $filename;
@@ -164,8 +163,8 @@ class PageController extends Controller
 		$page->save();
 
 		return redirect()
-				->route('admin-pages')
-				->with('global-success','Page '.$page->name.' Updated');
+			->route('admin-pages')
+			->with('global-success', 'Page ' . $page->name . ' Updated');
 	}
 
 	public function postDelete(Request $request)
@@ -174,9 +173,9 @@ class PageController extends Controller
 
 		$page = Page::findOrFail($request->input('id'));
 
-		$dir = public_path( 'images/pages/');
-		if ($page->title_image && file_exists($dir.$page->title_image)) {
-			unlink($dir.$page->title_image);
+		$dir = public_path('images/pages/');
+		if ($page->title_image && file_exists($dir . $page->title_image)) {
+			unlink($dir . $page->title_image);
 		}
 
 		$name = $page->name;
@@ -186,5 +185,4 @@ class PageController extends Controller
 				->route('admin-pages')
 				->with('global-success','Page '.$name.' Deleted');*/
 	}
-
 }

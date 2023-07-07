@@ -3,32 +3,32 @@
 namespace Ogilo\AdminMd\Http\Controllers\Api;
 
 use File;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Ogilo\AdminMd\Models\Page;
 use Ogilo\AdminMd\Models\EventDay;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Api\Controller;
 use Ogilo\AdminMd\Models\EventSchedule;
 
 /**
-*
-*/
+ *
+ */
 class EventScheduleController extends Controller
 {
 
     public function getEventSchedules(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-        	'day_id'=>'required|exists:event_days,id'
+        $validator = Validator::make($request->all(), [
+            'day_id' => 'required|exists:event_days,id'
         ]);
 
         if ($validator->fails()) {
-        	$res = [
-        		'success'=>false,
-        		'message'=>'<h5>Validation error</h5>'.make_html_list($validator->errors()->all())
-        	];
-        	return response()->json($res);
+            $res = [
+                'success' => false,
+                'message' => '<h5>Validation error</h5>' . make_html_list($validator->errors()->all())
+            ];
+            return response()->json($res);
         }
 
         $day = EventDay::with('event_schedules')->find($request->day_id);
@@ -36,30 +36,30 @@ class EventScheduleController extends Controller
         $schedules = $day->event_schedules;
 
         return response()->json([
-                'success'=>true,
-                'schedules'=>$schedules
-            ]);
+            'success' => true,
+            'schedules' => $schedules
+        ]);
     }
 
     public function postAdd(Request $request)
     {
         // return response()->json($request->all());
 
-        $validator = Validator::make($request->all(),[
-            'day_id'=>'required|exists:event_days,id',
-            'title'=>'required',
-            'start_at'=>'required',
-            'end_at'=>'required',
-            'content'=>'required',
+        $validator = Validator::make($request->all(), [
+            'day_id' => 'required|exists:event_days,id',
+            'title' => 'required',
+            'start_at' => 'required',
+            'end_at' => 'required',
+            'content' => 'required',
         ]);
 
         if ($validator->fails()) {
-        	$res = [
-        		'success'=>false,
-                'message'=>'Validation error',
-                'errors'=>$validator->errors()->all()
-        	];
-        	return response()->json($res);
+            $res = [
+                'success' => false,
+                'message' => 'Validation error',
+                'errors' => $validator->errors()->all()
+            ];
+            return response()->json($res);
         }
 
         $id = DB::table('event_schedules')->insertGetId(
@@ -69,49 +69,49 @@ class EventScheduleController extends Controller
                 'end_at' => $request->end_at,
                 'content' => $request->content,
                 'event_day_id' => $request->day_id,
-                'created_at'=>now(),
-                'updated_at'=>now(),
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         );
 
         $schedule = EventSchedule::find($id);
 
-        $speakers = collect($request->speakers)->map(function($id){
+        $speakers = collect($request->speakers)->map(function ($id) {
             return (int)$id;
         });
-        if($request->has('speakers')){
-            if(count($request->speakers)){
+        if ($request->has('speakers')) {
+            if (count($request->speakers)) {
                 $schedule->event_speakers()->sync($speakers->toArray());
             }
         }
 
         return response()->json([
-                'success'=>true,
-                'message'=>'Event Schedule has been added',
-                'schedule'=>$schedule
-            ]);
+            'success' => true,
+            'message' => 'Event Schedule has been added',
+            'schedule' => $schedule
+        ]);
     }
 
     public function postEdit(Request $request)
     {
         // return response()->json($request->all());
 
-        $validator = Validator::make($request->all(),[
-            'id'=>'required|exists:event_schedules',
-            'day_id'=>'required|exists:event_days,id',
-            'title'=>'required',
-            'start_at'=>'required',
-            'end_at'=>'required',
-            'content'=>'required',
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|exists:event_schedules',
+            'day_id' => 'required|exists:event_days,id',
+            'title' => 'required',
+            'start_at' => 'required',
+            'end_at' => 'required',
+            'content' => 'required',
         ]);
 
         if ($validator->fails()) {
-        	$res = [
-        		'success'=>false,
-                'message'=>'Validation error',
-                'errors'=>$validator->errors()->all()
-        	];
-        	return response()->json($res);
+            $res = [
+                'success' => false,
+                'message' => 'Validation error',
+                'errors' => $validator->errors()->all()
+            ];
+            return response()->json($res);
         }
 
         $schedule = EventSchedule::find($request->id);
@@ -125,24 +125,24 @@ class EventScheduleController extends Controller
         $schedule->save();
 
         return response()->json([
-                'success'=>true,
-                'message'=>'Event schedule has been updated',
-                'schedule'=>$schedule
-            ]);
+            'success' => true,
+            'message' => 'Event schedule has been updated',
+            'schedule' => $schedule
+        ]);
     }
 
     public function postDelete(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-        	'id'=>'required|exists:event_schedules'
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|exists:event_schedules'
         ]);
 
         if ($validator->fails()) {
-        	$res = [
-        		'success'=>false,
-        		'message'=>'<h5>Validation error</h5>'.make_html_list($validator->errors()->all())
-        	];
-        	return response()->json($res);
+            $res = [
+                'success' => false,
+                'message' => '<h5>Validation error</h5>' . make_html_list($validator->errors()->all())
+            ];
+            return response()->json($res);
         }
 
         $schedule = EventSchedule::find($request->id);
@@ -150,9 +150,9 @@ class EventScheduleController extends Controller
         $schedule->delete();
 
         return response([
-                'success'=>true,
-                'message'=>'Event Speaker has been deleted',
-                'schedule'=>$schedule
-            ])->header('Content-Type','application/json');
+            'success' => true,
+            'message' => 'Event Speaker has been deleted',
+            'schedule' => $schedule
+        ])->header('Content-Type', 'application/json');
     }
 }

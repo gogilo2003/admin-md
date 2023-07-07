@@ -1,16 +1,16 @@
-<?php 
+<?php
 
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\PictureCategory;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 /**
-* 
-*/
+ *
+ */
 class PictureCategoryController extends Controller
 {
 	public function __construct()
@@ -21,7 +21,7 @@ class PictureCategoryController extends Controller
 	public function getPictureCategories()
 	{
 		$categories = PictureCategory::all();
-		return view('admin::picture_categories.index',compact('categories'));
+		return view('admin::picture_categories.index', compact('categories'));
 	}
 
 	public function getAdd()
@@ -33,16 +33,16 @@ class PictureCategoryController extends Controller
 	{
 		// $categories = $request->all();//implode(',', $request->input('categories'));
 		// dd($categories);
-		$validator = Validator::make($request->all(),[
-				'title'				=>'required|unique:picture_categories',
-			]);
+		$validator = Validator::make($request->all(), [
+			'title'				=> 'required|unique:picture_categories',
+		]);
 
 		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withInput()
-					->withErrors($validator)
-					->with('global-warning','Some fields failed validation, please check and try again');
+				->back()
+				->withInput()
+				->withErrors($validator)
+				->with('global-warning', 'Some fields failed validation, please check and try again');
 		}
 
 		$category 				= new PictureCategory;
@@ -60,30 +60,30 @@ class PictureCategoryController extends Controller
 		$category->save();
 
 		return redirect()
-				->route('admin-picture_categories')
-				->with('global-success','PictureCategory added');
+			->route('admin-picture_categories')
+			->with('global-success', 'PictureCategory added');
 	}
 
 	public function getEdit($id)
 	{
 		$category = PictureCategory::findOrFail($id);
-		return view('admin::picture_categories.edit',compact('category'));
+		return view('admin::picture_categories.edit', compact('category'));
 	}
 
 	public function postEdit(Request $request)
 	{
 		$id = $request->input('id');
 
-		$validator = Validator::make($request->all(),[
-				'title'	=>'required|unique:picture_categories,title,'.$id,
-			]);
+		$validator = Validator::make($request->all(), [
+			'title'	=> 'required|unique:picture_categories,title,' . $id,
+		]);
 
 		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withInput()
-					->withErrors($validator)
-					->with('global-warning','Some fields failed validation, please check and try again');
+				->back()
+				->withInput()
+				->withErrors($validator)
+				->with('global-warning', 'Some fields failed validation, please check and try again');
 		}
 
 		$category 				= PictureCategory::findOrFail($id);
@@ -101,8 +101,8 @@ class PictureCategoryController extends Controller
 		$category->save();
 
 		return redirect()
-				->route('admin-picture_categories')
-				->with('global-success','PictureCategory '.$category->title.' Updated');
+			->route('admin-picture_categories')
+			->with('global-success', 'PictureCategory ' . $category->title . ' Updated');
 	}
 
 	public function postDelete(Request $request)
@@ -124,10 +124,9 @@ class PictureCategoryController extends Controller
 		$cat = PictureCategory::find($request->input('id'));
 		$cat->pages()->detach($cat->pageIds());
 		$cat->pages()->attach($request->input('pages'));
-		
-		return redirect()
-				->back()
-				->with('global-success','Pages related to article updated successfuly');
-	}
 
+		return redirect()
+			->back()
+			->with('global-success', 'Pages related to article updated successfully');
+	}
 }

@@ -5,7 +5,7 @@ namespace Ogilo\AdminMd\Http\Controllers;
 use Illuminate\Http\Request;
 use Ogilo\AdminMd\Models\Admin;
 use Ogilo\AdminMd\Models\AdminRole;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;

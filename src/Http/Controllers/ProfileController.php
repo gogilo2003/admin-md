@@ -3,10 +3,10 @@
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\Profile;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use Img;
 
 /**
@@ -82,7 +82,7 @@ class ProfileController extends Controller
 
         return redirect()
             ->route('admin-profiles')
-            ->with('global-success', 'Profile added successfuly');
+            ->with('global-success', 'Profile added successfully');
     }
 
     public function getEdit($id)
@@ -151,7 +151,7 @@ class ProfileController extends Controller
 
         return redirect()
             ->route('admin-profiles')
-            ->with('global-success', 'Profile added successfuly');
+            ->with('global-success', 'Profile added successfully');
     }
 
     public function postDelete(Request $request)
@@ -161,7 +161,7 @@ class ProfileController extends Controller
         $profile->pages()->detach($profile->pageIds());
         $profile->delete();
 
-        return response(['message' => 'Profile deleted successfuly'])
+        return response(['message' => 'Profile deleted successfully'])
             ->header('Content-Type', 'application/json');
     }
 

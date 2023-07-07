@@ -3,11 +3,10 @@
 namespace Ogilo\AdminMd\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Ogilo\AdminMd\Models\Comment;
 use Ogilo\AdminMd\Models\CommentUser;
+use Illuminate\Support\Facades\Validator;
+use Ogilo\AdminMd\Http\Controllers\Api\Controller;
 
 class CommentController extends Controller
 {

@@ -2,19 +2,18 @@
 
 namespace Ogilo\AdminMd\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Api\Controller;
 
 use Illuminate\Http\Request;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use Auth;
 use Storage;
 
 class EventController extends Controller
 {
-    function __construct(){
+    function __construct()
+    {
         $this->page = new \Ogilo\AdminMd\Models\Page;
     }
-
-
 }

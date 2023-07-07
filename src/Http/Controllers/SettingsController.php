@@ -1,21 +1,22 @@
 <?php
+
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\ArticleCategory;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 /**
-*
-*/
+ *
+ */
 class SettingsController extends Controller
 {
-	public function __construct()
-	{
-		$this->middleware('auth:admin');
-	}
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
 
     public function getSettings()
     {
@@ -29,7 +30,7 @@ class SettingsController extends Controller
 
         // dd($admin);
 
-        return view('admin::settings',$admin);
+        return view('admin::settings', $admin);
     }
 
     public function postSettings(Request $request)
@@ -54,7 +55,7 @@ class SettingsController extends Controller
         $admin = config('admin');
         // dump($admin);
 
-        config(['admin.articles'=>$request->has_articles ? true : false]);
+        config(['admin.articles' => $request->has_articles ? true : false]);
         config(['pictures' => $request->has_pictures ? true : false]);
         config(['videos' => $request->has_videos ? true : false]);
         config(['files' => $request->has_files ? true : false]);
@@ -74,8 +75,8 @@ class SettingsController extends Controller
         \save_admin_config($admin);
 
         return redirect()
-                ->route('admin-settings')
-                ->with('global-success','Settings saved');
+            ->route('admin-settings')
+            ->with('global-success', 'Settings saved');
     }
 
     public function getSetup()

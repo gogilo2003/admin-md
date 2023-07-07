@@ -3,17 +3,18 @@
 namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\VideoCategory;
 
 use File;
-use Validator;
+use Illuminate\Support\Facades\Validator;
+
 /**
-* 
-*/
+ *
+ */
 class VideoCategoryController extends Controller
 {
-	
+
 	function __construct()
 	{
 		$this->middleware('auth:admin');
@@ -22,7 +23,7 @@ class VideoCategoryController extends Controller
 	public function getVideoCategories()
 	{
 		$video_categories = VideoCategory::all();
-		return view('admin::video_categories.index',compact('video_categories'));
+		return view('admin::video_categories.index', compact('video_categories'));
 	}
 
 	public function getAdd()
@@ -32,17 +33,17 @@ class VideoCategoryController extends Controller
 
 	public function postAdd(Request $request)
 	{
-		$validator = Validator::make($request->all(),[
-				'title' => 'required|unique:video_categories,title',
-				'max_size'=>'integer',
-			]);
+		$validator = Validator::make($request->all(), [
+			'title' => 'required|unique:video_categories,title',
+			'max_size' => 'integer',
+		]);
 
-		if($validator->fails()){
+		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withErrors($validator)
-					->withInput()
-					->with('global-warning','Some fields failed validation. Please check and try again');
+				->back()
+				->withErrors($validator)
+				->withInput()
+				->with('global-warning', 'Some fields failed validation. Please check and try again');
 		}
 
 		$video_category = new VideoCategory;
@@ -55,29 +56,29 @@ class VideoCategoryController extends Controller
 
 		$video_category->save();
 		return redirect()
-				->route('admin-video_categories')
-				->with('global-success','Video Category Added');
+			->route('admin-video_categories')
+			->with('global-success', 'Video Category Added');
 	}
 
 	public function getEdit($id)
 	{
 		$video_category = VideoCategory::find($id);
-		return view('admin::video_categories.edit',compact('video_category'));
+		return view('admin::video_categories.edit', compact('video_category'));
 	}
 
 	public function postEdit(Request $request)
 	{
-		$validator = Validator::make($request->all(),[
-				'title' => 'required|unique:video_categories,title,'.$request->input('id'),
-				'max_size'=>'integer',
-			]);
+		$validator = Validator::make($request->all(), [
+			'title' => 'required|unique:video_categories,title,' . $request->input('id'),
+			'max_size' => 'integer',
+		]);
 
-		if($validator->fails()){
+		if ($validator->fails()) {
 			return redirect()
-					->back()
-					->withErrors($validator)
-					->withInput()
-					->with('global-warning','Some fields failed validation. Please check and try again');
+				->back()
+				->withErrors($validator)
+				->withInput()
+				->with('global-warning', 'Some fields failed validation. Please check and try again');
 		}
 
 		$video_category = VideoCategory::find($request->input('id'));
@@ -90,8 +91,8 @@ class VideoCategoryController extends Controller
 
 		$video_category->save();
 		return redirect()
-				->route('admin-video_categories')
-				->with('global-success','Video Category Updated');
+			->route('admin-video_categories')
+			->with('global-success', 'Video Category Updated');
 	}
 
 	public function postPages(Request $request)
@@ -100,10 +101,10 @@ class VideoCategoryController extends Controller
 		$cat = VideoCategory::find($request->input('id'));
 		$cat->pages()->detach($cat->pageIds());
 		$cat->pages()->attach($request->input('pages'));
-		
+
 		return redirect()
-				->back()
-				->with('global-success','Pages related to '.$cat->title.' updated successfuly');
+			->back()
+			->with('global-success', 'Pages related to ' . $cat->title . ' updated successfully');
 	}
 
 	public function postDelete(Request $request)
@@ -111,9 +112,8 @@ class VideoCategoryController extends Controller
 		// dd($request->all());
 		$cat = VideoCategory::find($request->input('id'));
 		$cat->delete();
-		
-		return response(['message'=>'Video Category deleted'])
-				->back('Content-Type','application/json');
+
+		return response(['message' => 'Video Category deleted'])
+			->back('Content-Type', 'application/json');
 	}
-	
 }

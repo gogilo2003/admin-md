@@ -4,7 +4,7 @@ namespace Ogilo\AdminMd\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Ogilo\AdminMd\Models\Article;
-use App\Http\Controllers\Controller;
+use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Services\TagService;
 use Illuminate\Support\Facades\Validator;
 
