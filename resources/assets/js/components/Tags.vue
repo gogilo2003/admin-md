@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="grid grid-cols-1 md:grid-cols-2">
         <div class="card">
             <div class="card-body">
                 <div class="mb-3">
@@ -75,6 +75,7 @@ const saveTag = () => {
             selectedTag.value.id = null
             selectedTag.value.name = ""
             selectedTag.value.description = ""
+
             edit.value = false
         })
     }
@@ -83,9 +84,6 @@ const saveTag = () => {
 onMounted(() => {
     let access_token = localStorage.getItem('admin_access_token');
     axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`
-
-    console.log(access_token);
-
     axios.get(`/api/admin/tags`, { api_token: window.Laravel.apiToken }).then(response => {
         tags.value = response.data.data
     }).catch(error => {

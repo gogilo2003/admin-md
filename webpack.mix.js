@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+const tailwind = require('mix-tailwindcss');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -21,9 +21,8 @@ mix.js('resources/assets/js/admin.js', 'public/js')
     .sass('resources/assets/scss/font-awesome.min.scss', 'public/css')
     .sass('resources/assets/scss/font-awesome-5-base64.scss', 'public/css')
     .sass('resources/assets/scss/font-awesome-4-base64.scss', 'public/css')
-    // .postCss('resources/assets/css/admin.css', 'public/css', [
-    //     //
-    // ])
+    .postCss('resources/assets/css/tailwind.css', 'public/css', [])
+    .tailwind()
     .after(() => {
         exec('php ../../../artisan vendor:publish --force --tag=admin-assets', (res, stdout, stderr) => { console.log(stdout); });
     })

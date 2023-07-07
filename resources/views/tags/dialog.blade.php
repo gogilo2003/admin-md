@@ -8,9 +8,6 @@
                     <h4 class="card-title">Select Tags</h4>
                 </div>
                 <div class="card-body">
-                    <div>
-                        {{ $errors }}
-                    </div>
                     <select id="tags" name="tags[]" multiple class="selectpicker" data-size="5" data-width="100%"
                         data-tick-icon="fa fa-check-square" data-style="btn btn-link">
                         @foreach (\Ogilo\AdminMd\Models\Tag::all() as $key => $tag)
