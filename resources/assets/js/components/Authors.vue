@@ -8,7 +8,7 @@
             show-index>
             <template #item-name="{ avatar, name }">
                 <div>
-                    <img class="avator" :src="avatar" alt="">
+                    <img class="avatar" :src="avatar" alt="">
                     <span>{{ name }}</span>
                 </div>
             </template>
@@ -167,21 +167,21 @@ const saveAuthor = () => {
             axios.post(`/api/admin/authors/${authorId.value}`, data).then(response => {
                 if (response.data.success) {
                     items.value[items.value.findIndex(item => item.id == authorId.value)] = response.data.author
-                    $.notify({ title: "Author Update", message: "Author updated successfuly", icon: "far fa-check-circle" }, { type: 'success', timer: 5000, width: '360px' })
+                    $.notify({ title: "Author Update", message: "Author updated successfully", icon: "far fa-check-circle" }, { type: 'success', timer: 5000, width: '360px' })
                     close()
                 }
             }).catch(error => {
-                $.notify({ title: "Error", message: "An error occured. Please try again", icon: "fas fa-exclamation-circle" }, { type: 'danger', timer: 5000, width: '360px' })
+                $.notify({ title: "Error", message: "An error occurred. Please try again", icon: "fas fa-exclamation-circle" }, { type: 'danger', timer: 5000, width: '360px' })
             })
         } else {
             axios.post('/api/admin/authors', data).then(response => {
                 if (response.data.success) {
                     items.value.unshift(response.data.author)
-                    $.notify({ title: "New Author", message: "Author stored successfuly", icon: "far fa-check-circle" }, { type: 'success', timer: 5000, width: '360px' })
+                    $.notify({ title: "New Author", message: "Author stored successfully", icon: "far fa-check-circle" }, { type: 'success', timer: 5000, width: '360px' })
                     close()
                 }
             }).catch(error => {
-                $.notify({ title: "Error", message: "An error occured. Please try again", icon: "fas fa-exclamation-circle" }, { type: 'danger', timer: 5000, width: '360px' })
+                $.notify({ title: "Error", message: "An error occurred. Please try again", icon: "fas fa-exclamation-circle" }, { type: 'danger', timer: 5000, width: '360px' })
             })
         }
     }, 'image/png');
@@ -191,10 +191,10 @@ const saveAuthor = () => {
 const deleteAuthor = (id) => {
     axios.delete(`/api/admin/authors/${id}`).then(response => {
         items.value = items.value.filter(item => item.id != id)
-        $.notify({ title: "Delete Author", message: "Author deleted successfuly", icon: "far fa-check-circle" }, { type: 'success', timer: 5000, width: '360px' })
+        $.notify({ title: "Delete Author", message: "Author deleted successfully", icon: "far fa-check-circle" }, { type: 'success', timer: 5000, width: '360px' })
         close()
     }).catch(error => {
-        $.notify({ title: "Error", message: "An error occured. Please try again", icon: "fas fa-exclamation-circle" }, { type: 'danger', timer: 5000, width: '360px' })
+        $.notify({ title: "Error", message: "An error occurred. Please try again", icon: "fas fa-exclamation-circle" }, { type: 'danger', timer: 5000, width: '360px' })
     })
 }
 
@@ -256,7 +256,7 @@ onMounted(() => {
 }
 
 .customize-table {
-    .avator {
+    .avatar {
         margin: 0.5rem;
         border-radius: 50%;
         box-shadow: 0px 0px 5px rgba($color: #7cb342, $alpha: 0.35);
