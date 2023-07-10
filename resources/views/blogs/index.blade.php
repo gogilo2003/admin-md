@@ -58,6 +58,9 @@
                                 class="btn btn-primary btn-sm featureArticle"><span
                                     class="fa fa-arrow-{{ $blog->featured ? 'down' : 'up' }}"></span>&nbsp;&nbsp;
                                 {{ $blog->featured ? 'Un-feature' : 'Feature' }}</a>
+                            <button data-tags="{{ json_encode($blog->tags->pluck('id')) }}" data-id="{{ $blog->id }}"
+                                class="btn btn-info btn-sm" data-toggle="modal" href='#tagsModal'><i
+                                    class="fas fa-tags"></i>&nbsp;Tags</button>
                             <a href="javascript:" data-id="{{ $blog->id }}"
                                 class="btn btn-danger btn-sm deleteArticle"><span
                                     class="fas fa-trash-alt"></span>&nbsp;&nbsp;
@@ -69,6 +72,7 @@
 
         </tbody>
     </table>
+    @include('admin::tags.dialog')
 @endsection
 
 @section('styles')

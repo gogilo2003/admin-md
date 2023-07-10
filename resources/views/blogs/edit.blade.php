@@ -62,8 +62,8 @@
                     {!! $errors->has('title') ? '<span class="text-danger">' . $errors->first('title') . '</span>' : '' !!}
                 </div>
                 <div class="form-group">
-                    <label for="icon">Author</label>
-                    <select class="selectpicker form-control" id="icon" name="author" data-live-search="true"
+                    <label for="author">Author</label>
+                    <select class="selectpicker form-control" id="author" name="author" data-live-search="true"
                         data-size="5" data-style="btn btn-link">
 
                         @foreach (get_authors() as $author)
@@ -107,8 +107,9 @@
         $(document).ready(function() {
             $('select#category').selectpicker('val',
                 {{ old('category') ? old('category') : ($article->article_category_id ? $article->article_category_id : 'null') }}
-                )
+            )
             $('select#icon').selectpicker('val', {!! old('icon') ? "'" . old('icon') . "'" : ($article->icon ? "'" . $article->icon . "'" : 'null') !!})
+            $('select#author').selectpicker('val', {!! old('author') ? "'" . old('author') . "'" : ($article->author_id ? "'" . $article->author_id . "'" : 'null') !!})
 
             var image = $('#picture_preview').cropper({
                 aspectRatio: 4 / 3,

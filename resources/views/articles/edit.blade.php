@@ -105,7 +105,8 @@
         $(document).ready(function() {
             $('select#category').selectpicker('val',
                 {{ old('category') ? old('category') : ($article->article_category_id ? $article->article_category_id : 'null') }}
-                )
+            )
+
             $('select#icon').selectpicker('val', {!! old('icon') ? "'" . old('icon') . "'" : ($article->icon ? "'" . $article->icon . "'" : 'null') !!})
 
             var image = $('#picture_preview').cropper({

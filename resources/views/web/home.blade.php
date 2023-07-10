@@ -1,23 +1,23 @@
 @extends('admin::web.layout.main')
 
 @section('title')
-	Home Page
+    Home Page
 @endsection
 
 @section('breadcrumbs')
-	@parent
+    @parent
 @endsection
 
 @section('content')
     @include('admin::web.inc.carousel')
     <div class="container form-group">
         <label for="my-textarea">Text</label>
-        <textarea id="my-textarea" class="form-control" name="" rows="10">{!! break_string($page->content,5) !!}</textarea>
+        <textarea id="my-textarea" class="form-control" name="" rows="10">{!! break_string($page->content, 5) !!}</textarea>
     </div>
 
-	<div class="container">
-		{!! $page->content !!}
-	</div>
+    <div class="container">
+        {!! $page->content !!}
+    </div>
 
     @includeIf('admin::web.inc.services')
 
@@ -33,26 +33,21 @@
 
     @includeIf('admin::web.inc.file')
 
-    @includeIf('admin::web.inc.blogs')
+    @includeIf('admin::web.inc.blogs', ['posts' => get_blogs(null, 3, true)])
 
     @includeIf('clients::web.inc.clients')
-
 @endsection
 
 @section('styles')
-	<style>
+    <style>
 
-	</style>
+    </style>
 @endsection
 
 @section('scripts_top')
-	<script type="text/javascript">
-
-	</script>
+    <script type="text/javascript"></script>
 @endsection
 
 @section('scripts_bottom')
-	<script type="text/javascript">
-
-	</script>
+    <script type="text/javascript"></script>
 @endsection

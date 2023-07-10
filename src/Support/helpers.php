@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Str;
-use Ogilo\AdminMd\Models\Hit;
 use Ogilo\AdminMd\Models\Menu;
 use Ogilo\AdminMd\Models\Article;
 use Ogilo\AdminMd\Models\Picture;
@@ -9,31 +8,30 @@ use Ogilo\AdminMd\Models\ArticleCategory;
 use Ogilo\AdminMd\Models\PictureCategory;
 
 if (!function_exists('get_blogs')) {
-    function get_blogs($paginate = null)
+    function get_blogs($paginate = null, $limit = null, $featured = false)
     {
+
         $cat = ArticleCategory::where('name', 'blog')
-            ->orWhere('name', 'blogs')
-            ->with(['articles' => function ($query) {
-                return $query->where('published', 1)->get();
-            }])->first();
+            ->orWhere('name', 'blogs')->first();
 
-        $blog = null;
+        $blogs = null;
+        if ($cat) {
+            $blogs = Article::where('article_category_id', $cat->id)
+                ->where('published', 1)
+                ->when($featured, function ($query) {
+                    return $query->where('featured', 1);
+                })
+                ->when($limit, function ($query) use ($limit) {
+                    return $query->limit($limit);
+                });
 
-        if ($paginate) {
-            $blogs = $cat
-                ? Article::where('article_category_id', $cat->id)
-                ->where('published', 1)
-                ->orderBy('created_at', 'DESC')
-                ->paginate($paginate)
-                : [];
-        } else {
-            $blogs = $cat
-                ? Article::where('article_category_id', $cat->id)
-                ->where('published', 1)
-                ->orderBy('created_at', 'DESC')
-                ->get()
-                : [];
+            if ($paginate) {
+                return $blogs->paginate($paginate);
+            } else {
+                return $blogs->get();
+            }
         }
+
         return $blogs;
     }
 }
