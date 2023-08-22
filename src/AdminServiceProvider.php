@@ -141,9 +141,15 @@ class AdminServiceProvider extends ServiceProvider
             __DIR__ . '/../fonts' => public_path('fonts'),
             __DIR__ . '/../images' => public_path('images'),
             __DIR__ . '/../public/images' => public_path('vendor/admin/images'),
+            __DIR__ . '/../node_modules/icomoon/style.css' => public_path('vendor/admin/iconmoon/linea-icon.css'),
+            __DIR__ . '/../node_modules/icomoon/fonts' => public_path('vendor/admin/iconmoon/fonts'),
+            __DIR__ . '/../node_modules/jquery/dist' => public_path('vendor/admin/js'),
+            __DIR__ . '/../node_modules/bootstrap/dist/js' => public_path('vendor/admin/js'),
             __DIR__ . '/../resources/assets/material-dashboard-master/assets/img' => public_path('vendor/admin/material-dashboard-master/assets/img'),
             __DIR__ . '/../resources/assets/material-dashboard-master/assets/css' => public_path('vendor/admin/material-dashboard-master/assets/css'),
             __DIR__ . '/../resources/assets/material-dashboard-master/assets/js' => public_path('vendor/admin/material-dashboard-master/assets/js'),
+            __DIR__ . '/../node_modules/material-icons/css/material-icons.css' => public_path('vendor/admin/material-design-icons/css/material-icons.css'),
+            __DIR__ . '/../node_modules/material-icons/iconfont' => public_path('vendor/admin/material-design-icons/iconfont'),
         ], 'admin-assets');
 
         $this->publishes([
@@ -168,11 +174,11 @@ class AdminServiceProvider extends ServiceProvider
         ], 'admin-stubs');
 
         $this->publishes([
-            __DIR__ . '/../resources/views/web/inc' => resource_path('views/vendor/admin/web/inc'),
             __DIR__ . '/../resources/views/web/layout' => resource_path('views/vendor/admin/web/layout'),
         ], 'web-layout');
 
         $this->publishes([
+            __DIR__ . '/../resources/views/web/inc' => resource_path('views/vendor/admin/web/inc'),
             __DIR__ . '/../resources/views/web/article.blade.php' => resource_path('views/web/article.blade.php'),
             __DIR__ . '/../resources/views/web/blogs.blade.php' => resource_path('views/web/blogs.blade.php'),
             __DIR__ . '/../resources/views/web/contact.blade.php' => resource_path('views/web/contact.blade.php'),

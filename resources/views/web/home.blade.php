@@ -10,6 +10,7 @@
 
 @section('content')
     @include('admin::web.inc.carousel')
+    <h1 class="text-gray-200">Welcome</h1>
     <div class="container form-group">
         <label for="my-textarea">Text</label>
         <textarea id="my-textarea" class="form-control" name="" rows="10">{!! break_string($page->content, 5) !!}</textarea>

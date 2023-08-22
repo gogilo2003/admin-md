@@ -17,9 +17,11 @@
 
     <link href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/web.css') }}" rel="stylesheet">
     <link href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-design-icons/material-icons.css') }}"
+    <link href="{{ asset(config('admin.path_prefix') . 'vendor/admin/material-design-icons/css/material-icons.css') }}"
         rel="stylesheet">
     <link href="{{ asset(config('admin.path_prefix') . 'vendor/admin/iconmoon/linea-icon.css') }}" rel="stylesheet">
+
+    {{-- <link href="{{ asset(config('admin.path_prefix') . 'vendor/admin/css/tailwind.css') }}" rel="stylesheet"> --}}
 
     <style>
         .bd-placeholder-img {
@@ -36,7 +38,6 @@
                 font-size: 3.5rem;
             }
         }
-
     </style>
     <!-- Custom styles for this template -->
     <!--<link href="carousel.css" rel="stylesheet">-->
@@ -59,15 +60,17 @@
         <footer class="mt-auto py-5 bg-dark text-info">
             <div class="container">
                 <p class="float-right"><a href="#">Back to top</a></p>
-                <p>&copy; {{ date('Y') }} {{ config('app.name') }}, Inc. &middot; <a href="#">Privacy</a> &middot;
-                    <a href="#">Terms</a></p>
+                <p>&copy; {{ date('Y') }} {{ config('app.name') }}, Inc. &middot; <a href="#">Privacy</a>
+                    &middot;
+                    <a href="#">Terms</a>
+                </p>
             </div>
         </footer>
     </div>
 
     <script src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/jquery.min.js') }}"></script>
     <script src="{{ asset(config('admin.path_prefix') . 'vendor/admin/js/bootstrap.min.js') }}"></script>
-    
+
     @stack('scripts_bottom')
 </body>
 
