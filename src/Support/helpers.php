@@ -7,6 +7,7 @@ use Ogilo\AdminMd\Models\Picture;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 use Ogilo\AdminMd\Models\ArticleCategory;
 use Ogilo\AdminMd\Models\PictureCategory;
 
@@ -1912,5 +1913,11 @@ if (!function_exists('route_has')) {
     function route_has($route_name)
     {
         return Route::has($route_name);
+    }
+}
+if (!function_exists('session_has')) {
+    function session_has($session_name)
+    {
+        return Session::has($session_name);
     }
 }
