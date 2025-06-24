@@ -12,7 +12,7 @@
             'csrfToken' => csrf_token(),
             'apiToken' => api_token(),
             'baseUrl' => url('/'),
-            'routes' => collect(\Route::getRoutes())->mapWithKeys(function ($route) {
+            'routes' => collect(\Illuminate\Support\Facades\Route::getRoutes())->mapWithKeys(function ($route) {
                 return [$route->getName() => $route->uri()];
             }),
         ]) !!};
