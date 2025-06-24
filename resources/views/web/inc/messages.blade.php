@@ -1,4 +1,4 @@
-@if(Session::has('global-info'))
+@if(session_has('global-info'))
 	<div class="container">
 		<div class="alert alert-dismissible alert-info" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -7,7 +7,7 @@
 	</div>
 @endif
 
-@if(Session::has('global-success'))
+@if(session_has('global-success'))
 	<div class="container">
 		<div class="alert alert-dismissible alert-success" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -16,7 +16,7 @@
 	</div>
 @endif
 
-@if(Session::has('global-warning'))
+@if(session_has('global-warning'))
 	<div class="container">
 		<div class="alert alert-dismissible alert-warning" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -32,7 +32,7 @@
 	</div>
 @endif
 
-@if(Session::has('global-danger'))
+@if(session_has('global-danger'))
 	<div class="container">
 		<div class="alert alert-dismissible alert-danger" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
