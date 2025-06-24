@@ -1,30 +1,30 @@
 <script type="text/javascript">
     // Notification
-    @if (Session::has('global-info'))
+    @if (session()->has('global-info'))
         {!! "$.notify( { title: 'INFO', message: '" .
-            Session::get('global-info') .
+            session()->get('global-info') .
             "',icon: 'fas fa-info'}, {type: 'info', timer: 10000, width: '360px'})" !!}
     @endif
 
-    @if (Session::has('global-success'))
+    @if (session()->has('global-success'))
         {!! "$.notify( { title: 'SUCCESS', message: '" .
-            Session::get('global-success') .
+            session()->get('global-success') .
             "',icon: 'far fa-check-circle'}, {type: 'success', timer: 10000, width: '360px'})" !!}
     @endif
 
-    @if (Session::has('global-warning'))
+    @if (session()->has('global-warning'))
         {!! "$.notify( { title: 'WARNING', message: '" .
-            Session::get('global-warning') .
+            session()->get('global-warning') .
             "',icon: 'fas fa-exclamation-triangle'}, {type: 'warning', timer: 10000, width: '360px'})" !!}
     @endif
 
-    @if (Session::has('global-danger'))
+    @if (session()->has('global-danger'))
         {!! "$.notify( { title: 'ERROR', message: '" .
-            Session::get('global-danger') .
+            session()->get('global-danger') .
             "',icon: 'fas fa-ban'}, {type: 'danger', timer: 10000, width: '360px'})" !!}
     @endif
     // Access token
-    @if (Session::has('access_token'))
-        {!! "localStorage.setItem('access_token','" . Session::get('access_token') . "')" !!}
+    @if (session()->has('access_token'))
+        {!! "localStorage.setItem('access_token','" . session()->get('access_token') . "')" !!}
     @endif
 </script>
