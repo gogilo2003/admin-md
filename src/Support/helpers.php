@@ -4,6 +4,9 @@ use Illuminate\Support\Str;
 use Ogilo\AdminMd\Models\Menu;
 use Ogilo\AdminMd\Models\Article;
 use Ogilo\AdminMd\Models\Picture;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
 use Ogilo\AdminMd\Models\ArticleCategory;
 use Ogilo\AdminMd\Models\PictureCategory;
 
@@ -82,7 +85,7 @@ function is_path($path)
 function admin_roles($as_string = true, $sort = false)
 {
 
-    $routes = \Route::getRoutes()->getRoutes();
+    $routes = Route::getRoutes()->getRoutes();
 
     if ($as_string) {
         $roles = '';
@@ -1814,14 +1817,51 @@ if (!function_exists('number2words')) {
         $num = (int) $num;
         $words = array();
         $list1 = array(
-            '', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven',
-            'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'
+            '',
+            'one',
+            'two',
+            'three',
+            'four',
+            'five',
+            'six',
+            'seven',
+            'eight',
+            'nine',
+            'ten',
+            'eleven',
+            'twelve',
+            'thirteen',
+            'fourteen',
+            'fifteen',
+            'sixteen',
+            'seventeen',
+            'eighteen',
+            'nineteen'
         );
         $list2 = array('', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety', 'hundred');
         $list3 = array(
-            '', 'thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion', 'sextillion', 'septillion',
-            'octillion', 'nonillion', 'decillion', 'undecillion', 'duodecillion', 'tredecillion', 'quattuordecillion',
-            'quindecillion', 'sexdecillion', 'septendecillion', 'octodecillion', 'novemdecillion', 'vigintillion'
+            '',
+            'thousand',
+            'million',
+            'billion',
+            'trillion',
+            'quadrillion',
+            'quintillion',
+            'sextillion',
+            'septillion',
+            'octillion',
+            'nonillion',
+            'decillion',
+            'undecillion',
+            'duodecillion',
+            'tredecillion',
+            'quattuordecillion',
+            'quindecillion',
+            'sexdecillion',
+            'septendecillion',
+            'octodecillion',
+            'novemdecillion',
+            'vigintillion'
         );
         $num_length = strlen($num);
         $levels = (int) (($num_length + 2) / 3);
