@@ -1907,3 +1907,10 @@ if (!function_exists('get_authors')) {
         return  \Ogilo\AdminMd\Models\Author::get();
     }
 }
+
+if (!function_exists('route_has')) {
+    function route_has($route_name)
+    {
+        return Route::has($route_name);
+    }
+}
