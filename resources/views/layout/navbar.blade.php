@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-primary navbar-absolute fixed-top ">
 	<div class="container-fluid">
 		<div class="navbar-wrapper">
-			{!! Auth::guard('admin')->check() ? '<a class="navbar-brand" href="'. url('admin') .'">'.config('app.short_name','<i class="material-icons">dashboard</i>') .'</a>' : '' !!}
+			{!! auth()->guard('admin')->check() ? '<a class="navbar-brand" href="'. url('admin') .'">'.config('app.short_name','<i class="material-icons">dashboard</i>') .'</a>' : '' !!}
 		</div>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
 			aria-expanded="false" aria-label="Toggle navigation">
