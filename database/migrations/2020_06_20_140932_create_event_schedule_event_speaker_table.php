@@ -17,7 +17,7 @@ class CreateEventScheduleEventSpeakerTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('event_speaker_id')->unsigned()->nullable();
             $table->foreign('event_speaker_id')->references('id')->on('event_speakers');
-            $table->integer('event_schedule_id')->unsigned()->nullable();
+            $table->bigInteger('event_schedule_id')->unsigned()->nullable();
             $table->foreign('event_schedule_id')->references('id')->on('event_schedules');
             $table->timestamps();
         });
