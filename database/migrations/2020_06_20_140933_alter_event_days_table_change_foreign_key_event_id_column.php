@@ -37,6 +37,9 @@ class AlterEventDaysTableChangeForeignKeyEventIdColumn extends Migration
         }
 
         Schema::table('event_schedules', function (Blueprint $table) {
+            if (!Schema::hasColumn('event_schedules', 'event_day_id')) {
+                $table->unsignedBigInteger('event_day_id');
+            }
             $table->foreign('event_day_id')
                 ->references('id')
                 ->on('event_days')
@@ -52,6 +55,9 @@ class AlterEventDaysTableChangeForeignKeyEventIdColumn extends Migration
         }
 
         Schema::table('event_schedule_event_speaker', function (Blueprint $table) {
+            if (!Schema::hasColumn('event_schedule_event_speaker', 'event_speaker_id')) {
+                $table->unsignedBigInteger('event_speaker_id');
+            }
             $table->foreign('event_speaker_id')
                 ->references('id')
                 ->on('event_speakers')
@@ -65,16 +71,15 @@ class AlterEventDaysTableChangeForeignKeyEventIdColumn extends Migration
         } catch (\Exception $e) {
             // Foreign key does not exist
         }
-        try {
-            Schema::table('event_schedule_event_speaker', function (Blueprint $table) {
-                $table->foreign('event_schedule_id')
-                    ->references('id')
-                    ->on('event_schedules')
-                    ->onDelete('cascade');
-            });
-        } catch (\Exception $e) {
-            // Foreign key does not exist
-        }
+        Schema::table('event_schedule_event_speaker', function (Blueprint $table) {
+            if (!Schema::hasColumn('event_schedule_event_speaker', 'event_schedule_id')) {
+                $table->unsignedBigInteger('event_schedule_id');
+            }
+            $table->foreign('event_schedule_id')
+                ->references('id')
+                ->on('event_schedules')
+                ->onDelete('cascade');
+        });
     }
 
     /**
