@@ -13,14 +13,20 @@ class CreateEventScheduleEventSpeakerTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_schedule_event_speaker', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('event_speaker_id')->unsigned()->nullable();
-            $table->foreign('event_speaker_id')->references('id')->on('event_speakers');
-            $table->bigInteger('event_schedule_id')->unsigned()->nullable();
-            $table->foreign('event_schedule_id')->references('id')->on('event_schedules');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('event_schedule_event_speaker')) {
+            Schema::create('event_schedule_event_speaker', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('event_speaker_id')->constrained('event_speakers')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade')
+                    ->nullable();
+                $table->foreignId('event_schedule_id')->constrained('event_schedules')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade')
+                    ->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**

@@ -13,10 +13,10 @@ class CreateEventSchedulesTable extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('event_schedules')){
+        if (!Schema::hasTable('event_schedules')) {
             Schema::create('event_schedules', function (Blueprint $table) {
                 Schema::disableForeignKeyConstraints();
-                $table->bigIncrements('id');
+                $table->id();
                 $table->time('start_at');
                 $table->time('end_at');
                 $table->string('title');

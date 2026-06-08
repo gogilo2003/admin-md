@@ -14,7 +14,7 @@ class CreateEventSpeakersTable extends Migration
     public function up()
     {
         Schema::create('event_speakers', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('name');
             $table->string('photo')->nullable();
             $table->mediumText('description')->nullable();
