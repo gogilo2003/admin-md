@@ -13,6 +13,7 @@ class AlterEventDaysTableChangeForeignKeyEventIdColumn extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         try {
             Schema::table('event_days', function (Blueprint $table) {
                 $table->dropForeign(['event_id']);
@@ -80,6 +81,7 @@ class AlterEventDaysTableChangeForeignKeyEventIdColumn extends Migration
                 ->on('event_schedules')
                 ->onDelete('cascade');
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -89,6 +91,7 @@ class AlterEventDaysTableChangeForeignKeyEventIdColumn extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         try {
             Schema::table('event_schedule_event_speaker', function (Blueprint $table) {
                 $table->dropForeign(['event_schedule_id']);
@@ -117,4 +120,5 @@ class AlterEventDaysTableChangeForeignKeyEventIdColumn extends Migration
         } catch (\Exception $e) {
         }
     }
+    Schema::enableForeignKeyConstraints();
 }
