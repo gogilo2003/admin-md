@@ -65,13 +65,16 @@ class AlterEventDaysTableChangeForeignKeyEventIdColumn extends Migration
         } catch (\Exception $e) {
             // Foreign key does not exist
         }
-
-        Schema::table('event_schedule_event_speaker', function (Blueprint $table) {
-            $table->foreign('event_schedule_id')
-                ->references('id')
-                ->on('event_schedules')
-                ->onDelete('cascade');
-        });
+        try {
+            Schema::table('event_schedule_event_speaker', function (Blueprint $table) {
+                $table->foreign('event_schedule_id')
+                    ->references('id')
+                    ->on('event_schedules')
+                    ->onDelete('cascade');
+            });
+        } catch (\Exception $e) {
+            // Foreign key does not exist
+        }
     }
 
     /**
