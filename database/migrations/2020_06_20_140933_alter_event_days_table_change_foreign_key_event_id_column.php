@@ -119,6 +119,6 @@ class AlterEventDaysTableChangeForeignKeyEventIdColumn extends Migration
             });
         } catch (\Exception $e) {
         }
+        Schema::enableForeignKeyConstraints();
     }
-    Schema::enableForeignKeyConstraints();
 }
