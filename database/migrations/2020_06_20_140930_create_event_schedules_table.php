@@ -27,6 +27,12 @@ class CreateEventSchedulesTable extends Migration
                 $table->timestamps();
                 Schema::enableForeignKeyConstraints();
             });
+        } else {
+            Schema::table('event_schedules', function (Blueprint $table) {
+                Schema::disableForeignKeyConstraints();
+                $table->id()->change();
+                Schema::enableForeignKeyConstraints();
+            });
         }
     }
 
