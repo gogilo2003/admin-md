@@ -9,6 +9,7 @@ use Ogilo\AdminMd\Console\FixRouteCommand;
 use Ogilo\AdminMd\Console\GenerateSitemap;
 use Ogilo\AdminMd\Console\MakePageCommand;
 use Ogilo\AdminMd\Console\FixExceptionCommand;
+use Ogilo\AdminMd\Console\AdminFixCommand;
 
 /**
  *
@@ -22,6 +23,11 @@ class AdminServiceProvider extends ServiceProvider
         $this->app->bind('admin', function ($app) {
             return new Admin;
         });
+
+        $this->app->bind(
+            \Ogilo\AdminMd\Repositories\AdminRepository::class,
+            \Ogilo\AdminMd\Repositories\Eloquent\AdminRepository::class
+        );
 
         $file = __DIR__ . '/Support/helpers.php';
         if (file_exists($file)) {
@@ -110,6 +116,7 @@ class AdminServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
+                AdminFixCommand::class,
                 InstallCommand::class,
                 UpdateCommand::class,
                 FixExceptionCommand::class,

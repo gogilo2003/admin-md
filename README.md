@@ -40,18 +40,17 @@ Ogilo\AdminMd\AdminServiceProvider::class,
 
 ### Handling guest access to the admin routes
 
-To ensure the user is directed to the correct login page why trying to access the admin page, modify the unauthenticated() function in the app/Exceptions/Handler.php by adding
-
-```php
-if(is_admin_path()){
-    return redirect()->guest('admin/login');
-}
-```
-
-in case the function is not already in your exceptions handler class, you can just add the function below to overide the inherited function.
+To ensure the user is directed to the correct login page when trying to access the admin page, run:
 
 ```bash
-php artisan admin:fix_exception
+php artisan admin:fix --auth-config
+```
+
+Or run the individual fix commands:
+
+```bash
+php artisan admin:fix --exception  # Fix exception handler only
+php artisan admin:fix --route    # Fix web route only
 ```
 
 ### Install or Update
@@ -137,10 +136,18 @@ remember for api too
 ],
 ```
 
-Add the login route to the routes/web.php
+#### Login Route
 
-```php
-php artisan admin:fix_route
+The login route is added automatically when running the fix command:
+
+```bash
+php artisan admin:fix --auth-config  # Includes route fix
+```
+
+Or to fix routes only:
+
+```bash
+php artisan admin:fix --route
 ```
 
 ### Extending Admin

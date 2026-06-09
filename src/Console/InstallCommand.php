@@ -54,7 +54,6 @@ class InstallCommand extends Command
         $this->call('vendor:publish', ['--tag' => 'stopwords', '--force']);
 
         // clean_directories();
-        $this->call("admin:fix_exception");
-        $this->call("admin:fix_route");
+        $this->call('admin:fix', ['--auth-config' => true]);
     }
 }

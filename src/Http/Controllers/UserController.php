@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\Admin;
 use Ogilo\AdminMd\Models\AdminRole;
+use Ogilo\AdminMd\Services\AdminService;
 
 use Illuminate\Support\Facades\Validator;
 use File;
@@ -15,58 +16,58 @@ use File;
  */
 class UserController extends Controller
 {
-	public function __construct()
-	{
-		$this->middleware('auth:admin');
-	}
+    protected $adminService;
 
-	public function getUsers()
-	{
-		$users = Admin::all();
-		return view('admin::users.index', compact('users'));
-	}
+    public function __construct(AdminService $adminService)
+    {
+        $this->middleware('auth:admin');
+        $this->adminService = $adminService;
+    }
+
+    public function getUsers()
+    {
+        $users = $this->adminService->getAllAdmins();
+        return view('admin::users.index', compact('users'));
+    }
 
 	public function getAdd()
 	{
 		return view('admin::users.add');
 	}
 
-	public function postAdd(Request $request)
-	{
-		// $users = $request->all();//implode(',', $request->input('users'));
-		// dd($users);
-		$validator = Validator::make($request->all(), [
-			'name' => 'required|unique:admins',
-			'email' => 'required|email|unique:admins',
-			'role' => 'required|integer',
-		], [
-			'users.required' => 'You must select at least one user'
-		]);
+    public function postAdd(Request $request)
+    {
+        // $users = $request->all();//implode(',', $request->input('users'));
+        // dd($users);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:admins',
+            'email' => 'required|email|unique:admins',
+            'role' => 'required|integer',
+        ], [
+            'users.required' => 'You must select at least one user'
+        ]);
 
-		if ($validator->fails()) {
-			return redirect()
-				->back()
-				->withInput()
-				->withErrors($validator)
-				->with('global-warning', 'Some fields failed validation, please check and try again');
-		}
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator)
+                ->with('global-warning', 'Some fields failed validation, please check and try again');
+        }
 
-		$user = new Admin;
-		$user->name = $request->input('name');
-		$user->email = $request->input('email');
-		$password = str_random(6);
-		File::append(storage_path('users.txt'), "\n\r" . $user->email . "\t" . $password);
-		$user->password = bcrypt($password);
+        $role = AdminRole::find($request->input('role'));
 
+        $user = $this->adminService->createAdmin([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => str_random(6),
+            'admin_role_id' => $role->id,
+        ]);
 
-		$role = AdminRole::find($request->input('role'));
-
-		$role->admins()->save($user);
-
-		return redirect()
-			->route('admin-users')
-			->with('global-success', 'Admin added');
-	}
+        return redirect()
+            ->route('admin-users')
+            ->with('global-success', 'Admin added');
+    }
 
 	public function getEdit($id)
 	{
@@ -74,35 +75,35 @@ class UserController extends Controller
 		return view('admin::users.edit', compact('user'));
 	}
 
-	public function postEdit(Request $request)
-	{
-		$id = $request->input('id');
+    public function postEdit(Request $request)
+    {
+        $id = $request->input('id');
 
-		$validator = Validator::make($request->all(), [
-			'name' => 'required|unique:admins,name,' . $id,
-			'email' => 'required|email|unique:admins,email,' . $id,
-			'role' => 'required|integer',
-		], [
-			'users.required' => 'You must select at least one user'
-		]);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:admins,name,' . $id,
+            'email' => 'required|email|unique:admins,email,' . $id,
+            'role' => 'required|integer',
+        ], [
+            'users.required' => 'You must select at least one user'
+        ]);
 
-		if ($validator->fails()) {
-			return redirect()
-				->back()
-				->withInput()
-				->withErrors($validator)
-				->with('global-warning', 'Some fields failed validation, please check and try again');
-		}
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator)
+                ->with('global-warning', 'Some fields failed validation, please check and try again');
+        }
 
-		$user = Admin::findOrFail($id);
-		$user->name = $request->input('name');
-		$user->admin_role_id = $request->input('role');
-		$user->save();
+        $this->adminService->updateAdmin($id, [
+            'name' => $request->input('name'),
+            'admin_role_id' => $request->input('role'),
+        ]);
 
-		return redirect()
-			->route('admin-users')
-			->with('global-success', 'Admin ' . $user->name . ' Updated');
-	}
+        return redirect()
+            ->route('admin-users')
+            ->with('global-success', 'Admin Updated');
+    }
 
 	public function postDelete(Request $request)
 	{
@@ -130,18 +131,10 @@ class UserController extends Controller
 				->with('global-success','Admin '.$name.' Deleted');*/
 	}
 
-	public function postPassword(Request $request)
-	{
-		// dd($request->all());
-
-		$user = Admin::findOrFail($request->input('id'));
-		$password = str_random(6);
-		$user->password = bcrypt($password);
-		File::append(storage_path('users.txt'), "\n\r" . $user->email . "\t" . $password);
-		$user->save();
-
-		/*return redirect()
-				->route('admin-users')
-				->with('global-success','Admin '.$name.' Deleted');*/
-	}
+    public function postPassword(Request $request)
+    {
+        $user = Admin::findOrFail($request->input('id'));
+        $password = $this->adminService->generatePassword();
+        $this->adminService->updateAdminPassword($user->id, $password);
+    }
 }
