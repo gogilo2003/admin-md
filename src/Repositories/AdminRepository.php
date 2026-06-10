@@ -1,6 +1,6 @@
 <?php
 
-namespace Ogilo\AdminMd\Repositories\Eloquent;
+namespace Ogilo\AdminMd\Repositories;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Hash;
