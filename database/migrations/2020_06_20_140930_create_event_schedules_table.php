@@ -32,7 +32,7 @@ class CreateEventSchedulesTable extends Migration
             Schema::table('event_schedules', function (Blueprint $table) {
                 $table->dropPrimary('id');
                 $table->dropColumn('id');
-                $table->id();
+                $table->id()->before('start_at');
             });
             Schema::enableForeignKeyConstraints();
         }
