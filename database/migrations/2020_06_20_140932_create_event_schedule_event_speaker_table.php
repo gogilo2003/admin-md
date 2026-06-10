@@ -20,10 +20,12 @@ class CreateEventScheduleEventSpeakerTable extends Migration
                     ->onDelete('cascade')
                     ->onUpdate('cascade')
                     ->nullable();
+
                 $table->foreignId('event_schedule_id')->constrained('event_schedules')
                     ->onDelete('cascade')
                     ->onUpdate('cascade')
                     ->nullable();
+
                 $table->timestamps();
             });
         }
