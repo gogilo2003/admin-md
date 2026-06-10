@@ -11,7 +11,7 @@ use Ogilo\AdminMd\Console\InstallCommand;
 use Ogilo\AdminMd\Console\MakePageCommand;
 use Ogilo\AdminMd\Console\UpdateCommand;
 use Ogilo\AdminMd\Interfaces\Repositories\AdminRepositoryInterface;
-use Ogilo\AdminMd\Repositories\Eloquent\AdminRepository;
+use Ogilo\AdminMd\Repositories\AdminRepository;
 
 /**
  *
