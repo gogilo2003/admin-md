@@ -8,13 +8,13 @@ use Ogilo\AdminMd\Services\AdminService;
 class AdminAuthCommand extends Command
 {
     protected $signature = 'admin:auth
-                            {admin : The admin ID or email}
+                            {admin? : The admin ID or email}
                             {--p|password= : The password for the admin}
-                            {--n|name= : The name of the admin}
+                            {--m|name= : The name of the admin}
                             {--e|email= : The email of the admin}
                             {--create : Create a new admin user}';
 
-    protected $description = 'Create or update an admin user';
+    protected $description = 'Create, update or list an admin user. Use single quotes for values with special characters like !';
 
     public function handle(AdminService $adminService)
     {
@@ -32,6 +32,9 @@ class AdminAuthCommand extends Command
             }
 
             return $this->createAdmin($adminService, $name, $email, $password);
+        }
+        if (!$admin && !$email && !$name && !$password) {
+            return $this->listAdmins($adminService);
         }
 
         if (!$admin) {
@@ -110,6 +113,25 @@ class AdminAuthCommand extends Command
             ['ID', 'Name', 'Email'],
             [[$updatedAdmin->id, $updatedAdmin->name, $updatedAdmin->email]]
         );
+
+        return 0;
+    }
+
+    protected function listAdmins(AdminService $adminService): int
+    {
+        $admins = $adminService->getAllAdmins();
+
+        if ($admins->isEmpty()) {
+            $this->info('No admin users found.');
+            return 0;
+        }
+
+        $rows = $admins->map(function ($admin) {
+            return [$admin->id, $admin->name, $admin->email];
+        })->toArray();
+
+        $this->info('Admin users:');
+        $this->table(['ID', 'Name', 'Email'], $rows);
 
         return 0;
     }
