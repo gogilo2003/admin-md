@@ -28,11 +28,13 @@ class CreateEventSchedulesTable extends Migration
                 Schema::enableForeignKeyConstraints();
             });
         } else {
+            Schema::disableForeignKeyConstraints();
             Schema::table('event_schedules', function (Blueprint $table) {
-                Schema::disableForeignKeyConstraints();
-                $table->id()->change();
-                Schema::enableForeignKeyConstraints();
+                $table->dropPrimary('id');
+                $table->dropColumn('id');
+                $table->id();
             });
+            Schema::enableForeignKeyConstraints();
         }
     }
 
