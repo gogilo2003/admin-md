@@ -30,9 +30,7 @@ class CreateEventSchedulesTable extends Migration
         } else {
             Schema::disableForeignKeyConstraints();
             Schema::table('event_schedules', function (Blueprint $table) {
-                $table->dropPrimary('id');
-                $table->dropColumn('id');
-                $table->id()->before('start_at');
+                $table->unsignedBigInteger('id')->change();
             });
             Schema::enableForeignKeyConstraints();
         }
