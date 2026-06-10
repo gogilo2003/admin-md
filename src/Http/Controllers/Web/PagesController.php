@@ -81,9 +81,9 @@ class PagesController extends Controller
             'article.' . $article->category->name,
             'web.article.article',
             'article.article',
-            'admin::web.article',
             'web.article',
-            'article'
+            'article',
+            'admin::web.article'
         ], compact('article', 'page'));
     }
 
