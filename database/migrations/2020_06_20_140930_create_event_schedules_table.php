@@ -30,7 +30,7 @@ class CreateEventSchedulesTable extends Migration
         } else {
             Schema::disableForeignKeyConstraints();
             Schema::table('event_schedules', function (Blueprint $table) {
-                $table->unsignedBigInteger('id')->change();
+                $table->unsignedBigInteger('id')->autoIncrement()->change();
             });
             Schema::enableForeignKeyConstraints();
         }
