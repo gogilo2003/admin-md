@@ -1,30 +1,102 @@
 <?php
 
-namespace Ogilo\AdminMd\Repositories;
+namespace Ogilo\AdminMd\Repositories\Eloquent;
 
-interface AdminRepository
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Hash;
+use Ogilo\AdminMd\Interfaces\Repositories\AdminRepositoryInterface;
+use Ogilo\AdminMd\Models\Admin;
+
+class AdminRepository implements AdminRepositoryInterface
 {
-    public function paginate($perPage = 15);
+    protected $model;
 
-    public function all();
+    public function __construct(Admin $model)
+    {
+        $this->model = $model;
+    }
 
-    public function find($id);
+    public function paginate($perPage = 15)
+    {
+        return $this->model->paginate($perPage);
+    }
 
-    public function findByEmail($email);
+    public function all()
+    {
+        return $this->model->all();
+    }
 
-    public function create(array $data);
+    public function find($id)
+    {
+        return $this->model->find($id);
+    }
 
-    public function update($id, array $data);
+    public function findByEmail($email)
+    {
+        return $this->model->where('email', $email)->first();
+    }
 
-    public function delete($id);
+    public function create(array $data)
+    {
+        return $this->model->create($data);
+    }
 
-    public function active();
+    public function update($id, array $data)
+    {
+        $admin = $this->find($id);
 
-    public function activeAdmins();
+        if ($admin) {
+            $admin->update($data);
+        }
 
-    public function byRole($role_id);
+        return $admin;
+    }
 
-    public function search($query, $perPage = 15);
+    public function delete($id)
+    {
+        $admin = $this->find($id);
 
-    public function updatePassword($id, $password);
+        if ($admin) {
+            return $admin->delete();
+        }
+
+        return false;
+    }
+
+    public function active()
+    {
+        return $this->model->where('active', true)->get();
+    }
+
+    public function activeAdmins()
+    {
+        return $this->model->where('active', 1)->get();
+    }
+
+    public function byRole($role_id)
+    {
+        return $this->model->where('admin_role_id', $role_id)->get();
+    }
+
+    public function search($query, $perPage = 15)
+    {
+        return $this->model
+            ->where('name', 'like', "%{$query}%")
+            ->orWhere('email', 'like', "%{$query}%")
+            ->paginate($perPage);
+    }
+
+    public function updatePassword($id, $password)
+    {
+        $admin = $this->find($id);
+
+        if ($admin) {
+            $admin->password = Hash::make($password);
+            $admin->save();
+
+            return $admin;
+        }
+
+        return null;
+    }
 }

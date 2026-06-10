@@ -3,13 +3,15 @@
 namespace Ogilo\AdminMd;
 
 use Illuminate\Support\ServiceProvider;
-use Ogilo\AdminMd\Console\UpdateCommand;
-use Ogilo\AdminMd\Console\InstallCommand;
+use Ogilo\AdminMd\Console\AdminFixCommand;
+use Ogilo\AdminMd\Console\FixExceptionCommand;
 use Ogilo\AdminMd\Console\FixRouteCommand;
 use Ogilo\AdminMd\Console\GenerateSitemap;
+use Ogilo\AdminMd\Console\InstallCommand;
 use Ogilo\AdminMd\Console\MakePageCommand;
-use Ogilo\AdminMd\Console\FixExceptionCommand;
-use Ogilo\AdminMd\Console\AdminFixCommand;
+use Ogilo\AdminMd\Console\UpdateCommand;
+use Ogilo\AdminMd\Interfaces\Repositories\AdminRepositoryInterface;
+use Ogilo\AdminMd\Repositories\Eloquent\AdminRepository;
 
 /**
  *
@@ -25,8 +27,8 @@ class AdminServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(
-            \Ogilo\AdminMd\Repositories\AdminRepository::class,
-            \Ogilo\AdminMd\Repositories\Eloquent\AdminRepository::class
+            AdminRepositoryInterface::class,
+            AdminRepository::class
         );
 
         $file = __DIR__ . '/Support/helpers.php';
