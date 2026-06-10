@@ -3,6 +3,7 @@
 namespace Ogilo\AdminMd;
 
 use Illuminate\Support\ServiceProvider;
+use Ogilo\AdminMd\Console\AdminAuthCommand;
 use Ogilo\AdminMd\Console\AdminFixCommand;
 use Ogilo\AdminMd\Console\FixExceptionCommand;
 use Ogilo\AdminMd\Console\FixRouteCommand;
@@ -118,6 +119,7 @@ class AdminServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
+                AdminAuthCommand::class,
                 AdminFixCommand::class,
                 InstallCommand::class,
                 UpdateCommand::class,
