@@ -15,6 +15,7 @@ use Ogilo\AdminMd\Models\EventDay;
 use Ogilo\AdminMd\Http\Controllers\Controller;
 use Ogilo\AdminMd\Models\EventCategory;
 use Ogilo\AdminMd\Models\EventSchedule;
+use Illuminate\Support\Carbon;
 
 class EventController extends Controller
 {
@@ -93,7 +94,10 @@ class EventController extends Controller
 
         $cat->events()->save($event);
 
-        foreach (get_event_days($event->held_at, $event->end_at) as $key => $dt) {
+        foreach (get_event_days(
+            Carbon::parse($event->held_at),
+            $event->end_at ? Carbon::parse($event->end_at) : null
+        ) as $key => $dt) {
             $day = new EventDay();
             $day->day = $dt;
             $day->title = "Day " . ($key + 1);
@@ -211,7 +215,10 @@ class EventController extends Controller
 
         $event->event_days()->whereNotBetween('day', [$event->held_at, $event->end_at])->delete();
 
-        foreach (get_event_days($event->held_at, $event->end_at) as $key => $dt) {
+        foreach (get_event_days(
+            Carbon::parse($event->held_at),
+            $event->end_at ? Carbon::parse($event->end_at) : null
+        ) as $key => $dt) {
             $day = EventDay::whereDate('day', $dt)->where('event_id', $event->id)->first();
 
             if (!$day) {

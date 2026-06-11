@@ -1768,23 +1768,22 @@ if (!function_exists('get_event_days')) {
      *
      * @return array
      */
-    function get_event_days($start, $end)
-    {
-        $i = 1;
-        $interval = \date_interval_create_from_date_string('1 day');
-        $days = [];
+function get_event_days($start, $end)
+     {
+         $interval = \date_interval_create_from_date_string('1 day');
+         $days = [];
+         if (!$end || $start->format('Y-m-d') === $end->format('Y-m-d')) {
+             $days[] = clone $start;
+         } else {
+             while ($start->format('Y-m-d') !== $end->format('Y-m-d')) {
+                 $days[] = clone $start;
+                 $start->add($interval);
+             }
+             $days[] = clone $start;
+         }
 
-        if ($start === $end)
-            $days[] = $start;
-        else
-            do {
-                $days[] = clone $start;
-                $start->add($interval);
-            } while ($start <= $end);
-
-
-        return $days;
-    }
+         return $days;
+     }
 }
 
 if (!file_exists('stub_path')) {
